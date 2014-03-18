@@ -1,0 +1,14 @@
+= link_to "All Ideas", project_idea_path(@idea.project, @idea)
+
+h2 #{@idea.name}
+p #{@idea.description}
+
+- @idea.comments.each do |c|
+  .panel.panel-default
+    .panel-body #{markdown(c.comment)}
+    = link_to "edit", edit_project_idea_comments_path(@idea.project, @idea, c)
+
+= simple_form_for [@idea.project, @idea, Comment.new] do |f|
+  = f.input :comment
+  = f.hidden_field :idea_id, value: @idea.id
+  = f.button :submit

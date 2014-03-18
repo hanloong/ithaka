@@ -1,0 +1,8 @@
+- @projects.each do |p|
+  .panel.panel-default
+    .panel-heading #{p.name}
+    .panel-body #{p.description}
+    = link_to "edit", edit_project_path(p)
+    = link_to "show", project_path(p)
+
+= link_to "Add Project", new_project_path

@@ -1,0 +1,13 @@
+= link_to "All Projects", projects_path
+
+h2 #{@project.name}
+p #{@project.description}
+
+- @project.ideas.each do |i|
+  .panel.panel-default
+    .panel-heading #{i.name}
+    .panel-body #{i.description}
+    = link_to "edit", edit_project_idea_path(@project, i)
+    = link_to "show", project_idea_path(@project, i)
+
+= link_to "Add Idea", new_project_idea_path(@project)

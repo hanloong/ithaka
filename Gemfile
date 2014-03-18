@@ -16,9 +16,11 @@ gem 'puma'
 gem 'pundit'
 gem 'simple_form'
 gem 'slim-rails'
+gem 'redcarpet', '1.17.2'
+gem 'gollum'
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
+  gem 'binding_of_caller'
   gem 'foreman'
   gem 'quiet_assets'
   gem 'rails_layout'
