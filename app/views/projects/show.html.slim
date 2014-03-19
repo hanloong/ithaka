@@ -1,12 +1,15 @@
 = link_to "All Projects", projects_path
 
 h2 #{@project.name}
-p #{@project.description}
+p #{markdown(@project.description)}
 
 - @project.ideas.each do |i|
   .panel.panel-default
-    .panel-heading #{i.name}
-    .panel-body #{i.description}
+    .panel-heading
+      .pull-left #{i.name}
+      .pull-right #{i.user ? i.user.email : "Anonymous"} - #{i.created_at}
+      .clearfix
+    .panel-body #{markdown(i.description)}
     = link_to "edit", edit_project_idea_path(@project, i)
     = link_to "show", project_idea_path(@project, i)
 

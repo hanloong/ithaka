@@ -1,3 +1,9 @@
+GIT
+  remote: git@github.com:hanloong/pen-rails.git
+  revision: 183ab4af3ad29a058b270b08a5e8bf3200d6870d
+  specs:
+    pen-rails (0.0.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -243,6 +249,7 @@ DEPENDENCIES
   gollum
   jbuilder (~> 2.0)
   jquery-rails
+  pen-rails!
   pg
   puma
   pundit

@@ -1,14 +1,32 @@
-= link_to "All Ideas", project_idea_path(@idea.project, @idea)
+= link_to "All Ideas", project_path(@idea.project)
 
-h2 #{@idea.name}
-p #{@idea.description}
+.row
+  .col-lg-10
 
-- @idea.comments.each do |c|
-  .panel.panel-default
-    .panel-body #{markdown(c.comment)}
-    = link_to "edit", edit_project_idea_comments_path(@idea.project, @idea, c)
+    .panel.panel-default
+      .panel-heading
+        .pull-right #{@idea.user ? @idea.user.email : "Anonymous"} - #{@idea.created_at}
+        .clearfix
+      .panel-body
+        h4 #{@idea.name}
+        p #{markdown(@idea.description)}
 
-= simple_form_for [@idea.project, @idea, Comment.new] do |f|
-  = f.input :comment
-  = f.hidden_field :idea_id, value: @idea.id
-  = f.button :submit
+    - @idea.comments.each do |c|
+      .panel.panel-default
+        .panel-heading
+          .pull-right #{c.user ? c.user.email : "Anonymous"} - #{c.created_at}
+          .clearfix
+        .panel-body #{markdown(c.comment)}
+        = link_to "edit", edit_project_idea_comments_path(@idea.project, @idea, c)
+  .col-lg-2
+    = simple_form_for [@idea.project, @idea, Vote.new] do |f|
+      = f.hidden_field :user_id, value: 1
+      = f.hidden_field :idea_id, value: @idea.id
+      = f.submit "#{@idea.votes.count} Votes", class: "btn btn-success btn-lg"
+.row
+  .col-lg-10
+
+    = simple_form_for [@idea.project, @idea, Comment.new] do |f|
+      = f.input :comment
+      = f.hidden_field :idea_id, value: @idea.id
+      = f.button :submit

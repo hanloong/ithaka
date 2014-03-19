@@ -1,7 +1,7 @@
 - @projects.each do |p|
   .panel.panel-default
     .panel-heading #{p.name}
-    .panel-body #{p.description}
+    .panel-body #{markdown(p.description)}
     = link_to "edit", edit_project_path(p)
     = link_to "show", project_path(p)
 
