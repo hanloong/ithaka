@@ -1,8 +1,43 @@
-- @projects.each do |p|
-  .panel.panel-default
-    .panel-heading #{p.name}
-    .panel-body #{markdown(p.description)}
-    = link_to "edit", edit_project_path(p)
-    = link_to "show", project_path(p)
+.row
+  .page-head
+    span.glyphicon.glyphicon-dashboard
+    h3 Project Dashboard
+  .clearfix
 
-= link_to "Add Project", new_project_path
+ul.nav.nav-tabs
+  li.active
+    a
+      span.glyphicon.glyphicon-dashboard
+      | Projects
+  li
+    a
+      span.glyphicon.glyphicon-tasks
+      | Action Required
+  li
+    a
+      span.glyphicon.glyphicon-stats
+      | Reports
+  li
+    a
+      span.glyphicon.glyphicon-user
+      | Team Management
+
+
+.tab-content
+  .tab-pane.active
+    .row.contents
+      - @projects.each do |p|
+        .col-lg-3
+          .panel.panel-default.panel-project
+            h3.title
+              = link_to "#{p.name}", project_path(p)
+              = link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_project_path(p), class: "pull-right"
+            .panel-body
+              #{p.description}
+
+      .col-lg-3
+        .panel.panel-default.panel-project
+          .panel-body.text-center
+            h3 Idea's don't quite fit any of these?
+            br
+            = link_to "make new project", new_project_path, class: "btn btn-lg btn-primary"

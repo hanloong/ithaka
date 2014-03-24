@@ -1,16 +1,33 @@
-= link_to "All Projects", projects_path
+.row
+  .page-head
+    span.glyphicon.glyphicon-dashboard
+    h3 #{@project.name}
+  .clearfix
 
-h2 #{@project.name}
-p #{markdown(@project.description)}
+ul.nav.nav-tabs
+  li.active
+    a
+      span.glyphicon.glyphicon-dashboard
+      | Ideas Home
+  li
+    a
+      span.glyphicon.glyphicon-tasks
+      | Action Required
+  li
+    a
+      span.glyphicon.glyphicon-stats
+      | Reports
 
-- @project.ideas.each do |i|
-  .panel.panel-default
-    .panel-heading
-      .pull-left #{i.name}
-      .pull-right #{i.user ? i.user.email : "Anonymous"} - #{i.created_at}
-      .clearfix
-    .panel-body #{markdown(i.description)}
-    = link_to "edit", edit_project_idea_path(@project, i)
-    = link_to "show", project_idea_path(@project, i)
 
-= link_to "Add Idea", new_project_idea_path(@project)
+.tab-content
+  .tab-pane.active
+    .row.contents
+      - @project.ideas.each do |i|
+        .col-lg-6
+          .panel.panel-default.panel-project
+            h3.title
+              = link_to "#{i.name}", project_idea_path(@project, i)
+              = link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_project_idea_path(@project, i), class: "pull-right"
+            .panel-body #{markdown(i.description)}
+
+    = link_to "Add Idea", new_project_idea_path(@project)

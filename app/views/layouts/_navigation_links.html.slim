@@ -1,14 +1,18 @@
--# add navigation links to this file
-- if user_signed_in?
-  li= link_to 'Logout', destroy_user_session_path, :method=>'delete'
-- else
-  li= link_to 'Login', new_user_session_path
-
-- if user_signed_in?
-  li= link_to 'Edit account', edit_user_registration_path
-- else
-  li= link_to 'Sign up', new_user_registration_path
-
-- if user_signed_in?
-  li= link_to 'Users', users_path
-  li= link_to 'Projects', projects_path
+ul.nav.navbar-nav.pull-left
+  - if user_signed_in?
+    li= link_to 'Dashboard', projects_path
+    li.dropdown
+      a.dropdown-toggle data-toggle="dropdown"
+        | Projects
+        span.glyphicon.glyphicon-chevron-down
+      ul.dropdown-menu
+        - Project.all.each do |p|
+          li = link_to p.name, project_path(p)
+ul.nav.navbar-nav.pull-right
+  - if user_signed_in?
+    li= link_to 'Users', users_path
+    li= link_to 'Edit account', edit_user_registration_path
+    li= link_to 'Logout', destroy_user_session_path, :method=>'delete'
+  - else
+    li= link_to 'Login', new_user_session_path
+    li= link_to 'Sign up', new_user_registration_path

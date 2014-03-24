@@ -1,1 +1,37 @@
+@import "global";
+$navbar-inverse-bg: $dark-grey;
+$navbar-inverse-link-color: $lightish-grey;
 @import "bootstrap";
+
+.navbar-inverse {
+  margin-bottom: 0;
+  border-bottom: 1px solid $dark-grey;
+  .navbar-toggle { border-color: white; }
+  .active { background: $dark-grey; }
+  li.dropdown a:focus{ background-color: $darkest-grey; }
+  .dropdown-menu {
+    background: $darkest-grey;
+    li a { color: $light-grey; }
+    a:hover { background: $dark-grey; color: $light-grey; }
+  }
+}
+
+.tab-pane {
+  background: $light-grey;
+  .contents {
+    padding: 20px; 
+    max-width: $max-width;
+    margin: -1px auto 0 auto;
+    border-top: 1px solid $light-grey;
+  }
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+}
+.nav-tabs {
+  width: $max-width;
+  margin: 0 auto;
+  li.active a { background: $light-grey;}
+  li.active a:hover { color: $pink; background: $light-grey;}
+  li a { color: $grey; }
+  li a:hover { border: none; background: none; color: $blue; }
+}
