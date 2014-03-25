@@ -8,26 +8,27 @@ ul.nav.nav-tabs
   li.active
     a
       span.glyphicon.glyphicon-dashboard
-      | Ideas Home
+      | Ideas
   li
     a
       span.glyphicon.glyphicon-tasks
-      | Action Required
-  li
-    a
-      span.glyphicon.glyphicon-stats
-      | Reports
-
+      | Project Summary
 
 .tab-content
   .tab-pane.active
-    .row.contents
-      - @project.ideas.each do |i|
-        .col-lg-6
-          .panel.panel-default.panel-project
-            h3.title
-              = link_to "#{i.name}", project_idea_path(@project, i)
-              = link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_project_idea_path(@project, i), class: "pull-right"
-            .panel-body #{markdown(i.description)}
-
-    = link_to "Add Idea", new_project_idea_path(@project)
+    .row.contents.tab-contents
+      .col-lg-9
+        - if @project.ideas.empty?
+          h3 there aren't any ideas for this project yet. You should create one.
+        - @project.ideas.each do |i|
+          .row
+            .col-lg-12
+              .panel.panel-default.panel-project
+                h3.title
+                  = link_to "#{i.name}", project_idea_path(@project, i)
+                  = link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_project_idea_path(@project, i), class: "pull-right"
+                .panel-body #{markdown(i.description)}
+      .col-lg-3
+        .text-center
+          h3 sidebar
+        = link_to "Add Idea", new_project_idea_path(@project), class: "btn-wide btn btn-primary btn-lg"

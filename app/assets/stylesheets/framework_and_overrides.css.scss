@@ -21,9 +21,10 @@ $navbar-inverse-link-color: $lightish-grey;
   .contents {
     padding: 20px; 
     max-width: $max-width;
-    margin: -1px auto 0 auto;
     border-top: 1px solid $light-grey;
+    margin: 0 auto;
   }
+  .tab-contents { margin-top: -1px; }
   border-bottom: 1px solid #ddd;
   border-top: 1px solid #ddd;
 }
@@ -32,6 +33,20 @@ $navbar-inverse-link-color: $lightish-grey;
   margin: 0 auto;
   li.active a { background: $light-grey;}
   li.active a:hover { color: $pink; background: $light-grey;}
-  li a { color: $grey; }
-  li a:hover { border: none; background: none; color: $blue; }
+  li a { border:none; color: $grey; }
+  li a:hover { border: none; background: none; color: $dark-grey; }
+  li a:hover span { color: $blue; }
+  li.active a:hover span { color: inherit; }
+}
+
+.btn-wide { width: 100%; }
+
+.btn-pink {
+  background: $pink;
+  border: 1px solid $dark-pink;
+  color: $light-grey;
+}
+.btn-pink:hover {
+  color: $light-grey;
+  background: $dark-pink;
 }

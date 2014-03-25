@@ -8,6 +8,9 @@ ul.nav.navbar-nav.pull-left
       ul.dropdown-menu
         - Project.all.each do |p|
           li = link_to p.name, project_path(p)
+form.navbar-form.navbar-left
+  .form-group
+  = submit_tag "create new idea".html_safe, class: "btn btn-pink"
 ul.nav.navbar-nav.pull-right
   - if user_signed_in?
     li= link_to 'Users', users_path
