@@ -25,11 +25,20 @@ ul.nav.nav-tabs
         - @project.ideas.each do |i|
           .row
             .col-lg-12
-              .panel.panel-default.panel-project
-                h3.title
-                  = link_to "#{i.name}", project_idea_path(@project, i)
-                  = link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_project_idea_path(@project, i), class: "pull-right"
-                .panel-body #{markdown(i.description)}
+              .idea-contents
+                .row
+                  .col-lg-2.col-md-2.col-sm-2
+                  .col-lg-10.col-md-10.col-sm-10
+                    h3.title.text-center
+                      = link_to "#{i.name}", project_idea_path(@project, i)
+
+                  .col-lg-2.col-md-2.col-sm-2
+                    .by-line
+                      img.avatar width="50px" height="50px" src="https://avatars2.githubusercontent.com/u/195477?s=460"
+                      #{i.user ? i.user.email : "Anonymous"}
+                      #{i.created_at.strftime("%d %b %Y") }
+                  .col-lg-10.col-md-10.col-sm-10
+                    .idea-body #{markdown(i.description)}
       .col-lg-3
         .text-center
           h3 sidebar

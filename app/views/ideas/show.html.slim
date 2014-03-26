@@ -15,7 +15,8 @@
         .idea-contents
           .row
             .text-center
-              h3 #{@idea.name}
+              h3
+                | #{@idea.name}
             .col-lg-2.col-md-2.col-sm-2
               .by-line
                 img.avatar width="50px" height="50px" src="https://avatars2.githubusercontent.com/u/195477?s=460"
@@ -24,6 +25,7 @@
             .col-lg-10-col-md-10.col-sm-10
               .idea-body
                 #{markdown(@idea.description)}
+                p = link_to "Edit <span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_project_idea_path(@idea.project, @idea)
         .text-center
           h5 Discussion
         .idea-contents
