@@ -1,7 +1,9 @@
 .row
   .page-head
     span.glyphicon.glyphicon-dashboard
-    h3 #{@project.name}
+    h3
+      = link_to "Projects", projects_path
+      |  - #{@project.name}
   .clearfix
 
 ul.nav.nav-tabs

@@ -1,0 +1,20 @@
+@import 'global';
+
+.idea-contents {
+  background: white;
+  box-shadow: 1px 1px 2px $grey;
+  padding: 10px 15px 25px 15px;
+  .by-line {
+    text-align: center;
+    color: $grey;
+    .avatar {
+      border-radius: 25px;
+      margin: 25px 0;
+    }
+  }
+  .idea-body { margin: 10px 10px; }
+  .post-comment {
+    margin: 10px 20px;
+    .btn { margin-top: 10px; }
+  }
+}

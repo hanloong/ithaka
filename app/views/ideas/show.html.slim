@@ -1,33 +1,51 @@
 .row
   .page-head
     span.glyphicon.glyphicon-dashboard
-    h3 #{@idea.project.name} - #{@idea.name}
+    h3
+      = link_to "Projects", projects_path
+      |  -  
+      = link_to @idea.project.name, project_path(@idea.project)
+      |  - #{@idea.name}
   .clearfix
 
 .tab-content
   .tab-pane.active
     .row.contents
       .col-lg-9
-        .panel.panel-default
-          .contents
-            .row
-              h3 #{@idea.name}
-              p #{markdown(@idea.description)}
-              .pull-right #{@idea.user ? @idea.user.email : "Anonymous"} - #{@idea.created_at}
-            hr
-          - @idea.comments.each do |c|
-              .row
-                .col-lg-12
-                  #{markdown(c.comment)}
-                  = link_to "edit", edit_project_idea_comments_path(@idea.project, @idea, c)
-                  .pull-right #{c.user ? c.user.email : "Anonymous"} - #{c.created_at}
-              hr
+        .idea-contents
           .row
+            .text-center
+              h3 #{@idea.name}
+            .col-lg-2.col-md-2.col-sm-2
+              .by-line
+                img.avatar width="50px" height="50px" src="https://avatars2.githubusercontent.com/u/195477?s=460"
+                #{@idea.user ? @idea.user.email : "Anonymous"}
+                #{@idea.created_at.strftime("%d %b %Y") }
+            .col-lg-10-col-md-10.col-sm-10
+              .idea-body
+                #{markdown(@idea.description)}
+        .text-center
+          h5 Discussion
+        .idea-contents
+          - @idea.comments.each do |c|
+            .row
+              .col-lg-2.col-md-2.col-sm-2
+                .by-line
+                  img.avatar width="50px" height="50px" src="https://avatars2.githubusercontent.com/u/195477?s=460"
+                  #{c.user ? c.user.email : "Anonymous"}
+                  #{c.created_at.strftime("%d %b %y")}
+              .col-lg-10-col-md-10.col-sm-10
+                .idea-body
+                  #{markdown(c.comment)}
             hr
+          .row
+            .post-comment
+              h3 Add to discussion
               = simple_form_for [@idea.project, @idea, Comment.new] do |f|
-                = f.input :comment
+                = f.input :comment, label: false, placeholder: "Write your comment in markdown", input_html: { class: "input-lg form-control" }
                 = f.hidden_field :idea_id, value: @idea.id
-                = f.button :submit
+                = f.hidden_field :user_id, value: current_user.id
+                = f.button :submit, value: "Post comment", class: "btn btn-lg btn-pink pull-right"
       .col-lg-3
         .text-center
           h3 sidebar

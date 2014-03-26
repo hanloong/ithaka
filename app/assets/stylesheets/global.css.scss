@@ -14,4 +14,9 @@ main { margin: 0;}
 body { background: $lightish-grey; }
 main h3 { color: $grey; }
 .glyphicon { margin: 0 5px; }
-a:hover { cursor: pointer; }
+a {color: $dark-grey; }
+a:hover {
+  text-decoration: none;
+  cursor: pointer;
+  color: $pink;
+}
