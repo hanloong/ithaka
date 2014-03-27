@@ -1,5 +1,6 @@
 = simple_form_for([idea.project, idea]) do |f|
   = f.input :name
+  = f.input :status, collection: Idea::STATUS
   = f.input :description
   = f.hidden_field :project_id
   = f.button :submit

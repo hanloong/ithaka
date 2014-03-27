@@ -24,7 +24,7 @@ class IdeasController < ApplicationController
 
   def update
     if @idea.update(idea_params)
-      redirect_to @idea, notice: 'Idea was successfully updated.'
+      redirect_to project_idea_path(@idea.project_id, @idea), notice: 'Idea was successfully updated.'
     else
       render action: 'edit'
     end
@@ -32,7 +32,7 @@ class IdeasController < ApplicationController
 
   def destroy
     @idea.destroy
-    redirect_to ideas_url
+    redirect_to project_path(params[:project_id])
   end
 
   private
@@ -42,6 +42,6 @@ class IdeasController < ApplicationController
   end
 
   def idea_params
-    params.require(:idea).permit(:name, :description, :project_id)
+    params.require(:idea).permit(:name, :status, :description, :project_id)
   end
 end

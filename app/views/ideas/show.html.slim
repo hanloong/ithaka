@@ -48,10 +48,43 @@
                 = f.hidden_field :idea_id, value: @idea.id
                 = f.hidden_field :user_id, value: current_user.id
                 = f.button :submit, value: "Post comment", class: "btn btn-lg btn-pink pull-right"
-      .col-lg-3
+      .col-lg-3.idea-contents
         .text-center
-          h3 sidebar
+          h5 Status: #{@idea.status}
         = simple_form_for [@idea.project, @idea, Vote.new] do |f|
           = f.hidden_field :user_id, value: 1
           = f.hidden_field :idea_id, value: @idea.id
-          = f.submit "#{@idea.votes.count} Votes", class: "btn-wide btn btn-success btn-lg"
+          = f.submit "#{@idea.votes.count} Votes", class: "btn-wide btn btn-primary btn-lg"
+        .text-center
+          h5 Computed Influence
+        - @idea.project.factors.each do |f|
+          - score = influence_text(Random.rand(10))
+          div class="row #{score}"
+            .col-lg-8.col-md-8.col-sm-8.col-xs-8 #{f.name}
+            .col-lg-4.col-md-4.col-sm-4.col-cs-4.text-right #{score}
+        br
+        button.btn.btn-default.btn-wide data-toggle="modal" data-target="#influence-modal" Update
+
+.modal.fade#influence-modal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
+        h4.modal-title Update Influence
+      .modal-body
+        .row
+          .col-lg-6.col-md-6.col-sm-6.col-xs-6
+            strong.small factor
+          .col-lg-3.col-md-3.col-sm-3.col-xs-3
+            strong.small negative
+          .col-lg-3.col-md-3.col-sm-3.col-xs-3
+            strong.small positive
+        hr
+        - @idea.project.factors.each do |f|
+          .row
+            .col-lg-6.col-md-6.col-sm-6.col-xs-6 #{f.name}
+            .col-lg-6.col-md-6.col-sm-6.col-xs-6
+              input.influence-slider type='text' data-slider-min="0" data-slider-max="10" data-slider-id="#{f.id}" id="#{f.id}"
+      .modal-footer
+        button.btn.btn-default type="button" data-dismiss="modal" Close
+        button.btn.btn-primary type="button" Save Changes

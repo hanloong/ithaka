@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140318113930) do
+ActiveRecord::Schema.define(version: 20140327091816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "areas", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -26,6 +32,18 @@ ActiveRecord::Schema.define(version: 20140318113930) do
 
   add_index "comments", ["idea_id"], name: "index_comments_on_idea_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "factors", force: true do |t|
+    t.string   "name"
+    t.integer  "area_id"
+    t.integer  "weight"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "factors", ["area_id"], name: "index_factors_on_area_id", using: :btree
+  add_index "factors", ["project_id"], name: "index_factors_on_project_id", using: :btree
 
   create_table "ideas", force: true do |t|
     t.string   "name"

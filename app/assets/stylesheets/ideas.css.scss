@@ -19,3 +19,8 @@
     .btn { margin-top: 10px; }
   }
 }
+
+.excellent {color: green; }
+.good {color: $green; }
+.average {color: $grey; }
+.poor {color: red; }

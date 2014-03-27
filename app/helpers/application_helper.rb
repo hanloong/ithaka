@@ -16,4 +16,16 @@ module ApplicationHelper
     Redcarpet.new(text).to_html.html_safe
   end
 
+  def influence_text(score)
+    if score < 3
+      "poor"
+    elsif score > 8
+      "excellent"
+    elsif score > 6
+      "good"
+    else
+      "average"
+    end
+  end
+
 end
