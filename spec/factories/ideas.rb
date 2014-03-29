@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :idea do
-    name "MyString"
-    description "MyText"
+    name 'My awesome idea'
+    description 'it has something'
     user nil
     project nil
     status 1

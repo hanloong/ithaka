@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :area do
-    name "MyString"
+    name 'test-area'
   end
 end

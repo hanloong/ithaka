@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :project do
-    name "MyString"
-    description "MyText"
+    name 'Votation.io'
+    description 'Features and bugs a plenty'
   end
 end

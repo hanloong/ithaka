@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :factor do
-    name "MyString"
+    name 'test'
     area nil
     weight 1
-    belongs_to ""
+    idea nil
   end
 end
