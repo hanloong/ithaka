@@ -1,0 +1,11 @@
+AllCops:
+  Excludes:
+    - db/**
+    - spec/**
+    - bin/**
+    - config/**
+
+LineLength:
+  Max: 99
+Documentation:
+  Enabled: false

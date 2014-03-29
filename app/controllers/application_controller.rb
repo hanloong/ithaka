@@ -1,3 +1,4 @@
+# Main controller for this app
 class ApplicationController < ActionController::Base
   include Pundit
   # Prevent CSRF attacks by raising an exception.
@@ -9,8 +10,11 @@ class ApplicationController < ActionController::Base
   private
 
   def user_not_authorized
-    flash[:alert] = "Access denied."
-    redirect_to (request.referrer || root_path)
+    flash[:alert] = 'Access denied.'
+    if request.referrer
+      redirect_to request.referrer
+    else
+      redirect_to root_path
+    end
   end
-
 end

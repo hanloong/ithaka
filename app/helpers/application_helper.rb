@@ -1,7 +1,6 @@
 module ApplicationHelper
-
-  def display_base_errors resource
-    return '' if (resource.errors.empty?) or (resource.errors[:base].empty?)
+  def display_base_errors(resource)
+    return '' if (resource.errors.empty?) || (resource.errors[:base].empty?)
     messages = resource.errors[:base].map { |msg| content_tag(:p, msg) }.join
     html = <<-HTML
     <div class="alert alert-error alert-block">
@@ -18,14 +17,13 @@ module ApplicationHelper
 
   def influence_text(score)
     if score < 3
-      "poor"
+      'poor'
     elsif score > 8
-      "excellent"
+      'excellent'
     elsif score > 6
-      "good"
+      'good'
     else
-      "average"
+      'average'
     end
   end
-
 end

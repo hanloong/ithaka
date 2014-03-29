@@ -6,7 +6,7 @@ Votation::Application.routes.draw do
       resource :comments
     end
   end
-  root :to => "home#index"
-  devise_for :users, :controllers => {:registrations => "registrations"}
+  root to: 'home#index'
+  devise_for :users, controllers: { registrations: 'registrations' }
   resources :users
 end

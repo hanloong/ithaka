@@ -4,9 +4,11 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
-      redirect_to project_idea_path(@comment.idea.project, @comment.idea), notice: 'Comment was successfully created.'
+      redirect_to project_idea_path(@comment.idea.project, @comment.idea),
+                  notice: 'Comment created.'
     else
-      redirect_to project_idea_path(@comment.idea.project, @comment.idea), notice: 'Comment not created.'
+      redirect_to project_idea_path(@comment.idea.project, @comment.idea),
+                  notice: 'Comment not created.'
     end
   end
 

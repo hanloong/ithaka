@@ -16,7 +16,8 @@ class IdeasController < ApplicationController
     @idea = Idea.new(idea_params)
 
     if @idea.save
-      redirect_to project_idea_path(@idea.project, @idea), notice: 'Idea was successfully created.'
+      redirect_to project_idea_path(@idea.project, @idea),
+                  notice: 'Idea was successfully created.'
     else
       render action: 'new'
     end
@@ -24,7 +25,8 @@ class IdeasController < ApplicationController
 
   def update
     if @idea.update(idea_params)
-      redirect_to project_idea_path(@idea.project_id, @idea), notice: 'Idea was successfully updated.'
+      redirect_to project_idea_path(@idea.project_id, @idea),
+                  notice: 'Idea was successfully updated.'
     else
       render action: 'edit'
     end
