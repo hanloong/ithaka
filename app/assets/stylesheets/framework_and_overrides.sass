@@ -1,0 +1,87 @@
+@import "global"
+$navbar-inverse-bg: $dark-grey
+$navbar-inverse-link-color: $lightish-grey
+@import "bootstrap"
+
+.navbar-inverse
+  margin-bottom: 0
+  border-bottom: 1px solid $dark-grey
+  .navbar-toggle
+    border-color: white
+  .active
+    background: $dark-grey
+  li.dropdown a:focus
+    background-color: $darkest-grey
+  .dropdown-menu
+    background: $darkest-grey
+    li a
+      color: $light-grey
+      &:hover
+        background: $dark-grey
+        color: $light-grey
+
+.tab-pane
+  background: $light-grey
+  .contents
+    padding: 20px
+    max-width: $max-width
+    border-top: 1px solid $light-grey
+    margin: 0 auto
+  .tab-contents
+    margin-top: -1px
+  border-bottom: 1px solid #ddd
+  border-top: 1px solid #ddd
+
+.nav-tabs
+  width: $max-width
+  margin: 0 auto
+  li.active a
+    background: $light-grey
+    &:hover
+      color: $pink
+      background: $light-grey
+  li a
+    border:none
+    color: $grey
+    &:hover
+      border: none
+      background: none
+      color: $dark-grey
+      span
+        color: $blue
+  li.active a:hover span
+    color: inherit
+
+.btn-wide
+  width: 100%
+
+.btn-pink
+  background: $pink
+  border: 1px solid $dark-pink
+  color: $light-grey
+  &:hover
+    color: $light-grey
+    background: $dark-pink
+
+.btn
+  +border-radius(0)
+
+.navbar .btn
+  +border-radius(5px)
+
+.btn-default
+  border: 1px solid $blue
+  color: $blue
+  &:hover
+    color: $light-grey
+    background: $light-blue
+    border: 1px solid $blue
+
+.btn-primary
+  background: $blue
+  border: 1px solid $light-blue
+  color: $light-grey
+  &:hover
+    color: $light-grey
+    background: $light-blue
+    border: 1px solid $light-blue

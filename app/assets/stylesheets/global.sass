@@ -1,0 +1,36 @@
+$light-grey: #f9f9fa
+$lightish-grey: #f0f1f6
+$grey: #7d8892
+$dark-grey: #323a45
+$darkest-grey: #232b37
+$pink: #f36
+$dark-pink: #f42156
+$green: #19b998
+$red: #ee8484
+$blue: #19aacf
+$light-blue: #24b5dd
+$max-width: 1144px
+
+main
+  margin: 0
+  h3
+    color: $grey
+
+body
+  background: $lightish-grey
+.glyphicon
+  margin: 0 5px
+a
+  color: $dark-grey
+  &:hover
+    text-decoration: none
+    cursor: pointer
+    color: $pink
+
+
+// Mixins
+=border-radius($radius)
+  -webkit-border-radius: $radius
+  -moz-border-radius:    $radius
+  -ms-border-radius:     $radius
+  border-radius:         $radius
