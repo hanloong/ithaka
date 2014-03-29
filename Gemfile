@@ -21,6 +21,7 @@ gem 'redcarpet', '1.17.2'
 gem 'gollum'
 gem 'pen-rails', git: 'git@github.com:hanloong/pen-rails.git'                                       # WYSISYG Markdown JS
 gem 'rubocop', require: false
+gem 'english', require: false
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
