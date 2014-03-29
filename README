@@ -1,10 +1,7 @@
-Votation
+votation.io
 ========================
 
-This application was generated with the rails_apps_composer gem:
-https://github.com/RailsApps/rails_apps_composer
-provided by the RailsApps Project:
-http://railsapps.github.io/
+![Build Status](https://www.codeship.io/projects/072f8220-9957-0131-fb57-5670ddce16b6/status)
 
 ________________________
 
