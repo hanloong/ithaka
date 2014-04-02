@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140402063451) do
+ActiveRecord::Schema.define(version: 20140402105847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20140402063451) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "unlocked",   default: false
   end
 
   add_index "votes", ["idea_id"], name: "index_votes_on_idea_id", using: :btree

@@ -2,8 +2,8 @@ Votation::Application.routes.draw do
 
   resources :projects do
     resources :ideas do
-      resource :votes
-      resource :comments
+      resources :votes
+      resources :comments
     end
   end
   root to: 'home#index'

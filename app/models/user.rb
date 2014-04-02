@@ -15,4 +15,8 @@ class User < ActiveRecord::Base
   def can_vote?
     votes.count < vote_limit
   end
+
+  def unlocked_votes
+    votes.select { |vote| vote.unlocked? }
+  end
 end

@@ -1,6 +1,12 @@
-
 h5 Status: #{idea.status}
-= simple_form_for [idea.project, idea, Vote.new] do |f|
-  = f.hidden_field :user_id, value: current_user.id
-  = f.hidden_field :idea_id, value: idea.id
-  = f.submit "#{idea.votes.count} Votes", class: "btn-wide btn btn-primary btn-lg"
+h5 Votes: #{idea.votes.count}
+- if vote = idea.already_voted?(current_user.id)
+  - if vote.unlocked?
+      = link_to "Retract vote", project_idea_vote_path(idea.project, idea, vote.id), method: :delete, class: "btn-wide btn btn-danger btn-lg"
+  - else
+    button.btn.btn-wide.btn-pink.btn-lg disabled="disabled" Vote locked in
+- else
+  = simple_form_for [idea.project, idea, Vote.new] do |f|
+    = f.hidden_field :user_id, value: current_user.id
+    = f.hidden_field :idea_id, value: idea.id
+    = f.submit "Vote for me", class: "btn-wide btn btn-primary btn-lg"

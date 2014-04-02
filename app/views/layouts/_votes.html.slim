@@ -11,6 +11,6 @@
       .col-lg-4.col-md-4.col-sm-4
         h5.used #{current_user.votes.count}
       .col-lg-4.col-md-4.col-sm-4
-        h5.unlocked 0
+        h5.unlocked #{current_user.unlocked_votes.count}
       .col-lg-4.col-md-4.col-sm-4
         h5.limit #{current_user.vote_limit}
