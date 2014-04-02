@@ -1,5 +1,6 @@
 $light-grey: #f9f9fa
 $lightish-grey: #f0f1f6
+$border-grey: #dddddd
 $grey: #7d8892
 $dark-grey: #323a45
 $darkest-grey: #232b37
@@ -12,6 +13,14 @@ $blue: #19aacf
 $light-blue: #24b5dd
 $max-width: 1144px
 
+// Mixins
+=border-radius($radius)
+  -webkit-border-radius: $radius
+  -moz-border-radius:    $radius
+  -ms-border-radius:     $radius
+  border-radius:         $radius
+
+// Global styles
 main
   margin: 0
   h3
@@ -28,10 +37,22 @@ a
     cursor: pointer
     color: $pink
 
+.votes-panel
+  background-color: $light-grey
+  border-radius: 5px
+  border: 1px solid $border-grey
+  margin: 20px 20px
+  float: right
+  width: 260px
+  h5
+    color: $grey
+    margin-top: 5px
+    margin-bottom: 5px
+    text-align: center
+  .used
+    color: $pink
+  .unlocked
+    color: $green
+  .header
+    border-bottom: 1px solid $lightish-grey
 
-// Mixins
-=border-radius($radius)
-  -webkit-border-radius: $radius
-  -moz-border-radius:    $radius
-  -ms-border-radius:     $radius
-  border-radius:         $radius

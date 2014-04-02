@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  has_many :votes
+  has_many :idea
+  has_many :comments
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   enum role: [:user, :vip, :admin]
@@ -6,5 +10,9 @@ class User < ActiveRecord::Base
 
   def set_default_role
     self.role ||= :user
+  end
+
+  def can_vote?
+    votes.count < vote_limit
   end
 end

@@ -1,10 +1,12 @@
 class VotesController < ApplicationController
   def create
-    @vote = Vote.new(vote_params)
-    if @vote.save
+    voter = VoterService.new(vote_params)
+    if voter.place
+      @vote = voter.vote
       redirect_to project_idea_path(@vote.idea.project, @vote.idea),
                   notice: 'Vote was successfully created.'
     else
+      @vote = voter.vote
       redirect_to project_idea_path(@vote.idea.project, @vote.idea),
                   notice: 'Vote not created.'
     end

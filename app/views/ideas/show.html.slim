@@ -50,11 +50,7 @@
                 = f.button :submit, value: "Post comment", class: "btn btn-lg btn-pink pull-right"
       .col-lg-3.idea-contents
         .text-center
-          h5 Status: #{@idea.status}
-        = simple_form_for [@idea.project, @idea, Vote.new] do |f|
-          = f.hidden_field :user_id, value: 1
-          = f.hidden_field :idea_id, value: @idea.id
-          = f.submit "#{@idea.votes.count} Votes", class: "btn-wide btn btn-primary btn-lg"
+          = render partial: 'vote', locals: {idea: @idea}
         .text-center
           h5 Computed Influence
         - @idea.project.factors.each do |f|

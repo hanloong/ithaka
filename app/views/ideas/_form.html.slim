@@ -3,4 +3,5 @@
   = f.input :status, collection: Idea::STATUS
   = f.input :description
   = f.hidden_field :project_id
+  = f.hidden_field :user_id, value: current_user.id
   = f.button :submit
