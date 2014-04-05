@@ -11,18 +11,18 @@ describe VoterService do
     }
   end
 
-  it "builds a new vote object" do
+  it 'builds a new vote object' do
     vs = VoterService.new(@attr)
     expect(vs.vote).to be_an(Vote)
   end
 
-  it "should save vote when cast" do
+  it 'should save vote when cast' do
     vs = VoterService.new(@attr)
     expect(vs.vote).to receive(:save)
     vs.place
   end
 
-  it "should reject vote when user reached limit" do
+  it 'should reject vote when user reached limit' do
     vs = VoterService.new(@attr)
     @attr[:user].update(vote_limit: 0)
     expect(vs.place).to be_false

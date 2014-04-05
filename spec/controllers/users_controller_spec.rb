@@ -34,7 +34,6 @@ describe UsersController do
 
   end
 
-
   describe 'PUT "update"' do
     before :each do
       @user.update(role: :admin)
@@ -42,16 +41,16 @@ describe UsersController do
 
     it 'should update the user with valid input' do
       put :update, id: @user.id,
-          user: {
-            name: "New Name"
+                   user: {
+                     name: 'New Name'
           }
       @user.reload
-      expect(@user.name).to eq("New Name")
+      expect(@user.name).to eq('New Name')
     end
 
     it 'should not update the user' do
       put :update, id: @user.id, user: { name: '' }
-      expect(flash[:alert]).to eq("Unable to update user.")
+      expect(flash[:alert]).to eq('Unable to update user.')
     end
   end
 
@@ -62,15 +61,15 @@ describe UsersController do
 
     it 'should allow deleteion of other user' do
       user2 = FactoryGirl.create(:user, :other_email)
-      expect{
+      expect do
         delete :destroy, id: user2.id
-      }.to change{ User.count }.by(-1)
+      end.to change { User.count }.by(-1)
     end
 
     it 'should block form deleting yourself' do
-      expect{
+      expect do
         delete :destroy, id: @user.id
-      }.to change{ User.count }.by(0)
+      end.to change { User.count }.by(0)
     end
 
   end

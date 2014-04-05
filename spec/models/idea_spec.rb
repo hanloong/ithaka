@@ -56,9 +56,9 @@ describe Idea do
     expect(idea).not_to be_valid
   end
 
-  it "can see if a user has already voted" do
+  it 'can see if a user has already voted' do
     idea = Idea.new(@attr)
-    vote = mock_model("Vote", id: 1)
+    vote = mock_model('Vote', id: 1)
     Vote.stub existing_vote: vote
     expect(idea.already_voted?(1)).to equal(vote)
   end
@@ -69,8 +69,8 @@ describe Idea do
     expect(idea.already_voted?(1)).to be_nil
   end
 
-  it "should show when know when a users vote is unlcoked" do
-    vote = mock_model("Vote", id: 1, :unlocked? => true)
+  it 'should show when know when a users vote is unlcoked' do
+    vote = mock_model('Vote', id: 1, :unlocked? => true)
     Vote.stub existing_vote: vote
 
     idea = Idea.new(@attr)

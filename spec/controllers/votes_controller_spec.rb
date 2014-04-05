@@ -10,24 +10,26 @@ describe VotesController do
 
   describe 'POST "create"' do
     it 'should create the vote with valid input' do
-      expect{
-        post :create, project_id: @project.id, idea_id: @idea.id, vote: { user_id: @user.id, idea_id: @idea.id }
-      }.to change{ Vote.count }.by(1)
+      expect do
+        post :create, project_id: @project.id, idea_id: @idea.id,
+                      vote: { user_id: @user.id, idea_id: @idea.id }
+      end.to change { Vote.count }.by(1)
     end
 
     it 'should not create the vote if no user' do
-      expect{
-        post :create, project_id: @project.id, idea_id: @idea.id, vote: { user_id: nil, idea_id: @idea.id }
-      }.to change{ Vote.count }.by(0)
+      expect do
+        post :create, project_id: @project.id, idea_id: @idea.id,
+                      vote: { user_id: nil, idea_id: @idea.id }
+      end.to change { Vote.count }.by(0)
     end
   end
 
   describe 'DELETE "destroy"' do
     it 'should delete a unlocked vote' do
       @vote = FactoryGirl.create(:vote, idea: @idea, user: @user, unlocked: true)
-      expect{
+      expect do
         delete :destroy, id: @vote.id, project_id: @project.id, idea_id: @idea
-      }.to change{ Vote.count }.by(-1)
+      end.to change { Vote.count }.by(-1)
     end
   end
 

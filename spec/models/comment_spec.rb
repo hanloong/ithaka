@@ -4,9 +4,9 @@ describe Comment do
   let(:user) { mock_model(User, email: 'test@email.com') }
   let(:idea) do
     mock_model(Idea,
-      name: 'test',
-      description: 'test',
-      user_id: 1)
+               name: 'test',
+               description: 'test',
+               user_id: 1)
   end
 
   before :each do

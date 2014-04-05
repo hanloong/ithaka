@@ -1,7 +1,6 @@
 AllCops:
   Excludes:
     - db/**
-    - spec/**
     - bin/**
     - config/**
 

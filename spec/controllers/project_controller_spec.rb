@@ -40,13 +40,13 @@ describe ProjectsController do
 
   describe 'POST "create"' do
     it 'should create the project with valid input' do
-      expect{
-        post :create, project: { name: "Name", description: "Test", status: :created }
-      }.to change{ Project.count }.by(1)
+      expect do
+        post :create, project: { name: 'Name', description: 'Test', status: :created }
+      end.to change { Project.count }.by(1)
     end
 
     it 'should create the project' do
-      post :create, project: { name: "", description: "Test", status: :created }
+      post :create, project: { name: '', description: 'Test', status: :created }
       expect(response).to render_template :new
     end
   end
@@ -58,11 +58,11 @@ describe ProjectsController do
 
     it 'should update the project with valid input' do
       put :update, id: @project.id,
-          project: {
-            name: "New Name", description: "Test"
+                   project: {
+                     name: 'New Name', description: 'Test'
           }
       @project.reload
-      expect(@project.name).to eq("New Name")
+      expect(@project.name).to eq('New Name')
     end
 
     it 'should not project the project' do
@@ -74,9 +74,9 @@ describe ProjectsController do
   describe 'DELETE "destroy"' do
     it 'should delte a valid project' do
       @project = FactoryGirl.create(:project)
-      expect{
+      expect do
         delete :destroy, id: @project.id
-      }.to change{ Project.count }.by(-1)
+      end.to change { Project.count }.by(-1)
     end
   end
 end

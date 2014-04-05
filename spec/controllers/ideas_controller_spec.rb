@@ -32,13 +32,22 @@ describe IdeasController do
 
   describe 'POST "create"' do
     it 'should create the idea with valid input' do
-      expect{
-        post :create, project_id: @project.id, idea: { user_id: @user.id, project_id: @project.id, name: "Name", description: "Test", status: :created }
-      }.to change{ Idea.count }.by(1)
+      expect do
+        post :create, project_id: @project.id,
+                      idea: { user_id: @user.id,
+                              project_id: @project.id,
+                              name: 'Name',
+                              description: 'Test',
+                              status: :created }
+      end.to change { Idea.count }.by(1)
     end
 
     it 'should create the idea' do
-      post :create, project_id: @project.id, idea: { project_id: @project.id, name: "Name", description: "Test", status: :created }
+      post :create, project_id: @project.id,
+                    idea: { project_id: @project.id,
+                            name: 'Name',
+                            description: 'Test',
+                            status: :created }
       expect(response).to render_template :new
     end
   end
@@ -50,14 +59,14 @@ describe IdeasController do
 
     it 'should update the idea with valid input' do
       put :update, id: @idea.id, project_id: @project.id,
-          idea: {
-            id: @idea.id,
-            user_id: @user.id,
-            project_id: @project.id,
-            name: "New Name", description: "Test"
+                   idea: {
+                     id: @idea.id,
+                     user_id: @user.id,
+                     project_id: @project.id,
+                     name: 'New Name', description: 'Test'
           }
       @idea.reload
-      expect(@idea.name).to eq("New Name")
+      expect(@idea.name).to eq('New Name')
     end
 
     it 'should not create the idea' do
@@ -68,8 +77,8 @@ describe IdeasController do
 
   it 'should delete a valid idea' do
     @idea = FactoryGirl.create(:idea, project: @project, user: @user)
-    expect{
+    expect do
       delete :destroy, id: @idea.id, project_id: @project.id
-    }.to change{ Idea.count }.by(-1)
+    end.to change { Idea.count }.by(-1)
   end
 end
