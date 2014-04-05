@@ -32,10 +32,12 @@ end
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
+  gem 'debugger'
 end
 group :test do
   gem 'capybara'
   gem 'database_cleaner', '1.0.1'
   gem 'email_spec'
   gem 'simplecov', require: false
+  gem 'timecop'
 end

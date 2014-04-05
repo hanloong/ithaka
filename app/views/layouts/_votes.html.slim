@@ -1,16 +1,16 @@
 - if user_signed_in?
   .votes-panel.hidden-xs
     .row
-      .col-lg-4.col-md-4.col-sm-4
+      .col-lg-5.col-md-5.col-sm-5
+        h5 Available
+      .col-lg-3.col-md-3.col-sm-3
         h5 Used
       .col-lg-4.col-md-4.col-sm-4
         h5 Unlocked
-      .col-lg-4.col-md-4.col-sm-4
-        h5 Total
     .row
-      .col-lg-4.col-md-4.col-sm-4
+      .col-lg-5.col-md-5.col-sm-5
+        h5.limit #{current_user.votes_left}
+      .col-lg-3.col-md-3.col-sm-3
         h5.used #{current_user.votes.count}
       .col-lg-4.col-md-4.col-sm-4
         h5.unlocked #{current_user.unlocked_votes.count}
-      .col-lg-4.col-md-4.col-sm-4
-        h5.limit #{current_user.vote_limit}

@@ -13,7 +13,11 @@ class User < ActiveRecord::Base
   end
 
   def can_vote?
-    votes.count < vote_limit
+    votes_left > 0
+  end
+
+  def votes_left
+    vote_limit - votes.count
   end
 
   def unlocked_votes
