@@ -9,4 +9,8 @@ FactoryGirl.define do
     # required if the Devise Confirmable module is used
     # confirmed_at Time.now
   end
+
+  trait :other_email do
+    email 'example2@example.com'
+  end
 end

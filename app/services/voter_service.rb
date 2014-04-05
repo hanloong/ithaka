@@ -6,6 +6,6 @@ class VoterService
   end
 
   def place
-    @vote.user.can_vote? && @vote.save
+    @vote.user && @vote.user.can_vote? && @vote.save
   end
 end
