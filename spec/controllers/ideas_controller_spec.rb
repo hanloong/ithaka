@@ -4,6 +4,7 @@ describe IdeasController do
   before :each do
     @user = FactoryGirl.create(:user)
     @project = FactoryGirl.create(:project)
+    sign_in @user
   end
 
   describe 'GET "new"' do

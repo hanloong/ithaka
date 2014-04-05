@@ -5,6 +5,7 @@ describe CommentsController do
     @user = FactoryGirl.create(:user)
     @project = FactoryGirl.create(:project)
     @idea = FactoryGirl.create(:idea, project: @project, user: @user)
+    sign_in @user
   end
 
   describe 'POST "create"' do

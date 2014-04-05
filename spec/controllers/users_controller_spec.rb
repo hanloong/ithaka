@@ -75,4 +75,12 @@ describe UsersController do
 
   end
 
+  it 'should stop normal users from seeing admin' do
+    user = FactoryGirl.create(:user, :other_email)
+    sign_in user
+    @request.env['HTTP_REFERER'] = 'test'
+    get :index
+    expect(request).to redirect_to 'test'
+  end
+
 end
