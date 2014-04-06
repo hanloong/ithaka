@@ -1,15 +1,20 @@
 .heading
-  h1 VOTATION.IO
-  .tagline
-    h3 An easy to use ideation platform for business
-  .row
-    button.btn.btn-lg.btn-pink join the private beta program
-    button.btn.btn-lg.btn-primary or just poke around
+  .container
+    h1 VOTATION.IO
+    .tagline
+      h3 a simple and powerful ideation platform
+    .row
+      p votation.io is a very young product undergoing rapid developent. We want your help so we are using votation.io to build votation.io.
+      p Suggest features, report bugs and vote for things you think are important
+      = link_to "check out the votation.io public project", projects_path, class: 'btn btn-lg btn-pink'
 
 .short-description
-  .container
-    h3.text-center
-      votation.io is in ealry stage development
+  .container.text-center
+    form.form-inline
+      .form-group
+        label.input-lg Want an invite to our beta?
+        input.input-lg.form-control type="email" name="email" placeholder="Email Address" size='35'
+        button.btn.btn-lg.btn-primary name="join-beta" become a beta tester
 
 .benefits
   .container
@@ -34,9 +39,6 @@
       .col-md-4
         h3.text-center Foster a creative culture
         p Encourage everyone and anyone to help invent the world around them
-      .col-md-12
-        h3.text-center Poeple that use votation.io are 10% more attractive
-        p.text-center Honest, I read it on the internet
 
 .steps.step-1
   .container
@@ -71,9 +73,9 @@
       h4 anyone can suggest an idea they have for your company
 
 .footer
-  .container
+  .container.text-center
     form.form-inline
       .form-group
-        input.input-lg.form-control type="email" name="email" placeholder="Email Address"
-        input.input-lg.form-control type="password" name="password" placeholder="Password"
-        button.btn.btn-lg.btn-pink name="Sign Up" value="sign uip" Sign Up
+        label.input-lg Want an invite to our beta?
+        input.input-lg.form-control type="email" name="email" placeholder="Email Address" size='35'
+        button.btn.btn-lg.btn-primary name="join-beta" become a beta tester
