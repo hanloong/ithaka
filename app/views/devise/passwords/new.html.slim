@@ -1,0 +1,22 @@
+.row
+  .page-head
+    span.glyphicon.glyphicon-user
+    h3 Forgot your password?
+  .clearfix
+
+.tab-content
+  .tab-pane.active
+    .contents
+      .row.default-contents
+        .authform.padded-form
+          .col-sm-8.col-sm-offset-2
+            = form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: 'form-horizontal', method: :post, role: 'form' }) do |f|
+              .col-sm-10.col-sm-offset-2
+                p We'll send password reset instructions
+              = devise_error_messages!
+              .form-group
+                .col-sm-2
+                  = f.label :email, class: 'input-lg'
+                .col-sm-10
+                  = f.email_field :email, autofocus: true, class: 'input-lg form-control'
+              = f.submit 'Reset Password', class: 'btn btn-lg btn-primary pull-right'

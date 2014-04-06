@@ -1,0 +1,8 @@
+.post-comment
+  h3 Add to discussion
+  = form_for [idea.project, idea, Comment.new], html: { class: 'form' } do |f|
+    .form-group
+      = f.text_area :comment, placeholder: "Write your comment in markdown", class: "input-lg form-control", rows: 10
+    = f.hidden_field :idea_id, value: idea.id
+    = f.hidden_field :user_id, value: current_user.id
+    = f.button :submit, value: "Post comment", class: "btn btn-lg btn-pink pull-right"

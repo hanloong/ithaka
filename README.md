@@ -55,7 +55,6 @@ Preferences:
 * authentication: devise
 * devise_modules: default
 * authorization: pundit
-* form_builder: simple_form
 * starter_app: admin_app
 * rvmrc: false
 * quiet_assets: true

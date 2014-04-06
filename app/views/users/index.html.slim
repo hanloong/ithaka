@@ -1,9 +1,19 @@
-.container
-  .row
-    h3 Users
-    .column
-      table.table
-        tbody
-          - @users.each do |user|
-            tr
-              = render user
+.row
+  .page-head
+    span.glyphicon.glyphicon-user
+    h3 User Manger
+  .clearfix
+
+.tab-content
+  .tab-pane.active
+    .contents
+      .row.default-contents
+        table.table.user-table
+          thead
+            th Email
+            th Role
+            th Delete
+          tbody
+            - @users.each do |user|
+              tr
+                = render user

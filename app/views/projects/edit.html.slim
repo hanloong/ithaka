@@ -1,2 +1,11 @@
-h3 Update Project
-= render partial: "form", locals: {project: @project}
+.row
+  .page-head
+    span.glyphicon.glyphicon-dashboard
+    h3 Update Project
+  .clearfix
+
+.tab-content
+  .tab-pane.active
+    .contents
+      .row.default-contents
+        = render partial: "form", locals: {project: @project}

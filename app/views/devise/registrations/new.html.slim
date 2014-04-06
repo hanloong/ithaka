@@ -1,10 +1,36 @@
-h2 Sign up
-= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical' }) do |f|
-  = f.error_notification
-  = display_base_errors resource
-  = f.input :name, :autofocus => true
-  = f.input :email, :required => true
-  = f.input :password, :required => true
-  = f.input :password_confirmation, :required => true
-  = f.button :submit, 'Sign up', :class => 'btn-primary'
-= render "devise/shared/links"
+.row
+  .page-head
+    span.glyphicon.glyphicon-user
+    h3 Sign Up
+  .clearfix
+
+.tab-content
+  .tab-pane.active
+    .contents
+      .row.default-contents
+        .authform.padded-form
+          .col-sm-8.col-sm-offset-2
+            = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form-horizontal', role: 'form' }) do |f|
+              = devise_error_messages!
+              .form-group
+                .col-sm-4
+                  = f.label :name, class: 'input-lg'
+                .col-sm-8
+                  = f.text_field :name, autofocus: true, class: 'input-lg form-control'
+              .form-group
+                .col-sm-4
+                  = f.label :email, class: 'input-lg'
+                .col-sm-8
+                  = f.email_field :email, class: 'input-lg form-control'
+              .form-group
+                .col-sm-4
+                  = f.label :password, class: 'input-lg'
+                .col-sm-8
+                  = f.password_field :password, class: 'input-lg form-control'
+              .form-group
+                .col-sm-4
+                  = f.label :password_confirmation, class: 'input-lg'
+                .col-sm-8
+                  = f.password_field :password_confirmation, class: 'input-lg form-control'
+              .form-group
+                = f.submit 'Sign up', class: 'btn btn-primary btn-lg pull-right'

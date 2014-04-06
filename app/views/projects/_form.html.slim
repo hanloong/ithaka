@@ -1,6 +1,18 @@
-= simple_form_for project do |f|
-  = f.input :name
-  = f.input :description
-  = f.button :submit
-
-#editor.editor
+.tab-content
+  .tab-pane.active
+    .contents
+      .row.default-contents
+        .padded-form
+          = form_for project, html: { role: :form, class: 'form-horizontal' } do |f|
+            .form-group
+              .col-sm-2
+                = f.label :name, class: 'input-lg'
+              .col-sm-10
+                = f.text_field :name, class: 'input-lg form-control'
+            .form-group
+              .col-sm-2
+                = f.label :description, class: 'input-lg'
+              .col-sm-10
+                = f.text_area :description, rows: 12, class: 'form-control input-lg'
+            .form-group
+              = f.button :submit, class: 'pull-right btn btn-pink btn-lg'

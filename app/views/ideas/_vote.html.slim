@@ -8,7 +8,7 @@ h5 Votes: #{idea.votes.count}
   - else
     button.btn.btn-wide.btn-pink.btn-lg disabled="disabled" Vote locked in
 - else
-  = simple_form_for [idea.project, idea, Vote.new] do |f|
+  = form_for [idea.project, idea, Vote.new] do |f|
     = f.hidden_field :user_id, value: current_user.id
     = f.hidden_field :idea_id, value: idea.id
     = f.submit "Vote for me", class: "btn-wide btn btn-primary btn-lg"

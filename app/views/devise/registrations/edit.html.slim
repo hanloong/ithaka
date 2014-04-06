@@ -1,15 +1,50 @@
-h2
-  | Edit #{resource_name.to_s.humanize}
-= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-vertical' }) do |f|
-  = f.error_notification
-  = display_base_errors resource
-  = f.input :name, :autofocus => true
-  = f.input :email, :required => true
-  = f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false
-  = f.input :password_confirmation, :required => false
-  = f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true
-  = f.button :submit, 'Update', :class => 'btn-primary'
-h3 Cancel my account
-p
-  | Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}.
-= link_to "Back", :back
+.row
+  .page-head
+    span.glyphicon.glyphicon-user
+    h3 Edit #{resource_name.to_s.humanize}
+  .clearfix
+
+.tab-content
+  .tab-pane.active
+    .contents
+      .row.default-contents
+        .authform.padded-form
+          .col-sm-12
+            = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form-horizontal', method: :put, role: 'form'}) do |f|
+              = devise_error_messages!
+              .form-group
+                .col-sm-2
+                  = f.label :name, class: 'input-lg'
+                .col-sm-10
+                  = f.text_field :name, autofocus: true, class: 'form-control input-lg'
+              .form-group
+                .col-sm-2
+                  = f.label :email, class: 'input-lg'
+                .col-sm-10
+                  = f.email_field :email, class: 'form-control input-lg'
+                  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+                    div Currently waiting confirmation for: #{resource.unconfirmed_email}
+              fieldset
+                p Leave these fields blank if you don't want to change your password.
+                .form-group
+                  .col-sm-2
+                    = f.label :password, class: 'input-lg'
+                  .col-sm-10
+                    = f.password_field :password, autocomplete: 'off', class: 'form-control input-lg'
+                .form-group
+                  .col-sm-2
+                    = f.label :password_confirmation, class: 'input-lg'
+                  .col-sm-10
+                    = f.password_field :password_confirmation, class: 'form-control input-lg'
+              fieldset
+                p You must enter your current password to make changes.
+                .form-group
+                  .col-sm-2
+                    = f.label :current_password, class: 'input-lg'
+                  .col-sm-10
+                    = f.password_field :current_password, class: 'form-control input-lg'
+                .form-group
+                  = f.submit 'Update', class: 'btn btn-primary btn-lg pull-right'
+            .text-center
+              h4 Unhappy? We'll be sad to see you go.
+              = button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger btn-lg'
