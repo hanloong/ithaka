@@ -10,6 +10,8 @@ class Idea < ActiveRecord::Base
   validates :name, :description, :status, :project, :user, presence: true
   validates :name, uniqueness: { scope: :user_id }
 
+  scope :popular, proc { order('votes_count DESC NULLS LAST') }
+
   def already_voted?(user_id)
     existing_vote(user_id)
   end

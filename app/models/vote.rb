@@ -1,5 +1,5 @@
 class Vote < ActiveRecord::Base
-  belongs_to :idea
+  belongs_to :idea, counter_cache: true
   belongs_to :user
 
   validates :idea, :user, presence: true

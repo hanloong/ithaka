@@ -22,7 +22,7 @@ ul.nav.nav-tabs
       .col-lg-9
         - if @project.ideas.empty?
           h3 there aren't any ideas for this project yet. You should create one.
-        - @project.ideas.each do |i|
+        - @project.ideas.popular.each do |i|
           .row
             .col-lg-12
               .idea-contents
@@ -39,6 +39,7 @@ ul.nav.nav-tabs
                       #{i.created_at.strftime("%d %b %Y") }
                   .col-lg-10.col-md-10.col-sm-10
                     .idea-body #{markdown(i.description)}
+                    .idea-footer #{pluralize(i.votes.count, 'Vote')}
       .col-lg-3
         .text-center
           h3 sidebar
