@@ -35,7 +35,7 @@ ul.nav.nav-tabs
                   .col-lg-2.col-md-2.col-sm-2
                     .by-line
                       img.avatar width="50px" height="50px" src="https://avatars2.githubusercontent.com/u/195477?s=460"
-                      #{i.user ? i.user.email : "Anonymous"}
+                      #{i.user ? i.user.name : "Anonymous"}
                       #{i.created_at.strftime("%d %b %Y") }
                   .col-lg-10.col-md-10.col-sm-10
                     .idea-body #{markdown(i.description)}

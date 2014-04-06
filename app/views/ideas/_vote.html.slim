@@ -1,5 +1,5 @@
 h5 Status: #{idea.status}
-h5 Votes: #{idea.votes.count}
+h5 #{pluralize(idea.votes_count, 'Vote')}
 - if !current_user.can_vote?
   button.btn.btn-wide.btn-grey.btn-lg disabled="disabled" No votes left 
 - elsif vote = idea.already_voted?(current_user.id)

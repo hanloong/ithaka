@@ -17,3 +17,4 @@
 //= require bootstrap-slider
 //= require pen
 //= require markdown
+//= require_tree .
