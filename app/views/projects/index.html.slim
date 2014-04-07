@@ -34,7 +34,8 @@ ul.nav.nav-tabs
             .panel-body
               #{p.description}
             .panel-footer
-              = link_to "<span class='glyphicon glyphicon-pencil'></span> Edit".html_safe, edit_project_path(p), class: "pull-right"
+              - if p.manager?(current_user)
+                = link_to "<span class='glyphicon glyphicon-pencil'></span> Edit".html_safe, edit_project_path(p), class: "pull-right"
               - if p.public
                 span.label.label-primary Public
               - else

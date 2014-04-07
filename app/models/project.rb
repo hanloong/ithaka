@@ -12,4 +12,8 @@ class Project < ActiveRecord::Base
       where(organisation_id: orgid)
     end
   end
+
+  def manager?(user)
+    user.admin? || (user.organisation == organisation && user.owner?)
+  end
 end

@@ -41,5 +41,31 @@ describe Project do
     it 'should return available projects without public' do
       expect(Project.available(@org.id, false).count).to eq(1)
     end
+
+    context 'when managing a project' do
+      let(:org) { FactoryGirl.create(:organisation) }
+      let(:project) { FactoryGirl.create(:project, organisation: org) }
+
+      it 'should allow admin to manage' do
+        admin = FactoryGirl.create(:user, role: :admin)
+        expect(project.manager?(admin)).to be_true
+      end
+
+      it 'should allow this orgs owner to manage' do
+        owner = FactoryGirl.create(:user, role: :owner, organisation: org)
+        expect(project.manager?(owner)).to be_true
+      end
+
+      it 'should not allow another orgs owner to manage' do
+        owner = FactoryGirl.create(:user, role: :owner)
+        expect(project.manager?(owner)).to be_false
+      end
+
+      it 'should not allow a regular user to manage' do
+        user = FactoryGirl.create(:user, organisation: org)
+        expect(project.manager?(user)).to be_false
+      end
+
+    end
   end
 end
