@@ -29,8 +29,16 @@ describe Project do
       ActiveRecord::Base.transaction do
         Project.create(@attr)
         org2 = FactoryGirl.create(:organisation)
-        Project.create(name: 'Public', description: 'Project', public: true, organisation_id: org2.id)
-        Project.create(name: 'Private', description: 'Project', public: false, organisation_id: org2.id)
+        Project.create(name: 'Public',
+                       description: 'Project',
+                       public: true,
+                       organisation_id: org2.id
+                      )
+        Project.create(name: 'Private',
+                       description: 'Project',
+                       public: false,
+                       organisation_id: org2.id
+                      )
       end
     end
 

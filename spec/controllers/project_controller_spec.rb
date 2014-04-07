@@ -42,7 +42,12 @@ describe ProjectsController do
   describe 'POST "create"' do
     it 'should create the project with valid input' do
       expect do
-        post :create, project: { name: 'Name', description: 'Test', organisation_id: @org.id, status: :created }
+        post :create, project: {
+          name: 'Name',
+          description: 'Test',
+          organisation_id: @org.id,
+          status: :created
+        }
       end.to change { Project.count }.by(1)
     end
 
