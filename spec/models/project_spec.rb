@@ -26,18 +26,20 @@ describe Project do
 
   context 'when there are many projects' do
     before :each do
-      Project.create(@attr)
-      org2 = FactoryGirl.create(:organisation)
-      Project.create(name: 'Public', description: 'Project', public: true, organisation_id: org2.id)
-      Project.create(name: 'Private', description: 'Project', public: false, organisation_id: org2.id)
+      ActiveRecord::Base.transaction do
+        Project.create(@attr)
+        org2 = FactoryGirl.create(:organisation)
+        Project.create(name: 'Public', description: 'Project', public: true, organisation_id: org2.id)
+        Project.create(name: 'Private', description: 'Project', public: false, organisation_id: org2.id)
+      end
     end
 
     it 'should return available projects' do
-      expect(Project.available(@org).count).to eq(2)
+      expect(Project.available(@org.id).count).to eq(2)
     end
 
     it 'should return available projects without public' do
-      expect(Project.available(@org, false).count).to eq(1)
+      expect(Project.available(@org.id, false).count).to eq(1)
     end
   end
 end

@@ -31,12 +31,16 @@ ul.nav.nav-tabs
           .panel.panel-default.panel-project
             h3.title
               = link_to "#{p.name}", project_path(p)
-              = link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_project_path(p), class: "pull-right"
             .panel-body
               #{p.description}
+            .panel-footer
+              = link_to "<span class='glyphicon glyphicon-pencil'></span> Edit".html_safe, edit_project_path(p), class: "pull-right"
+              - if p.public
+                span.label.label-primary Public
+              - else
+                span.label.label-default Private
 
-      .col-lg-3
-        .panel.panel-default.panel-project
-          h3.text-center more
-          .panel-body.text-center
-            = link_to "make new project", new_project_path, class: "btn btn-lg btn-primary"
+      - if current_user.admin?
+        .col-lg-3.text-center
+          h3 need a new project
+          = link_to "make new project", new_project_path, class: "btn btn-lg btn-primary"

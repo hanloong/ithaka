@@ -3,15 +3,30 @@ income = Area.find_or_create_by(name: 'Income')
 budget = Area.find_or_create_by(name: 'Budget')
 productivity = Area.find_or_create_by(name: 'Productivity')
 
+org = Organisation.find_or_create_by(name: 'Votation.io')
 u = User.find_or_create_by(email: 'hanloongliauw@gmail.com')
 if u.id.nil?
+  u.name = 'Han'
   u.password = 'password'
   u.password_confirmation = 'password'
   u.role = :admin
+  u.organisation_id = org.id
   u.save
 end
 
-project = Project.find_or_create_by(name: "Votation", description: "Dog fooding")
+admin = User.find_or_create_by(email: 'admin@votation.io')
+if admin.id.nil?
+  admin.name = 'Admin'
+  admin.password = 'password'
+  admin.password_confirmation = 'password'
+  admin.role = :admin
+  admin.organisation_id = org.id
+  admin.save
+end
+
+project = Project.find_or_create_by(name: "Votation.io", description: "Dog fooding", public: true, organisation: org)
+project = Project.find_or_create_by(name: "Sandbox", description: "Dog fooding", public: true, organisation: org)
+project = Project.find_or_create_by(name: "Votation Private", description: "Dog fooding", public: false, organisation: org)
 
 Factor.find_or_create_by(name: 'Income', weight: 20, area: income, project: project)
 Factor.find_or_create_by(name: 'Difficulty', weight: 10, area: budget, project: project)
