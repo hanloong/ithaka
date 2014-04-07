@@ -5,22 +5,22 @@
   .clearfix
 
 ul.nav.nav-tabs
-  li
-    a
-      span.glyphicon.glyphicon-stats
-      | Dashboard
   li.active
     a
       span.glyphicon.glyphicon-dashboard
       | Projects
   li
     a
-      span.glyphicon.glyphicon-tasks
-      | Action Required
+      span.glyphicon.glyphicon-stats
+      | Dashboard
   li
     a
       span.glyphicon.glyphicon-user
       | Team Management
+  li
+    a
+      span.glyphicon.glyphicon-cog
+      | Account Management
 
 
 .tab-content
@@ -43,5 +43,5 @@ ul.nav.nav-tabs
 
       - if current_user.admin?
         .col-lg-3.text-center
-          h3 need a new project
-          = link_to "make new project", new_project_path, class: "btn btn-lg btn-primary"
+          h3 something seems to be missing?
+          = link_to "start new project", new_project_path, class: "btn btn-lg btn-primary"
