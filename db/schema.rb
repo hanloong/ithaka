@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140406040201) do
+ActiveRecord::Schema.define(version: 20140407100914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,11 +59,19 @@ ActiveRecord::Schema.define(version: 20140406040201) do
   add_index "ideas", ["project_id"], name: "index_ideas_on_project_id", using: :btree
   add_index "ideas", ["user_id"], name: "index_ideas_on_user_id", using: :btree
 
+  create_table "organisations", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "projects", force: true do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "public"
+    t.integer  "organisation_id"
   end
 
   create_table "users", force: true do |t|
@@ -82,6 +90,7 @@ ActiveRecord::Schema.define(version: 20140406040201) do
     t.string   "name"
     t.integer  "role"
     t.integer  "vote_limit",             default: 15
+    t.integer  "organisation_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -2,8 +2,9 @@ require 'spec_helper'
 
 describe VotesController do
   before :each do
-    @user = FactoryGirl.create(:user)
-    @project = FactoryGirl.create(:project)
+    org = FactoryGirl.create(:organisation)
+    @user = FactoryGirl.create(:user, organisation: org)
+    @project = FactoryGirl.create(:project, organisation: org)
     @idea = FactoryGirl.create(:idea, project: @project, user: @user)
     sign_in @user
   end

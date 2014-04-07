@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe VoterService do
   before do
-    project = FactoryGirl.create(:project)
     user = FactoryGirl.create(:user)
+    project = FactoryGirl.create(:project, organisation: user.organisation)
     idea = FactoryGirl.create(:idea, project: project, user: user)
     @attr = {
       user: user,

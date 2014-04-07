@@ -3,12 +3,13 @@ require 'spec_helper'
 describe ProjectsController do
   before :each do
     @user = FactoryGirl.create(:user)
+    @org = @user.organisation
     sign_in @user
   end
 
   describe 'INDEX "index"' do
     it 'should show all projects' do
-      FactoryGirl.create(:project)
+      FactoryGirl.create(:project, organisation: @org)
       get :index
       expect(assigns(:projects)).to eq(Project.all)
 
@@ -24,7 +25,7 @@ describe ProjectsController do
 
   describe 'GET "show"' do
     it 'should find the project' do
-      project = FactoryGirl.create(:project)
+      project = FactoryGirl.create(:project, organisation: @org)
       get :show, id: project.id
       expect(assigns(:project)).to eq(project)
     end
@@ -32,7 +33,7 @@ describe ProjectsController do
 
   describe 'GET "edit"' do
     it 'should find the project' do
-      project = FactoryGirl.create(:project)
+      project = FactoryGirl.create(:project, organisation: @org)
       get :edit, id: project.id
       expect(assigns(:project)).to eq(project)
     end
@@ -41,7 +42,7 @@ describe ProjectsController do
   describe 'POST "create"' do
     it 'should create the project with valid input' do
       expect do
-        post :create, project: { name: 'Name', description: 'Test', status: :created }
+        post :create, project: { name: 'Name', description: 'Test', organisation_id: @org.id, status: :created }
       end.to change { Project.count }.by(1)
     end
 
@@ -53,7 +54,7 @@ describe ProjectsController do
 
   describe 'PUT "update"' do
     before :each do
-      @project = FactoryGirl.create(:project)
+      @project = FactoryGirl.create(:project, organisation: @org)
     end
 
     it 'should update the project with valid input' do
@@ -73,7 +74,7 @@ describe ProjectsController do
 
   describe 'DELETE "destroy"' do
     it 'should delte a valid project' do
-      @project = FactoryGirl.create(:project)
+      @project = FactoryGirl.create(:project, organisation: @org)
       expect do
         delete :destroy, id: @project.id
       end.to change { Project.count }.by(-1)

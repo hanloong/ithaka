@@ -3,7 +3,7 @@ require 'spec_helper'
 describe IdeasController do
   before :each do
     @user = FactoryGirl.create(:user)
-    @project = FactoryGirl.create(:project)
+    @project = FactoryGirl.create(:project, organisation: @user.organisation)
     sign_in @user
   end
 

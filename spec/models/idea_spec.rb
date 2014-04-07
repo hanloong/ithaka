@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Idea do
   before :each do
     user = FactoryGirl.create(:user)
-    project = FactoryGirl.create(:project)
+    project = FactoryGirl.create(:project, organisation: user.organisation)
     @attr = {
       name: 'Best idea eva',
       description: 'make all the things',

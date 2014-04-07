@@ -2,13 +2,14 @@ class User < ActiveRecord::Base
   has_many :votes
   has_many :idea
   has_many :comments
+  belongs_to :organisation
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, if: :new_record?
 
-  validates :name, :email, presence: true
+  validates :name, :email, :organisation, presence: true
 
   def set_default_role
     self.role ||= :user
