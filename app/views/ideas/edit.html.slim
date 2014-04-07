@@ -1,7 +1,13 @@
 .row
   .page-head
-    span.glyphicon.glyphicon-flash
-    h3 Update Idea
+    span.glyphicon.glyphicon-dashboard
+    h3
+      = link_to "Projects", projects_path
+      |  -  
+      = link_to @idea.project.name, project_path(@idea.project)
+      |  -  
+      = link_to @idea.name, project_idea_path(@idea.project, @idea)
+      |  -  Edit
   .clearfix
 
 = render partial: "form", locals: {idea: @idea}

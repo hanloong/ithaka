@@ -1,29 +1,28 @@
 .row
   .page-head
     span.glyphicon.glyphicon-user
-    h3 Log In
+    h3 Login to votation.io
   .clearfix
 
 .tab-content
   .tab-pane.active
     .contents
-      .row.default-contents
+      .row.default-contents.col-sm-6.col-sm-offset-3
         .authform.padded-form
-          .col-sm-8.col-sm-offset-2
             = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-horizontal', role: 'form' }) do |f|
               = devise_error_messages!
               .form-group
-                .col-sm-2
+                .col-sm-3
                   = f.label :email, class: 'input-lg'
-                .col-sm-10
+                .col-sm-9
                   = f.email_field :email, autofocus: true, class: 'form-control input-lg'
               .form-group
-                .col-sm-2
+                .col-sm-3
                   = f.label :password, class: 'input-lg'
-                .col-sm-10
+                .col-sm-9
                   = f.password_field :password, class: 'form-control input-lg'
               .form-group
-                .col-sm-6.col-sm-offset-2
+                .col-sm-5.col-sm-offset-3
                   - if devise_mapping.rememberable?
                     .row
                       .col-xs-2
@@ -31,10 +30,11 @@
                       .col-xs-10
                         = f.label :remember_me
                 .col-sm-4
-                  = f.submit 'Log in', class: 'btn btn-primary btn-lg pull-right'
-              .form-group.row
+                  = f.submit 'Login', class: 'btn btn-primary btn-lg pull-right'
+              .form-group.row.text-center
                 - if devise_mapping.registerable?
                   = link_to 'Sign up', new_registration_path(resource_name)
-              .form-group.row
+                  |  |  
                 - if devise_mapping.recoverable?
                   = link_to "Forgot password?", new_password_path(resource_name)
+      .clearfix
