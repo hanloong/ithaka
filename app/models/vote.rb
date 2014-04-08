@@ -13,4 +13,8 @@ class Vote < ActiveRecord::Base
   def unlocked?
     unlocked || (created_at > 15.minutes.ago)
   end
+
+  def unlock
+    update(unlocked: true)
+  end
 end

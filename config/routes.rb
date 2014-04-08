@@ -4,6 +4,7 @@ Votation::Application.routes.draw do
     resources :ideas do
       resources :votes
       resources :comments
+      get :unlock, on: :member
     end
   end
   root to: 'home#index'

@@ -81,4 +81,39 @@ describe IdeasController do
       delete :destroy, id: @idea.id, project_id: @project.id
     end.to change { Idea.count }.by(-1)
   end
+
+  describe 'GET "unlock_votes"' do
+    it 'should unlock votes for the idea if owner' do
+      idea = FactoryGirl.create(:idea, project: @project, user: @user)
+      @user.update(role: :owner)
+      Timecop.freeze(Date.today - 1) do
+        (1..4).each do |i|
+          user = FactoryGirl.create(:user, email: "test#{i}@email.com")
+          FactoryGirl.create(:vote, idea: idea, user: user)
+        end
+      end
+
+      expect do
+        get :unlock, project_id: @project.id, id: idea.id
+      end.to change{
+        Idea.first.votes.sample.unlocked?
+      }.from(false).to(true)
+    end
+
+    it 'should not unlock votes for the idea if not an owner' do
+      idea = FactoryGirl.create(:idea, project: @project, user: @user)
+      Timecop.freeze(Date.today - 1) do
+        (1..4).each do |i|
+          user = FactoryGirl.create(:user, email: "test#{i}@email.com")
+          FactoryGirl.create(:vote, idea: idea, user: user)
+        end
+      end
+
+      expect do
+        get :unlock, project_id: @project.id, id: idea.id
+      end.not_to change{
+        Idea.first.votes.sample.unlocked?
+      }.from(false).to(true)
+    end
+  end
 end

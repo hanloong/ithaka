@@ -1,8 +1,11 @@
 class Idea < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
+
   has_many :comments
   has_many :votes
+
+  delegate :manager?, to: :project
 
   STATUS = [:created, :dicussing, :planned, :in_progress, :complete, :closed]
   enum status: STATUS
@@ -22,5 +25,13 @@ class Idea < ActiveRecord::Base
 
   def existing_vote(user_id)
     Vote.existing_vote(id, user_id)
+  end
+
+  def unlock_votes
+    transaction do
+      votes.each do |v|
+        v.unlock
+      end
+    end
   end
 end

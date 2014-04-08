@@ -76,4 +76,20 @@ describe Idea do
     idea = Idea.new(@attr)
     expect(idea.vote_unlocked?(1)).to be_true
   end
+
+  it 'should unlock associated votes' do
+    idea = Idea.create(@attr)
+    Timecop.freeze(Date.today - 1) do
+      (1..4).each do |i|
+        user = FactoryGirl.create(:user, email: "test#{i}@email.com")
+        FactoryGirl.create(:vote, idea: idea, user: user)
+      end
+    end
+
+    expect do
+      idea.unlock_votes
+    end.to change{
+      idea.votes.sample.unlocked?
+    }.from(false).to(true)
+  end
 end

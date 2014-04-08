@@ -1,10 +1,10 @@
 class IdeasController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_idea, only: [:show, :edit, :update, :destroy]
+  before_action :set_idea, only: [:show, :edit, :update, :destroy, :unlock]
 
   def new
     @idea = Idea.new
-    @idea.project = Project.find(params[:project_id])
+    @idea.project = @project
   end
 
   def show
@@ -36,6 +36,16 @@ class IdeasController < ApplicationController
   def destroy
     @idea.destroy
     redirect_to project_path(params[:project_id])
+  end
+
+  def unlock
+    if @idea.manager?(current_user)
+      @idea.unlock_votes
+      flash[:notice] = 'All votes have been unlocked'
+    else
+      flash[:error] = 'Only owners and admins can unclock votes, sorry'
+    end
+    render 'show'
   end
 
   private

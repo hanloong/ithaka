@@ -12,3 +12,7 @@ h5 #{pluralize(idea.votes_count, 'Vote')}
     = f.hidden_field :user_id, value: current_user.id
     = f.hidden_field :idea_id, value: idea.id
     = f.submit "Vote for me", class: "btn-wide btn btn-primary btn-lg"
+- if idea.manager?(current_user)
+  .unlock
+    = link_to "Unlock votes", unlock_project_idea_path(idea.project, idea), class: "btn-wide btn btn-danger btn-lg"
+    | gives all votes option to retract

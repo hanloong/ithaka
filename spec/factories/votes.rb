@@ -4,6 +4,6 @@ FactoryGirl.define do
   factory :vote do
     idea nil
     user nil
-    unlocked true
+    unlocked false
   end
 end

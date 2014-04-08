@@ -62,4 +62,17 @@ describe Vote do
 
     expect(vote.unlocked?).to be_false
   end
+
+  it 'should be able to unlock a vote' do
+    Timecop.freeze(Date.today - 1) do
+      Vote.create(@attr)
+    end
+    vote = Vote.first
+
+    expect do
+      vote.unlock
+    end.to change{
+      vote.unlocked?
+    }.from(false).to(true)
+  end
 end
