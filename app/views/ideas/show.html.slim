@@ -18,27 +18,23 @@
               h3
                 | #{@idea.name}
             .col-sm-2
-              .by-line
-                img.avatar width="50px" height="50px" src="https://avatars2.githubusercontent.com/u/195477?s=460"
-                #{@idea.user ? @idea.user.email : "Anonymous"}
-                #{@idea.created_at.strftime("%d %b %Y") }
+              = render partial: 'shared/by_line', locals: {o: @idea}
             .col-sm-10
               .idea-body
                 #{markdown(@idea.description)}
-                p = link_to "Edit <span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_project_idea_path(@idea.project, @idea)
+              .idea-footer
+                = link_to "Edit <span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_project_idea_path(@idea.project, @idea), class: 'pull-right'
         .text-center
           h5 Discussion
         .idea-contents
           - @idea.comments.each do |c|
             .row
               .col-sm-2
-                .by-line
-                  img.avatar width="50px" height="50px" src="https://avatars2.githubusercontent.com/u/195477?s=460"
-                  #{c.user ? c.user.email : "Anonymous"}
-                  #{c.created_at.strftime("%d %b %y")}
+                = render partial: 'shared/by_line', locals: {o: c}
               .col-sm-10
                 .idea-body
                   #{markdown(c.comment)}
+                .idea-footer
             hr
           .row
             = render partial: 'new_comment', locals: {idea: @idea}

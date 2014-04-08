@@ -38,7 +38,7 @@ describe IdeasController do
                               project_id: @project.id,
                               name: 'Name',
                               description: 'Test',
-                              status: :created }
+                              status: :discussing }
       end.to change { Idea.count }.by(1)
     end
 
@@ -47,7 +47,7 @@ describe IdeasController do
                     idea: { project_id: @project.id,
                             name: 'Name',
                             description: 'Test',
-                            status: :created }
+                            status: :discussing }
       expect(response).to render_template :new
     end
   end

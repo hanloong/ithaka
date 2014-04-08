@@ -7,7 +7,7 @@ class Idea < ActiveRecord::Base
 
   delegate :manager?, to: :project
 
-  STATUS = [:created, :dicussing, :planned, :in_progress, :complete, :closed]
+  STATUS = [:discussing, :verified, :planned, :in_progress, :complete, :closed]
   enum status: STATUS
 
   validates :name, :description, :status, :project, :user, presence: true

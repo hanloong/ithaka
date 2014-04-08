@@ -27,19 +27,19 @@ ul.nav.nav-tabs
             .col-lg-12
               .idea-contents
                 .row
-                  .col-lg-2.col-md-2.col-sm-2
-                  .col-lg-10.col-md-10.col-sm-10
+                  .col-sm-2
+                  .col-sm-10
                     h3.title.text-center
                       = link_to "#{i.name}", project_idea_path(@project, i)
-
-                  .col-lg-2.col-md-2.col-sm-2
-                    .by-line
-                      img.avatar width="50px" height="50px" src="https://avatars2.githubusercontent.com/u/195477?s=460"
-                      #{i.user ? i.user.name : "Anonymous"}
-                      #{i.created_at.strftime("%d %b %Y") }
-                  .col-lg-10.col-md-10.col-sm-10
+                .row
+                  .col-sm-2
+                    = render partial: 'shared/by_line', locals: {o: i}
+                  .col-sm-10
                     .idea-body #{markdown(i.description)}
-                    .idea-footer #{pluralize(i.votes.count, 'Vote')}
+                    .idea-footer
+                      .col-sm-4.col-sm-offset-8
+                        span.label.label-primary #{i.status}
+                        span.pull-right #{pluralize(i.votes.count, 'Vote')}
       .col-lg-3
         .text-center
           h3 sidebar
