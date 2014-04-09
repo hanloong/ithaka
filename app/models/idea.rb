@@ -39,7 +39,7 @@ class Idea < ActiveRecord::Base
     if u.admin?
       'Admin'
     elsif project.champion?(u)
-      'Champoin'
+      'Champion'
     elsif project.manager?(u)
       'Owner'
     end

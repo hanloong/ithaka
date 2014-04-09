@@ -33,4 +33,5 @@
                 .col-sm-8
                   = f.password_field :password_confirmation, class: 'input-lg form-control'
               .form-group
+                = f.hidden_field :organisation_id, value: 1
                 = f.submit 'Sign up', class: 'btn btn-primary btn-lg pull-right'

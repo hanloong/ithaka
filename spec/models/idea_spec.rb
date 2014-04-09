@@ -92,4 +92,34 @@ describe Idea do
       idea.votes.sample.unlocked?
     }.from(false).to(true)
   end
+
+  describe 'user labels' do
+    it 'should show admin' do
+      admin = FactoryGirl.create(:user, email: 'admin@test.com', role: :admin)
+      idea = Idea.create(@attr)
+      expect(idea.user_label(admin)).to eq('Admin')
+    end
+
+    it 'should show chapion' do
+      user = FactoryGirl.create(:user, email: 'admin@test.com')
+      idea = Idea.create(@attr)
+      idea.project.update(user: user)
+      expect(idea.user_label(user)).to eq('Champion')
+    end
+
+    it 'should show manager' do
+      idea = Idea.create(@attr)
+      user = FactoryGirl.create(:user, email: 'admin@test.com',
+                                       role: :owner,
+                                       organisation: idea.project.organisation)
+      expect(idea.user_label(user)).to eq('Owner')
+    end
+
+    it 'should be nil for normal user' do
+      idea = Idea.create(@attr)
+      user = FactoryGirl.create(:user, email: 'admin@test.com',
+                                       organisation: idea.project.organisation)
+      expect(idea.user_label(user)).to be_nil
+    end
+  end
 end

@@ -35,5 +35,4 @@ class User < ActiveRecord::Base
   def unlocked_votes
     votes.select { |vote| vote.unlocked? }
   end
-
 end
