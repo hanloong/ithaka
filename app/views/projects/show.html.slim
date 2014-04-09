@@ -43,4 +43,7 @@ ul.nav.nav-tabs
       .col-lg-3
         .text-center
           h3 sidebar
-        = link_to "Add Idea", new_project_idea_path(@project), class: "btn-wide btn btn-primary btn-lg"
+          = link_to "Add Idea", new_project_idea_path(@project), class: "btn-wide btn btn-primary btn-lg"
+          h3 Champion
+          = render partial: 'shared/by_line', locals: {o: @project}
+          

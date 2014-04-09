@@ -2,6 +2,7 @@ class Project < ActiveRecord::Base
   has_many :ideas
   has_many :factors
   belongs_to :organisation
+  belongs_to :user
 
   validates :name, :description, :organisation, presence: true
 

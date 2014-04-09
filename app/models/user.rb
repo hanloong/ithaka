@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :votes
   has_many :idea
   has_many :comments
+  has_many :projects
   belongs_to :organisation
 
   devise :database_authenticatable, :registerable,
@@ -12,6 +13,12 @@ class User < ActiveRecord::Base
   validates :name, :email, :organisation, presence: true
   attr_reader :avatar_url
   @avatar_url = nil
+
+  def self.org_owners(org_id)
+    where(organisation_id: org_id).select do |u|
+      %w(admin owner).include?(u.role)
+    end
+  end
 
   def set_default_role
     self.role ||= :user
