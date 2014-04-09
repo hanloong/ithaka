@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   after_initialize :set_default_role, if: :new_record?
 
   validates :name, :email, :organisation, presence: true
+  attr_reader :avatar_url
+  @avatar_url = nil
 
   def set_default_role
     self.role ||= :user
@@ -26,4 +28,5 @@ class User < ActiveRecord::Base
   def unlocked_votes
     votes.select { |vote| vote.unlocked? }
   end
+
 end

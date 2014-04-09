@@ -5,7 +5,7 @@ module ApplicationHelper
     html = <<-HTML
     <div class="alert alert-error alert-block">
       <button type="button" class="close" data-dismiss="alert">&#215;</button>
-      #{messages}
+    #{messages}
     </div>
     HTML
     html.html_safe
@@ -13,6 +13,16 @@ module ApplicationHelper
 
   def markdown(text)
     Redcarpet.new(text).to_html.html_safe
+  end
+
+  def avatar_url(user)
+    if user.avatar_url.present?
+      user.avatar_url
+    else
+      default_url = "#{root_url}images/guest.png"
+      gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
+      "http://gravatar.com/avatar/#{gravatar_id}.png?s=48&d=wavatar"
+    end
   end
 
   def influence_text(score)
