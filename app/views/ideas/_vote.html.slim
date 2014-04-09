@@ -14,5 +14,5 @@ h5 #{pluralize(idea.votes_count, 'Vote')}
     = f.submit "Vote for me", class: "btn-wide btn btn-primary btn-lg"
 - if idea.manager?(current_user)
   .unlock
-    = link_to "Unlock votes", unlock_project_idea_path(idea.project, idea), class: "btn-wide btn btn-primary btn-lg"
-    | gives all votes option to retract
+    = link_to "Unlock votes", unlock_project_idea_path(idea.project, idea), class: "btn-wide btn btn-default btn-lg"
+    p gives all votes option to retract

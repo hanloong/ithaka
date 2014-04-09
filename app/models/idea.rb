@@ -34,4 +34,14 @@ class Idea < ActiveRecord::Base
       end
     end
   end
+
+  def user_label(u)
+    if u.admin?
+      'Admin'
+    elsif project.champion?(u)
+      'Champoin'
+    elsif project.manager?(u)
+      'Owner'
+    end
+  end
 end

@@ -33,17 +33,15 @@ ul.nav.nav-tabs
                       = link_to "#{i.name}", project_idea_path(@project, i)
                 .row
                   .col-sm-2
-                    = render partial: 'shared/by_line', locals: {o: i}
+                    = render partial: 'shared/by_line', locals: {o: i, label: nil}
                   .col-sm-10
                     .idea-body #{markdown(i.description)}
                     .idea-footer
                       .col-sm-4.col-sm-offset-8
-                        span.label.label-primary #{i.status}
-                        span.pull-right #{pluralize(i.votes.count, 'Vote')}
+                        span.label.label-info #{i.status}
+                        span.pull-right #{pluralize(i.votes.count, 'vote')}
       .col-lg-3
-        .text-center
-          h3 sidebar
+        .project-sidebar.text-center
+          h3 #{pluralize(@project.ideas.count, "idea")}
           = link_to "Add Idea", new_project_idea_path(@project), class: "btn-wide btn btn-primary btn-lg"
-          h3 Champion
-          = render partial: 'shared/by_line', locals: {o: @project}
-          
+          = render partial: 'shared/by_line', locals: {o: @project, label: 'Champion'}

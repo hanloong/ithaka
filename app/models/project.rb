@@ -14,7 +14,11 @@ class Project < ActiveRecord::Base
     end
   end
 
-  def manager?(user)
-    user.admin? || (user.organisation == organisation && user.owner?)
+  def manager?(u)
+    u.admin? || champoin?(u) || (u.organisation == organisation && u.owner?)
+  end
+
+  def champion?(u)
+    u == user
   end
 end
