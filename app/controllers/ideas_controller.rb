@@ -1,6 +1,7 @@
 class IdeasController < ApplicationController
   before_action :authenticate_user!
   before_action :set_idea, only: [:show, :edit, :update, :destroy, :unlock]
+  before_action :set_project, only: [:new]
 
   def new
     @idea = Idea.new
@@ -52,6 +53,10 @@ class IdeasController < ApplicationController
 
   def set_idea
     @idea = Idea.find(params[:id])
+  end
+
+  def set_project
+    @project = Project.find(params[:project_id])
   end
 
   def idea_params

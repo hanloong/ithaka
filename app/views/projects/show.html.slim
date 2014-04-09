@@ -43,5 +43,5 @@ ul.nav.nav-tabs
       .col-lg-3
         .project-sidebar.text-center
           h3 #{pluralize(@project.ideas.count, "idea")}
-          = link_to "Add Idea", new_project_idea_path(@project), class: "btn-wide btn btn-primary btn-lg"
           = render partial: 'shared/by_line', locals: {o: @project, label: 'Champion'}
+          = link_to "submit your idea", new_project_idea_path(@project), class: "btn-wide btn btn-primary btn-lg"

@@ -4,6 +4,7 @@ class Idea < ActiveRecord::Base
 
   has_many :comments
   has_many :votes
+  has_many :favourites
 
   delegate :manager?, to: :project
 

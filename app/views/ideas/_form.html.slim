@@ -18,8 +18,8 @@
               .col-sm-2
                 = f.label :description, class: 'input-lg'
               .col-sm-10
-                = f.text_area :description, class: 'form-control input-lg'
+                = f.text_area :description, class: 'form-control input-lg', rows: 12
             .row.form-group
               = f.hidden_field :project_id
               = f.hidden_field :user_id, value: current_user.id
-              = f.button :submit, class: 'btn btn-primary btn-lg pull-right'
+              = f.submit 'Save Idea', class: 'btn btn-primary btn-lg pull-right'

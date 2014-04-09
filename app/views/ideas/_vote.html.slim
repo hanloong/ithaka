@@ -16,3 +16,8 @@ h5 #{pluralize(idea.votes_count, 'Vote')}
   .unlock
     = link_to "Unlock votes", unlock_project_idea_path(idea.project, idea), class: "btn-wide btn btn-default btn-lg"
     p gives all votes option to retract
+.favourite
+  = form_for [idea.project, idea, Favourite.new] do |f|
+    = f.hidden_field :user_id, value: current_user.id
+    = f.hidden_field :idea_id, value: idea.id
+    = f.submit "follow idea", class: "btn-wide btn btn-primary btn-lg"

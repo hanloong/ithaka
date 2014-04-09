@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :idea
   has_many :comments
   has_many :projects
+  has_many :favourites
   belongs_to :organisation
 
   devise :database_authenticatable, :registerable,

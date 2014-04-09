@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140409084346) do
+ActiveRecord::Schema.define(version: 20140409112642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,16 @@ ActiveRecord::Schema.define(version: 20140409084346) do
 
   add_index "factors", ["area_id"], name: "index_factors_on_area_id", using: :btree
   add_index "factors", ["project_id"], name: "index_factors_on_project_id", using: :btree
+
+  create_table "favourites", force: true do |t|
+    t.integer  "idea_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "favourites", ["idea_id"], name: "index_favourites_on_idea_id", using: :btree
+  add_index "favourites", ["user_id"], name: "index_favourites_on_user_id", using: :btree
 
   create_table "ideas", force: true do |t|
     t.string   "name"
