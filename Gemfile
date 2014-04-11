@@ -20,6 +20,11 @@ gem 'redcarpet', '1.17.2'
 gem 'gollum'
 gem 'rubocop', require: false
 gem 'english', require: false
+
+group :production do
+  gem 'rails_12factor'
+end
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -27,11 +32,13 @@ group :development do
   gem 'quiet_assets'
   gem 'rails_layout'
 end
+
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'debugger'
 end
+
 group :test do
   gem 'capybara'
   gem 'database_cleaner', '1.0.1'
