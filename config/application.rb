@@ -19,6 +19,7 @@ module Votation
     end
 
     config.serve_static_assets = true
+    config.assets.precompile += ['home.js', 'home.css']
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
