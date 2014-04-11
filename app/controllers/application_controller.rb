@@ -6,6 +6,16 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  before_action :authenticate
+
+  def authenticate
+    if Rails.env.production?
+      authenticate_or_request_with_http_basic do |username, password|
+        username == 'votation' && password == 'hidden'
+      end
+    end
+  end
+
   private
 
   def user_not_authorized
