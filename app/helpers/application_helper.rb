@@ -24,6 +24,23 @@ module ApplicationHelper
     end
   end
 
+  def logo
+    html = <<-HTML
+    <span class='logo'>
+      <span class='six'>SIXTY</span><span class='three'>THREE</span>
+    </span>
+    HTML
+    html.html_safe
+  end
+
+  def dark_logo
+    html = <<-HTML
+    <span class='dark-logo'>
+      <span class='six'>SIXTY</span><span class='three'>THREE</span>
+    </span>
+    HTML
+    html.html_safe
+  end
   def influence_text(score)
     if score < 3
       'poor'
