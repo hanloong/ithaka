@@ -37,9 +37,10 @@ ul.nav.nav-tabs
                   .col-sm-10
                     .idea-body #{markdown(i.description)}
                     .idea-footer
-                      .col-sm-4.col-sm-offset-8
-                        span.label.label-info #{i.status}
-                        span.pull-right #{pluralize(i.votes.count, 'vote')}
+                      .col-sm-6.col-sm-offset-6
+                        span.label.label-pink #{i.status}
+                        span.label.label-primary #{pluralize(i.favourites_count, 'follower')}
+                        span.label.label-default #{pluralize(i.votes_count, 'vote')}
       .col-lg-3
         .project-sidebar.text-center
           h3 #{pluralize(@project.ideas.count, "idea")}

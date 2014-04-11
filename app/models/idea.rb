@@ -17,16 +17,16 @@ class Idea < ActiveRecord::Base
   delegate :name, to: :project, prefix: true
   scope :popular, proc { order('votes_count DESC NULLS LAST') }
 
-  def already_voted?(user_id)
-    existing_vote(user_id)
-  end
-
   def vote_unlocked?(user_id)
     existing_vote(user_id).unlocked?
   end
 
   def existing_vote(user_id)
     Vote.existing_vote(id, user_id)
+  end
+
+  def existing_favourite(user_id)
+    Favourite.existing_favourite(id, user_id)
   end
 
   def unlock_votes

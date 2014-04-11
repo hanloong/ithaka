@@ -1,5 +1,18 @@
 require 'spec_helper'
 
 describe Favourite do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before :each do
+    @user = FactoryGirl.create(:user)
+    project = FactoryGirl.create(:project, organisation: @user.organisation)
+    @idea = FactoryGirl.create(:idea, project: project, user: @user)
+    @attr = {
+      idea: @idea,
+      user: @user
+    }
+  end
+
+  it 'should return exiting favourite for user' do
+    fav = Favourite.create(@attr)
+    expect(Favourite.existing_favourite(@idea.id, @user.id)).to eq(fav)
+  end
 end

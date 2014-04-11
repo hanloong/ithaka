@@ -22,6 +22,7 @@ gem 'english', require: false
 
 group :production do
   gem 'rails_12factor'
+  gem 'heroku-deflater'
 end
 
 group :development do
@@ -44,4 +45,6 @@ group :test do
   gem 'email_spec'
   gem 'simplecov', require: false
   gem 'timecop'
+  gem 'minitest'                  # temp fix for rails 4.1 to stup shoulda warnings
+  gem 'shoulda-matchers'
 end

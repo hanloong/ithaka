@@ -4,7 +4,7 @@ Votation::Application.routes.draw do
     resources :ideas do
       resources :votes
       resources :comments
-      resources :favourites, only: [:create]
+      resources :favourites, only: [:create, :destroy]
       get :unlock, on: :member
     end
   end

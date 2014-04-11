@@ -1,0 +1,7 @@
+- if idea.manager?(current_user)
+  .col-lg-3.idea-contents
+    .text-center
+      h5 Mangement
+      .unlock
+        = link_to "Unlock votes", unlock_project_idea_path(idea.project, idea), class: "btn-wide btn btn-default btn-lg"
+        p gives all votes option to retract
