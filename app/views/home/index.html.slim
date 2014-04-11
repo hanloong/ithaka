@@ -10,71 +10,81 @@
 .short-description
   .container.text-center
     form.form-inline
-      .form-group
-        label.input-lg Want an invite to our beta?
+      .col-md-3
+        label.input-lg Join the beta
+      .col-md-5
         input.input-lg.form-control type="email" name="email" placeholder="Email Address" size='35'
-        button.btn.btn-lg.btn-primary name="join-beta" become a beta tester
+      .col-md-4
+        button.btn.btn-wide.btn-lg.btn-primary name="join-beta" send request
 
 .benefits
   .container
     .text-center
       h2 Why use #{logo}
     .row
-      .col-md-4
+      .col-sm-4
         h3.text-center Drive engagement
         p Give people ownership of the your company's roadmap
-      .col-md-4
+      .col-sm-4
         h3.text-center Ask the experts
         p Allow the poeple on the front lines to use their expertise for building great products
-      .col-md-4
+      .col-sm-4
         h3.text-center Solve hard problems
         p Have open company discussions about how problems can be solved
-      .col-md-4
+      .col-sm-4
         h3.text-center No more guessing
         p Find out what's really important to your employee's by letting them vote
-      .col-md-4
+      .col-sm-4
         h3.text-center Become trasparent
         p Make it easy to communicate the progress of your projects
-      .col-md-4
+      .col-sm-4
         h3.text-center Foster a creative culture
         p Encourage everyone and anyone to help invent the world around them
 
 .steps.step-1
   .container
-    .col-md-4
+    .col-sm-4
       h2 1. Share an idea
-      h4 anyone can suggest an idea they have for your company
-    .col-md-8
-      img src="http://placehold.it/600x400"
+      p Whenever you have that amazing stroke of genius simply login to #{logo} and share it with the you company.
+    .col-sm-8
+      = image_tag 'step1.gif', alt: 'Submit idea', class: 'img-responsive'
 
 .steps.step-2
   .container
-    .col-md-8
-      img src="http://placehold.it/600x400"
-    .col-md-4
+    .col-sm-4.visible-xs
       h2 2. Vote and discuss
-      h4 anyone can suggest an idea they have for your company
+      p anyone can suggest an idea they have for your company
+    .col-sm-8
+      = image_tag 'step2.gif', alt: 'Vote and discuss', class: 'img-responsive'
+    .col-sm-4.hidden-xs
+      h2 2. Vote and discuss
+      p anyone can suggest an idea they have for your company
 
 .steps.step-3
   .container
-    .col-md-4
+    .col-sm-4
       h2 3. Uncover the gems
-      h4 anyone can suggest an idea they have for your company
-    .col-md-8
-      img src="http://placehold.it/600x400"
+      p anyone can suggest an idea they have for your company
+    .col-sm-8
+      img.img-responsive src="http://placehold.it/600x400"
 
 .steps.step-4
   .container
-    .col-md-8
-      img src="http://placehold.it/600x400"
-    .col-md-4
+    .col-sm-4.visible-xs
       h2 4. Share the progress
-      h4 anyone can suggest an idea they have for your company
+      p anyone can suggest an idea they have for your company
+    .col-sm-8
+      img.img-responsive src="http://placehold.it/600x400"
+    .col-sm-4.hidden-xs
+      h2 4. Share the progress
+      p anyone can suggest an idea they have for your company
 
 .footer
   .container.text-center
     form.form-inline
-      .form-group
-        label.input-lg Want an invite to our beta?
+      .col-md-3
+        label.input-lg Join the beta
+      .col-md-5
         input.input-lg.form-control type="email" name="email" placeholder="Email Address" size='35'
-        button.btn.btn-lg.btn-primary name="join-beta" become a beta tester
+      .col-md-4
+        button.btn.btn-wide.btn-lg.btn-primary name="join-beta" send request

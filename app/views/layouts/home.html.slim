@@ -5,6 +5,7 @@ html
     title
       = content_for?(:title) ? yield(:title) : 'SIXTY THREE'
     meta name="description" content="#{content_for?(:description) ? yield(:description) : 'SIXTY THREE an ideation platform'}"
+    == stylesheet_link_tag "//fonts.googleapis.com/css?family=Roboto", media: "all"
     == stylesheet_link_tag "home", media: "all", "data-turbolinks-track" => true
     == javascript_include_tag "home", "data-turbolinks-track" => true
     == csrf_meta_tags
