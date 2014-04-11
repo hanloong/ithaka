@@ -10,8 +10,15 @@
       .row.default-contents
         .authform.padded-form
           .col-sm-8.col-sm-offset-2
+            - resource.organisation = Organisation.new
             = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form-horizontal', role: 'form' }) do |f|
               = devise_error_messages!
+              = f.fields_for :organisation do |of|
+                .form-group
+                  .col-sm-4
+                    = of.label :name, 'Company Name', class: 'input-lg'
+                  .col-sm-8
+                    = of.text_field :name, autofocus: true, class: 'input-lg form-control'
               .form-group
                 .col-sm-4
                   = f.label :name, class: 'input-lg'
@@ -33,5 +40,4 @@
                 .col-sm-8
                   = f.password_field :password_confirmation, class: 'input-lg form-control'
               .form-group
-                = f.hidden_field :organisation_id, value: 1
                 = f.submit 'Sign up', class: 'btn btn-primary btn-lg pull-right'

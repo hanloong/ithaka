@@ -24,9 +24,9 @@ if admin.id.nil?
   admin.save
 end
 
-project = Project.find_or_create_by(name: "Votation.io", description: "Dog fooding", public: true, organisation: org)
-project = Project.find_or_create_by(name: "Sandbox", description: "Dog fooding", public: true, organisation: org)
-project = Project.find_or_create_by(name: "Votation Private", description: "Dog fooding", public: false, organisation: org)
+project = Project.find_or_create_by(name: "Votation.io", description: "Dog fooding", public: true, organisation: org, user: admin)
+project = Project.find_or_create_by(name: "Sandbox", description: "Dog fooding", public: true, organisation: org, user: admin)
+project = Project.find_or_create_by(name: "Votation Private", description: "Dog fooding", public: false, organisation: org, user: admin)
 
 Factor.find_or_create_by(name: 'Income', weight: 20, area: income, project: project)
 Factor.find_or_create_by(name: 'Difficulty', weight: 10, area: budget, project: project)

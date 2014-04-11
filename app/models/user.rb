@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_many :favourites
   belongs_to :organisation
 
+  accepts_nested_attributes_for :organisation
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   enum role: [:user, :owner, :admin]
