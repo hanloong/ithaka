@@ -4,7 +4,7 @@
     h3
       = link_to "Projects", projects_path
       |  -  
-      = link_to @idea.project.name, project_path(@idea.project)
+      = link_to @idea.project_name, project_path(@idea.project)
       |  - #{truncate(@idea.name, length: 20)}
   .clearfix
 

@@ -16,8 +16,9 @@
                 = f.text_area :description, rows: 12, class: 'form-control input-lg'
             .form-group
               .col-sm-2
-                = f.label :user, class: 'input-lg'
+                = f.label :user, 'Poject Champion', class: 'input-lg'
               .col-sm-10
                 = f.collection_select :user_id, User.org_owners(current_user.organisation_id), :id, :name, {}, class: 'form-control input-lg'
             .form-group
+              = f.hidden_field :organisation_id, value: current_user.organisation_id
               = f.button :submit, class: 'pull-right btn btn-pink btn-lg'

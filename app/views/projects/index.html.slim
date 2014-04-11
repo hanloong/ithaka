@@ -32,7 +32,7 @@ ul.nav.nav-tabs
             h3.title
               = link_to "#{p.name}", project_path(p)
             .panel-body
-              #{p.description}
+              #{markdown(truncate(p.description, length: 100))}
             .panel-footer
               - if p.manager?(current_user)
                 = link_to "<span class='glyphicon glyphicon-pencil'></span> Edit".html_safe, edit_project_path(p), class: "pull-right"
@@ -41,7 +41,7 @@ ul.nav.nav-tabs
               - else
                 span.label.label-default Private
 
-      - if current_user.admin?
+      - if current_user.admin? || current_user.owner?
         .col-lg-3.text-center
           h3 something seems to be missing?
           = link_to "start new project", new_project_path, class: "btn btn-lg btn-primary"
