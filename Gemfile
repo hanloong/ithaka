@@ -17,7 +17,6 @@ gem 'puma'
 gem 'pundit'
 gem 'slim-rails'
 gem 'redcarpet', '1.17.2'
-gem 'gollum'
 gem 'rubocop', require: false
 gem 'english', require: false
 
