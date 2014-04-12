@@ -15,7 +15,6 @@
         .idea-body
           #{markdown(c.comment)}
         .idea-footer
-          button.btn.btn-st.btn-st-blue #{icon_text('thumbs-up', 'Like')}
           - if idea.manager?(current_user)
             = link_to icon_text('trash', 'Remove'), project_idea_comment_path(c.idea.project, c.idea, c.id), method: :delete, class: "btn btn-st btn-st-red"
             = form_for [c.idea.project, c.idea, c] do |f|
