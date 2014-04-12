@@ -1,20 +1,15 @@
 .row
   .page-head
-    span.glyphicon.glyphicon-dashboard
     h3
-      = link_to "Projects", projects_path
-      |  - #{@project.name}
+      = link_to icon_text('dashboard', 'Projects'), projects_path
+      |  / #{@project.name}
   .clearfix
 
 ul.nav.nav-tabs
   li.active
-    a
-      span.glyphicon.glyphicon-dashboard
-      | Ideas
+    a #{icon_text('dashboard', 'Ideas')}
   li
-    a
-      span.glyphicon.glyphicon-tasks
-      | Project Summary
+    a #{icon_text('tasks', 'Project Summary')}
 
 .tab-content
   .tab-pane.active
@@ -45,4 +40,4 @@ ul.nav.nav-tabs
         .project-sidebar.text-center
           h3 #{pluralize(@project.ideas.count, "idea")}
           = render partial: 'shared/by_line', locals: {o: @project, label: 'Champion'}
-          = link_to "submit your idea", new_project_idea_path(@project), class: "btn-wide btn btn-primary btn-lg"
+          = link_to icon_text('lightbulb', "submit your idea"), new_project_idea_path(@project), class: "btn-wide btn btn-primary btn-lg"

@@ -1,26 +1,17 @@
 .row
   .page-head
-    span.glyphicon.glyphicon-dashboard
-    h3 Projects
+    h3 #{icon_text('dashboard', 'Projects')}
   .clearfix
 
 ul.nav.nav-tabs
   li.active
-    a
-      span.glyphicon.glyphicon-dashboard
-      | Projects
+    a #{icon_text('dashboard', 'Projects')}
   li
-    a
-      span.glyphicon.glyphicon-stats
-      | Dashboard
+    a #{icon_text('stats', 'Dashboard')}
   li
-    a
-      span.glyphicon.glyphicon-user
-      | Team Management
+    a #{icon_text('user', 'Team Management')}
   li
-    a
-      span.glyphicon.glyphicon-cog
-      | Account Management
+    a #{icon_text('cog', 'Account Management')}
 
 
 .tab-content
@@ -35,7 +26,7 @@ ul.nav.nav-tabs
               #{markdown(truncate(p.description, length: 100))}
             .panel-footer
               - if p.manager?(current_user)
-                = link_to icon_text('pencil', 'Edit'), edit_project_path(p), class: "pull-right"
+                = link_to icon_text('edit', 'Edit'), edit_project_path(p), class: "pull-right"
               - if p.public
                 span.label.label-primary Public
               - else

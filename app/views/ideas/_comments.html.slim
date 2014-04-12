@@ -1,0 +1,20 @@
+.idea-contents
+  .text-center
+    h4.discussion-title
+      | &#8226; &#8226; &#8226; Discussion &#8226; &#8226; &#8226;
+  - idea.comments.each do |c|
+    .row
+      .col-sm-2
+        = render partial: 'shared/by_line', locals: {o: c, label: @idea.user_label(c.user)}
+      .col-sm-10
+        .idea-body
+          #{markdown(c.comment)}
+        .idea-footer
+          button.btn.btn-st.btn-st-blue #{icon_text('thumbs-up', 'Like')}
+          - if idea.manager?(current_user)
+            button.btn.btn-st.btn-st-pink #{icon_text('eye-close', 'Hide')}
+            button.btn.btn-st.btn-st-red #{icon_text('trash', 'Remove')}
+    hr
+  .row
+    .col-sm-10.col-sm-offset-2
+      = render partial: 'new_comment', locals: {idea: @idea}

@@ -1,11 +1,10 @@
 .row
   .page-head
-    span.glyphicon.glyphicon-dashboard
     h3
-      = link_to "Projects", projects_path
-      |  -  
+      = link_to icon_text('dashboard', 'Projects'), projects_path
+      |  /  
       = link_to @idea.project_name, project_path(@idea.project)
-      |  - #{truncate(@idea.name, length: 20)}
+      |  / #{truncate(@idea.name, length: 20)}
   .clearfix
 
 .tab-content
@@ -24,22 +23,7 @@
                 #{markdown(@idea.description)}
               .idea-footer
                 - if @idea.user == current_user || @idea.manager?(current_user)
-                  = link_to icon_text('pencil', 'Edit'), edit_project_idea_path(@idea.project, @idea), class: 'pull-right'
-        .idea-contents
-          .text-center
-            h4.discussion-title
-              | &#8226; &#8226; &#8226; Discussion &#8226; &#8226; &#8226;
-          - @idea.comments.each do |c|
-            .row
-              .col-sm-2
-                = render partial: 'shared/by_line', locals: {o: c, label: @idea.user_label(c.user)}
-              .col-sm-10
-                .idea-body
-                  #{markdown(c.comment)}
-                .idea-footer
-            hr
-          .row
-            .col-sm-10.col-sm-offset-2
-              = render partial: 'new_comment', locals: {idea: @idea}
+                  = link_to icon_text('edit', 'Edit'), edit_project_idea_path(@idea.project, @idea), class: 'btn btn-st btn-st-grey pull-right'
+        = render partial: 'comments', locals: {idea: @idea}
       = render partial: 'vote', locals: {idea: @idea}
       = render partial: 'admin', locals: {idea: @idea}

@@ -1,9 +1,8 @@
 .row
   .page-head
-    span.glyphicon.glyphicon-dashboard
     h3
-      = link_to "Projects", projects_path
-      |  - New Project
+      = link_to icon_text('dashboard', "Projects"), projects_path
+      |  / New Project
   .clearfix
 
 = render partial: "form", locals: {project: @project}

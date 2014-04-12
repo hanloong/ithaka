@@ -6,7 +6,7 @@ ul.nav.navbar-nav.pull-left
         | Projects
         span.glyphicon.glyphicon-chevron-down
       ul.dropdown-menu
-        - Project.all.each do |p|
+        - Project.available(current_user.organisation_id).each do |p|
           li = link_to p.name, project_path(p)
 ul.nav.navbar-nav.pull-right
   - if user_signed_in?

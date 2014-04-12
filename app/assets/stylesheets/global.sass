@@ -8,8 +8,10 @@ $pink: #f36
 $dark-pink: #f42156
 $green: #8fd400
 $dark-green: #78a300
-$red: #ee8484
+$red: #ee6666
+$dark-red: #d45656
 $blue: #19aacf
+$dark-blue: #10829f
 $light-blue: #24b5dd
 $max-width: 1144px
 
@@ -79,3 +81,35 @@ a
 
 .form .control-group
   margin: 5px 0
+
+
+.btn-st
+  background: none
+  border: none
+  margin: 0 5px
+  &:hover
+    color: white
+
+.btn-st-pink
+  color: $pink
+  &:hover
+    background: $pink
+    border: 1px solid $dark-pink
+  
+.btn-st-blue
+  color: $blue
+  &:hover
+    background: $blue
+    border: 1px solid $dark-blue
+
+.btn-st-red
+  color: $red
+  &:hover
+    background: $red
+    border: 1px solid $dark-red
+
+.btn-st-grey
+  color: $grey
+  &:hover
+    background: $grey
+    border: 1px solid $dark-grey
