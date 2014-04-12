@@ -48,6 +48,7 @@ module ApplicationHelper
     HTML
     html.html_safe
   end
+
   def influence_text(score)
     if score < 3
       'poor'

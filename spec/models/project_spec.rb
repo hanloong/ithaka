@@ -77,18 +77,18 @@ describe Project do
       describe '#has_access?' do
         let(:project) { FactoryGirl.create(:project, organisation: org) }
 
-        it "should allow access to user in same org" do
+        it 'should allow access to user in same org' do
           user = FactoryGirl.create(:user, organisation: org)
           expect(project.has_access?(user)).to be_true
         end
 
-        it "should not allow access to user in other org" do
+        it 'should not allow access to user in other org' do
           org2 = FactoryGirl.create(:organisation)
           user = FactoryGirl.create(:user, organisation: org2)
           expect(project.has_access?(user)).to be_false
         end
 
-        it "should allow access to public projects" do
+        it 'should allow access to public projects' do
           project.update(public: true)
           org2 = FactoryGirl.create(:organisation)
           user = FactoryGirl.create(:user, organisation: org2)

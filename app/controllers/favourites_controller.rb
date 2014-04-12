@@ -28,5 +28,4 @@ class FavouritesController < ApplicationController
   def favourite_params
     params.require(:favourite).permit(:user_id, :idea_id)
   end
-
 end

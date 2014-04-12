@@ -8,7 +8,7 @@ describe ApplicationController do
   end
 
   it 'should use http auth in production' do
-    Rails.stub(env: ActiveSupport::StringInquirer.new("production"))
+    Rails.stub(env: ActiveSupport::StringInquirer.new('production'))
     controller.send :authenticate
     expect(response).to be_success
   end
