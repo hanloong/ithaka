@@ -23,4 +23,31 @@ describe CommentsController do
       end.to change { Comment.count }.by(0)
     end
   end
+
+  describe 'PUT "update"' do
+    it 'should set comment to hidden' do
+      comment = FactoryGirl.create(:comment, idea: @idea, user: @user)
+      put :update, project_id: @project.id, idea_id: @idea.id, id: comment.id,
+                    comment: { hidden: true }
+      comment.reload
+      expect(comment.hidden).to be_true
+    end
+
+    it 'should set comment to hidden' do
+      comment = FactoryGirl.create(:comment, idea: @idea, user: @user)
+      Comment.any_instance.stub(:update).and_return(false)
+      put :update, project_id: @project.id, idea_id: @idea.id, id: comment.id,
+                    comment: { hidden: true }
+      expect(flash[:alert]).to eq('Comment not saved.')
+    end
+  end
+
+  describe 'DELETE "destroy"' do
+    it 'should delete a valid comment' do
+      comment = FactoryGirl.create(:comment, idea: @idea, user: @user)
+      expect do
+        delete :destroy, project_id: @project.id, idea_id: @idea.id, id: comment.id
+      end.to change { Comment.count }.by(-1)
+    end
+  end
 end
