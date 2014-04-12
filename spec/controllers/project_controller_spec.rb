@@ -29,6 +29,13 @@ describe ProjectsController do
       get :show, id: project.id
       expect(assigns(:project)).to eq(project)
     end
+
+    it 'should redirect if project not yours' do
+      project = FactoryGirl.create(:project, organisation: @org)
+      Project.any_instance.stub(:has_access?).and_return(false)
+      get :show, id: project.id
+      expect(response).to redirect_to projects_path
+    end
   end
 
   describe 'GET "edit"' do

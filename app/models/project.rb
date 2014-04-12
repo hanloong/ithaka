@@ -14,6 +14,10 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def has_access?(user)
+    public? || user.organisation== organisation
+  end
+
   def manager?(u)
     u.admin? || champion?(u) || (u.organisation == organisation && u.owner?)
   end

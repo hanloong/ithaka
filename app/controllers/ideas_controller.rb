@@ -1,7 +1,7 @@
 class IdeasController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_project
   before_action :set_idea, only: [:show, :edit, :update, :destroy, :unlock]
-  before_action :set_project, only: [:new]
 
   def new
     @idea = Idea.new
@@ -62,6 +62,9 @@ class IdeasController < ApplicationController
 
   def set_project
     @project = Project.find(params[:project_id])
+    unless @project.has_access?(current_user)
+      redirect_to projects_url, alert: 'Sorry you do not have access to this project'
+    end
   end
 
   def idea_params

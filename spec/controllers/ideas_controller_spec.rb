@@ -36,6 +36,13 @@ describe IdeasController do
       get :show, project_id: @project.id, id: idea.id, hidden: true
       expect(assigns(:comments)).to eq(idea.comments)
     end
+
+    it 'should redirect if project not yours' do
+      idea = FactoryGirl.create(:idea, project: @project, user: @user)
+      Project.any_instance.stub(:has_access?).and_return(false)
+      get :show, project_id: @project.id, id: idea.id
+      expect(response).to redirect_to projects_path
+    end
   end
 
   describe 'GET "edit"' do
