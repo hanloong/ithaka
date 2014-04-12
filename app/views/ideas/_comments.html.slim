@@ -1,8 +1,13 @@
 .idea-contents
+  - if idea.manager?(current_user) && idea.comments.hidden.count > 0
+    - if params[:hidden]
+      = link_to "hide #{pluralize(idea.comments.hidden.count, 'hidden comment')}", project_idea_path(idea.project, idea), class: 'pull-right'
+    - else
+      = link_to "show #{pluralize(idea.comments.hidden.count, 'hidden comment')}", project_idea_path(idea.project, idea, hidden: true), class: 'pull-right'
   .text-center
     h4.discussion-title
       | &#8226; &#8226; &#8226; Discussion &#8226; &#8226; &#8226;
-  - idea.comments.each do |c|
+  - comments.each do |c|
     .row
       .col-sm-2
         = render partial: 'shared/by_line', locals: {o: c, label: @idea.user_label(c.user)}
@@ -12,8 +17,10 @@
         .idea-footer
           button.btn.btn-st.btn-st-blue #{icon_text('thumbs-up', 'Like')}
           - if idea.manager?(current_user)
-            button.btn.btn-st.btn-st-pink #{icon_text('eye-close', 'Hide')}
-            button.btn.btn-st.btn-st-red #{icon_text('trash', 'Remove')}
+            = link_to icon_text('trash', 'Remove'), project_idea_comment_path(c.idea.project, c.idea, c.id), method: :delete, class: "btn btn-st btn-st-red"
+            = form_for [c.idea.project, c.idea, c] do |f|
+              = f.hidden_field :hidden, value: true
+              button.btn.btn-st.btn-st-pink type='submit' #{icon_text('eye-close', 'Hide')}
     hr
   .row
     .col-sm-10.col-sm-offset-2

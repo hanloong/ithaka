@@ -20,6 +20,22 @@ describe IdeasController do
       get :show, project_id: @project.id, id: idea.id
       expect(assigns(:idea)).to eq(idea)
     end
+
+    it 'should default to visible comments' do
+      idea = FactoryGirl.create(:idea, project: @project, user: @user)
+      FactoryGirl.create(:comment, idea: idea, user: @user)
+      FactoryGirl.create(:comment, idea: idea, user: @user, hidden: true)
+      get :show, project_id: @project.id, id: idea.id
+      expect(assigns(:comments)).to eq(idea.comments.visible)
+    end
+
+    it 'should show all comments if asked' do
+      idea = FactoryGirl.create(:idea, project: @project, user: @user)
+      FactoryGirl.create(:comment, idea: idea, user: @user)
+      FactoryGirl.create(:comment, idea: idea, user: @user, hidden: true)
+      get :show, project_id: @project.id, id: idea.id, hidden: true
+      expect(assigns(:comments)).to eq(idea.comments)
+    end
   end
 
   describe 'GET "edit"' do

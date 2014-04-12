@@ -9,6 +9,11 @@ class IdeasController < ApplicationController
   end
 
   def show
+    if params[:hidden]
+      @comments = @idea.comments
+    else
+      @comments = @idea.comments.visible
+    end
   end
 
   def edit
