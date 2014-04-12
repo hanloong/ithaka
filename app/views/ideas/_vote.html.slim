@@ -1,8 +1,9 @@
 .col-lg-3.idea-contents
   .text-center
-    h5
+    h4
       label.label.label-primary #{idea.status}
-    h5 #{pluralize(idea.votes_count, 'Vote')}
+      label.label.label-default #{pluralize(idea.votes_count, 'Vote')}
+    hr
     - if !current_user.can_vote?
       button.btn.btn-wide.btn-grey.btn-lg disabled="disabled" No votes left 
     - elsif vote = idea.existing_vote(current_user.id)
@@ -25,3 +26,4 @@
           = f.hidden_field :idea_id, value: idea.id
           button.btn-wide.btn.btn-default.btn-lg type='submit'
             #{icon_text('star', 'follow idea')}
+    hr

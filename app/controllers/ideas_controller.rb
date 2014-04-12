@@ -1,7 +1,7 @@
 class IdeasController < ApplicationController
   before_action :authenticate_user!
   before_action :set_project
-  before_action :set_idea, only: [:show, :edit, :update, :destroy, :unlock]
+  before_action :set_idea, only: [:show, :edit, :update, :destroy, :unlock, :release]
 
   def new
     @idea = Idea.new
@@ -20,7 +20,7 @@ class IdeasController < ApplicationController
   end
 
   def create
-    @idea = Idea.new(idea_params)
+    @idea = Idea.new(idea_params.merge(status: 0))
 
     if @idea.save
       redirect_to project_idea_path(@idea.project, @idea),
@@ -47,11 +47,23 @@ class IdeasController < ApplicationController
   def unlock
     if @idea.manager?(current_user)
       @idea.unlock_votes
-      flash[:notice] = 'All votes have been unlocked'
+      redirect_to project_idea_path(@idea.project_id, @idea),
+                  notice: 'All votes have been unlocked'
     else
-      flash[:error] = 'Only owners and admins can unclock votes, sorry'
+      redirect_to project_idea_path(@idea.project_id, @idea),
+                  alert: 'Only owners and admins can unclock votes, sorry'
     end
-    render 'show'
+  end
+
+  def release
+    if @idea.manager?(current_user)
+      @idea.votes.destroy_all
+      redirect_to project_idea_path(@idea.project_id, @idea),
+                  notice: 'All votes have been released.'
+    else
+      redirect_to project_idea_path(@idea.project_id, @idea),
+                  alert: 'Only owners and admins can release votes, sorry'
+    end
   end
 
   private
