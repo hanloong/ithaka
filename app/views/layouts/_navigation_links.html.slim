@@ -1,16 +1,17 @@
 ul.nav.navbar-nav.pull-left
   - if user_signed_in?
-    li= link_to 'Dashboard', projects_path
     li.dropdown
       a.dropdown-toggle data-toggle="dropdown"
-        | Projects
-        span.glyphicon.glyphicon-chevron-down
+        = icon_text('chevron-down', current_user.organisation_name)
       ul.dropdown-menu
         - Project.available(current_user.organisation_id).each do |p|
-          li = link_to p.name, project_path(p)
+          li
+            - if p.public?
+              = link_to "#{p.name} (public)".html_safe, project_path(p)
+            - else
+              = link_to p.name, project_path(p)
 ul.nav.navbar-nav.pull-right
   - if user_signed_in?
-    li= link_to 'Users', users_path
     li= link_to 'Edit account', edit_user_registration_path
     li= link_to 'Logout', destroy_user_session_path, :method=>'delete'
   - else

@@ -7,11 +7,12 @@ ul.nav.nav-tabs
   li.active
     a #{icon_text('dashboard', 'Projects')}
   li
-    a #{icon_text('stats', 'Dashboard')}
-  li
-    a #{icon_text('user', 'Team Management')}
-  li
-    a #{icon_text('cog', 'Account Management')}
+    a #{icon_text('stats', 'Dashboard (coming soon)')}
+  - if current_user.admin? || current_user.owner?
+    li
+      a #{icon_text('user', 'Teams (coming soon)')}
+    li
+      a #{icon_text('cog', 'Settings (coming soon)')}
 
 
 .tab-content
@@ -34,5 +35,7 @@ ul.nav.nav-tabs
 
       - if current_user.admin? || current_user.owner?
         .col-lg-3.text-center
-          h3 something seems to be missing?
+          h3 somthings missing?
           = link_to "start new project", new_project_path, class: "btn btn-lg btn-primary"
+          hr
+          = link_to "invite your team", new_user_invitation_path, class: "btn btn-lg btn-pink"

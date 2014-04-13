@@ -12,6 +12,7 @@ gem 'spring',        group: :development
 gem 'bootstrap-sass'
 gem 'bootstrap-slider-rails'
 gem 'devise'
+gem 'devise_invitable'
 gem 'pg'
 gem 'puma'
 gem 'pundit'
@@ -19,6 +20,7 @@ gem 'slim-rails'
 gem 'redcarpet', '1.17.2'
 gem 'rubocop', require: false
 gem 'english', require: false
+gem 'letter_opener'
 
 group :production do
   gem 'rails_12factor'

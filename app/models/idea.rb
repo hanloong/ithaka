@@ -6,15 +6,15 @@ class Idea < ActiveRecord::Base
   has_many :votes
   has_many :favourites
 
-  delegate :manager?, to: :project
-
   STATUS = ["Discussing", "Verified", "Planned", "In Progress", "Complete", "Closed"]
   enum status: STATUS
 
   validates :name, :description, :status, :project, :user, presence: true
   validates :name, uniqueness: { scope: :user_id }
 
+  delegate :manager?, to: :project
   delegate :name, to: :project, prefix: true
+
   scope :popular, proc { order('votes_count DESC NULLS LAST') }
 
   def vote_unlocked?(user_id)

@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :organisation
 
-  devise :database_authenticatable, :registerable,
+  devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   enum role: [:user, :owner, :admin]
   after_initialize :set_default_role, if: :new_record?
@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   validates :name, :email, :organisation, presence: true
   attr_reader :avatar_url
   @avatar_url = nil
+
+  delegate :name, to: :organisation, prefix: true
 
   def self.org_owners(org_id)
     where(organisation_id: org_id).select do |u|
