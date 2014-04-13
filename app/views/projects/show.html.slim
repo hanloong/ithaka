@@ -24,8 +24,8 @@ ul.nav.nav-tabs
                 .row
                   .col-sm-2
                   .col-sm-10
-                    h3.title.text-center
-                      = link_to "#{i.name}", project_idea_path(@project, i)
+                    .idea-title
+                      h3 = link_to "#{i.name}", project_idea_path(@project, i)
                 .row
                   .col-sm-2
                     = render partial: 'shared/by_line', locals: {o: i, label: nil}

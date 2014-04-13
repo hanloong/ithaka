@@ -1,12 +1,13 @@
 .idea-contents
-  - if idea.manager?(current_user) && idea.comments.hidden.count > 0
-    - if params[:hidden]
-      = link_to "hide #{pluralize(idea.comments.hidden.count, 'hidden comment')}", project_idea_path(idea.project, idea), class: 'pull-right'
-    - else
-      = link_to "show #{pluralize(idea.comments.hidden.count, 'hidden comment')}", project_idea_path(idea.project, idea, hidden: true), class: 'pull-right'
   .text-center
     h4.discussion-title
       | &#8226; &#8226; &#8226; Discussion &#8226; &#8226; &#8226;
+  .text-center
+    - if idea.manager?(current_user) && idea.comments.hidden.count > 0
+      - if params[:hidden]
+        = link_to "hide #{pluralize(idea.comments.hidden.count, 'hidden comment')}", project_idea_path(idea.project, idea)
+      - else
+        = link_to "show #{pluralize(idea.comments.hidden.count, 'hidden comment')}", project_idea_path(idea.project, idea, hidden: true)
   - comments.each do |c|
     .row
       .col-sm-2
