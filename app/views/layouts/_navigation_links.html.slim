@@ -1,8 +1,8 @@
-ul.nav.navbar-nav.pull-left
+ul.nav.navbar-nav.navbar-left
   - if user_signed_in?
     li.dropdown
       a.dropdown-toggle data-toggle="dropdown"
-        = icon_text('chevron-down', current_user.organisation_name)
+        = right_icon_text('chevron-down', current_user.organisation_name)
       ul.dropdown-menu
         - Project.available(current_user.organisation_id).each do |p|
           li
@@ -10,10 +10,16 @@ ul.nav.navbar-nav.pull-left
               = link_to "#{p.name} (public)".html_safe, project_path(p)
             - else
               = link_to p.name, project_path(p)
-ul.nav.navbar-nav.pull-right
+ul.nav.navbar-nav.navbar-right
   - if user_signed_in?
-    li= link_to 'Edit account', edit_user_registration_path
-    li= link_to 'Logout', destroy_user_session_path, :method=>'delete'
+    li.dropdown
+      a.dropdown-toggle.user-dropdown data-toggle="dropdown"
+        = image_tag avatar_url(current_user, 38), class: 'avatar'
+        span.username
+          = right_icon_text('chevron-down', current_user.name)
+      ul.dropdown-menu
+        li= link_to right_icon_text('edit', 'Edit account'), edit_user_registration_path, class: 'text-right'
+        li= link_to right_icon_text('off', 'Logout'), destroy_user_session_path, :method=>'delete', class: 'text-right'
   - else
     li= link_to 'Login', new_user_session_path
     li= link_to 'Sign up', new_user_registration_path
