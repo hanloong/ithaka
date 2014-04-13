@@ -6,6 +6,7 @@ Votation::Application.routes.draw do
       resources :comments
       resources :favourites, only: [:create, :destroy]
       get :unlock, on: :member
+      get :release, on: :member
     end
   end
   root to: 'home#index'
