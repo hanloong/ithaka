@@ -1,3 +1,5 @@
+//= depend_on_asset "pattern.png"
+
 $navbar-margin-bottom: 0
 @import 'framework_and_overrides'
 @import 'global'
@@ -7,6 +9,7 @@ $navbar-margin-bottom: 0
 
 .heading
   background: $dark-grey
+  background: image-url("pattern.png")
   margin-top: -20px
   padding: 40px 0
   color: white
@@ -26,12 +29,12 @@ $navbar-margin-bottom: 0
 
 .short-description
   background: white
-  padding: 40px 0
+  padding: 40px 0 20px 0
   color: $grey
   h3, h4, h5, p
     color: $grey
-  input
-    margin: 0 10px
+  .btn
+    margin-bottom: 10px
 
 .steps
   padding: 40px 0
@@ -40,20 +43,24 @@ $navbar-margin-bottom: 0
   h2
     color: $dark-grey
     font-size: 3em
-    line-height: 150%
+    line-height: 130%
   p
+    margin-top: 20px
     padding-right: 20px
-    text-align: justify
     color: $grey
     font-size: 2em
     font-weight: normal
-    line-height: 150%
+    line-height: 120%
 
 .step-1, .step-3
   background: white
+  h2, p
+    text-align: left
 
 .step-2, .step-4
   background: $light-grey
+  h2, p
+    text-align: right
 
 .benefits
   background: $light-grey

@@ -33,6 +33,7 @@ group :development do
   gem 'foreman'
   gem 'quiet_assets'
   gem 'rails_layout'
+  gem 'rack-mini-profiler'
 end
 
 group :development, :test do
