@@ -17,7 +17,7 @@ gem 'pg'
 gem 'puma'
 gem 'pundit'
 gem 'slim-rails'
-gem 'redcarpet', '1.17.2'
+gem 'redcarpet'
 gem 'rubocop', require: false
 gem 'english', require: false
 gem 'letter_opener'

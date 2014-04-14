@@ -12,7 +12,17 @@ module ApplicationHelper
   end
 
   def markdown(text)
-    Redcarpet.new(text).to_html.html_safe
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML,
+                                      tables: true,
+                                      autolink: true,
+                                      no_intra_emphasis: true,
+                                      fenced_code_blocks: true,
+                                      superscript: true,
+                                      underline: true,
+                                      highlight: true,
+                                      quote: true
+                                      )
+    markdown.render(text).html_safe
   end
 
   def avatar_url(user, size = 48)
@@ -22,6 +32,13 @@ module ApplicationHelper
       gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
       "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}&d=wavatar"
     end
+  end
+
+  def beta_label
+    html = <<-HTML
+    <span class="label label-pink">beta</span>
+    HTML
+    html.html_safe
   end
 
   def icon_text(icon, text)
@@ -41,7 +58,7 @@ module ApplicationHelper
   def logo
     html = <<-HTML
     <span class='logo'>
-      <span class='six'>SIXTY</span><span class='three'>THREE</span>
+      <span class='six'>ithaka</spam>
     </span>
     HTML
     html.html_safe
@@ -50,7 +67,7 @@ module ApplicationHelper
   def dark_logo
     html = <<-HTML
     <span class='dark-logo'>
-      <span class='six'>SIXTY</span><span class='three'>THREE</span>
+      <span class='six'>ithaka</spam>
     </span>
     HTML
     html.html_safe
