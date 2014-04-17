@@ -6,7 +6,7 @@ class Idea < ActiveRecord::Base
   has_many :votes
   has_many :favourites
 
-  STATUS = ["Discussing", "Verified", "Planned", "In Progress", "Complete", "Closed"]
+  STATUS = ["discussing", "verified", "planned", "in_progress", "complete", "closed"]
   enum status: STATUS
 
   validates :name, :description, :status, :project, :user, presence: true
@@ -14,8 +14,16 @@ class Idea < ActiveRecord::Base
 
   delegate :manager?, to: :project
   delegate :name, to: :project, prefix: true
+  delegate :public, to: :project
+  delegate :organisation, to: :project
 
   scope :popular, proc { order('votes_count DESC NULLS LAST') }
+
+  def self.status_collection
+    STATUS.collect do |s|
+      [ s.gsub(/_/, ' ').split.map(&:capitalize).join(' '), s ]
+    end
+  end
 
   def vote_unlocked?(user_id)
     existing_vote(user_id).unlocked?

@@ -95,6 +95,21 @@ describe Project do
           expect(project.has_access?(user)).to be_true
         end
       end
+
+      describe '#is_public?' do
+        it 'should allow access to public projects' do
+          project.update(public: true)
+          org2 = FactoryGirl.create(:organisation)
+          user = FactoryGirl.create(:user, organisation: org2)
+          expect(project.is_public?(user)).to be_true
+        end
+
+        it 'should not say project in own org is public' do
+          project.update(public: true)
+          user = FactoryGirl.create(:user, organisation: project.organisation)
+          expect(project.is_public?(user)).to be_false
+        end
+      end
     end
   end
 end

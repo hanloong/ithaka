@@ -6,8 +6,10 @@ class Vote < ActiveRecord::Base
   validates :idea, uniqueness: { scope: :user,
                                  message: 'You can only vote for an idea once' }
 
+  default_scope proc { where(public: false) }
+
   def self.existing_vote(idea_id, user_id)
-    find_by(idea_id: idea_id, user_id: user_id)
+    unscoped.find_by(idea_id: idea_id, user_id: user_id)
   end
 
   def unlocked?
