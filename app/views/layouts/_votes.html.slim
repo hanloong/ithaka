@@ -14,3 +14,7 @@
         h5.used #{current_user.votes.count}
       .col-sm-5
         h5.unlocked #{current_user.unlocked_votes.count}
+    - if @project && @project.is_public?(current_user)
+      .row
+        .col-sm-12.text-center
+          small limits don't currently apply to public projects
