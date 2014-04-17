@@ -14,9 +14,9 @@ ul.nav.navbar-nav.navbar-right
   - if user_signed_in?
     li.dropdown
       a.dropdown-toggle.user-dropdown data-toggle="dropdown"
-        = image_tag avatar_url(current_user, 38), class: 'avatar'
         span.username
           = right_icon_text('chevron-down', current_user.name)
+        = image_tag avatar_url(current_user, 38), class: 'avatar'
       ul.dropdown-menu
         li= link_to right_icon_text('edit', 'Edit account'), edit_user_registration_path, class: 'text-right'
         li= link_to right_icon_text('off', 'Logout'), destroy_user_session_path, :method=>'delete', class: 'text-right'
