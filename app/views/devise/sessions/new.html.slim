@@ -1,8 +1,5 @@
-.row
-  .page-head
-    .col-sm-6.col-sm-offset-3
-      h3 #{icon_text('user', 'Login')}
-  .clearfix
+- content_for :head do
+  #{icon_text('user', 'Login')}
 
 .tab-content
   .tab-pane.active

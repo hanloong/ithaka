@@ -1,15 +1,13 @@
-.row
-  .page-head
-    h3
-      = link_to icon_text('dashboard', 'Projects'), projects_path
-      |  / #{@project.name}
-  .clearfix
+- content_for :head do
+  = link_to icon_text('dashboard', 'Projects'), projects_path
+  |  / #{@project.name}
 
-ul.nav.nav-tabs
-  li.active
-    a #{icon_text('dashboard', 'Ideas')}
-  li
-    a #{icon_text('tasks', 'Project Summary')}
+- if false
+  ul.nav.nav-tabs
+    li.active
+      a #{icon_text('dashboard', 'Ideas')}
+    li
+      a #{icon_text('tasks', 'Project Summary')}
 
 .tab-content
   .tab-pane.active

@@ -14,5 +14,9 @@ html
       == render 'layouts/navigation'
     main[role="main"]
       == render 'layouts/messages'
-      == render 'layouts/votes'
+      .page-head
+        .breadcrumbs
+          h3 == yield :head
+        == render 'layouts/votes'
+        .clearfix
       == yield

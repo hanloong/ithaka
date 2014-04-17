@@ -1,30 +1,25 @@
 @import "global"
 
-.page-head
-  max-width: $max-width
-  margin: 35px auto
-  color: $grey
-  h3
-    float: left
-    margin: 0 0 15px 25px
-    span
-      margin: 0 15px 0 0
-
 .panel-project
+  border: none
+  box-shadow: 1px 1px 2px $lightish-grey
+  border-radius: 0px
   .panel-body
     height: 150px
   .panel-footer
     background: none
     border-top: none
-  .title
+  .panel-title
     margin-left: 20px
-    a
-      color: $grey
-      &:hover
-        color: $pink
-        text-decoration: none
-    span
-      margin-right: 10px
+    h3
+      padding-top: 20px
+      a
+        color: $grey
+        &:hover
+          color: $pink
+          text-decoration: none
+      span
+        margin-right: 10px
 
 .project-sidebar
   .by-line

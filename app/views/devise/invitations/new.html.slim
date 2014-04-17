@@ -1,8 +1,5 @@
-.row
-  .page-head
-    .col-sm-4.col-sm-offset-2
-      h3 #{icon_text('user', t("devise.invitations.new.header"))}
-  .clearfix
+- content_for :head do
+  #{icon_text('user', t("devise.invitations.new.header"))}
 
 .tab-content
   .tab-pane.active

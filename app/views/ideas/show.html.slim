@@ -1,11 +1,8 @@
-.row
-  .page-head
-    h3
-      = link_to icon_text('dashboard', 'Projects'), projects_path
-      |  /  
-      = link_to @idea.project_name, project_path(@idea.project)
-      |  / #{truncate(@idea.name, length: 20)}
-  .clearfix
+- content_for :head do
+  = link_to icon_text('dashboard', 'Projects'), projects_path
+  |  /  
+  = link_to @idea.project_name, project_path(@idea.project)
+  |  / #{truncate(@idea.name, length: 20)}
 
 .tab-content
   .tab-pane.active

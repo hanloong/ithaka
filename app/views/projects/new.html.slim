@@ -1,8 +1,5 @@
-.row
-  .page-head
-    h3
-      = link_to icon_text('dashboard', "Projects"), projects_path
-      |  / New Project
-  .clearfix
+- content_for :head do
+  = link_to icon_text('dashboard', "Projects"), projects_path
+  |  / New Project
 
 = render partial: "form", locals: {project: @project}

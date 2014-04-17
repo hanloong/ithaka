@@ -1,18 +1,17 @@
-.row
-  .page-head
-    h3 #{icon_text('dashboard', 'Projects')}
-  .clearfix
+- content_for :head do
+  #{icon_text('dashboard', 'Projects')}
 
-ul.nav.nav-tabs
-  li.active
-    a #{icon_text('dashboard', 'Projects')}
-  li
-    a #{icon_text('stats', 'Dashboard (coming soon)')}
-  - if current_user.admin? || current_user.owner?
+- if false
+  ul.nav.nav-tabs
+    li.active
+      a #{icon_text('dashboard', 'Projects')}
     li
-      a #{icon_text('user', 'Teams (coming soon)')}
-    li
-      a #{icon_text('cog', 'Settings (coming soon)')}
+      a #{icon_text('stats', 'Dashboard (coming soon)')}
+    - if current_user.admin? || current_user.owner?
+      li
+        a #{icon_text('user', 'Teams (coming soon)')}
+      li
+        a #{icon_text('cog', 'Settings (coming soon)')}
 
 
 .tab-content
@@ -21,8 +20,8 @@ ul.nav.nav-tabs
       - @projects.each do |p|
         .col-lg-3
           .panel.panel-default.panel-project
-            h3.title
-              = link_to "#{p.name}", project_path(p)
+            .panel-title
+              h3 = link_to "#{p.name}", project_path(p)
             .panel-body
               #{markdown(truncate(p.description, length: 100))}
             .panel-footer
