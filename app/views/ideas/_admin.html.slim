@@ -12,7 +12,7 @@
       .update-status
         = form_for [idea.project, idea], html: { role: 'form', class: 'form-horiztonal' } do |f|
           .row.form-group
-            = f.select :status, Idea::STATUS_LABEL, {}, class: 'form-control input-lg'
+            = f.select :status, Idea.status_collection, {}, class: 'form-control input-lg'
           .row.form-group
             = f.submit 'Update Status', class: 'btn btn-primary btn-lg btn-wide'
       hr
