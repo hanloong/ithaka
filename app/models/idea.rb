@@ -5,6 +5,7 @@ class Idea < ActiveRecord::Base
   has_many :comments
   has_many :votes
   has_many :favourites
+  has_many :influences
 
   STATUS = ["discussing", "verified", "planned", "in_progress", "complete", "closed"]
   enum status: STATUS
@@ -17,7 +18,7 @@ class Idea < ActiveRecord::Base
   delegate :public, to: :project
   delegate :organisation, to: :project
 
-  scope :popular, proc { order('votes_count DESC NULLS LAST') }
+  scope :popular, proc { order('score DESC NULLS LAST') }
 
   def self.status_collection
     STATUS.collect do |s|
@@ -52,6 +53,19 @@ class Idea < ActiveRecord::Base
       'Champion'
     elsif project.manager?(u)
       'Owner'
+    end
+  end
+
+  def calculate_influence
+    self.influence = (influences.sum(:score) / 100.0)
+    calculate_score
+    save
+  end
+
+  def calculate_score
+    if votes_count
+      self.score = (votes_count * influence)
+      save
     end
   end
 end

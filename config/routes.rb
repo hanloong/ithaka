@@ -5,6 +5,7 @@ Votation::Application.routes.draw do
       resources :votes
       resources :comments
       resources :favourites, only: [:create, :destroy]
+      resources :influences, only: [:update]
       get :unlock, on: :member
       get :release, on: :member
     end
