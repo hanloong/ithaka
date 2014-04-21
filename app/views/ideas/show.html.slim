@@ -23,6 +23,6 @@
                   = link_to icon_text('edit', 'Edit'), edit_project_idea_path(@idea.project, @idea), class: 'btn btn-st btn-st-grey pull-right'
           = render partial: 'comments', locals: {idea: @idea, comments: @comments}
       .col-lg-3
+        = render partial: 'vote', locals: {idea: @idea}
         = render partial: 'influence', locals: {idea: @idea}
         = render partial: 'admin', locals: {idea: @idea}
-        = render partial: 'vote', locals: {idea: @idea}

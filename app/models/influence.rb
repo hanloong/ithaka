@@ -5,6 +5,8 @@ class Influence < ActiveRecord::Base
   delegate :name, to: :factor
   delegate :is_negative, to: :factor
   delegate :calculate_influence, to: :idea
-
   after_save :calculate_influence
+
+  scope :only_negative, proc { joins(:factor).where('factors.is_negative = true') }
+  scope :only_positive, proc { joins(:factor).where('factors.is_negative = false') }
 end

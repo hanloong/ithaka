@@ -57,7 +57,7 @@ class Idea < ActiveRecord::Base
   end
 
   def calculate_influence
-    self.influence = (influences.sum(:score) / 100.0)
+    self.influence = ((influences.only_positive.sum(:score) - influences.only_negative.sum(:score)) / 100.0) + 1.0
     calculate_score
     save
   end

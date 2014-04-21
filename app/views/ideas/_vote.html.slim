@@ -1,8 +1,9 @@
 .idea-contents
   .text-center
-    h4
-      label.label.label-primary #{idea.status}
-      label.label.label-default #{pluralize(idea.votes_count, 'Vote')}
+    .scorecard
+      h4 Score: #{idea.score}
+      h4 Votes: #{idea.votes_count}
+      h4 Status: #{idea.status}
     hr
     - if !current_user.can_vote?
       button.btn.btn-wide.btn-grey.btn-lg disabled="disabled" No votes left 
@@ -19,11 +20,11 @@
           #{icon_text('ok', 'Vote')}
     .favourite
       - if fav = idea.existing_favourite(current_user.id)
-        = link_to icon_text('star-empty', 'Unfollow'), project_idea_favourite_path(idea.project, idea, fav.id), method: :delete, class: "btn-wide btn btn-danger btn-lg"
+        = link_to icon_text('star-empty', 'Unfollow'), project_idea_favourite_path(idea.project, idea, fav.id), method: :delete, class: "btn btn-danger"
       - else
         = form_for [idea.project, idea, Favourite.new] do |f|
           = f.hidden_field :user_id, value: current_user.id
           = f.hidden_field :idea_id, value: idea.id
-          button.btn-wide.btn.btn-default.btn-lg type='submit'
+          button.btn.btn-default type='submit'
             #{icon_text('star', 'follow idea')}
     hr
