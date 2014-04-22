@@ -6,7 +6,10 @@ class Vote < ActiveRecord::Base
   validates :idea, uniqueness: { scope: :user,
                                  message: 'You can only vote for an idea once' }
 
+  delegate :calculate_influence, to: :idea
   default_scope proc { where(public: false) }
+
+  after_save :calculate_influence
 
   def self.existing_vote(idea_id, user_id)
     unscoped.find_by(idea_id: idea_id, user_id: user_id)

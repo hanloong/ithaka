@@ -1,0 +1,13 @@
+.idea-contents
+  .text-center
+    h5 #{idea.manager?(current_user) ? "Edit Clout" : "Clout"}
+    - idea.influences.each do |i|
+      = form_for [idea.project, idea, i], remote: true, authenticity_token: true, html: { role: 'form', class: 'form-horiztonal' } do |f|
+        div class="range range-#{i.is_negative ? 'danger' : 'primary'}"
+          = f.range_field :score, min: 0, max: 100, value: i.score, onchange: "range#{i.id}.value=value; $(this).submit();", disabled: !idea.manager?(current_user)
+          output id="range#{i.id}" #{i.score}
+        small #{i.name}
+    hr
+    h4
+      | Clout score: 
+      span#score #{idea.influence}

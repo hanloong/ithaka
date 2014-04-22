@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140417110127) do
+ActiveRecord::Schema.define(version: 20140421091217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20140417110127) do
     t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_negative", default: false
   end
 
   add_index "factors", ["area_id"], name: "index_factors_on_area_id", using: :btree
@@ -66,10 +67,23 @@ ActiveRecord::Schema.define(version: 20140417110127) do
     t.datetime "updated_at"
     t.integer  "votes_count"
     t.integer  "favourites_count"
+    t.float    "influence",        default: 0.0
+    t.float    "score",            default: 0.0
   end
 
   add_index "ideas", ["project_id"], name: "index_ideas_on_project_id", using: :btree
   add_index "ideas", ["user_id"], name: "index_ideas_on_user_id", using: :btree
+
+  create_table "influences", force: true do |t|
+    t.integer  "idea_id"
+    t.integer  "factor_id"
+    t.integer  "score"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "influences", ["factor_id"], name: "index_influences_on_factor_id", using: :btree
+  add_index "influences", ["idea_id"], name: "index_influences_on_idea_id", using: :btree
 
   create_table "organisations", force: true do |t|
     t.string   "name"

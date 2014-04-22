@@ -30,16 +30,18 @@
                   .col-sm-10
                     .idea-body #{markdown(i.description)}
                     .idea-footer
-                      .col-sm-6.col-sm-offset-6
+                      .col-sm-12
                         h4
                           span.label.label-pink #{i.status}
                         h4
                           span.label.label-primary #{pluralize(i.favourites_count, 'follower')}
                         h4
                           span.label.label-default #{pluralize(i.votes_count, 'vote')}
+                        h4
+                          span.label.label-info #{i.score} score
       .col-lg-3
         .project-sidebar
           .text-center
             h3 #{pluralize(@project.ideas.count, "idea")}
             = render partial: 'shared/by_line', locals: {o: @project, label: 'Champion'}
-            = link_to "submit your idea", new_project_idea_path(@project), class: "btn-wide btn btn-primary btn-lg"
+            = link_to fa_stacked_icon('lightbulb-o', base: 'square-o', text: "submit your idea"), new_project_idea_path(@project), class: "btn-wide btn btn-primary btn-lg"
