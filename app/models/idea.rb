@@ -2,10 +2,10 @@ class Idea < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
 
-  has_many :comments
-  has_many :votes
-  has_many :favourites
-  has_many :influences
+  has_many :comments, dependent: :destroy
+  has_many :votes, dependent: :destroy
+  has_many :favourites, dependent: :destroy
+  has_many :influences, dependent: :destroy
 
   STATUS = ["discussing", "verified", "planned", "in_progress", "complete", "closed"]
   enum status: STATUS
@@ -19,6 +19,8 @@ class Idea < ActiveRecord::Base
   delegate :organisation, to: :project
 
   scope :popular, proc { order('score DESC NULLS LAST') }
+
+  after_create :setup_influence
 
   def self.status_collection
     STATUS.collect do |s|
@@ -56,16 +58,15 @@ class Idea < ActiveRecord::Base
     end
   end
 
-  def calculate_influence
-    self.influence = ((influences.only_positive.sum(:score) - influences.only_negative.sum(:score)) / 100.0) + 1.0
-    calculate_score
-    save
+  def setup_influence
+    Factor.all.each do |f|
+      Influence.create(idea_id: id, factor: f, score: 0)
+    end
   end
 
-  def calculate_score
-    if votes_count
-      self.score = (votes_count * influence)
-      save
-    end
+  def calculate_influence
+    self.influence = (((influences.only_positive.sum(:score) - influences.only_negative.sum(:score)) / 100.0) + 1.0).round(2)
+    self.score = (votes_count * influence).round(2) if votes_count
+    save
   end
 end

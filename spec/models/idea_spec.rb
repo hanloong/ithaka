@@ -88,6 +88,12 @@ describe Idea do
     }.from(false).to(true)
   end
 
+  it 'should create influences on create' do
+    FactoryGirl.create(:factor)
+    idea = Idea.create(@attr)
+    expect(idea.influences.count).to eq(1)
+  end
+
   describe 'user labels' do
     it 'should show admin' do
       admin = FactoryGirl.create(:user, email: 'admin@test.com', role: :admin)
@@ -105,15 +111,15 @@ describe Idea do
     it 'should show manager' do
       idea = Idea.create(@attr)
       user = FactoryGirl.create(:user, email: 'admin@test.com',
-                                       role: :owner,
-                                       organisation: idea.project.organisation)
+                                role: :owner,
+                                organisation: idea.project.organisation)
       expect(idea.user_label(user)).to eq('Owner')
     end
 
     it 'should be nil for normal user' do
       idea = Idea.create(@attr)
       user = FactoryGirl.create(:user, email: 'admin@test.com',
-                                       organisation: idea.project.organisation)
+                                organisation: idea.project.organisation)
       expect(idea.user_label(user)).to be_nil
     end
 
@@ -121,5 +127,7 @@ describe Idea do
       stub_const('Idea::STATUS', ['test_status'])
       expect(Idea.status_collection.include?(['Test Status', 'test_status'])).to be_true
     end
+
   end
+
 end

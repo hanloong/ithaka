@@ -3,7 +3,7 @@ class InfluencesController < ApplicationController
   before_action :set_influence
 
   def update
-    @influence.update(influence_params)
+    @influence.update(influence_params) if @influence.manager?(current_user)
   end
 
   private

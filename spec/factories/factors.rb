@@ -5,6 +5,5 @@ FactoryGirl.define do
     name 'test'
     area nil
     weight 1
-    idea nil
   end
 end
