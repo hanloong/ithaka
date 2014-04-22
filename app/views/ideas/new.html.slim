@@ -1,5 +1,5 @@
 - content_for :head do
-  = link_to icon_text('dashboard', "Projects"), projects_path
+  = link_to fa_icon('tasks', text: "Projects"), projects_path
   |  /  
   = link_to @idea.project_name, project_path(@idea.project)
   |  /  New Idea

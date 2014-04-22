@@ -1,13 +1,13 @@
 - content_for :head do
-  = link_to icon_text('dashboard', 'Projects'), projects_path
+  = link_to fa_icon('tasks', text: 'Projects'), projects_path
   |  / #{@project.name}
 
-- if false
+- if true
   ul.nav.nav-tabs
     li.active
-      a #{icon_text('dashboard', 'Ideas')}
+      a #{fa_icon('lightbulb-o', text: 'Ideas')}
     li
-      a #{icon_text('tasks', 'Project Summary')}
+      a #{fa_icon('tasks', text: 'Project Summary')}
 
 .tab-content
   .tab-pane.active
@@ -44,4 +44,4 @@
           .text-center
             h3 #{pluralize(@project.ideas.count, "idea")}
             = render partial: 'shared/by_line', locals: {o: @project, label: 'Champion'}
-            = link_to fa_stacked_icon('lightbulb-o', base: 'square-o', text: "submit your idea"), new_project_idea_path(@project), class: "btn-wide btn btn-primary btn-lg"
+            = link_to fa_icon('lightbulb-o', text: "submit your idea"), new_project_idea_path(@project), class: "btn-wide btn btn-primary btn-lg"
