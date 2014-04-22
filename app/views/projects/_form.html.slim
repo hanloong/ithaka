@@ -1,24 +1,32 @@
 .tab-content
   .tab-pane.active
     .contents
-      .row.default-contents
-        .padded-form
-          = form_for project, html: { role: :form, class: 'form-horizontal' } do |f|
-            .form-group
-              .col-sm-2
-                = f.label :name, class: 'input-lg'
-              .col-sm-10
-                = f.text_field :name, class: 'input-lg form-control'
-            .form-group
-              .col-sm-2
-                = f.label :description, class: 'input-lg'
-              .col-sm-10
-                = f.text_area :description, rows: 12, class: 'form-control input-lg'
-            .form-group
-              .col-sm-2
-                = f.label :user, 'Poject Champion', class: 'input-lg'
-              .col-sm-10
-                = f.collection_select :user_id, User.org_owners(current_user.organisation_id), :id, :name, {}, class: 'form-control input-lg'
-            .form-group
-              = f.hidden_field :organisation_id, value: current_user.organisation_id
-              = f.submit 'Save project', class: 'pull-right btn btn-pink btn-lg'
+      .col-sm-9
+        .row.default-contents
+          .padded-form
+            = form_for project, html: { role: :form, class: 'form-horizontal' } do |f|
+              .form-group
+                .col-sm-2
+                  = f.label :name, class: 'input-lg'
+                .col-sm-10
+                  = f.text_field :name, class: 'input-lg form-control'
+              .form-group
+                .col-sm-2
+                  = f.label :description, class: 'input-lg'
+                .col-sm-10
+                  = f.text_area :description, rows: 12, class: 'form-control input-lg'
+              .form-group
+                .col-sm-2
+                  = f.label :user, 'Poject Champion', class: 'input-lg'
+                .col-sm-10
+                  = f.collection_select :user_id, User.org_owners(current_user.organisation_id), :id, :name, {}, class: 'form-control input-lg'
+              .form-group
+                = f.hidden_field :organisation_id, value: current_user.organisation_id
+                = f.submit 'Save project', class: 'pull-right btn btn-pink btn-lg'
+      .col-sm-3
+        .idea-contents
+          .text-center
+            h5 Need Help?
+          ul
+            li Create projects for logical groupings of idea around products or activities like a social club.
+      .clearfix

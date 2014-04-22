@@ -1,5 +1,5 @@
 - content_for :head do
-  = link_to icon_text('dashboard', 'Projects'), projects_path
+  = link_to fa_icon('tasks', text: 'Projects'), projects_path
   |  /  
   = link_to @idea.project_name, project_path(@idea.project)
   |  / #{truncate(@idea.name, length: 20)}
@@ -20,7 +20,7 @@
                 #{markdown(@idea.description)}
               .idea-footer
                 - if @idea.user == current_user || @idea.manager?(current_user)
-                  = link_to icon_text('edit', 'Edit'), edit_project_idea_path(@idea.project, @idea), class: 'btn btn-st btn-st-grey pull-right'
+                  = link_to fa_icon('edit', text: 'Edit'), edit_project_idea_path(@idea.project, @idea), class: 'btn btn-st btn-st-grey pull-right'
           = render partial: 'comments', locals: {idea: @idea, comments: @comments}
       .col-lg-3
         = render partial: 'vote', locals: {idea: @idea}

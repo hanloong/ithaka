@@ -1,17 +1,17 @@
 - content_for :head do
-  #{icon_text('dashboard', 'Projects')}
+  #{fa_icon('tasks', text: 'Projects')}
 
 - if false
   ul.nav.nav-tabs
     li.active
-      a #{icon_text('dashboard', 'Projects')}
+      a #{fa_icon('tasks', text: 'Projects')}
     li
-      a #{icon_text('stats', 'Dashboard (coming soon)')}
+      a #{fa_icon('bar-chart-o', text: 'Dashboard (coming soon)')}
     - if current_user.admin? || current_user.owner?
       li
-        a #{icon_text('user', 'Teams (coming soon)')}
+        a #{fa_icon('users', text: 'Teams (coming soon)')}
       li
-        a #{icon_text('cog', 'Settings (coming soon)')}
+        a #{fa_icon('cog', text: 'Settings (coming soon)')}
 
 
 .tab-content
@@ -26,7 +26,7 @@
               #{markdown(truncate(p.description, length: 100))}
             .panel-footer
               - if p.manager?(current_user)
-                = link_to icon_text('edit', 'Edit'), edit_project_path(p), class: "pull-right"
+                = link_to fa_icon('edit', text: 'Edit'), edit_project_path(p), class: "pull-right"
               - if p.public
                 span.label.label-primary Public
               - else

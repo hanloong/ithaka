@@ -41,20 +41,6 @@ module ApplicationHelper
     html.html_safe
   end
 
-  def icon_text(icon, text)
-    html = <<-HTML
-    <span class="glyphicon glyphicon-#{icon}"></span> #{text}
-    HTML
-    html.html_safe
-  end
-
-  def right_icon_text(icon, text)
-    html = <<-HTML
-    #{text} <span class="glyphicon glyphicon-#{icon}"></span>
-    HTML
-    html.html_safe
-  end
-
   def logo
     html = <<-HTML
     <span class='logo'>
