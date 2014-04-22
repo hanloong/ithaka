@@ -21,6 +21,7 @@ gem 'redcarpet'
 gem 'rubocop', require: false
 gem 'english', require: false
 gem 'letter_opener'
+gem 'font-awesome-rails'
 
 group :production do
   gem 'rails_12factor'
