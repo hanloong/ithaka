@@ -3,16 +3,12 @@
     .text-center
       h5 Mangement
       .unlock
-        = link_to "Unlock votes", unlock_project_idea_path(idea.project, idea), class: "btn-wide btn btn-default btn-lg"
-        p gives all votes option to retract
-      .unlock
-        = link_to "Release votes", release_project_idea_path(idea.project, idea), class: "btn-wide btn btn-primary btn-lg"
+        = link_to fa_icon('unlock-alt', text: "Release votes"), unlock_project_idea_path(idea.project, idea), class: "btn-wide btn btn-success btn-lg"
         p gives votes back to users
       hr
+      h5 Update Status
       .update-status
-        = form_for [idea.project, idea], html: { role: 'form', class: 'form-horiztonal' } do |f|
+        = form_for [idea.project, idea], html: { id: 'status-form', role: 'form', class: 'form-horiztonal' } do |f|
           .row.form-group
-            = f.select :status, Idea.status_collection, {}, class: 'form-control input-lg'
-          .row.form-group
-            = f.submit 'Update Status', class: 'btn btn-primary btn-lg btn-wide'
+            = f.select :status, Idea.status_collection, {}, class: 'form-control input-lg', onchange: ("$('#status-form').submit();")
       hr
