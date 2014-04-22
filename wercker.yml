@@ -1,0 +1,20 @@
+box: pelle/ubuntu12.04-ruby2.1.1@1.0.1
+services:
+  - wercker/postgresql9.2
+build:
+  steps:
+    - bundle-install
+    - rails-database-yml:
+      service: postgresql
+    - script:
+      name: Set up db
+      code: RAILS_ENV=test bundle exec rake db:schema:load
+    - script:
+      name: rspec
+      code: bundle exec rspec
+deploy:
+  steps:
+    - heroku-deploy
+    - script:
+      name: update database
+      code: heroku run rake db:migrate --app $TARGET_NAME
