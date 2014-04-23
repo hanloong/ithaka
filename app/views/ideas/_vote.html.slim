@@ -1,9 +1,10 @@
 .idea-contents
   .text-center
+    div class="idea-score idea-score-#{idea.status}"
+      h3 #{idea.score}
+      = idea.readable_status
     .scorecard
-      h4 Score: #{idea.score}
-      h4 Votes: #{idea.votes_count}
-      h4 Status: #{idea.status}
+      h5 #{pluralize(idea.votes_count, 'vote')}
     hr
     - if !current_user.can_vote?
       button.btn.btn-wide.btn-grey.btn-lg disabled="disabled" No votes left 

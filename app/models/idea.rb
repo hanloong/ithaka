@@ -28,6 +28,10 @@ class Idea < ActiveRecord::Base
     end
   end
 
+  def readable_status
+    status.gsub(/_/, ' ').split.map(&:capitalize).join(' ')
+  end
+
   def vote_unlocked?(user_id)
     existing_vote(user_id).unlocked?
   end
