@@ -36,38 +36,8 @@ module ApplicationHelper
 
   def beta_label
     html = <<-HTML
-    <span class="label label-pink">beta</span>
+    <span class="label label-primary">beta</span>
     HTML
     html.html_safe
-  end
-
-  def logo
-    html = <<-HTML
-    <span class='logo'>
-      <span class='six'>ithaka</spam>
-    </span>
-    HTML
-    html.html_safe
-  end
-
-  def dark_logo
-    html = <<-HTML
-    <span class='dark-logo'>
-      <span class='six'>ithaka</spam>
-    </span>
-    HTML
-    html.html_safe
-  end
-
-  def influence_text(score)
-    if score < 3
-      'poor'
-    elsif score > 8
-      'excellent'
-    elsif score > 6
-      'good'
-    else
-      'average'
-    end
   end
 end

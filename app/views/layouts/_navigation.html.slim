@@ -7,6 +7,9 @@ nav.navbar.navbar-inverse.navbar-static-top
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      = link_to image_tag('logo.png') + dark_logo + beta_label, root_path, class: 'navbar-brand'
+      .navbar-brand
+        span.square
+          = fa_icon('lightbulb-o')
+        = link_to ('ithaka' + beta_label).html_safe, root_path, class: 'logo-text'
     .collapse.navbar-collapse
         == render 'layouts/navigation_links'
