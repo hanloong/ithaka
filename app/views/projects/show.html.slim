@@ -27,21 +27,23 @@
                 .row
                   .col-sm-2
                     = render partial: 'shared/by_line', locals: {o: i, label: nil}
+                    .text-center
+                      h3 #{i.score}
+                      span.label.label-default #{i.status}
                   .col-sm-10
                     .idea-body #{markdown(i.description)}
                     .idea-footer
                       .col-sm-12
                         h4
-                          span.label.label-pink #{i.status}
+                          span.label.label-success #{pluralize(i.comments.count, 'comment')}
                         h4
                           span.label.label-primary #{pluralize(i.favourites_count, 'follower')}
                         h4
                           span.label.label-default #{pluralize(i.votes_count, 'vote')}
-                        h4
-                          span.label.label-info #{i.score} score
       .col-lg-3
         .project-sidebar
           .text-center
             h3 #{pluralize(@project.ideas.count, "idea")}
-            = render partial: 'shared/by_line', locals: {o: @project, label: 'Champion'}
+            hr
+            = render partial: 'shared/by_line', locals: {o: @project, label: 'Project Owner'}
             = link_to fa_icon('lightbulb-o', text: "submit your idea"), new_project_idea_path(@project), class: "btn-wide btn btn-primary btn-lg"
