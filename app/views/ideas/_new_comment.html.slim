@@ -5,4 +5,5 @@
       = f.text_area :comment, placeholder: "Write your comment in markdown", class: "input-lg form-control", rows: 5
     = f.hidden_field :idea_id, value: idea.id
     = f.hidden_field :user_id, value: current_user.id
-    = f.submit "Post comment", class: "btn btn-lg btn-pink pull-right"
+    button.btn.btn-lg.btn-pink.pull-right type="submit"
+      = fa_icon('comment', text: 'Post comment')

@@ -10,9 +10,14 @@
       .col-lg-9
         .idea-contents
           .row
-            .col-sm-10.col-sm-offset-2
+            .col-sm-2
+              div class="idea-score idea-score-#{@idea.status}"
+                h3#score #{@idea.score}
+                = @idea.readable_status
+            .col-sm-10
               .idea-title
                 h3 #{@idea.name}
+          .row
             .col-sm-2
               = render partial: 'shared/by_line', locals: {o: @idea, label: nil}
             .col-sm-10

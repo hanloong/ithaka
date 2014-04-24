@@ -15,3 +15,5 @@
 //= require turbolinks
 //= require bootstrap
 //= require bootstrap-slider
+//= require bootstrap-slider
+//= require global

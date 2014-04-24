@@ -14,15 +14,16 @@
                 .col-sm-2
                   = f.label :description, class: 'input-lg'
                 .col-sm-10
-                  = f.text_area :description, rows: 12, class: 'form-control input-lg'
+                  = f.text_area :description, rows: 3, class: 'form-control input-lg'
               .form-group
                 .col-sm-2
                   = f.label :user, 'Poject Champion', class: 'input-lg'
                 .col-sm-10
                   = f.collection_select :user_id, User.org_owners(current_user.organisation_id), :id, :name, {}, class: 'form-control input-lg'
               .form-group
-                = f.hidden_field :organisation_id, value: current_user.organisation_id
-                = f.submit 'Save project', class: 'pull-right btn btn-pink btn-lg'
+                .col-sm-12
+                  = f.hidden_field :organisation_id, value: current_user.organisation_id
+                  = f.submit 'Save project', class: 'pull-right btn btn-pink btn-lg'
       .col-sm-3
         .idea-contents
           .text-center

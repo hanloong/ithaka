@@ -1,10 +1,11 @@
-- content_for :head do
-  #{fa_icon('user', text: 'Login')}
-
 .tab-content
   .tab-pane.active
     .contents
       .row.default-contents.col-sm-6.col-sm-offset-3
+        .row
+          .text-center
+            h3 #{fa_icon('user', text: 'Login')}
+        .row
         .authform.padded-form
             = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-horizontal', role: 'form' }) do |f|
               = devise_error_messages!

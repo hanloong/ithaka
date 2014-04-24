@@ -28,6 +28,10 @@ class Idea < ActiveRecord::Base
     end
   end
 
+  def readable_status
+    status.gsub(/_/, ' ').split.map(&:capitalize).join(' ')
+  end
+
   def vote_unlocked?(user_id)
     existing_vote(user_id).unlocked?
   end
@@ -66,7 +70,7 @@ class Idea < ActiveRecord::Base
 
   def calculate_influence
     self.influence = (((influences.only_positive.sum(:score) - influences.only_negative.sum(:score)) / 100.0) + 1.0).round(2)
-    self.score = (votes_count * influence).round(2) if votes_count
+    self.score = (votes.count * influence).round(2) if votes.count
     save
   end
 end

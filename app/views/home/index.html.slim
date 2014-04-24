@@ -3,12 +3,14 @@
     .row
       .home-logo
         h1
-          = image_tag 'logo-large.png', class: 'home-logo'
-          | #{dark_logo}
+          .dark-logo
+            span.square
+              = fa_icon('lightbulb-o')
+            | ithaka
     .tagline
       h3 a simple and powerful ideation platform
     .row
-      p #{dark_logo} is a young product undergoing rapid developent.
+      p ithaka is a young product undergoing rapid developent.
       p We want your help so when you sign up for the beta you'll have access to our projects in addition to your own private projects.
       p Suggest features, report bugs and vote for things that are important to you.
 
@@ -20,7 +22,7 @@
 .benefits
   .container
     .text-center
-      h2 why use #{logo}
+      h2 why use ithaka
     .row
       .col-sm-4
         h3.text-center drive engagement
@@ -45,9 +47,9 @@
   .container
     .col-sm-4
       h2 share an idea
-      p Whenever you have that amazing stroke of genius simply login to #{logo} and share it with the you company.
+      p Whenever you have that amazing stroke of genius simply login to ithaka and share it with the you company.
     .col-sm-8
-      = image_tag 'step1.gif', alt: 'Submit idea', class: 'img-responsive'
+      = image_tag 'step1.png', alt: 'Submit idea', class: 'img-responsive'
 
 .steps.step-2
   .container
@@ -55,7 +57,7 @@
       h2 give support to idea you care about
       p help others get there ideas off the ground by giving your support
     .col-sm-8
-      = image_tag 'step2.gif', alt: 'Vote and discuss', class: 'img-responsive'
+      = image_tag 'step2.png', alt: 'Vote and discuss', class: 'img-responsive'
     .col-sm-4.hidden-xs
       h2 give support to idea you care about
       p help others get there ideas off the ground by giving your support
@@ -81,4 +83,5 @@
 
 .footer
   .container.text-center
-    = link_to 'sign up now', new_user_registration_path, class: 'btn btn-xlg btn-primary'
+    h4.twitter
+      = link_to fa_icon('twitter', text: '@ithakaio'), 'https://twitter.com/ithakaio', target: '_blank'

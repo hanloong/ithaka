@@ -6,13 +6,15 @@ $dark-grey: #323a45
 $darkest-grey: #232b37
 $pink: #f36
 $dark-pink: #f42156
-$green: #8fd400
+$green: #0dadb7
 $dark-green: #78a300
 $red: #ee6666
 $dark-red: #d45656
-$blue: #19aacf
+$blue: #58c3e5
 $dark-blue: #10829f
 $light-blue: #24b5dd
+$yellow: #ffcb00
+$orange: #ff7900
 $max-width: 1144px
 
 // Mixins
@@ -39,6 +41,26 @@ a
     text-decoration: none
     cursor: pointer
     color: $pink
+
+.navbar-brand .square
+  margin: 8px
+.square
+  background: $pink
+  border: 1px solid $dark-pink
+  color: white
+  border-radius: 4px
+  margin: 0 10px
+  .fa
+    margin: 0 12px
+
+.navbar-brand
+  margin-top: -4px
+  color: $grey
+  .square .fa
+    margin: 4px 6px
+
+.navbar-inverse .navbar-brand .logo-text
+  color: $light-grey
 
 .logo
   color: $grey
