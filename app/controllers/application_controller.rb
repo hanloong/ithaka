@@ -6,16 +6,6 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-  before_action :authenticate
-
-  def authenticate
-    if Rails.env.production?
-      authenticate_or_request_with_http_basic do |username, password|
-        username == 'votation' && password == 'hidden'
-      end
-    end
-  end
-
   def after_sign_in_path_for(resource)
     if stored_location_for(resource)
       stored_location_for(resource)
