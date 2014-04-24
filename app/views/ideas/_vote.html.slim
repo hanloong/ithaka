@@ -1,10 +1,6 @@
 .idea-contents
   .text-center
-    div class="idea-score idea-score-#{idea.status}"
-      h3 #{idea.score}
-      = idea.readable_status
-    .scorecard
-      h5 #{pluralize(idea.votes_count, 'vote')}
+    = render partial: 'shared/scorecard', locals: {idea: idea}
     hr
     - if !current_user.can_vote?
       button.btn.btn-wide.btn-grey.btn-lg disabled="disabled" No votes left 
@@ -19,6 +15,7 @@
         = f.hidden_field :idea_id, value: idea.id
         button.btn-wide.btn.btn-primary.btn-lg type='submit'
           #{fa_icon('check-square-o', text: 'Vote')}
+    hr
     .favourite
       - if fav = idea.existing_favourite(current_user.id)
         = link_to fa_icon('star-o', text: 'Unfollow'), project_idea_favourite_path(idea.project, idea, fav.id), method: :delete, class: "btn btn-danger"

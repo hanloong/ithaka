@@ -1,10 +1,11 @@
-- content_for :head do
-  #{fa_icon('user', text: "Sign Up")}
-
 .tab-content
   .tab-pane.active
     .contents
       .row.default-contents.col-sm-8.col-sm-offset-2
+        .row
+          .text-center
+            h3 #{fa_icon('user', text: 'Sign Up')}
+        .row
         .authform.padded-form
           - resource.organisation = Organisation.new
           = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form-horizontal', role: 'form' }) do |f|

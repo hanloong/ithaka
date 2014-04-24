@@ -2,7 +2,7 @@
   = link_to fa_icon('tasks', text: 'Projects'), projects_path
   |  / #{@project.name}
 
-- if true
+- if false
   ul.nav.nav-tabs
     li.active
       a #{fa_icon('lightbulb-o', text: 'Ideas')}
@@ -34,17 +34,10 @@
                     .idea-body #{markdown(i.description)}
                     .idea-footer
                       .col-sm-12
-                        h4
-                          span.label.label-success #{i.comments.count} #{fa_icon('comment')}
-                        h4
-                          span.label.label-pink #{i.favourites_count} #{fa_icon('star')}
-                        h4
-                          span.label.label-primary #{i.votes_count} #{fa_icon('check')}
+                        = render partial: 'shared/scorecard', locals: {idea: i}
       .col-lg-3
         .project-sidebar
           .text-center
-            h3 #{pluralize(@project.ideas.count, "idea")}
+            = link_to fa_stacked_icon('lightbulb-o', text: "new idea", base: 'square-o'), new_project_idea_path(@project), class: "btn-wide btn btn-primary btn-lg"
             hr
             = render partial: 'shared/by_line', locals: {o: @project, label: 'Project Owner'}
-            hr
-            = link_to fa_icon('lightbulb-o', text: "submit your idea"), new_project_idea_path(@project), class: "btn-wide btn btn-primary btn-lg"
