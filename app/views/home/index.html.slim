@@ -81,6 +81,25 @@
       h2 let the best idea's shine
       p ideas that have captured your employee's imagination will rise to the top
 
+.scoreboard
+  .container
+    .text-center
+      h3 Metrics
+    .col-sm-6.col-sm-offset-3
+      .row
+        .col-xs-4
+          .text-center
+            h3 Ideas
+            h3 #{Idea.count}
+        .col-xs-4
+          .text-center
+            h3 Votes
+            h3 #{Vote.count}
+        .col-xs-4
+          .text-center
+            h3 Projects
+            h3 #{Project.count}
+
 .footer
   .container.text-center
     h4.twitter
