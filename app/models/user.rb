@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :organisation
 
+  before_create :set_default_role
+
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   enum role: [:user, :owner, :admin]
@@ -39,5 +41,9 @@ class User < ActiveRecord::Base
 
   def unlocked_votes
     votes.select { |vote| vote.unlocked? }
+  end
+
+  def set_default_role
+    role ||= :owner
   end
 end
