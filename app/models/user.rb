@@ -8,8 +8,6 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :organisation
 
-  before_create :set_default_role
-
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   enum role: [:user, :owner, :admin]
@@ -18,6 +16,7 @@ class User < ActiveRecord::Base
   validates :name, :email, :organisation, presence: true
   attr_reader :avatar_url
   @avatar_url = nil
+  before_create :set_default_role
 
   delegate :name, to: :organisation, prefix: true
 
@@ -44,6 +43,6 @@ class User < ActiveRecord::Base
   end
 
   def set_default_role
-    role ||= :owner
+    self.role ||= :owner
   end
 end
