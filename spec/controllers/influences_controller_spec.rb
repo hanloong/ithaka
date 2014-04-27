@@ -12,7 +12,6 @@ describe InfluencesController do
 
   describe 'PUT "update"' do
     it 'should update influcne score if manager' do
-      @user.update(role: :owner)
       expect do
         put :update, format: :js, project_id: @project.id, idea_id: @idea.id, id: Influence.first.id,
                     influence: { score: 50 }
@@ -20,6 +19,7 @@ describe InfluencesController do
     end
 
     it 'should not update influcne score if not manager' do
+      @user.update(role: :user)
       expect do
         put :update, format: :js, project_id: @project.id, idea_id: @idea.id, id: Influence.first.id,
                     influence: { score: 50 }

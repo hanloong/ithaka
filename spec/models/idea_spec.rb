@@ -118,7 +118,7 @@ describe Idea do
 
     it 'should be nil for normal user' do
       idea = Idea.create(@attr)
-      user = FactoryGirl.create(:user, email: 'admin@test.com',
+      user = FactoryGirl.create(:user, email: 'admin@test.com', role: :user,
                                 organisation: idea.project.organisation)
       expect(idea.user_label(user)).to be_nil
     end

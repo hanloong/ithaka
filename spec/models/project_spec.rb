@@ -70,7 +70,7 @@ describe Project do
       end
 
       it 'should not allow a regular user to manage' do
-        user = FactoryGirl.create(:user, organisation: org)
+        user = FactoryGirl.create(:user, role: :user, organisation: org)
         expect(project.manager?(user)).to be_false
       end
 
