@@ -20,8 +20,8 @@ gem 'slim-rails'
 gem 'redcarpet'
 gem 'rubocop', require: false
 gem 'english', require: false
-gem 'letter_opener'
 gem 'font-awesome-rails'
+gem 'delayed_job_active_record'
 
 group :production do
   gem 'rails_12factor'
@@ -35,6 +35,7 @@ group :development do
   gem 'quiet_assets'
   gem 'rails_layout'
   gem 'rack-mini-profiler'
+  gem 'letter_opener'
 end
 
 group :development, :test do

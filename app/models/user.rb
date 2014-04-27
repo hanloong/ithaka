@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   attr_reader :avatar_url
   @avatar_url = nil
   before_create :set_default_role
+  after_create :welcome_email
 
   delegate :name, to: :organisation, prefix: true
 
@@ -44,5 +45,9 @@ class User < ActiveRecord::Base
 
   def set_default_role
     self.role ||= :owner
+  end
+
+  def welcome_email
+    UserMailer.delay.welcome_email(self)
   end
 end
