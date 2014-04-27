@@ -124,6 +124,7 @@ describe IdeasController do
     end
 
     it 'should not unlock votes for the idea if not an owner' do
+      @user.update(role: :user)
       idea = FactoryGirl.create(:idea, project: @project, user: @user)
       Timecop.freeze(Date.today - 1) do
         (1..4).each do |i|
@@ -159,6 +160,7 @@ describe IdeasController do
     end
 
     it 'should not release votes for the idea if not an owner' do
+      @user.update(role: :user)
       idea = FactoryGirl.create(:idea, project: @project, user: @user)
       Timecop.freeze(Date.today - 1) do
         (1..4).each do |i|
