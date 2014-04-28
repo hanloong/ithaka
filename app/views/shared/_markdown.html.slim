@@ -1,0 +1,17 @@
+.modal.fade#markdown-modal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close type='button' data-dismiss="modal" aria-hidden="true" &times;
+        h4.modal-title Markdown Cheatsheet
+      .modal-body
+        .col-xs-6
+          pre
+            code
+              #{markdown_cheatsheet}
+          | Here is just a sample of what you can do with markdown, it's by no means exhausting so try the link for further reading.
+        .col-xs-6
+          #{markdown(markdown_cheatsheet)}
+        .clearfix
+      .modal-footer
+        button.btn.btn-default type='button' data-dismiss="modal" Close

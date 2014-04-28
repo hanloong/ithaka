@@ -7,3 +7,5 @@
     = f.hidden_field :user_id, value: current_user.id
     button.btn.btn-lg.btn-pink.pull-right type="submit"
       = fa_icon('comment', text: 'Post comment')
+    a href='#' data-toggle="modal" data-target="#markdown-modal" #{fa_icon('pencil', text: 'Markdown cheatsheet')}
+= render partial: 'shared/markdown'
