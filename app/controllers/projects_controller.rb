@@ -7,6 +7,15 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    if params[:search]
+      @search = params[:search]
+      statuses = @search[:status].map { |status| Idea.statuses[status] }
+      keywords = @search[:keywords]
+      @ideas = @project.ideas.where(status: statuses).where('description ILIKE ? OR name ILIKE ?', "%#{keywords}%", "%#{keywords}%")
+    else
+      @ideas = @project.ideas
+      @search = { status: Idea::STATUS }
+    end
   end
 
   def new
