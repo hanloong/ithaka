@@ -36,6 +36,14 @@ describe ProjectsController do
       get :show, id: project.id
       expect(response).to redirect_to projects_path
     end
+
+    it 'should filter ideas based on search params' do
+      project = FactoryGirl.create(:project, organisation: @org)
+      idea = FactoryGirl.create(:idea, name: 'test idea', project: project, user: @user)
+      FactoryGirl.create(:idea, name: 'another idea', project: project, user: @user)
+      get :show, id: project.id, search: { keywords: 'test', status: Idea::STATUS }
+      expect(assigns(:ideas)).to eq([idea])
+    end
   end
 
   describe 'GET "edit"' do

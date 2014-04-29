@@ -1,6 +1,7 @@
 - content_for :head do
   = link_to fa_icon('tasks', text: 'Projects'), projects_path
   |  / #{@project.name}
+  |  / #{pluralize(@ideas.count, 'idea')}
 
 - if false
   ul.nav.nav-tabs
@@ -13,9 +14,9 @@
   .tab-pane.active
     .row.contents.tab-contents
       .col-lg-9
-        - if @project.ideas.empty?
+        - if @ideas && @ideas.empty?
           h3 there aren't any ideas for this project yet. You should create one.
-        - @project.ideas.popular.each do |i|
+        - @ideas.popular.each do |i|
           .row
             .col-lg-12
               .idea-contents
@@ -37,7 +38,8 @@
                         = render partial: 'shared/scorecard', locals: {idea: i}
       .col-lg-3
         .project-sidebar
+          = render partial: 'search', locals: {project: @project, search: @search}
           .text-center
-            = link_to fa_stacked_icon('lightbulb-o', text: "new idea", base: 'square-o'), new_project_idea_path(@project), class: "btn-wide btn btn-primary btn-lg"
+            = link_to fa_stacked_icon('lightbulb-o', text: "new idea", base: 'square-o'), new_project_idea_path(@project), class: "btn-wide btn btn-success btn-lg"
             hr
             = render partial: 'shared/by_line', locals: {o: @project, label: 'Project Owner'}
