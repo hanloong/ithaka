@@ -22,6 +22,8 @@ gem 'rubocop', require: false
 gem 'english', require: false
 gem 'font-awesome-rails'
 gem 'delayed_job_active_record'
+gem 'chartkick'
+gem 'groupdate'
 
 group :development do
   gem 'better_errors'

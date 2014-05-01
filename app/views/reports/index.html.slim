@@ -1,0 +1,21 @@
+= javascript_include_tag "//www.google.com/jsapi", "chartkick"
+- content_for :head do
+  #{fa_icon('bar-chart-o', text: 'Reports')}
+
+ul.nav.nav-tabs
+  li
+    = link_to fa_icon('tasks', text: 'Projects'), projects_path
+  li.active
+    a #{fa_icon('bar-chart-o', text: 'Dashboard')}
+
+.tab-content
+  .tab-pane.active
+    .row.contents.tab-contents
+      .col-sm-6
+        .text-center
+          h3 Ideas
+        = pie_chart Idea.status_group, library: {backgroundColor: "none"}
+      .col-sm-6
+        .text-center
+          h3 Activity
+        = line_chart [{ name: "Votes", data: Vote.group_by_day(:created_at).count }, { name: "Comments", data: Comment.group_by_day(:created_at).count }, { name: "Ideas", data: Idea.group_by_day(:created_at).count}, { name: 'Follows', data: Favourite.group_by_day(:created_at).count}], library: {backgroundColor: 'none'}

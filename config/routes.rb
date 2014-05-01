@@ -13,4 +13,5 @@ Votation::Application.routes.draw do
   root to: 'home#index'
   devise_for :users, controllers: { registrations: 'registrations', invitations: 'invitations' }
   resources :users
+  get :reports, to: 'reports#index'
 end
