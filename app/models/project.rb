@@ -29,4 +29,8 @@ class Project < ActiveRecord::Base
   def is_public?(u)
     public? && u.organisation != organisation
   end
+
+  def to_s
+    name
+  end
 end

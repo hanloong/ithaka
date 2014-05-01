@@ -18,3 +18,7 @@ ul.nav.nav-tabs
         .text-center
           h3 Activity
         = line_chart [{ name: "Votes", data: Vote.group_by_day(:created_at).count }, { name: "Comments", data: Comment.group_by_day(:created_at).count }, { name: "Ideas", data: Idea.group_by_day(:created_at).count}, { name: 'Follows', data: Favourite.group_by_day(:created_at).count}], library: {backgroundColor: 'none'}
+      .col-lg-6
+        .text-center
+          h3 Projects
+        = pie_chart Idea.group(:project).count, library: {backgroundColor: "none"}
