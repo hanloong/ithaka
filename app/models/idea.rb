@@ -28,6 +28,14 @@ class Idea < ActiveRecord::Base
     end
   end
 
+  def self.readable_statuses(index)
+    STATUS[index].gsub(/_/, ' ').split.map(&:capitalize).join(' ')
+  end
+
+  def self.status_group
+    Hash[group(:status).count.map{ |k,v| [readable_statuses(k), v] }]
+  end
+
   def readable_status
     status.gsub(/_/, ' ').split.map(&:capitalize).join(' ')
   end

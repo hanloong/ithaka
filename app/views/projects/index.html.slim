@@ -1,18 +1,11 @@
 - content_for :head do
   #{fa_icon('tasks', text: 'Projects')}
 
-- if false
-  ul.nav.nav-tabs
-    li.active
-      a #{fa_icon('tasks', text: 'Projects')}
-    li
-      a #{fa_icon('bar-chart-o', text: 'Dashboard (coming soon)')}
-    - if current_user.admin? || current_user.owner?
-      li
-        a #{fa_icon('users', text: 'Teams (coming soon)')}
-      li
-        a #{fa_icon('cog', text: 'Settings (coming soon)')}
-
+ul.nav.nav-tabs
+  li.active
+    a #{fa_icon('tasks', text: 'Projects')}
+  li
+    = link_to fa_icon('bar-chart-o', text: 'Dashboard'), reports_path
 
 .tab-content
   .tab-pane.active
