@@ -24,6 +24,7 @@ gem 'font-awesome-rails'
 gem 'delayed_job_active_record'
 gem 'chartkick'
 gem 'groupdate'
+gem 'redactor-rails'
 
 group :development do
   gem 'better_errors'

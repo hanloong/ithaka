@@ -162,6 +162,10 @@ GEM
     rake (10.2.2)
     rdoc (4.1.1)
       json (~> 1.4)
+    redactor-rails (0.4.3)
+      devise
+      mime-types
+      orm_adapter
     redcarpet (3.1.1)
     rspec-core (2.14.8)
     rspec-expectations (2.14.5)
@@ -267,6 +271,7 @@ DEPENDENCIES
   rack-mini-profiler
   rails (= 4.1.0)
   rails_layout
+  redactor-rails
   redcarpet
   rspec-rails
   rubocop

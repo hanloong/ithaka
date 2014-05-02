@@ -2,7 +2,7 @@
   h3 Share your thoughts
   = form_for [idea.project, idea, Comment.new], html: { class: 'form' } do |f|
     .form-group
-      = f.text_area :comment, placeholder: "Write your comment in markdown", class: "input-lg form-control", rows: 5
+      = f.text_area :comment, placeholder: "Write your comment in markdown", class: "redactor", rows: 50
     = f.hidden_field :idea_id, value: idea.id
     = f.hidden_field :user_id, value: current_user.id
     button.btn.btn-lg.btn-pink.pull-right type="submit"
