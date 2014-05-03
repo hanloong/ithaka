@@ -1,5 +1,6 @@
 Votation::Application.routes.draw do
 
+  mount RedactorRails::Engine => '/redactor_rails'
   resources :projects do
     resources :ideas do
       resources :votes

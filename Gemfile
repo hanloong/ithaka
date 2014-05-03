@@ -26,7 +26,9 @@ gem 'chartkick'
 gem 'groupdate'
 gem 'redactor-rails'
 gem 'carrierwave'
+gem 'fog'
 gem 'mini_magick'
+gem 'asset_sync'
 
 group :development do
   gem 'better_errors'
@@ -42,6 +44,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'debugger'
+  gem 'dotenv-rails'
 end
 
 group :test do
