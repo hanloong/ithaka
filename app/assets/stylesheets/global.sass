@@ -32,20 +32,16 @@ main
 
 body
   background: $lightish-grey
-  .redactor_toolbar
-    background: none
-    li
-      padding: 0
-      a.redactor_btn
-        border: none
-        &:hover
-          background-color: $lightish-grey
-          border: none
-    .redactor_dropdown a
-      &:hover
-        background-color: $lightish-grey
-    li.redactor_separator
-      height: 25px
+  .redactor_toolbar li a:hover
+    background-color: $pink
+  #redactor_modal footer button
+    background-color: $light-grey
+    &:hover
+      background-color: $lightish-grey
+  #redactor_modal footer button.redactor_modal_action_btn
+    background-color: $blue
+    &:hover
+      background-color: $dark-blue
 
 .glyphicon
   margin: 0 5px
