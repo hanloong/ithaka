@@ -8,7 +8,6 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
-gem 'spring',        group: :development
 gem 'bootstrap-sass'
 gem 'bootstrap-slider-rails'
 gem 'devise'
@@ -24,8 +23,14 @@ gem 'font-awesome-rails'
 gem 'delayed_job_active_record'
 gem 'chartkick'
 gem 'groupdate'
+gem 'redactor-rails'
+gem 'carrierwave'
+gem 'fog'
+gem 'mini_magick'
+gem 'asset_sync'
 
 group :development do
+  gem 'spring'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'foreman'
@@ -39,6 +44,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'debugger'
+  gem 'dotenv-rails'
 end
 
 group :test do

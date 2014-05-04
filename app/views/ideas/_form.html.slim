@@ -14,10 +14,9 @@
                 .col-sm-2
                   = f.label :description, class: 'input-lg'
                 .col-sm-10
-                  = f.text_area :description, class: 'form-control input-lg', rows: 12, placeholder: 'Write your description in markdown'
+                  = f.text_area :description, placeholder: "Write your description", class: "redactor", rows: 10
               .row.form-group
                 .col-xs-4.col-xs-offset-2
-                  a href='#' data-toggle="modal" data-target="#markdown-modal" #{fa_icon('pencil', text: 'Markdown cheatsheet')}
                 .col-xs-6
                   = f.hidden_field :project_id
                   = f.hidden_field :user_id, value: current_user.id
@@ -31,4 +30,3 @@
             li Use text styling to help structure your argument.
             li Make your suggestions positive as they are much more likely to gain support.
       .clearfix
-= render partial: 'shared/markdown'

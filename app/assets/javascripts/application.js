@@ -16,4 +16,6 @@
 //= require bootstrap
 //= require bootstrap-slider
 //= require bootstrap-slider
+//= require redactor-rails
+//= require redactor-rails/plugins
 //= require global

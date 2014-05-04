@@ -32,6 +32,20 @@ main
 
 body
   background: $lightish-grey
+  .redactor_toolbar
+    background: none
+    li
+      padding: 0
+      a.redactor_btn
+        border: none
+        &:hover
+          background-color: $lightish-grey
+          border: none
+    .redactor_dropdown a
+      &:hover
+        background-color: $lightish-grey
+    li.redactor_separator
+      height: 25px
 
 .glyphicon
   margin: 0 5px
