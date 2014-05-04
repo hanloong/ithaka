@@ -27,7 +27,6 @@ gem 'redactor-rails'
 gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
-gem 'asset_sync'
 
 group :development do
   gem 'spring'
