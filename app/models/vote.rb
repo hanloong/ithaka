@@ -16,6 +16,10 @@ class Vote < ActiveRecord::Base
     unscoped.find_by(idea_id: idea_id, user_id: user_id)
   end
 
+  def self.available(organisation)
+    where(idea_id: Idea.available(organisation))
+  end
+
   def unlocked?
     unlocked || (created_at > 15.minutes.ago)
   end

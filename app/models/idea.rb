@@ -1,6 +1,7 @@
 class Idea < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
+  has_one :organisation, through: :user
 
   has_many :comments, dependent: :destroy
   has_many :votes, dependent: :destroy
@@ -38,6 +39,10 @@ class Idea < ActiveRecord::Base
 
   def self.search_status
     STATUS.select{ |s| s != "archived" }
+  end
+
+  def self.available(organisation)
+    where(project_id: Project.available(organisation))
   end
 
   def readable_status

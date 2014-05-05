@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
-    @projects = Project.available(current_user.organisation_id).order(:name)
+    @projects = Project.available(current_user.organisation).order(:name)
   end
 
   def show

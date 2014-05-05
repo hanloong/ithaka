@@ -6,4 +6,8 @@ class Comment < ActiveRecord::Base
 
   scope :visible, proc { where(hidden: false) }
   scope :hidden, proc { where(hidden: true) }
+
+  def self.available(organisation)
+    where(idea_id: Idea.available(organisation))
+  end
 end

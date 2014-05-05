@@ -9,4 +9,8 @@ class Favourite < ActiveRecord::Base
   def self.existing_favourite(idea_id, user_id)
     find_by(idea_id: idea_id, user_id: user_id)
   end
+
+  def self.available(organisation)
+    where(idea_id: Idea.available(organisation))
+  end
 end

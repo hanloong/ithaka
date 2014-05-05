@@ -6,11 +6,11 @@ class Project < ActiveRecord::Base
 
   validates :name, :description, :organisation, presence: true
 
-  def self.available(orgid, include_public = true)
+  def self.available(organisation, include_public = true)
     if include_public
-      where('organisation_id = ? OR public = ?', orgid, include_public)
+      where('organisation_id = ? OR public = ?', organisation.id, include_public)
     else
-      where(organisation_id: orgid)
+      where(organisation: organisation)
     end
   end
 
