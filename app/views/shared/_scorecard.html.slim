@@ -1,5 +1,5 @@
 .scorecard
   h5
-    span.votes rel='tooltip' data-toggle="tooltip" data-placement="top" title="#{pluralize(idea.votes_count, 'vote')}" #{fa_icon('check', text: idea.votes_count)}
+    span.votes rel='tooltip' data-toggle="tooltip" data-placement="top" title="#{pluralize(idea.votes_count, 'kudos')}" #{fa_icon('check', text: idea.votes_count)}
     span.comments rel='tooltip' data-toggle="tooltip" data-placement="top" title="#{pluralize(idea.comments.count, 'comment')}" #{fa_icon('comment', text: idea.comments.count)}
     span.stars rel='tooltip' data-toggle="tooltip" data-placement="top" title="#{pluralize(idea.favourites_count, 'follow')}" #{fa_icon('star', text: idea.favourites_count)}

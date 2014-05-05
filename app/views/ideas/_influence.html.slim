@@ -1,6 +1,6 @@
 .idea-contents
   .text-center
-    h5 #{idea.manager?(current_user) ? "Edit Clout" : "Clout"}
+    h5 #{idea.manager?(current_user) ? "Edit Influence" : "Influence"}
     - idea.influences.each do |i|
       = form_for [idea.project, idea, i], remote: true, authenticity_token: true, html: { role: 'form', class: 'form-horiztonal' } do |f|
         div class="range range-#{i.is_negative ? 'danger' : 'primary'}"
@@ -9,5 +9,5 @@
         small #{i.name}
     hr
     h4
-      | Clout score: 
+      | Influence: 
       span#clout #{idea.influence}
