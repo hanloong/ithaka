@@ -3,8 +3,12 @@
     .text-center
       h5 Mangement
       .unlock
-        = link_to fa_icon('unlock-alt', text: "Release kudos"), unlock_project_idea_path(idea.project, idea), class: "btn-wide btn btn-success btn-lg"
-        p gives kudos back to users
+        - if idea.archived?
+          = link_to fa_icon('unlock-alt', text: "Release kudos"), release_project_idea_path(idea.project, idea), class: "btn-wide btn btn-danger btn-lg"
+          p gives kudos back to users
+        - else
+          = link_to fa_icon('unlock-alt', text: "Unlock kudos"), unlock_project_idea_path(idea.project, idea), class: "btn-wide btn btn-danger btn-lg"
+          p allow users to retract support
       hr
       h5 Update Status
       .update-status

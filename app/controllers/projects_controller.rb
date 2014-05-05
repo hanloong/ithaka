@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
-    @projects = Project.available(current_user.organisation_id)
+    @projects = Project.available(current_user.organisation_id).order(:name)
   end
 
   def show
@@ -13,8 +13,9 @@ class ProjectsController < ApplicationController
       keywords = @search[:keywords]
       @ideas = @project.ideas.where(status: statuses).where('description ILIKE ? OR name ILIKE ?', "%#{keywords}%", "%#{keywords}%")
     else
-      @ideas = @project.ideas
-      @search = { status: Idea::STATUS }
+      statuses = Idea.search_status.map { |status| Idea.statuses[status] }
+      @ideas = @project.ideas.where(status: statuses)
+      @search = { status: Idea.search_status }
     end
   end
 

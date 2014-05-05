@@ -7,7 +7,7 @@ class Idea < ActiveRecord::Base
   has_many :favourites, dependent: :destroy
   has_many :influences, dependent: :destroy
 
-  STATUS = ["discussing", "verified", "planned", "in_progress", "complete", "closed"]
+  STATUS = ["discussing", "verified", "planned", "in_progress", "complete", "closed", "archived"]
   enum status: STATUS
 
   validates :name, :description, :status, :project, :user, presence: true
@@ -34,6 +34,10 @@ class Idea < ActiveRecord::Base
 
   def self.status_group
     Hash[group(:status).count.map{ |k,v| [readable_statuses(k), v] }]
+  end
+
+  def self.search_status
+    STATUS.select{ |s| s != "archived" }
   end
 
   def readable_status

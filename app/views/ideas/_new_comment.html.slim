@@ -1,5 +1,5 @@
 .post-comment
-  h3 Share your thoughts
+  h3 #{fa_icon('comments', text: 'Share your thoughts')}
   = form_for [idea.project, idea, Comment.new], html: { class: 'form' } do |f|
     .form-group
       = f.text_area :comment, placeholder: "Write your comment", class: "redactor", rows: 10

@@ -27,10 +27,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def set_default_role
-    self.role ||= :user
-  end
-
   def can_vote?
     votes_left > 0
   end
