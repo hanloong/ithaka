@@ -43,11 +43,11 @@ describe Project do
     end
 
     it 'should return available projects' do
-      expect(Project.available(@org.id).count).to eq(2)
+      expect(Project.available(@org).count).to eq(2)
     end
 
     it 'should return available projects without public' do
-      expect(Project.available(@org.id, false).count).to eq(1)
+      expect(Project.available(@org, false).count).to eq(1)
     end
 
     context 'when managing a project' do

@@ -27,11 +27,13 @@ $max-width: 1144px
 // Global styles
 main
   margin: 0
+  min-height: 100%
   h3
     color: $grey
 
 body
   background: $lightish-grey
+  height: 100%
   .redactor_toolbar li a:hover
     background-color: $pink
   #redactor_modal footer button
@@ -169,3 +171,19 @@ a
   .avatar
     border-radius: 19px
     margin-left: 25px
+
+footer
+  margin-top: 50px
+  background-color: $dark-grey
+  height: 100px
+  padding-top: 1px
+  #feedback
+    color: $light-grey
+    padding-top: 10px
+  .row
+    margin-top: 29px
+    a
+      margin: 40px 30px 0 30px
+      color: $light-grey
+      &:hover
+        color: $pink

@@ -11,7 +11,7 @@ describe ProjectsController do
     it 'should show all projects' do
       FactoryGirl.create(:project, organisation: @org)
       get :index
-      expect(assigns(:projects)).to eq(Project.available(@user.organisation_id))
+      expect(assigns(:projects).count).to eq(Project.available(@user.organisation).count)
 
     end
   end

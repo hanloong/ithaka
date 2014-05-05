@@ -21,6 +21,8 @@ ul.nav.navbar-nav.navbar-right
         = image_tag avatar_url(current_user, 38), class: 'avatar'
       ul.dropdown-menu
         li= link_to ("Edit Account " +  fa_icon('edit')).html_safe, edit_user_registration_path, class: 'text-right'
+        - if current_user.owner? || current_user.admin?
+          li= link_to ("Manage Users " +  fa_icon('users')).html_safe, user_registration_path, class: 'text-right'
         li= link_to ("Logout " + fa_icon('power-off')).html_safe, destroy_user_session_path, :method=>'delete', class: 'text-right'
   - else
     li= link_to 'Login', new_user_session_path

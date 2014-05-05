@@ -8,9 +8,16 @@ describe UsersController do
   end
 
   describe 'INDEX "index"' do
-    it 'should show all users' do
+    it 'should show all users for admin' do
+      @user.update(role: :admin)
       get :index
       expect(assigns(:users)).to eq(User.all)
+    end
+
+    it 'should show orgs users for owner' do
+      @user.update(role: :owner)
+      get :index
+      expect(assigns(:users).count).to eq(@user.organisation.users.count)
     end
   end
 

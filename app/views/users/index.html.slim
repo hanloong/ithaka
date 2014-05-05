@@ -14,3 +14,5 @@
             - @users.each do |user|
               tr
                 = render user
+        .text-center
+          = link_to "invite your team", new_user_invitation_path, class: "btn btn-lg btn-pink"

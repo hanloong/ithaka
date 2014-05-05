@@ -3,7 +3,11 @@ class UsersController < ApplicationController
   after_action :verify_authorized, except: [:show]
 
   def index
-    @users = User.all
+    if current_user.admin?
+      @users = User.all
+    else
+      @users = User.where(organisation: current_user.organisation)
+    end
     authorize @users
   end
 
