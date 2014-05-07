@@ -14,6 +14,7 @@ class IdeasController < ApplicationController
     else
       @comments = @idea.comments.visible
     end
+    @status_presenter = Ideas::StatusPresenter.new
   end
 
   def edit

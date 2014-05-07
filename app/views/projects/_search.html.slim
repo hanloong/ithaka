@@ -7,7 +7,7 @@
   .form-group
     fieldset 
       h5 Status filter
-      - Idea.status_collection.each do |status|
+      - status_presenter.collection.each do |status|
         .checkbox
           label
             = check_box_tag 'search[status][]', status.last, (search[:status].include?(status.last))

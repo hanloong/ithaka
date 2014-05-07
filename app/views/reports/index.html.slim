@@ -13,7 +13,7 @@ ul.nav.nav-tabs
       .col-sm-6
         .text-center
           h3 Ideas
-        = pie_chart Idea.available(current_user.organisation).status_group, library: {backgroundColor: "none"}
+        = pie_chart @status_presenter.group_status(Idea.available(current_user.organisation).group(:status).count), library: {backgroundColor: "none"}
       .col-sm-6
         .text-center
           h3 Activity

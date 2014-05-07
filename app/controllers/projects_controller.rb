@@ -7,15 +7,16 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @status_presenter = Ideas::StatusPresenter.new
     if params[:search]
       @search = params[:search]
       statuses = @search[:status].map { |status| Idea.statuses[status] }
       keywords = @search[:keywords]
       @ideas = @project.ideas.where(status: statuses).where('description ILIKE ? OR name ILIKE ?', "%#{keywords}%", "%#{keywords}%")
     else
-      statuses = Idea.search_status.map { |status| Idea.statuses[status] }
+      statuses = @status_presenter.search_group.map { |status| Idea.statuses[status] }
       @ideas = @project.ideas.where(status: statuses)
-      @search = { status: Idea.search_status }
+      @search = { status: @status_presenter.search_group }
     end
   end
 

@@ -122,17 +122,5 @@ describe Idea do
                                 organisation: idea.project.organisation)
       expect(idea.user_label(user)).to be_nil
     end
-
-    it 'should return a formatted collection' do
-      stub_const('Idea::STATUS', ['test_status'])
-      expect(Idea.status_collection.include?(['Test Status', 'test_status'])).to be_true
-    end
-
-    it "should return a readable status" do
-      statuses = Hash[Idea::STATUS.map.with_index.to_a]
-      @attr[:status] = statuses['in_progress']
-      idea = Idea.create(@attr)
-      expect(idea.readable_status).to eq("In Progress")
-    end
   end
 end

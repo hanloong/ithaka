@@ -23,30 +23,8 @@ class Idea < ActiveRecord::Base
 
   after_create :setup_influence
 
-  def self.status_collection
-    STATUS.collect do |s|
-      [ s.gsub(/_/, ' ').split.map(&:capitalize).join(' '), s ]
-    end
-  end
-
-  def self.readable_statuses(index)
-    STATUS[index].gsub(/_/, ' ').split.map(&:capitalize).join(' ')
-  end
-
-  def self.status_group
-    Hash[group(:status).count.map{ |k,v| [readable_statuses(k), v] }]
-  end
-
-  def self.search_status
-    STATUS.select{ |s| s != "archived" }
-  end
-
   def self.available(organisation)
     where(project_id: Project.available(organisation))
-  end
-
-  def readable_status
-    status.gsub(/_/, ' ').split.map(&:capitalize).join(' ')
   end
 
   def vote_unlocked?(user_id)
@@ -63,9 +41,7 @@ class Idea < ActiveRecord::Base
 
   def unlock_votes
     transaction do
-      votes.each do |v|
-        v.unlock
-      end
+      votes.each{ |v| v.unlock }
     end
   end
 

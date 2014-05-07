@@ -14,5 +14,5 @@
       .update-status
         = form_for [idea.project, idea], html: { id: 'status-form', role: 'form', class: 'form-horiztonal' } do |f|
           .row.form-group
-            = f.select :status, Idea.status_collection, {}, class: 'form-control input-lg', onchange: ("$('#status-form').submit();")
+            = f.select :status, status_presenter.collection, {}, class: 'form-control input-lg', onchange: ("$('#status-form').submit();")
       hr

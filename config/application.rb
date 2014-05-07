@@ -21,5 +21,8 @@ module Votation
     config.serve_static_assets = true
     config.assets.precompile += ['home.js', 'home.css']
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.autoload_paths += %W(
+      #{config.root}/app/presenters
+    )
   end
 end
