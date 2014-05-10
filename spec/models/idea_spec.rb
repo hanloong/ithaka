@@ -111,15 +111,15 @@ describe Idea do
     it 'should show manager' do
       idea = Idea.create(@attr)
       user = FactoryGirl.create(:user, email: 'admin@test.com',
-                                role: :owner,
-                                organisation: idea.project.organisation)
+                                       role: :owner,
+                                       organisation: idea.project.organisation)
       expect(idea.user_label(user)).to eq('Owner')
     end
 
     it 'should be nil for normal user' do
       idea = Idea.create(@attr)
       user = FactoryGirl.create(:user, email: 'admin@test.com', role: :user,
-                                organisation: idea.project.organisation)
+                                       organisation: idea.project.organisation)
       expect(idea.user_label(user)).to be_nil
     end
   end

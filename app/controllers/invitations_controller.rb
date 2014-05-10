@@ -1,5 +1,5 @@
 class InvitationsController < Devise::InvitationsController
-  before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
 
@@ -10,7 +10,6 @@ class InvitationsController < Devise::InvitationsController
       new_params[:organisation_id] = current_user.organisation_id
     end
     resource_class.invite!(new_params, current_inviter, &block)
-
   end
 
   def configure_permitted_parameters

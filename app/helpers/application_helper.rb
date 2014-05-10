@@ -13,14 +13,14 @@ module ApplicationHelper
 
   def markdown(text)
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML,
-                                      tables: true,
-                                      autolink: true,
-                                      no_intra_emphasis: true,
-                                      fenced_code_blocks: true,
-                                      superscript: true,
-                                      underline: true,
-                                      highlight: true,
-                                      quote: true
+                                       tables: true,
+                                       autolink: true,
+                                       no_intra_emphasis: true,
+                                       fenced_code_blocks: true,
+                                       superscript: true,
+                                       underline: true,
+                                       highlight: true,
+                                       quote: true
                                       )
     markdown.render(text).html_safe
   end

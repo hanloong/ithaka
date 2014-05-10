@@ -1,13 +1,12 @@
 module Ideas
   class StatusPresenter
-
     def initialize
       @status = Idea::STATUS
     end
 
     def collection
-      @status.collect do |s|
-        [ titalise(s), s ]
+      @status.map do |s|
+        [titalise(s), s]
       end
     end
 
@@ -20,12 +19,11 @@ module Ideas
     end
 
     def search_group
-      @status.select{ |s| s != "archived" }
+      @status.select { |s| s != 'archived' }
     end
 
     def group_status(groups)
-      Hash[groups.map{ |k,v| [find_by_index(k), v] }]
+      Hash[groups.map { |k, v| [find_by_index(k), v] }]
     end
-
   end
 end

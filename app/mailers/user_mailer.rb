@@ -1,6 +1,6 @@
 class UserMailer < ActionMailer::Base
-  default from: "hello@ithaka.io"
-  default bcc: "hello@ithaka.io"
+  default from: 'hello@ithaka.io'
+  default bcc: 'hello@ithaka.io'
 
   def welcome_email(user)
     @user = user

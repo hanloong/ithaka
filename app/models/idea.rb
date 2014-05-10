@@ -8,7 +8,7 @@ class Idea < ActiveRecord::Base
   has_many :favourites, dependent: :destroy
   has_many :influences, dependent: :destroy
 
-  STATUS = ["discussing", "verified", "planned", "in_progress", "complete", "closed", "archived"]
+  STATUS = %w(discussing verified planned in_progress complete closed archived)
   enum status: STATUS
 
   validates :name, :description, :status, :project, :user, presence: true
