@@ -12,7 +12,7 @@ class Vote < ActiveRecord::Base
   after_create :calculate_influence
   after_destroy :calculate_influence
 
-  scope :existing_vote, -> (idea_id, user_id) { unscoped.find_by(idea_id: idea_id, user_id: user_id) }
+  scope :existing_vote, -> (user_id) { where(user_id: user_id) }
   scope :available, -> (organisation) { where(idea_id: Idea.available(organisation)) }
 
   def unlocked?

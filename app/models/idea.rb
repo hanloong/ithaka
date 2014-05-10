@@ -29,11 +29,11 @@ class Idea < ActiveRecord::Base
   end
 
   def existing_vote(user_id)
-    Vote.existing_vote(id, user_id)
+    votes.existing_vote(user_id).first
   end
 
   def existing_favourite(user_id)
-    Favourite.existing_favourite(id, user_id)
+    favourites.existing_favourite(user_id).first
   end
 
   def unlock_votes
