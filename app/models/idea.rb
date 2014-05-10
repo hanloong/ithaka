@@ -37,9 +37,7 @@ class Idea < ActiveRecord::Base
   end
 
   def unlock_votes
-    transaction do
-      votes.each{ |v| v.unlock }
-    end
+    transaction { votes.map(&:unlock) }
   end
 
   def user_label(u)
