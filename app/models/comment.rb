@@ -4,10 +4,7 @@ class Comment < ActiveRecord::Base
 
   validates :idea, :user, :comment, presence: true
 
-  scope :visible, proc { where(hidden: false) }
-  scope :hidden, proc { where(hidden: true) }
-
-  def self.available(organisation)
-    where(idea_id: Idea.available(organisation))
-  end
+  scope :visible, -> { where(hidden: false) }
+  scope :hidden, -> { where(hidden: true) }
+  scope :available, -> (organisation) { where(idea_id: Idea.available(organisation)) }
 end

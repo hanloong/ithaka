@@ -12,20 +12,21 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   enum role: [:user, :owner, :admin]
   after_initialize :set_default_role, if: :new_record?
+  attr_reader :avatar_url
 
   validates :name, :email, :organisation, presence: true
-  attr_reader :avatar_url
   @avatar_url = nil
+
   before_create :set_default_role
   after_create :welcome_email
 
   delegate :name, to: :organisation, prefix: true
 
-  def self.org_owners(org_id)
+  scope :org_owners, -> (org_id) {
     where(organisation_id: org_id).select do |u|
       %w(admin owner).include?(u.role)
     end
-  end
+  }
 
   def can_vote?
     votes_left > 0

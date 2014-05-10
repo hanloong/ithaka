@@ -19,13 +19,10 @@ class Idea < ActiveRecord::Base
   delegate :public, to: :project
   delegate :organisation, to: :project
 
-  scope :popular, proc { order('score DESC NULLS LAST') }
+  scope :popular, -> { order('score DESC NULLS LAST') }
+  scope :available, -> (organisation) { where(project_id: Project.available(organisation)) }
 
   after_create :setup_influence
-
-  def self.available(organisation)
-    where(project_id: Project.available(organisation))
-  end
 
   def vote_unlocked?(user_id)
     existing_vote(user_id).unlocked?
