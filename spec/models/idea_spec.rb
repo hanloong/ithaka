@@ -58,7 +58,7 @@ describe Idea do
 
   it 'should show when know when a users vote is unlcoked' do
     vote = mock_model('Vote', id: 1, unlocked?: true)
-    Vote.stub existing_vote: vote
+    Vote.stub existing_vote: [vote]
 
     idea = Idea.new(@attr)
     expect(idea.vote_unlocked?(1)).to be_true
@@ -66,7 +66,7 @@ describe Idea do
 
   it 'should return favourtes that exist' do
     fav = mock_model('Favourite', id: 1)
-    Favourite.stub existing_favourite: fav
+    Favourite.stub existing_favourite: [fav]
 
     idea = Idea.new(@attr)
     expect(idea.existing_favourite(1)).to eq(fav)

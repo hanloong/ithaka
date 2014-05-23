@@ -31,7 +31,7 @@ describe Vote do
   it 'should only allow a user to vote for an idea once' do
     vote1 = Vote.create(@attr)
     vote2 = Vote.new(@attr)
-    expect(Vote.existing_vote(vote1.idea_id, vote1.user_id)).to eq(vote1)
+    expect(Vote.existing_vote(vote1.user_id)).to eq([vote1])
     expect(vote2).not_to be_valid
   end
 

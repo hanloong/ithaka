@@ -13,6 +13,6 @@ describe Favourite do
 
   it 'should return exiting favourite for user' do
     fav = Favourite.create(@attr)
-    expect(Favourite.existing_favourite(@idea.id, @user.id)).to eq(fav)
+    expect(Favourite.existing_favourite(@user.id)).to eq([fav])
   end
 end

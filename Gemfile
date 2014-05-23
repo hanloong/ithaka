@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.1'
+ruby '2.1.2'
 gem 'rails', '4.1.0'
 gem 'sass-rails', '~> 4.0.1'
 gem 'uglifier', '>= 1.3.0'
@@ -40,9 +40,9 @@ group :development do
 end
 
 group :development, :test do
+  gem 'debugger', git: 'git@github.com:hanloong/debugger.git'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
-  gem 'debugger'
   gem 'dotenv-rails'
 end
 

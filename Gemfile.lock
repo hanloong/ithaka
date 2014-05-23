@@ -1,3 +1,12 @@
+GIT
+  remote: git@github.com:hanloong/debugger.git
+  revision: 310de4e57f8120fa40e50a63a26aa1e042e4c128
+  specs:
+    debugger (1.6.6)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.3.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -61,15 +70,11 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
-    columnize (0.3.6)
+    columnize (0.8.9)
     database_cleaner (1.0.1)
     debug_inspector (0.0.2)
-    debugger (1.6.6)
-      columnize (>= 0.3.1)
-      debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.3.2)
     debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.3.2)
+    debugger-ruby_core_source (1.3.4)
     delayed_job (4.0.1)
       activesupport (>= 3.0, < 4.2)
     delayed_job_active_record (4.0.1)
@@ -283,7 +288,7 @@ DEPENDENCIES
   chartkick
   coffee-rails (~> 4.0.0)
   database_cleaner (= 1.0.1)
-  debugger
+  debugger!
   delayed_job_active_record
   devise
   devise_invitable
