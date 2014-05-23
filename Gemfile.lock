@@ -310,7 +310,7 @@ DEPENDENCIES
   pundit
   quiet_assets
   rack-mini-profiler
-  rails (= 4.1.0)
+  rails (= 4.1)
   rails_layout
   redactor-rails
   redcarpet
