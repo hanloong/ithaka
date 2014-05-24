@@ -30,7 +30,7 @@ module ApplicationHelper
       user.avatar_url
     else
       gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
-      "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}&d=wavatar"
+      "https://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}&d=wavatar"
     end
   end
 
