@@ -10,6 +10,11 @@ describe Project do
     }
   end
 
+  it 'should show name for to_s' do
+    p = Project.new(@attr)
+    expect(p.to_s).to eq(@attr[:name])
+  end
+
   it 'should create a project with valid attributes' do
     expect(Project.new(@attr)).to be_valid
   end
