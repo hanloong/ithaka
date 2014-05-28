@@ -14,10 +14,10 @@ class Idea < ActiveRecord::Base
   validates :name, :description, :status, :project, :user, presence: true
   validates :name, uniqueness: { scope: :user_id }
 
-  delegate :manager?, to: :project
   delegate :name, to: :project, prefix: true
   delegate :public, to: :project
   delegate :organisation, to: :project
+  delegate :sandbox, to: :project
 
   scope :popular, -> { order('score DESC NULLS LAST') }
   scope :available, -> (organisation) { where(project_id: Project.available(organisation)) }
@@ -60,5 +60,9 @@ class Idea < ActiveRecord::Base
     self.influence = (((influences.only_positive.sum(:score) - influences.only_negative.sum(:score)) / 100.0) + 1.0).round(2)
     self.score = (votes.count * influence).round(2) if votes.count
     save
+  end
+
+  def manager?(u)
+    project.manager?(user) || sandbox && u == user
   end
 end
