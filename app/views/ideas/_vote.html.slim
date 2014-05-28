@@ -3,7 +3,7 @@
     = render partial: 'shared/scorecard', locals: {idea: idea}
     hr
     - if !current_user.can_vote?
-      button.btn.btn-wide.btn-grey.btn-lg disabled="disabled" all out of kudos
+      button.btn.btn-wide.btn-grey.btn-lg disabled="disabled" all out of votes
     - elsif vote = idea.existing_vote(current_user.id)
       - if vote.unlocked?
           = link_to fa_icon('undo', text: 'Retract Support'), project_idea_vote_path(idea.project, idea, vote.id), method: :delete, class: "btn-wide btn btn-danger btn-lg"
@@ -14,7 +14,7 @@
         = f.hidden_field :user_id, value: current_user.id
         = f.hidden_field :idea_id, value: idea.id
         button.btn-wide.btn.btn-primary.btn-lg type='submit'
-          #{fa_icon('thumbs-up', text: 'Kudos')}
+          #{fa_icon('thumbs-up', text: 'Vote')}
     hr
     .favourite
       - if fav = idea.existing_favourite(current_user.id)
