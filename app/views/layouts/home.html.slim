@@ -7,13 +7,13 @@ html
     meta name="description" content="#{content_for?(:description) ? yield(:description) : 'ithaka.io. An insightful ideation platform'}"
     meta name="google-site-verification" content="-KYJFK3ctiGnSxT1uyFP-kQURfOjfGRN8Sz75Jn6I48"
     == favicon_link_tag 'favicon.ico'
-    == stylesheet_link_tag "//fonts.googleapis.com/css?family=Roboto", media: "all"
-    == stylesheet_link_tag "home", media: "all", "data-turbolinks-track" => true
-    == javascript_include_tag "home", "data-turbolinks-track" => true
     == csrf_meta_tags
   body
     header
       == render 'layouts/home/navigation'
     main[role="main"]
       == yield
+    == stylesheet_link_tag "//fonts.googleapis.com/css?family=Roboto", media: "all"
+    == stylesheet_link_tag "home", media: "all", "data-turbolinks-track" => true
+    == javascript_include_tag "home", "data-turbolinks-track" => true
 == render 'layouts/analytics'

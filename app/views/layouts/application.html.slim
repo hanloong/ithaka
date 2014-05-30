@@ -6,9 +6,6 @@ html
       = content_for?(:title) ? yield(:title) : 'ithaka'
     meta name="description" content="#{content_for?(:description) ? yield(:description) : 'ithaka.io. An insightful ideation platform'}"
     == favicon_link_tag 'favicon.ico'
-    == stylesheet_link_tag "application", :media => "all", "data-turbolinks-track" => true
-    == javascript_include_tag "application", "data-turbolinks-track" => true
-    == javascript_include_tag "//www.google.com/jsapi", "chartkick"
     == csrf_meta_tags
   body
     header
@@ -22,4 +19,7 @@ html
         .clearfix
       == yield
     == render 'layouts/footer'
+    == javascript_include_tag "//www.google.com/jsapi", "chartkick"
+    == javascript_include_tag "application", "data-turbolinks-track" => true
+    == stylesheet_link_tag "application", :media => "all", "data-turbolinks-track" => true
 == render 'layouts/analytics'
