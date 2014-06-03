@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:hanloong/debugger.git
+  remote: https://github.com/hanloong/debugger.git
   revision: 310de4e57f8120fa40e50a63a26aa1e042e4c128
   specs:
     debugger (1.6.6)

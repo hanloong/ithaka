@@ -40,7 +40,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'debugger', git: 'git@github.com:hanloong/debugger.git'
+  gem 'debugger', git: 'https://github.com/hanloong/debugger.git'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'dotenv-rails'
