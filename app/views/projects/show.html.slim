@@ -40,6 +40,6 @@
         .project-sidebar
           = render partial: 'search', locals: {project: @project, search: @search, status_presenter: @status_presenter}
           .text-center
-            = link_to fa_icon('lightbulb-o', text: "new idea"), new_project_idea_path(@project), class: "btn-wide btn btn-success btn-lg"
+            = link_to fa_icon('lightbulb-o', text: "New idea"), new_project_idea_path(@project), class: "btn-wide btn btn-success btn-lg"
             hr
             = render partial: 'shared/by_line', locals: {o: @project, label: 'Project Owner'}
