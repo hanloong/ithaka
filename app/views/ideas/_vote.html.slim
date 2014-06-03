@@ -3,10 +3,10 @@
     = render partial: 'shared/scorecard', locals: {idea: idea}
     hr
     - if !current_user.can_vote?
-      button.btn.btn-wide.btn-grey.btn-lg disabled="disabled" all out of votes
+      button.btn.btn-wide.btn-grey.btn-lg disabled="disabled" All out of votes
     - elsif vote = idea.existing_vote(current_user.id)
       - if vote.unlocked?
-          = link_to fa_icon('undo', text: 'Retract Support'), project_idea_vote_path(idea.project, idea, vote.id), method: :delete, class: "btn-wide btn btn-danger btn-lg"
+          = link_to fa_icon('undo', text: 'Retract support'), project_idea_vote_path(idea.project, idea, vote.id), method: :delete, class: "btn-wide btn btn-danger btn-lg"
       - else
         | thanks for your support
     - else
@@ -24,5 +24,5 @@
           = f.hidden_field :user_id, value: current_user.id
           = f.hidden_field :idea_id, value: idea.id
           button.btn.btn-default type='submit'
-            #{fa_icon('star', text: 'follow')}
+            #{fa_icon('star', text: 'Follow')}
     hr
