@@ -1,5 +1,4 @@
-/ navigation styled for Bootstrap 3.0
-nav.navbar.navbar-default.navbar-static-top
+nav.navbar.navbar-default.navbar-fixed-top
   .container
     .navbar-header
       button.navbar-toggle[type="button" data-toggle="collapse" data-target=".navbar-collapse"]
@@ -14,6 +13,7 @@ nav.navbar.navbar-default.navbar-static-top
     .collapse.navbar-collapse
       form.navbar-form.navbar-right
         .form-group
+          = link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary'
           = link_to 'Login', new_user_session_path, class: 'btn btn-pink'
       ul.nav.navbar-nav.navbar-right
         li
