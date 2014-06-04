@@ -35,7 +35,7 @@ describe CommentsController do
 
     it 'should set comment to hidden' do
       comment = FactoryGirl.create(:comment, idea: @idea, user: @user)
-      Comment.any_instance.stub(:update).and_return(false)
+      allow_any_instance_of(Comment).to receive(:update).and_return(false)
       put :update, project_id: @project.id, idea_id: @idea.id, id: comment.id,
                    comment: { hidden: true }
       expect(flash[:alert]).to eq('Comment not saved.')

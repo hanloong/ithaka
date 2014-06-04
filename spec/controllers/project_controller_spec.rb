@@ -32,7 +32,7 @@ describe ProjectsController do
 
     it 'should redirect if project not yours' do
       project = FactoryGirl.create(:project, organisation: @org)
-      Project.any_instance.stub(:has_access?).and_return(false)
+      allow_any_instance_of(Project).to receive(:has_access?).and_return(false)
       get :show, id: project.id
       expect(response).to redirect_to projects_path
     end

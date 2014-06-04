@@ -19,6 +19,11 @@ describe Idea do
   end
 
   context 'invalid when' do
+    before :example do
+      allow_any_instance_of(Idea).to receive(:existing_vote).and_return(nil)
+      allow_any_instance_of(Idea).to receive(:calculate_influence).and_return(0)
+    end
+
     it 'name is blank'  do
       @attr[:name] = nil
       idea = Idea.new(@attr)
@@ -58,7 +63,7 @@ describe Idea do
 
   it 'should show when know when a users vote is unlcoked' do
     vote = mock_model('Vote', id: 1, unlocked?: true)
-    Vote.stub existing_vote: [vote]
+    allow(Vote).to receive(:existing_vote).and_return([vote])
 
     idea = Idea.new(@attr)
     expect(idea.vote_unlocked?(1)).to be_truthy
@@ -66,7 +71,7 @@ describe Idea do
 
   it 'should return favourtes that exist' do
     fav = mock_model('Favourite', id: 1)
-    Favourite.stub existing_favourite: [fav]
+    allow_any_instance_of(Idea).to receive(:existing_favourite).and_return(fav)
 
     idea = Idea.new(@attr)
     expect(idea.existing_favourite(1)).to eq(fav)

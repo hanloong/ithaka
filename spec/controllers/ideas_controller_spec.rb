@@ -39,7 +39,7 @@ describe IdeasController do
 
     it 'should redirect if project not yours' do
       idea = FactoryGirl.create(:idea, project: @project, user: @user)
-      Project.any_instance.stub(:has_access?).and_return(false)
+      allow_any_instance_of(Project).to receive(:has_access?).and_return(false)
       get :show, project_id: @project.id, id: idea.id
       expect(response).to redirect_to projects_path
     end
