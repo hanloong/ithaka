@@ -23,7 +23,7 @@ describe InfluencesController do
       expect do
         put :update, format: :js, project_id: @project.id, idea_id: @idea.id, id: Influence.first.id,
                      influence: { score: 50 }
-      end.not_to change { Influence.first.score }.from(0).to(50)
+      end.not_to change { Influence.first.score }
     end
   end
 end

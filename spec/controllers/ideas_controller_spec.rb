@@ -10,7 +10,7 @@ describe IdeasController do
   describe 'GET "new"' do
     it 'should be successful' do
       get :new, project_id: @project.id
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
@@ -137,7 +137,7 @@ describe IdeasController do
         get :unlock, project_id: @project.id, id: idea.id
       end.not_to change{
         Idea.first.votes.sample.unlocked?
-      }.from(false).to(true)
+      }
     end
   end
 

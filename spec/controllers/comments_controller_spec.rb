@@ -30,7 +30,7 @@ describe CommentsController do
       put :update, project_id: @project.id, idea_id: @idea.id, id: comment.id,
                    comment: { hidden: true }
       comment.reload
-      expect(comment.hidden).to be_true
+      expect(comment.hidden).to be_truthy
     end
 
     it 'should set comment to hidden' do

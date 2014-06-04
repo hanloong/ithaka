@@ -37,19 +37,19 @@ describe Vote do
 
   it 'is unlocked when it is new'  do
     vote = Vote.create(@attr)
-    expect(vote.unlocked?).to be_true
+    expect(vote.unlocked?).to be_truthy
   end
 
   it 'is unlocked when it is new'  do
     vote = Vote.create(@attr)
-    expect(vote.unlocked?).to be_true
+    expect(vote.unlocked?).to be_truthy
   end
 
   it 'is locked when old'  do
     Timecop.freeze(Date.today - 1) do
       Vote.create(@attr)
     end
-    expect(Vote.first.unlocked?).to be_false
+    expect(Vote.first.unlocked?).to be_falsy
   end
 
   it 'is locked when old'  do
@@ -60,7 +60,7 @@ describe Vote do
     vote = Vote.first
     vote.unlocked = false
 
-    expect(vote.unlocked?).to be_false
+    expect(vote.unlocked?).to be_falsy
   end
 
   it 'should be able to unlock a vote' do

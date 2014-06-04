@@ -61,7 +61,7 @@ describe Idea do
     Vote.stub existing_vote: [vote]
 
     idea = Idea.new(@attr)
-    expect(idea.vote_unlocked?(1)).to be_true
+    expect(idea.vote_unlocked?(1)).to be_truthy
   end
 
   it 'should return favourtes that exist' do
