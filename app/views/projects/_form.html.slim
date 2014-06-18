@@ -17,7 +17,7 @@
                   = f.text_area :description, rows: 3, class: 'form-control input-lg'
               .form-group
                 .col-sm-2
-                  = f.label :user, 'Poject Champion', class: 'input-lg'
+                  = f.label :user, 'Project Champion', class: 'input-lg'
                 .col-sm-10
                   = f.collection_select :user_id, User.org_owners(current_user.organisation_id), :id, :name, {}, class: 'form-control input-lg'
               .form-group
