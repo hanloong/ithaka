@@ -2,10 +2,15 @@
   .text-center
     h5 #{idea.manager?(current_user) ? "Edit Influence" : "Influence"}
     - idea.influences.each do |i|
-      = form_for [idea.project, idea, i], remote: true, authenticity_token: true, html: { role: 'form', class: 'form-horiztonal' } do |f|
-        div class="range range-#{i.is_negative ? 'danger' : 'primary'}"
-          = f.range_field :score, min: 0, max: 100, value: i.score, onchange: "range#{i.id}.value=value; $(this).submit();", disabled: !idea.manager?(current_user)
-          output id="range#{i.id}" #{i.score}
+      - if idea.manager?(current_user)
+        = form_for [idea.project, idea, i], remote: true, authenticity_token: true, html: { role: 'form', class: 'form-horiztonal' } do |f|
+          div class="range range-#{i.is_negative ? 'danger' : 'primary'}"
+            = f.range_field :score, min: 0, max: 100, value: i.score, onchange: "range#{i.id}.value=value; $(this).submit();", disabled: !idea.manager?(current_user)
+            output id="range#{i.id}" #{i.score}
+          small #{i.name}
+      - else
+        .progress
+          div class="progress-bar progress-bar-#{i.is_negative ? 'danger' : 'info'}" role="progressbar"  aria-valuenow="#{i.score}" aria-valuemin="0" aria-valuemax="100" style="width:#{i.score}%;"
         small #{i.name}
     hr
     h4

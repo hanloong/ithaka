@@ -63,6 +63,6 @@ class Idea < ActiveRecord::Base
   end
 
   def manager?(u)
-    project.manager?(user) || sandbox && u == user
+    project.manager?(u) || sandbox && u == user
   end
 end
