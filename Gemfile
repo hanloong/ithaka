@@ -37,6 +37,7 @@ group :development do
   gem 'rails_layout'
   gem 'rack-mini-profiler'
   gem 'letter_opener'
+  gem 'ninefold'
 end
 
 group :development, :test do
