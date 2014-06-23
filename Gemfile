@@ -27,6 +27,7 @@ gem 'redactor-rails'
 gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
+gem 'stripe', git: 'https://github.com/stripe/stripe-ruby'
 
 group :development do
   gem 'spring'
