@@ -1,138 +1,41 @@
-Votation
+Ithaka
 =========
 
-![Build Status](https://www.codeship.io/projects/072f8220-9957-0131-fb57-5670ddce16b6/status)
+[![Build Status](https://snap-ci.com/LyZLHjzXy4XGiVuvjshweQTXF9Uq3EDec_CtMN_tBFA/build_image)](https://snap-ci.com/hanloong/ithaka/branch/master)
 
-Diagnostics
--
+## Description
 
-This application was built with recipes that are known to work together.
+Ithaka is an ideation platform built with Ruby on Rails
 
-This application was built with preferences that are NOT known to work
-together.
+## Requirements
 
-If the application doesn’t work as expected, please [report an issue](https://github.com/RailsApps/rails_apps_composer/issues)
-and include these diagnostics:
+- Ruby 2.1.2
+- Bundler
+- Postgres (optional but prefered)
 
-We’d also like to know if you’ve found combinations of recipes or
-preferences that do work together.
+## Setup
 
-Recipes:
+```bash
+git clone https://github.com/hanloong/ithaka.git
+cd ithaka
+bundle install
+rake db:create
+rake db:migrate
+rake db:seed
+foreman start
+```
 
-* apps4
-* controllers
-* core
-* email
-* extras
-* frontend
-* gems
-* git
-* init
-* models
-* prelaunch
-* railsapps
-* readme
-* routes
-* saas
-* setup
-* testing
-* views
+## Tests
 
-Preferences:
+Using *Rspec 3*
 
-* git: true
-* apps4: none
-* dev_webserver: puma
-* prod_webserver: puma
-* database: postgresql
-* templates: slim
-* unit_test: rspec
-* integration: rspec-capybara
-* continuous_testing: none
-* fixtures: factory_girl
-* frontend: bootstrap3
-* email: none
-* authentication: devise
-* devise_modules: default
-* authorization: pundit
-* starter_app: admin_app
-* rvmrc: false
-* quiet_assets: true
-* local_env_file: foreman
-* better_errors: true
+```bash
+# run tests
+/ithaka/ $ rspec
+```
 
-Ruby on Rails
----
+Test coverage is measured after each rspec run and can be fond at ```project_root/coverage/index.html```
 
-This application requires:
+## CI and Deployment
 
--   Ruby
--   Rails
-
-Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
-
-Database
----
-
-This application uses PostgreSQL with ActiveRecord.
-
-Development
--
-
--   Template Engine: Slim
--   Testing Framework: RSpec and Factory Girl
--   Front-end Framework: Bootstrap 3.0 (Sass)
--   Form Builder: SimpleForm
--   Authentication: Devise
--   Authorization: None
--   Admin: None
-
-
-
-
-
-
- delivery is disabled in development.
-
-Getting Started
-
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-Documentation and Support
-
-
-This is the only documentation.
-
-#### Issues
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-Similar Projects
--
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-Contributing
---
-
-If you make improvements to this application, please share with others.
-
--   Fork the project on GitHub.
--   Make your feature addition or bug fix.
--   Commit with Git.
--   Send the author a pull request.
-
-If you add functionality to this application, create an alternative
-implementation, or build an application that is similar, please contact
-me and I’ll add a note to the README so that others can find your work.
-
-Credits
---
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-License
---
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Each commit to master will trigger a build on snap-ci and on passing the build will be deployed to ninefold
