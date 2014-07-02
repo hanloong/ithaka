@@ -77,6 +77,12 @@ describe Idea do
     expect(idea.existing_favourite(1)).to eq(fav)
   end
 
+  it 'shoud ask favourites if any' do
+    allow_any_instance_of(Favourite).to receive(:existing_favourite).and_return(nil)
+    idea = Idea.create(@attr)
+    expect(idea.existing_favourite(1)).to be_nil
+  end
+
   it 'should unlock associated votes' do
     idea = Idea.create(@attr)
     Timecop.freeze(Date.today - 1) do
