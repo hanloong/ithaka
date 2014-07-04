@@ -3,12 +3,12 @@ require 'spec_helper'
 describe Idea do
   before :each do
     user = create(:user)
-    project = create(:project, organisation: user.organisation)
+    @project = create(:project, organisation: user.organisation)
     @attr = {
       name: 'Best idea eva',
       description: 'make all the things',
       user: user,
-      project: project,
+      project: @project,
       status: 1
     }
   end
@@ -100,7 +100,7 @@ describe Idea do
   end
 
   it 'should create influences on create' do
-    create(:factor)
+    create(:factor, project: @project)
     idea = Idea.create(@attr)
     expect(idea.influences.count).to eq(1)
   end

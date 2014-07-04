@@ -7,7 +7,7 @@ describe ProjectsController do
     sign_in @user
   end
 
-  describe 'INDEX "index"' do
+  describe 'GET "index"' do
     it 'should show all projects' do
       create(:project, organisation: @org)
       get :index

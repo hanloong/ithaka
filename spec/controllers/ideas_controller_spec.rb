@@ -92,7 +92,7 @@ describe IdeasController do
       expect(@idea.name).to eq('New Name')
     end
 
-    it 'should not create the idea' do
+    it 'should not update the idea' do
       put :update, id: @idea.id, project_id: @project.id, idea: { name: '' }
       expect(response).to render_template :edit
     end

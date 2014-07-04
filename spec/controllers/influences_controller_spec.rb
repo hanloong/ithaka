@@ -6,7 +6,7 @@ describe InfluencesController do
     @user = create(:user, organisation: org)
     @project = create(:project, organisation: org)
     @idea = create(:idea, project: @project, user: @user)
-    create(:factor)
+    create(:factor, project: @project)
     sign_in @user
   end
 

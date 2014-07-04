@@ -5,6 +5,8 @@ class Factor < ActiveRecord::Base
   has_many :influence, dependent: :destroy
   has_many :ideas, through: :project
 
+  validates :name, :project, presence: true
+
   after_create :setup_factor
 
   default_scope -> { order(:name) }

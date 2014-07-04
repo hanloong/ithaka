@@ -7,12 +7,12 @@ class FactorsController < ApplicationController
   end
 
   def create
-    if Factor.create factor_params.merge(project: @project)
+    factor = Factor.new factor_params.merge(project: @project)
+    if factor.save
       redirect_to project_factors_path(@project), notice: 'Factor created'
     else
       redirect_to project_factors_path(@project), error: 'Oops, something went wrong'
     end
-
   end
 
   def update
@@ -24,11 +24,8 @@ class FactorsController < ApplicationController
   end
 
   def destroy
-    if @factor.destroy
-      redirect_to project_factors_path(@project), notice: 'Factor deleted'
-    else
-      redirect_to project_factors_path(@project), error: 'Oops, something went wrong'
-    end
+    @factor.destroy
+    redirect_to project_factors_path(@project), notice: 'Factor deleted'
   end
 
   private
