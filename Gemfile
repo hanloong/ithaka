@@ -27,6 +27,7 @@ gem 'redactor-rails'
 gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
+gem 'newrelic_rpm'
 
 group :development do
   gem 'spring'

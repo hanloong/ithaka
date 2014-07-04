@@ -168,6 +168,7 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
     netrc (0.7.7)
+    newrelic_rpm (3.9.0.229)
     ninefold (1.7.0)
       faraday (~> 0.8)
       json (~> 1.7)
@@ -331,6 +332,7 @@ DEPENDENCIES
   letter_opener
   mini_magick
   minitest
+  newrelic_rpm
   ninefold
   pg
   puma
