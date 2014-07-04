@@ -1,0 +1,36 @@
+- content_for :head do
+  = link_to fa_icon('tasks', text: "Projects"), projects_path
+  |  /  
+  = link_to @project.name, edit_project_path(@project)
+  |  / Edit influence factors
+
+.tab-content.no-tabs
+  .tab-pane.active
+    .contents.clearfix
+      .col-sm-9
+        .row.default-contents
+          .factors-table
+            .row
+              .col-xs-4.th Description
+              .col-xs-4.th Negative
+              .col-xs-2.th Save
+              .col-xs-2.th Delete
+            - @factors.each do |factor|
+              = render factor
+            = render Factor.new({project: @project})
+      .col-sm-3
+        .idea-contents
+          .text-center
+            h5 Need Help?
+          ul
+            li Factors define what ratings you can assign to idea's within this project.
+            li They can be either negative of positive.
+            li
+              | Some examples are
+              ul
+                li Revenue
+                li Risk
+                li Productivity
+                li Workplace moral
+          hr
+          = link_to "Finished", project_path(@project), class: 'btn btn-success btn-wide'

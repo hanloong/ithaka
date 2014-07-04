@@ -10,6 +10,7 @@ Votation::Application.routes.draw do
       get :unlock, on: :member
       get :release, on: :member
     end
+    resources :factors
   end
   root to: 'home#index'
   devise_for :users, controllers: { registrations: 'registrations', invitations: 'invitations' }

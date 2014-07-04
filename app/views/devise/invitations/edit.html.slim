@@ -3,7 +3,7 @@
 
 .tab-content.no-tabs
   .tab-pane.active
-    .contents
+    .contents.clearfix
       .row.default-contents.col-sm-8.col-sm-offset-2
         .authform.padded-form
           = form_for resource, as: resource_name, url: invitation_path(resource_name), html: { class: 'form-horizontal', method: :put } do |f|
@@ -21,4 +21,3 @@
                 = f.password_field :password_confirmation, class: 'input-lg form-control'
             .form-group
               = f.submit t("devise.invitations.edit.submit_button"), class: 'btn btn-primary btn-lg pull-right'
-      .clearfix
