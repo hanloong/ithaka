@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
 
   before(:each) do
-    org = FactoryGirl.create(:organisation)
+    org = create(:organisation)
     @attr = {
       name: 'Example User',
       email: 'user@example.com',

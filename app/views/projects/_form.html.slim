@@ -1,6 +1,6 @@
 .tab-content.no-tabs
   .tab-pane.active
-    .contents
+    .contents.clearfix
       .col-sm-9
         .row.default-contents
           .padded-form
@@ -30,4 +30,8 @@
             h5 Need Help?
           ul
             li Create projects for logical groupings of idea around products or activities like a social club.
-      .clearfix
+            - unless project.new_record?
+              li #{link_to "Modify Factors", project_factors_path(project)} for this project
+          - unless project.new_record?
+            hr
+            = link_to 'Modify Factors', project_factors_path(project), class: 'btn btn-primary btn-wide'

@@ -7,6 +7,7 @@ class Idea < ActiveRecord::Base
   has_many :votes, dependent: :destroy
   has_many :favourites, dependent: :destroy
   has_many :influences, dependent: :destroy
+  has_many :factors, through: :project
 
   STATUS = %w(discussing verified planned in_progress complete closed archived)
   enum status: STATUS
@@ -51,7 +52,7 @@ class Idea < ActiveRecord::Base
   end
 
   def setup_influence
-    Factor.all.each do |f|
+    factors.each do |f|
       Influence.create(idea_id: id, factor: f, score: 0)
     end
   end

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe UsersController do
 
   before :each do
-    @user = FactoryGirl.create(:user)
+    @user = create(:user)
     sign_in @user
   end
 
@@ -34,7 +34,7 @@ describe UsersController do
     end
 
     it 'should not allow view other user' do
-      user2 = FactoryGirl.create(:user, :other_email)
+      user2 = create(:user, :other_email)
       get :show, id: user2.id
       expect(response).to redirect_to root_path
     end
@@ -67,7 +67,7 @@ describe UsersController do
     end
 
     it 'should allow deleteion of other user' do
-      user2 = FactoryGirl.create(:user, :other_email)
+      user2 = create(:user, :other_email)
       expect do
         delete :destroy, id: user2.id
       end.to change { User.count }.by(-1)
@@ -82,7 +82,7 @@ describe UsersController do
   end
 
   it 'should stop normal users from seeing admin' do
-    user = FactoryGirl.create(:user, :other_email)
+    user = create(:user, :other_email)
     sign_in user
     @request.env['HTTP_REFERER'] = 'test'
     get :index

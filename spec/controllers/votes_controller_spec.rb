@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe VotesController do
   before :each do
-    org = FactoryGirl.create(:organisation)
-    @user = FactoryGirl.create(:user, organisation: org)
-    @project = FactoryGirl.create(:project, organisation: org)
-    @idea = FactoryGirl.create(:idea, project: @project, user: @user)
+    org = create(:organisation)
+    @user = create(:user, organisation: org)
+    @project = create(:project, organisation: org)
+    @idea = create(:idea, project: @project, user: @user)
     sign_in @user
   end
 
@@ -27,7 +27,7 @@ describe VotesController do
 
   describe 'DELETE "destroy"' do
     it 'should delete a unlocked vote' do
-      @vote = FactoryGirl.create(:vote, idea: @idea, user: @user, unlocked: true)
+      @vote = create(:vote, idea: @idea, user: @user, unlocked: true)
       expect do
         delete :destroy, id: @vote.id, project_id: @project.id, idea_id: @idea
       end.to change { Vote.count }.by(-1)

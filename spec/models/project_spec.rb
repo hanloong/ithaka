@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Project do
   before :each do
-    @org = FactoryGirl.create(:organisation)
+    @org = create(:organisation)
     @attr = {
       name: 'Make money',
       description: 'For reals',
@@ -33,7 +33,7 @@ describe Project do
     before :each do
       ActiveRecord::Base.transaction do
         Project.create(@attr)
-        org2 = FactoryGirl.create(:organisation)
+        org2 = create(:organisation)
         Project.create(name: 'Public',
                        description: 'Project',
                        public: true,
@@ -56,47 +56,47 @@ describe Project do
     end
 
     context 'when managing a project' do
-      let(:org) { FactoryGirl.create(:organisation) }
-      let(:project) { FactoryGirl.create(:project, organisation: org) }
+      let(:org) { create(:organisation) }
+      let(:project) { create(:project, organisation: org) }
 
       it 'should allow admin to manage' do
-        admin = FactoryGirl.create(:user, role: :admin)
+        admin = create(:user, role: :admin)
         expect(project.manager?(admin)).to be_truthy
       end
 
       it 'should allow this orgs owner to manage' do
-        owner = FactoryGirl.create(:user, role: :owner, organisation: org)
+        owner = create(:user, role: :owner, organisation: org)
         expect(project.manager?(owner)).to be_truthy
       end
 
       it 'should not allow another orgs owner to manage' do
-        owner = FactoryGirl.create(:user, role: :owner)
+        owner = create(:user, role: :owner)
         expect(project.manager?(owner)).to be_falsy
       end
 
       it 'should not allow a regular user to manage' do
-        user = FactoryGirl.create(:user, role: :user, organisation: org)
+        user = create(:user, role: :user, organisation: org)
         expect(project.manager?(user)).to be_falsy
       end
 
       describe '#has_access?' do
-        let(:project) { FactoryGirl.create(:project, organisation: org) }
+        let(:project) { create(:project, organisation: org) }
 
         it 'should allow access to user in same org' do
-          user = FactoryGirl.create(:user, organisation: org)
+          user = create(:user, organisation: org)
           expect(project.has_access?(user)).to be_truthy
         end
 
         it 'should not allow access to user in other org' do
-          org2 = FactoryGirl.create(:organisation)
-          user = FactoryGirl.create(:user, organisation: org2)
+          org2 = create(:organisation)
+          user = create(:user, organisation: org2)
           expect(project.has_access?(user)).to be_falsy
         end
 
         it 'should allow access to public projects' do
           project.update(public: true)
-          org2 = FactoryGirl.create(:organisation)
-          user = FactoryGirl.create(:user, organisation: org2)
+          org2 = create(:organisation)
+          user = create(:user, organisation: org2)
           expect(project.has_access?(user)).to be_truthy
         end
       end
@@ -104,14 +104,14 @@ describe Project do
       describe '#is_public?' do
         it 'should allow access to public projects' do
           project.update(public: true)
-          org2 = FactoryGirl.create(:organisation)
-          user = FactoryGirl.create(:user, organisation: org2)
+          org2 = create(:organisation)
+          user = create(:user, organisation: org2)
           expect(project.is_public?(user)).to be_truthy
         end
 
         it 'should not say project in own org is public' do
           project.update(public: true)
-          user = FactoryGirl.create(:user, organisation: project.organisation)
+          user = create(:user, organisation: project.organisation)
           expect(project.is_public?(user)).to be_falsy
         end
       end

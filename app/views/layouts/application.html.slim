@@ -15,11 +15,10 @@ html
       == render 'layouts/navigation'
     main[role="main"]
       == render 'layouts/messages'
-      .page-head
+      .page-head.clearfix
         .breadcrumbs
           h3 == yield :head
         == render 'layouts/votes'
-        .clearfix
       == yield
     == render 'layouts/footer'
 == render 'layouts/analytics'

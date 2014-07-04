@@ -1,6 +1,6 @@
 .tab-content.no-tabs
   .tab-pane.active
-    .contents
+    .contents.clearfix
       .row.default-contents.col-md-6.col-md-offset-3
         .row
           .text-center
@@ -32,7 +32,6 @@
               .form-group.row.text-center
                 - if devise_mapping.registerable?
                   = link_to 'Sign up', new_registration_path(resource_name)
-                  |  |  
+                  |  |
                 - if devise_mapping.recoverable?
                   = link_to "Forgot password?", new_password_path(resource_name)
-      .clearfix

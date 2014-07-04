@@ -2,14 +2,14 @@ require 'spec_helper'
 
 describe ProjectsController do
   before :each do
-    @user = FactoryGirl.create(:user)
+    @user = create(:user)
     @org = @user.organisation
     sign_in @user
   end
 
-  describe 'INDEX "index"' do
+  describe 'GET "index"' do
     it 'should show all projects' do
-      FactoryGirl.create(:project, organisation: @org)
+      create(:project, organisation: @org)
       get :index
       expect(assigns(:projects).count).to eq(Project.available(@user.organisation).count)
 
@@ -25,22 +25,22 @@ describe ProjectsController do
 
   describe 'GET "show"' do
     it 'should find the project' do
-      project = FactoryGirl.create(:project, organisation: @org)
+      project = create(:project, organisation: @org)
       get :show, id: project.id
       expect(assigns(:project)).to eq(project)
     end
 
     it 'should redirect if project not yours' do
-      project = FactoryGirl.create(:project, organisation: @org)
+      project = create(:project, organisation: @org)
       allow_any_instance_of(Project).to receive(:has_access?).and_return(false)
       get :show, id: project.id
       expect(response).to redirect_to projects_path
     end
 
     it 'should filter ideas based on search params' do
-      project = FactoryGirl.create(:project, organisation: @org)
-      idea = FactoryGirl.create(:idea, name: 'test idea', project: project, user: @user)
-      FactoryGirl.create(:idea, name: 'another idea', project: project, user: @user)
+      project = create(:project, organisation: @org)
+      idea = create(:idea, name: 'test idea', project: project, user: @user)
+      create(:idea, name: 'another idea', project: project, user: @user)
       get :show, id: project.id, search: { keywords: 'test', status: Idea::STATUS }
       expect(assigns(:ideas)).to eq([idea])
     end
@@ -48,7 +48,7 @@ describe ProjectsController do
 
   describe 'GET "edit"' do
     it 'should find the project' do
-      project = FactoryGirl.create(:project, organisation: @org)
+      project = create(:project, organisation: @org)
       get :edit, id: project.id
       expect(assigns(:project)).to eq(project)
     end
@@ -74,7 +74,7 @@ describe ProjectsController do
 
   describe 'PUT "update"' do
     before :each do
-      @project = FactoryGirl.create(:project, organisation: @org)
+      @project = create(:project, organisation: @org)
     end
 
     it 'should update the project with valid input' do
@@ -94,7 +94,7 @@ describe ProjectsController do
 
   describe 'DELETE "destroy"' do
     it 'should delte a valid project' do
-      @project = FactoryGirl.create(:project, organisation: @org)
+      @project = create(:project, organisation: @org)
       expect do
         delete :destroy, id: @project.id
       end.to change { Project.count }.by(-1)

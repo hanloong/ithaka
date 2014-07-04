@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe CommentsController do
   before :each do
-    @user = FactoryGirl.create(:user)
-    @project = FactoryGirl.create(:project, organisation: @user.organisation)
-    @idea = FactoryGirl.create(:idea, project: @project, user: @user)
+    @user = create(:user)
+    @project = create(:project, organisation: @user.organisation)
+    @idea = create(:idea, project: @project, user: @user)
     sign_in @user
   end
 
@@ -26,7 +26,7 @@ describe CommentsController do
 
   describe 'PUT "update"' do
     it 'should set comment to hidden' do
-      comment = FactoryGirl.create(:comment, idea: @idea, user: @user)
+      comment = create(:comment, idea: @idea, user: @user)
       put :update, project_id: @project.id, idea_id: @idea.id, id: comment.id,
                    comment: { hidden: true }
       comment.reload
@@ -34,7 +34,7 @@ describe CommentsController do
     end
 
     it 'should set comment to hidden' do
-      comment = FactoryGirl.create(:comment, idea: @idea, user: @user)
+      comment = create(:comment, idea: @idea, user: @user)
       allow_any_instance_of(Comment).to receive(:update).and_return(false)
       put :update, project_id: @project.id, idea_id: @idea.id, id: comment.id,
                    comment: { hidden: true }
@@ -44,7 +44,7 @@ describe CommentsController do
 
   describe 'DELETE "destroy"' do
     it 'should delete a valid comment' do
-      comment = FactoryGirl.create(:comment, idea: @idea, user: @user)
+      comment = create(:comment, idea: @idea, user: @user)
       expect do
         delete :destroy, project_id: @project.id, idea_id: @idea.id, id: comment.id
       end.to change { Comment.count }.by(-1)
