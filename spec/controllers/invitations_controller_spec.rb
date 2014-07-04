@@ -7,7 +7,7 @@ describe InvitationsController do
 
   describe 'POST "create"' do
     it 'should register new user' do
-      user = FactoryGirl.create(:user)
+      user = create(:user)
       sign_in user
       expect do
         post :create, user: { name: 'test', email: 'fread@test.com', role: :user }

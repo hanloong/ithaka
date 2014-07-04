@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe Idea do
   before :each do
-    user = FactoryGirl.create(:user)
-    project = FactoryGirl.create(:project, organisation: user.organisation)
+    user = create(:user)
+    project = create(:project, organisation: user.organisation)
     @attr = {
       name: 'Best idea eva',
       description: 'make all the things',
@@ -87,8 +87,8 @@ describe Idea do
     idea = Idea.create(@attr)
     Timecop.freeze(Date.today - 1) do
       (1..4).each do |i|
-        user = FactoryGirl.create(:user, email: "test#{i}@email.com")
-        FactoryGirl.create(:vote, idea: idea, user: user)
+        user = create(:user, email: "test#{i}@email.com")
+        create(:vote, idea: idea, user: user)
       end
     end
 
@@ -100,20 +100,20 @@ describe Idea do
   end
 
   it 'should create influences on create' do
-    FactoryGirl.create(:factor)
+    create(:factor)
     idea = Idea.create(@attr)
     expect(idea.influences.count).to eq(1)
   end
 
   describe 'user labels' do
     it 'should show admin' do
-      admin = FactoryGirl.create(:user, email: 'admin@test.com', role: :admin)
+      admin = create(:user, email: 'admin@test.com', role: :admin)
       idea = Idea.create(@attr)
       expect(idea.user_label(admin)).to eq('Admin')
     end
 
     it 'should show chapion' do
-      user = FactoryGirl.create(:user, email: 'admin@test.com')
+      user = create(:user, email: 'admin@test.com')
       idea = Idea.create(@attr)
       idea.project.update(user: user)
       expect(idea.user_label(user)).to eq('Champion')
@@ -121,7 +121,7 @@ describe Idea do
 
     it 'should show manager' do
       idea = Idea.create(@attr)
-      user = FactoryGirl.create(:user, email: 'admin@test.com',
+      user = create(:user, email: 'admin@test.com',
                                        role: :owner,
                                        organisation: idea.project.organisation)
       expect(idea.user_label(user)).to eq('Owner')
@@ -129,7 +129,7 @@ describe Idea do
 
     it 'should be nil for normal user' do
       idea = Idea.create(@attr)
-      user = FactoryGirl.create(:user, email: 'admin@test.com', role: :user,
+      user = create(:user, email: 'admin@test.com', role: :user,
                                        organisation: idea.project.organisation)
       expect(idea.user_label(user)).to be_nil
     end

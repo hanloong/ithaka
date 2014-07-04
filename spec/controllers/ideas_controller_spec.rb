@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe IdeasController do
   before :each do
-    @user = FactoryGirl.create(:user)
-    @project = FactoryGirl.create(:project, organisation: @user.organisation)
+    @user = create(:user)
+    @project = create(:project, organisation: @user.organisation)
     sign_in @user
   end
 
@@ -16,29 +16,29 @@ describe IdeasController do
 
   describe 'GET "show"' do
     it 'should find the idea' do
-      idea = FactoryGirl.create(:idea, project: @project, user: @user)
+      idea = create(:idea, project: @project, user: @user)
       get :show, project_id: @project.id, id: idea.id
       expect(assigns(:idea)).to eq(idea)
     end
 
     it 'should default to visible comments' do
-      idea = FactoryGirl.create(:idea, project: @project, user: @user)
-      FactoryGirl.create(:comment, idea: idea, user: @user)
-      FactoryGirl.create(:comment, idea: idea, user: @user, hidden: true)
+      idea = create(:idea, project: @project, user: @user)
+      create(:comment, idea: idea, user: @user)
+      create(:comment, idea: idea, user: @user, hidden: true)
       get :show, project_id: @project.id, id: idea.id
       expect(assigns(:comments)).to eq(idea.comments.visible)
     end
 
     it 'should show all comments if asked' do
-      idea = FactoryGirl.create(:idea, project: @project, user: @user)
-      FactoryGirl.create(:comment, idea: idea, user: @user)
-      FactoryGirl.create(:comment, idea: idea, user: @user, hidden: true)
+      idea = create(:idea, project: @project, user: @user)
+      create(:comment, idea: idea, user: @user)
+      create(:comment, idea: idea, user: @user, hidden: true)
       get :show, project_id: @project.id, id: idea.id, hidden: true
       expect(assigns(:comments)).to eq(idea.comments)
     end
 
     it 'should redirect if project not yours' do
-      idea = FactoryGirl.create(:idea, project: @project, user: @user)
+      idea = create(:idea, project: @project, user: @user)
       allow_any_instance_of(Project).to receive(:has_access?).and_return(false)
       get :show, project_id: @project.id, id: idea.id
       expect(response).to redirect_to projects_path
@@ -47,7 +47,7 @@ describe IdeasController do
 
   describe 'GET "edit"' do
     it 'should find the idea' do
-      idea = FactoryGirl.create(:idea, project: @project, user: @user)
+      idea = create(:idea, project: @project, user: @user)
       get :edit, project_id: @project.id, id: idea.id
       expect(assigns(:idea)).to eq(idea)
     end
@@ -77,7 +77,7 @@ describe IdeasController do
 
   describe 'PUT "update"' do
     before :each do
-      @idea = FactoryGirl.create(:idea, project: @project, user: @user)
+      @idea = create(:idea, project: @project, user: @user)
     end
 
     it 'should update the idea with valid input' do
@@ -99,7 +99,7 @@ describe IdeasController do
   end
 
   it 'should delete a valid idea' do
-    @idea = FactoryGirl.create(:idea, project: @project, user: @user)
+    @idea = create(:idea, project: @project, user: @user)
     expect do
       delete :destroy, id: @idea.id, project_id: @project.id
     end.to change { Idea.count }.by(-1)
@@ -107,12 +107,12 @@ describe IdeasController do
 
   describe 'GET "unlock"' do
     it 'should unlock votes for the idea if owner' do
-      idea = FactoryGirl.create(:idea, project: @project, user: @user)
+      idea = create(:idea, project: @project, user: @user)
       @user.update(role: :owner)
       Timecop.freeze(Date.today - 1) do
         (1..4).each do |i|
-          user = FactoryGirl.create(:user, email: "test#{i}@email.com")
-          FactoryGirl.create(:vote, idea: idea, user: user)
+          user = create(:user, email: "test#{i}@email.com")
+          create(:vote, idea: idea, user: user)
         end
       end
 
@@ -125,11 +125,11 @@ describe IdeasController do
 
     it 'should not unlock votes for the idea if not an owner' do
       @user.update(role: :user)
-      idea = FactoryGirl.create(:idea, project: @project, user: @user)
+      idea = create(:idea, project: @project, user: @user)
       Timecop.freeze(Date.today - 1) do
         (1..4).each do |i|
-          user = FactoryGirl.create(:user, email: "test#{i}@email.com")
-          FactoryGirl.create(:vote, idea: idea, user: user)
+          user = create(:user, email: "test#{i}@email.com")
+          create(:vote, idea: idea, user: user)
         end
       end
 
@@ -143,12 +143,12 @@ describe IdeasController do
 
   describe 'GET "release"' do
     it 'should delete votes for the idea if owner' do
-      idea = FactoryGirl.create(:idea, project: @project, user: @user)
+      idea = create(:idea, project: @project, user: @user)
       @user.update(role: :owner)
       Timecop.freeze(Date.today - 1) do
         (1..4).each do |i|
-          user = FactoryGirl.create(:user, email: "test#{i}@email.com")
-          FactoryGirl.create(:vote, idea: idea, user: user)
+          user = create(:user, email: "test#{i}@email.com")
+          create(:vote, idea: idea, user: user)
         end
       end
 
@@ -161,11 +161,11 @@ describe IdeasController do
 
     it 'should not release votes for the idea if not an owner' do
       @user.update(role: :user)
-      idea = FactoryGirl.create(:idea, project: @project, user: @user)
+      idea = create(:idea, project: @project, user: @user)
       Timecop.freeze(Date.today - 1) do
         (1..4).each do |i|
-          user = FactoryGirl.create(:user, email: "test#{i}@email.com")
-          FactoryGirl.create(:vote, idea: idea, user: user)
+          user = create(:user, email: "test#{i}@email.com")
+          create(:vote, idea: idea, user: user)
         end
       end
 
