@@ -1,41 +1,40 @@
-//= depend_on_asset "pattern.png"
-
 $navbar-margin-bottom: 0
 @import 'framework_and_overrides'
 @import 'global'
 @import 'font-awesome'
 
-.pad-menu
-  padding-top: 61px
+.home-body
+  background: $darkest-grey
 
 .heading
-  background: $dark-grey
-  background: image-url("pattern.png")
-  margin-top: -20px
-  padding: 40px 0
-  color: white
-  text-align: center
+  margin-top: 20px
+  padding: 0
+  color: $light-grey
+  .product-info
+    margin-top: 80px
   .btn
     margin: 10px 10px
   .tagline
-    margin: 30px auto 20px auto
-    border: 1px solid white
     display: block
-    max-width: 550px
-    h3
-      margin: 20px
-      color: white
-      text-align: center
-
+    h3, h2, h1, h4
+      margin: 20px 0
+      color: $light-grey
+      line-height: 150%
+    .signup
+      margin-top: 20px
+    .description
+      margin: 0px
+      line-height: 200%
+      ul
+        list-style-type: none
+        padding-left: 0
 
 .short-description
   background: white
-  padding: 30px 0 20px 0
+  padding: 30px 0
   color: $grey
   h3, h4, h5, p
     color: $grey
-  .btn
-    margin-bottom: 10px
 
 .steps
   padding: 40px 0
@@ -78,8 +77,7 @@ $navbar-margin-bottom: 0
 
 .footer
   padding: 40px 0
-  background-color: $dark-grey
-  background: image-url("pattern.png")
+  background: none
   color: $light-grey
   h4
     margin: 0 auto
@@ -102,3 +100,8 @@ $navbar-margin-bottom: 0
 
 .scoreboard
   padding-bottom: 15px
+  background: white
+
+@media screen and (min-width: $screen-sm-min)
+  .pad-menu
+    padding-top: 31px

@@ -1,4 +1,4 @@
-nav.navbar.navbar-default.navbar-fixed-top
+nav.navbar.navbar-transparent
   .container
     .navbar-header
       button.navbar-toggle[type="button" data-toggle="collapse" data-target=".navbar-collapse"]
@@ -9,12 +9,9 @@ nav.navbar.navbar-default.navbar-fixed-top
       .navbar-brand
         span.square
           = fa_icon('lightbulb-o')
-        = link_to ('Ithaka' + beta_label).html_safe, root_path, class: 'logo-text'
+        = link_to ('Ithaka').html_safe, root_path, class: 'logo-text'
     .collapse.navbar-collapse
-      form.navbar-form.navbar-right
-        .form-group
-          = link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary'
-          = link_to 'Login', new_user_session_path, class: 'btn btn-pink'
       ul.nav.navbar-nav.navbar-right
-        li
-          = link_to 'Blog', 'http://blog.ithaka.io'
+        li = link_to 'Blog', 'http://blog.ithaka.io'
+        li = link_to 'Sign Up', new_user_registration_path
+        li = link_to 'Login', new_user_session_path

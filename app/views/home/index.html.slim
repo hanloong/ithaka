@@ -1,22 +1,28 @@
 .heading
   .container
-    .row
-      .home-logo
-        h1
-          .dark-logo
-            span.square
-              = fa_icon('lightbulb-o')
-            | Ithaka
-    .tagline
-      h3 Simple and powerful ideation platform
-    .row
-      p Ithaka is a young product undergoing rapid developent.
-      p Suggest features, report bugs and vote for things that are important to you.
+    .col-sm-5.product-info
+      .row
+        .home-logo
+          h1
+            .dark-logo
+              span.square
+                = fa_icon('lightbulb-o')
+              | Ithaka
+      .tagline
+        h2 The ideation platform for your business
+        .row.description
+          ul
+            li Suggest ideas
+            li Make informed decisions
+            li Foster inovation
+        .row.signup
+          = link_to 'Sign up now', new_user_registration_path, class: 'btn btn-xlg btn-primary'
+    .col-sm-7
+      = image_tag 'ipad3.png', alt: 'Ithaka on ipad', class: 'img-responsive'
 
 .short-description
   .container.text-center
-    = link_to 'Sign up now', new_user_registration_path, class: 'btn btn-xlg btn-primary'
-    h4 We are currenlty in an open beta so create your free account now
+    h3 Who knows what magic you might uncover
 
 .benefits
   .container
