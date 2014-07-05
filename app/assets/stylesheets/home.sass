@@ -7,6 +7,7 @@ $navbar-margin-bottom: 0
   background: $darkest-grey
 
 .heading
+  font-family: 'Roboto', sans-serif
   margin-top: 20px
   padding: 0
   color: $light-grey
@@ -36,33 +37,6 @@ $navbar-margin-bottom: 0
   h3, h4, h5, p
     color: $grey
 
-.steps
-  padding: 40px 0
-  color: $dark-grey
-  font-family: 'Roboto', sans-serif
-  h2
-    color: $dark-grey
-    font-size: 3em
-    line-height: 130%
-  p
-    margin-top: 20px
-    color: $grey
-    font-size: 2em
-    font-weight: normal
-    line-height: 120%
-
-.step-1, .step-3
-  background: white
-  h2, p
-    text-align: left
-    padding-right: 20px
-
-.step-2, .step-4
-  background: $light-grey
-  h2, p
-    text-align: right
-    padding-left: 20px
-
 .benefits
   background: $light-grey
   padding: 40px 0
@@ -70,6 +44,26 @@ $navbar-margin-bottom: 0
   h3, h4, h5, p
     color: $grey
     text-align: center
+ 
+.features
+  background: white
+  padding: 40px 0
+  color: $dark-grey
+  font-family: 'Roboto', sans-serif
+  h3, h4, h5, p
+    color: $dark-grey
+    text-align: center
+
+.signup-section
+  background: $light-grey
+  padding: 30px 0
+  color: $grey
+  h2, h3, h4, h5, p
+    color: $grey
+    font-family: 'Roboto', sans-serif
+    line-height: 150%
+  form
+    margin: 20px 40px 0 40px
 
 .container
   max-width: 1024px
@@ -105,3 +99,10 @@ $navbar-margin-bottom: 0
 @media screen and (min-width: $screen-sm-min)
   .pad-menu
     padding-top: 31px
+
+@media screen and (max-width: $screen-sm-max)
+  .heading
+    margin-top: 0
+    text-align: center
+    h3, h2, h1, h4
+      margin: 0

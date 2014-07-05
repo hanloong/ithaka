@@ -1,6 +1,6 @@
-.heading
+.heading#top
   .container
-    .col-sm-5.product-info
+    .col-md-5.product-info
       .row
         .home-logo
           h1
@@ -16,8 +16,8 @@
             li Make informed decisions
             li Foster inovation
         .row.signup
-          = link_to 'Sign up now', new_user_registration_path, class: 'btn btn-xlg btn-primary'
-    .col-sm-7
+          a.btn.btn-xlg.btn-primary href="#sign-up" Sign up now
+    .col-md-7
       = image_tag 'ipad3.png', alt: 'Ithaka on ipad', class: 'img-responsive'
 
 .short-description
@@ -39,56 +39,68 @@
         h3.text-center Bottom up innovation
         p Untap the mountains of potential that exists within your workforce.
 
-.steps.step-1
-  .container
-    .col-sm-4
-      h2 Ideas
-      p Whenever you have that amazing stroke of genius simply login to ithaka and share it with the you company.
-    .col-sm-8
-      = image_tag 'step1.png', alt: 'Submit idea', class: 'img-responsive'
-
-.steps.step-2
-  .container
-    .col-sm-8
-      = image_tag 'step2.png', alt: 'Vote and discuss', class: 'img-responsive'
-    .col-sm-4
-      h2 Help others
-      p Help others bring their idea's to life by giving feedback and showing your support
-
-.steps.step-3
-  .container
-    .col-sm-4
-      h2 Influence
-      p Give wieghting to idea's that show potential and allow everyone to see how an idea was graded.
-    .col-sm-8
-      = image_tag 'step3.png', alt: 'Vote and discuss', class: 'img-responsive'
-
-.steps.step-4
-  .container
-    .col-sm-8
-      = image_tag 'step4.png', alt: 'Vote and discuss', class: 'img-responsive'
-    .col-sm-4
-      h2 Profit
-      p The best idea's will bubble to the top attached with a rich discussion making implementation a breeze
-
-.scoreboard
+.features
   .container
     .text-center
-      h3 Metrics
-    .col-sm-6.col-sm-offset-3
-      .row
-        .col-xs-4
-          .text-center
-            h3 Idea's
-            h3 #{Idea.count}
-        .col-xs-4
-          .text-center
-            h3 Votes
-            h3 #{Vote.count}
-        .col-xs-4
-          .text-center
-            h3 Projects
-            h3 #{Project.count}
+      h2 Features
+    .row
+      .col-sm-6
+        h3.text-center Projects
+        p Each account has unlimited projects so you can help represent each part and product in your business.
+      .col-sm-6
+        h3.text-center Considered Voting
+        p Each user has a limted number of votes they can use. When an idea gets updated or completed these votes can be released back to the user.
+    .row
+      .col-sm-6
+        h3.text-center Influence
+        p Project owners can rate ideas based on influence factors setup for each project. This rating is used as a mutlipler for votes to help the best ideas stand out.
+      .col-sm-6
+        h3.text-center Users get a say
+        p Anyone can submit ideas and votes to ithaka's projects to help improve the product.
+
+.pricing
+
+.signup-section
+  .container
+    .text-center
+      h2#sign-up Sign Up
+    .row
+      .col-md-9
+        - user = User.new
+        - user.organisation = Organisation.new
+        = form_for(user, url: registration_path(user), html: { class: 'form-horizontal', role: 'form' }) do |f|
+          = f.fields_for :organisation do |of|
+            .form-group
+              .col-sm-4
+                = of.label :name, 'Company Name', class: 'input-lg'
+              .col-sm-8
+                = of.text_field :name, class: 'input-lg form-control'
+          .form-group
+            .col-sm-4
+              = f.label :name, class: 'input-lg'
+            .col-sm-8
+              = f.text_field :name, class: 'input-lg form-control'
+          .form-group
+            .col-sm-4
+              = f.label :email, class: 'input-lg'
+            .col-sm-8
+              = f.email_field :email, class: 'input-lg form-control'
+          .form-group
+            .col-sm-4
+              = f.label :password, class: 'input-lg'
+            .col-sm-8
+              = f.password_field :password, class: 'input-lg form-control'
+          .form-group
+            .col-sm-4
+              = f.label :password_confirmation, class: 'input-lg'
+            .col-sm-8
+              = f.password_field :password_confirmation, class: 'input-lg form-control'
+          .form-group
+            .col-sm-8.col-sm-offset-4
+                = f.submit 'Sign up', class: 'btn btn-primary btn-lg btn-wide'
+      .col-md-3
+        h3 As we are in open beta everyting is currently free.
+        h4 Once pricing has been confirem you will receive the 30 day free trial period as if you had signed up on the day we launched payed version.
 
 .footer
   .container.text-center
