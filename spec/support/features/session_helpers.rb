@@ -2,7 +2,7 @@ module Features
   module SessionHelpers
     def sign_up_with(name, email, password, password_confirmation, company)
       visit '/'
-      click_on 'Sign Up'
+      click_on 'Sign up'
 
       fill_in 'Company Name', with: company
       fill_in 'Name', with: name
@@ -10,8 +10,8 @@ module Features
       fill_in 'Password', with: password
       fill_in 'Password confirmation', with: password_confirmation
 
-      within '.contents' do
-        click_on 'Sign up'
+      within '.signup-section' do
+        click_on 'Create account'
       end
     end
 

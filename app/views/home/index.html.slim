@@ -30,40 +30,47 @@
       h2 Why use ithaka
     .row
       .col-sm-4
+        .icons.blue #{fa_icon('comments')}
         h3.text-center Engagement
         p Give people ownership of the company's direction by allowing them to build it.
       .col-sm-4
+        .icons.yellow #{fa_icon('folder-open')}
         h3.text-center Transparency
         p Be open and share how decisions are made with ease.
       .col-sm-4
+        .icons.orange #{fa_icon('upload')}
         h3.text-center Bottom up innovation
         p Untap the mountains of potential that exists within your workforce.
 
 .features
   .container
     .text-center
-      h2 Features
+      h2 What does it do?
     .row
       .col-sm-6
+        .icons.blue #{fa_icon('tasks')}
         h3.text-center Projects
         p Each account has unlimited projects so you can help represent each part and product in your business.
       .col-sm-6
+        .icons.green #{fa_icon('check-circle-o')}
         h3.text-center Considered Voting
         p Each user has a limted number of votes they can use. When an idea gets updated or completed these votes can be released back to the user.
     .row
       .col-sm-6
+        .icons.red #{fa_icon('gavel')}
         h3.text-center Influence
         p Project owners can rate ideas based on influence factors setup for each project. This rating is used as a mutlipler for votes to help the best ideas stand out.
       .col-sm-6
+        .icons #{fa_icon('group')}
         h3.text-center Users get a say
-        p Anyone can submit ideas and votes to ithaka's projects to help improve the product.
+        p Anyone can submit ideas and votes to ithaka's own projects. This will let us know what features we should be building next.
 
 .pricing
 
 .signup-section
   .container
     .text-center
-      h2#sign-up Sign Up
+      h2#sign-up Sign up
     .row
       .col-md-9
         - user = User.new
@@ -97,7 +104,7 @@
               = f.password_field :password_confirmation, class: 'input-lg form-control'
           .form-group
             .col-sm-8.col-sm-offset-4
-                = f.submit 'Sign up', class: 'btn btn-primary btn-lg btn-wide'
+                = f.submit 'Create account', class: 'btn btn-primary btn-lg btn-wide'
       .col-md-3
         h3 As we are in open beta everyting is currently free.
         h4 Once pricing has been confirem you will receive the 30 day free trial period as if you had signed up on the day we launched payed version.
@@ -110,4 +117,4 @@
       = link_to fa_icon('book', text: 'blog.ithaka.io'), 'http://blog.ithaka.io', target: '_blank'
     br
     h4
-      = link_to 'Built by sixtythree.io', 'http://sixtythree.io', target: '_blank'
+      = link_to "Built by sixtythree.io &copy; #{Time.now.year.to_s}".html_safe, 'http://sixtythree.io', target: '_blank'
