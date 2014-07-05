@@ -1,0 +1,24 @@
+- content_for :head do
+  = fa_icon('cogs', text: @organisation.name)
+
+ul.nav.nav-tabs
+  li.active
+    a #{fa_icon('cogs', text: 'Account Settings')}
+  li
+    = link_to fa_icon('bar-chart-o', text: 'User Management'), user_registration_path
+
+.tab-content
+  .tab-pane.active
+    .row.contents.tab-contents
+      .col-sm-9
+        .row.default-contents
+          .authform.padded-form
+            .col-sm-12
+              = form_for @organisation, html: { class: 'form-horizontal', role: 'form'} do |f|
+                .form-group
+                  .col-sm-4
+                    = f.label :name, 'Organisation mame', class: 'input-lg'
+                  .col-sm-8
+                    = f.text_field :name, autofocus: true, class: 'form-control input-lg'
+                .form-group
+                  = f.submit 'Update', class: 'btn btn-primary btn-lg pull-right'
