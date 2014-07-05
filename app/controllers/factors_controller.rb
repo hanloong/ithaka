@@ -11,7 +11,7 @@ class FactorsController < ApplicationController
     if factor.save
       redirect_to project_factors_path(@project), notice: 'Factor created'
     else
-      redirect_to project_factors_path(@project), error: 'Oops, something went wrong'
+      redirect_to project_factors_path(@project), alert: 'Oops, something went wrong'
     end
   end
 
@@ -19,7 +19,7 @@ class FactorsController < ApplicationController
     if @factor.update_attributes factor_params
       redirect_to project_factors_path(@project), notice: 'Factor updated'
     else
-      redirect_to project_factors_path(@project), error: 'Oops, something went wrong'
+      redirect_to project_factors_path(@project), alert: 'Oops, something went wrong'
     end
   end
 

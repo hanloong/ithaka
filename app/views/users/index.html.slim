@@ -1,7 +1,13 @@
 - content_for :head do
   #{fa_icon('users', text: "User Manager")}
 
-.tab-content.no-tabs
+ul.nav.nav-tabs
+  li
+    = link_to fa_icon('cogs', text: 'Account Settings'), edit_organisation_path
+  li.active
+    a #{fa_icon('bar-chart-o', text: 'User Management')}
+
+.tab-content
   .tab-pane.active
     .contents
       .row.default-contents
