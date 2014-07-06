@@ -14,7 +14,7 @@ describe RegistrationsController do
 
   describe 'PUT "update"' do
     it 'should register new user' do
-      user = FactoryGirl.create(:user)
+      user = create(:user)
       sign_in user
       put :update, id: user.id, user: { name: 'new name' }
       expect(response).to be_successful

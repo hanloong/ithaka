@@ -1,22 +1,28 @@
-.heading
+.heading#top
   .container
-    .row
-      .home-logo
-        h1
-          .dark-logo
-            span.square
-              = fa_icon('lightbulb-o')
-            | Ithaka
-    .tagline
-      h3 Simple and powerful ideation platform
-    .row
-      p Ithaka is a young product undergoing rapid developent.
-      p Suggest features, report bugs and vote for things that are important to you.
+    .col-md-5.product-info
+      .row
+        .home-logo
+          h1
+            .dark-logo
+              span.square
+                = fa_icon('lightbulb-o')
+              | Ithaka
+      .tagline
+        h2 The ideation platform for your business
+        .row.description
+          ul
+            li Suggest ideas
+            li Make informed decisions
+            li Foster inovation
+        .row.signup
+          a.btn.btn-xlg.btn-primary href="#sign-up" Sign up now
+    .col-md-7
+      = image_tag 'ipad3.png', alt: 'Ithaka on ipad', class: 'img-responsive'
 
 .short-description
   .container.text-center
-    = link_to 'sign up now', new_user_registration_path, class: 'btn btn-xlg btn-primary'
-    h4 We are currenlty in an open beta so create your free account now
+    h3 Who knows what magic you might uncover
 
 .benefits
   .container
@@ -24,65 +30,84 @@
       h2 Why use ithaka
     .row
       .col-sm-4
-        h3.text-center Engagement
+        .icons.yellow #{fa_icon('bolt')}
+        h3.text-center Empowering employees
         p Give people ownership of the company's direction by allowing them to build it.
       .col-sm-4
+        .icons.blue #{fa_icon('folder-open')}
         h3.text-center Transparency
         p Be open and share how decisions are made with ease.
       .col-sm-4
-        h3.text-center Bottom up innovation
+        .icons.orange #{fa_icon('bar-chart-o')}
+        h3.text-center Innovation from within
         p Untap the mountains of potential that exists within your workforce.
 
-.steps.step-1
-  .container
-    .col-sm-4
-      h2 Ideas
-      p Whenever you have that amazing stroke of genius simply login to ithaka and share it with the you company.
-    .col-sm-8
-      = image_tag 'step1.png', alt: 'Submit idea', class: 'img-responsive'
-
-.steps.step-2
-  .container
-    .col-sm-8
-      = image_tag 'step2.png', alt: 'Vote and discuss', class: 'img-responsive'
-    .col-sm-4
-      h2 Help others
-      p Help others bring their idea's to life by giving feedback and showing your support
-
-.steps.step-3
-  .container
-    .col-sm-4
-      h2 Influence
-      p Give wieghting to idea's that show potential and allow everyone to see how an idea was graded.
-    .col-sm-8
-      = image_tag 'step3.png', alt: 'Vote and discuss', class: 'img-responsive'
-
-.steps.step-4
-  .container
-    .col-sm-8
-      = image_tag 'step4.png', alt: 'Vote and discuss', class: 'img-responsive'
-    .col-sm-4
-      h2 Profit
-      p The best idea's will bubble to the top attached with a rich discussion making implementation a breeze
-
-.scoreboard
+.features
   .container
     .text-center
-      h3 Metrics
-    .col-sm-6.col-sm-offset-3
-      .row
-        .col-xs-4
-          .text-center
-            h3 Idea's
-            h3 #{Idea.count}
-        .col-xs-4
-          .text-center
-            h3 Votes
-            h3 #{Vote.count}
-        .col-xs-4
-          .text-center
-            h3 Projects
-            h3 #{Project.count}
+      h2 What does it do?
+    .row
+      .col-sm-6
+        .icons.blue #{fa_icon('tasks')}
+        h3.text-center Projects
+        p Each account has unlimited projects so you can help represent each part and product in your business.
+      .col-sm-6
+        .icons.green #{fa_icon('check-circle-o')}
+        h3.text-center Considered voting
+        p Each user has a limted number of votes they can use. When an idea gets updated or completed these votes can be released back to the user.
+    .row
+      .col-sm-6
+        .icons.red #{fa_icon('gavel')}
+        h3.text-center Influence
+        p Project owners can rate ideas based on influence factors setup for each project. This rating is used as a mutlipler for votes to help the best ideas stand out.
+      .col-sm-6
+        .icons #{fa_icon('group')}
+        h3.text-center Users get a say
+        p Anyone can submit ideas and votes to ithaka's own projects. This will let us know what features we should be building next.
+
+.pricing
+
+.signup-section
+  .container
+    .text-center
+      h2#sign-up Sign up
+    .row
+      .col-md-9
+        - user = User.new
+        - user.organisation = Organisation.new
+        = form_for(user, url: registration_path(user), html: { class: 'form-horizontal', role: 'form' }) do |f|
+          = f.fields_for :organisation do |of|
+            .form-group
+              .col-sm-4
+                = of.label :name, 'Company Name', class: 'input-lg'
+              .col-sm-8
+                = of.text_field :name, class: 'input-lg form-control'
+          .form-group
+            .col-sm-4
+              = f.label :name, class: 'input-lg'
+            .col-sm-8
+              = f.text_field :name, class: 'input-lg form-control'
+          .form-group
+            .col-sm-4
+              = f.label :email, class: 'input-lg'
+            .col-sm-8
+              = f.email_field :email, class: 'input-lg form-control'
+          .form-group
+            .col-sm-4
+              = f.label :password, class: 'input-lg'
+            .col-sm-8
+              = f.password_field :password, class: 'input-lg form-control'
+          .form-group
+            .col-sm-4
+              = f.label :password_confirmation, class: 'input-lg'
+            .col-sm-8
+              = f.password_field :password_confirmation, class: 'input-lg form-control'
+          .form-group
+            .col-sm-8.col-sm-offset-4
+                = f.submit 'Create account', class: 'btn btn-primary btn-lg btn-wide'
+      .col-md-3
+        h3 As we are in open beta everyting is currently free.
+        h4 Once pricing has been confirmed you will receive a 30 day free trial period as if you had signed up on the day we launched the paid version.
 
 .footer
   .container.text-center
@@ -92,4 +117,4 @@
       = link_to fa_icon('book', text: 'blog.ithaka.io'), 'http://blog.ithaka.io', target: '_blank'
     br
     h4
-      = link_to 'Built by sixtythree.io', 'http://sixtythree.io', target: '_blank'
+      = link_to "Built by sixtythree.io &copy; #{Time.now.year.to_s}".html_safe, 'http://sixtythree.io', target: '_blank'

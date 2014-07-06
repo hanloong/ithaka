@@ -27,6 +27,20 @@ $input-border-focus: $blue
 $text-color: $dark-grey
 @import "bootstrap"
 
+.navbar-transparent
+  .navbar-toggle
+    border-color: none
+    span.icon-bar
+      background: white
+  .active
+    background: $dark-grey
+  li a
+    color: $light-grey
+  li a:hover
+    color: white
+    background: none
+    font-weight: bold
+
 .navbar-inverse
   margin-bottom: 0
   border-bottom: 1px solid $dark-grey

@@ -9,7 +9,7 @@ class FavouritesController < ApplicationController
                   notice: "you are now following #{favourite.idea.name}"
     else
       redirect_to project_idea_path(favourite.idea.project, favourite.idea),
-                  error: 'there was a problem trying to follow that idea'
+                  alert: 'there was a problem trying to follow that idea'
     end
   end
 

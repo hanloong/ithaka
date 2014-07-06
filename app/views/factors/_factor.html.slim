@@ -1,0 +1,11 @@
+.row.tr
+  = form_for [factor.project, factor], html: {role: 'from', class: 'form'} do |f|
+    .col-xs-4
+      = f.text_field :name, class: 'form-control input', placeholder: 'Enter new factor name'
+    .col-xs-4
+      .text-center
+        = f.check_box :is_negative
+    .col-xs-2
+      = f.submit "#{factor.new_record? ? 'Create New' : 'Update'}", class: 'btn btn-primary'
+    .col-xs-2
+      = link_to "Delete factor", project_factor_path(factor.project, factor), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger' unless factor.new_record?

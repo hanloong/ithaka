@@ -71,7 +71,9 @@ a
   .square .fa
     margin: 4px 6px
 
-.navbar-inverse .navbar-brand .logo-text
+.navbar-transparent a,
+.navbar-inverse .navbar-brand .logo-text,
+.navbar-transparent .navbar-brand .logo-text
   color: $light-grey
 
 .logo
@@ -182,9 +184,8 @@ footer
   #feedback
     color: $grey
     padding-top: 10px
-  .row
-    a
-      margin: 40px 30px 0 30px
-      color: $grey
-      &:hover
-        color: $pink
+  .row a
+    margin: 40px 30px 0 30px
+    color: $grey
+    &:hover
+      color: $pink
