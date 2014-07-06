@@ -5,7 +5,7 @@ Ithaka
 
 ## Description
 
-Ithaka is an ideation platform built with Ruby on Rails
+Ithaka is an ideation platform for internal teams and businesses. It promotes innovation from within by enabling users to suggest ideas, share and discuss thoughts and promote transparency in decision making through influence factors. 
 
 ## Requirements
 
