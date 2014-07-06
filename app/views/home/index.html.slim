@@ -45,7 +45,7 @@
 .features
   .container
     .text-center
-      h2 What does it do?
+      h2#features What it does
     .row
       .col-sm-6
         .icons.blue #{fa_icon('tasks')}
@@ -66,11 +66,50 @@
         p Anyone can submit ideas and votes to ithaka's own projects. This will let us know what features we should be building next.
 
 .pricing
+  .container
+    .text-center
+      h2#pricing How much it costs
+    .row
+      .col-md-4
+        .panel.panel-default.panel-pricing
+          .panel-heading.pink Small
+          table.table.table-pricing
+            tr: td 1 - 50 Users
+            tr: td Unlimited Project
+            tr: td Unlimited Ideas
+            tr: td 30 day free trial
+            tr: td
+              h3.pink $50
+              | AUD / Month
+
+      .col-md-4
+        .panel.panel-default.panel-pricing
+          .panel-heading.blue Medium
+          table.table.table-pricing
+            tr: td 51 - 200 Users
+            tr: td Unlimited Project
+            tr: td Unlimited Ideas
+            tr: td 30 day free trial
+            tr: td
+              h3.blue $200
+              | AUD / Month
+
+      .col-md-4
+        .panel.panel-default.panel-pricing
+          .panel-heading Enterprise
+          table.table.table-pricing
+            tr: td More than 200
+            tr: td Unlimited Project
+            tr: td Unlimited Ideas
+            tr: td 30 day free trial
+            tr: td
+              h3 Comming soon
+              | stay tuned
+    .row
 
 .signup-section
   .container
-    .text-center
-      h2#sign-up Sign up
+    .text-center: h2#sign-up Sign me up
     .row
       .col-md-9
         - user = User.new
