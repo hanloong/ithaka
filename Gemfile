@@ -28,6 +28,7 @@ gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
 gem 'newrelic_rpm'
+gem 'omniauth-google-oauth2'
 
 group :development do
   gem 'spring'
