@@ -25,4 +25,4 @@ before_script:
 
 # write the rspec tests to the output dir
 script:
-  - bin/rspec -f documentation -o shippable/testresults/results.txt
+  - rspec -f documentation -o shippable/testresults/results.txt
