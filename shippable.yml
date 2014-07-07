@@ -21,7 +21,6 @@ addons:
 before_script:
   - bundle install
   - RAILS_ENV=test rake db:create
-  - RAILS_ENV=test rake db:schema:load
   - RAILS_ENV=test rake db:migrate
 
 # write the rspec tests to the output dir
