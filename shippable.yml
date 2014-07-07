@@ -11,8 +11,6 @@ addons:
    postgresql : "9.3"
 
 before_script:
-  - cp config/database.yml.shippable config/database.yml
-  - cp config/secrets.yml.shippable config/secrets.yml
   - RAILS_ENV=test rake db:create
   - RAILS_ENV=test rake db:schema:load
   - RAILS_ENV=test rake db:migrate
