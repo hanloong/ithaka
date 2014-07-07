@@ -1,5 +1,12 @@
 language: ruby
 
+# environment variable
+env:
+  - AWS_ACCESS_KEY_ID=AKIAJV7KYPGA5HJ6NU6Q
+  - AWS_SECRET_ACCESS_KEY=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
+  - FOG_DIRECTORY=ithaka-assets-test
+  - FOG_PROVIDER=AWS
+
 rvm:
   - 2.1.2
 
