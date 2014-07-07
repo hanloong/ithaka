@@ -1,0 +1,22 @@
+language: ruby
+
+rvm:
+  - 2.1.2
+
+# ensure the test output and coverage dirs are created
+env:
+  - CI_REPORTS=shippable/testresults COVERAGE_REPORTS=shippable/codecoverage
+
+addons:
+   postgresql : "9.3"
+
+before_script:
+  - cp config/database.yml.shippable config/database.yml
+  - cp config/secrets.yml.shippable config/secrets.yml
+  - RAILS_ENV=test rake db:create
+  - RAILS_ENV=test rake db:schema:load
+  - RAILS_ENV=test rake db:migrate
+
+# write the rspec tests to the output dir
+script:
+  - bin/rspec -f documentation -o shippable/testresults/results.txt
