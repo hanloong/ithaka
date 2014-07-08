@@ -2,6 +2,7 @@ language: ruby
 
 # environment variable
 env:
+  - CI_REPORTS=shippable/testresults COVERAGE_REPORTS=shippable/codecoverage
   globals:
     - AWS_ACCESS_KEY_ID=AKIAJV7KYPGA5HJ6NU6Q
     - AWS_SECRET_ACCESS_KEY=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
@@ -11,10 +12,6 @@ env:
 rvm:
   - 2.1.2
 
-# ensure the test output and coverage dirs are created
-env:
-  - CI_REPORTS=shippable/testresults COVERAGE_REPORTS=shippable/codecoverage
-
 addons:
    postgresql : "9.3"
 
@@ -23,6 +20,5 @@ before_script:
   - RAILS_ENV=test rake db:create
   - RAILS_ENV=test rake db:migrate
 
-# write the rspec tests to the output dir
 script:
-  - rspec -f documentation -o shippable/testresults/results.txt
+  - rspec -f JUnit -o shippable/testresults/results.xml
