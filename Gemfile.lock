@@ -219,6 +219,10 @@ GEM
       mime-types
       orm_adapter
     redcarpet (3.1.2)
+    rspec (3.0.0)
+      rspec-core (~> 3.0.0)
+      rspec-expectations (~> 3.0.0)
+      rspec-mocks (~> 3.0.0)
     rspec-activemodel-mocks (1.0.1)
       activemodel (>= 3.0)
       activesupport (>= 3.0)
@@ -239,6 +243,10 @@ GEM
       rspec-mocks (~> 3.0.0)
       rspec-support (~> 3.0.0)
     rspec-support (3.0.2)
+    rspec_junit_formatter (0.2.0)
+      builder (< 4)
+      rspec (>= 2, < 4)
+      rspec-core (!= 2.12.0)
     rubocop (0.24.0)
       json (>= 1.7.7, < 2)
       parser (>= 2.2.0.pre.2, < 3.0)
@@ -345,6 +353,7 @@ DEPENDENCIES
   redcarpet
   rspec-activemodel-mocks
   rspec-rails
+  rspec_junit_formatter
   rubocop
   sass-rails (~> 4.0.1)
   sdoc (~> 0.4.0)

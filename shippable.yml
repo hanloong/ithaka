@@ -18,4 +18,4 @@ before_script:
   - RAILS_ENV=test rake db:migrate
 
 script:
-  - rspec -f JUnit -o shippable/testresults/results.xml
+  - rspec -f RspecJunitFormatter -o shippable/testresults/results.xml
