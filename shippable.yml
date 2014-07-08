@@ -2,8 +2,8 @@ language: ruby
 
 # environment variable
 env:
-  - CI_REPORTS=shippable/testresults COVERAGE_REPORTS=shippable/codecoverage
   globals:
+    - CI_REPORTS=shippable/testresults COVERAGE_REPORTS=shippable/codecoverage
     - AWS_ACCESS_KEY_ID=AKIAJV7KYPGA5HJ6NU6Q
     - AWS_SECRET_ACCESS_KEY=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
     - FOG_DIRECTORY=ithaka-assets-test
