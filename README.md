@@ -1,7 +1,7 @@
 Ithaka
 =========
 
-[![Build Status](https://snap-ci.com/LyZLHjzXy4XGiVuvjshweQTXF9Uq3EDec_CtMN_tBFA/build_image)](https://snap-ci.com/hanloong/ithaka/branch/master)
+[![Build Status](https://api.shippable.com/projects/53bb2e7a3957535502e29590/badge/master)]
 
 ## Description
 
