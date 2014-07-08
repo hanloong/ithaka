@@ -1,5 +1,9 @@
 language: ruby
 
+branches:
+  only:
+    - master
+
 env:
   - AWS_ACCESS_KEY_ID=AKIAJV7KYPGA5HJ6NU6Q
   - AWS_SECRET_ACCESS_KEY=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
@@ -21,4 +25,4 @@ script:
   - rspec -f RspecJunitFormatter -o shippable/testresults/results.xml
 
 after_success:
-  - ./deploy.sh
+  - ./scripts/deploy.sh
