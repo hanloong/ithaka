@@ -10,6 +10,9 @@ env:
   - FOG_DIRECTORY=ithaka-assets-test
   - FOG_PROVIDER=AWS
 
+notifications:
+  email: false
+
 rvm:
   - 2.1.2
 
