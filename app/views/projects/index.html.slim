@@ -1,9 +1,9 @@
 - content_for :head do
-  #{fa_icon('tasks', text: 'Projects')}
+  = fa_icon('tasks', text: 'Projects')
 
 ul.nav.nav-tabs
   li.active
-    a #{fa_icon('tasks', text: 'Projects')}
+    a = fa_icon('tasks', text: 'Projects')
   li
     = link_to fa_icon('bar-chart-o', text: 'Dashboard'), reports_path
 
@@ -15,8 +15,7 @@ ul.nav.nav-tabs
           .panel.panel-default.panel-project
             .panel-title
               h3 = link_to "#{p.name}", project_path(p)
-            .panel-body
-              #{markdown(truncate(p.description, length: 100))}
+            .panel-body = markdown(truncate(p.description, length: 100))
             .panel-footer
               - if p.manager?(current_user)
                 = link_to fa_icon('edit', text: 'Edit'), edit_project_path(p), class: "pull-right"

@@ -3,5 +3,5 @@
   - if label
     .row
       span.label.label-default #{label}
-  #{o.user ? o.user.name : "Anonymous"}
-  #{o.created_at.strftime("#{o.created_at.day.ordinalize} %b %Y")}
+  = o.user ? o.user.name : "Anonymous"
+  = o.created_at.strftime("#{o.created_at.day.ordinalize} %b %Y")
