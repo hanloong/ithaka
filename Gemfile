@@ -58,4 +58,5 @@ group :test do
   gem 'timecop'
   gem 'minitest'                  # temp fix for rails 4.1 to stup shoulda warnings
   gem 'shoulda-matchers'
+  gem 'rspec_junit_formatter'
 end
