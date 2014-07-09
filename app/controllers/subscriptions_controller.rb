@@ -5,6 +5,9 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
+    subscriber = SubscriptionService.new subscription_params.merge(email: current_user.email)
+    subscriber.subscribe
+    redirect_to organisation_subscriptions_path(@organisation), notice: 'Subscribed'
   end
 
   def show
@@ -23,6 +26,10 @@ class SubscriptionsController < ApplicationController
 
   def set_organisation
     @organisation = current_user.organisation
+  end
+
+  def subscription_params
+    params.permit(:token, :plan)
   end
 
 end

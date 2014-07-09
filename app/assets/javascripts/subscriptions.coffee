@@ -21,7 +21,7 @@ jQuery ->
 
     handleStripeResponse: (status, response) ->
       if status == 200
-        $('#stripe_card_token').val(response.id)
+        $('#token').val(response.id)
         $('#payment-form')[0].submit()
       else
         console.log(response.error.message)
