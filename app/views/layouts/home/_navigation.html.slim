@@ -14,6 +14,7 @@ nav.navbar.navbar-transparent
       ul.nav.navbar-nav.navbar-right
         li = link_to 'Blog', 'http://blog.ithaka.io'
         li: a href="#features" Features
-        li: a href="#pricing" Pricing
+        - unless Rails.env.production?
+          li: a href="#pricing" Pricing
         li: a href="#sign-up" Sign up
         li = link_to 'Login', new_user_session_path

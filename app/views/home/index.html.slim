@@ -42,10 +42,10 @@
         h3.text-center Innovation from within
         p Untap the mountains of potential that exists within your workforce.
 
-.features
+.features#features
   .container
     .text-center
-      h2#features How it works
+      h2 How it works
     .row
       .col-sm-6
         .icons.pink #{fa_icon('lightbulb-o')}
@@ -78,51 +78,51 @@
         h3.text-center 5. Discover the hidden gems
         p The idea is a hit and shoots to the top of the list guided by positive business outcomes and employee support, Good work Dave.
 
-.pricing
+- unless Rails.env.production?
+  .pricing#pricing
+    .container
+      .text-center
+        h2 How much it costs
+      .row
+        .col-md-4
+          .panel.panel-default.panel-pricing
+            .panel-heading.pink Small
+            table.table.table-pricing
+              tr: td 1 - 50 Users
+              tr: td Unlimited Project
+              tr: td Unlimited Ideas
+              tr: td 30 day free trial
+              tr: td
+                h3.pink $50
+                | AUD / Month
+
+        .col-md-4
+          .panel.panel-default.panel-pricing
+            .panel-heading.blue Medium
+            table.table.table-pricing
+              tr: td 51 - 200 Users
+              tr: td Unlimited Project
+              tr: td Unlimited Ideas
+              tr: td 30 day free trial
+              tr: td
+                h3.blue $200
+                | AUD / Month
+
+        .col-md-4
+          .panel.panel-default.panel-pricing
+            .panel-heading Enterprise
+            table.table.table-pricing
+              tr: td More than 200
+              tr: td Unlimited Project
+              tr: td Unlimited Ideas
+              tr: td 30 day free trial
+              tr: td
+                h3 Comming soon
+                | stay tuned
+
+.signup-section#sign-up
   .container
-    .text-center
-      h2#pricing How much it costs
-    .row
-      .col-md-4
-        .panel.panel-default.panel-pricing
-          .panel-heading.pink Small
-          table.table.table-pricing
-            tr: td 1 - 50 Users
-            tr: td Unlimited Project
-            tr: td Unlimited Ideas
-            tr: td 30 day free trial
-            tr: td
-              h3.pink $50
-              | AUD / Month
-
-      .col-md-4
-        .panel.panel-default.panel-pricing
-          .panel-heading.blue Medium
-          table.table.table-pricing
-            tr: td 51 - 200 Users
-            tr: td Unlimited Project
-            tr: td Unlimited Ideas
-            tr: td 30 day free trial
-            tr: td
-              h3.blue $200
-              | AUD / Month
-
-      .col-md-4
-        .panel.panel-default.panel-pricing
-          .panel-heading Enterprise
-          table.table.table-pricing
-            tr: td More than 200
-            tr: td Unlimited Project
-            tr: td Unlimited Ideas
-            tr: td 30 day free trial
-            tr: td
-              h3 Comming soon
-              | stay tuned
-    .row
-
-.signup-section
-  .container
-    .text-center: h2#sign-up Sign me up
+    .text-center: h2 Sign me up
     .row
       .col-md-9
         - user = User.new
