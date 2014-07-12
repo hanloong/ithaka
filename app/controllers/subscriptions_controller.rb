@@ -7,7 +7,7 @@ class SubscriptionsController < ApplicationController
   def create
     subscriber = SubscriptionService.new subscription_params.merge(email: current_user.email)
     subscriber.subscribe
-    redirect_to organisation_subscriptions_path(@organisation), notice: 'Subscribed'
+    redirect_to organisation_subscriptions_path, notice: 'Subscribed'
   end
 
   def show

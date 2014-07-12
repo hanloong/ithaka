@@ -19,3 +19,4 @@
 //= require redactor/config
 //= require redactor/redactor.min
 //= require global
+//= require subscriptions

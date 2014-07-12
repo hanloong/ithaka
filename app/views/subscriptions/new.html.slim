@@ -1,10 +1,4 @@
-- content_for :head do
-  = fa_icon('cogs', text: @organisation.name)
-
-ul.nav.nav-tabs
-  li = link_to fa_icon('cogs', text: 'Account Settings'), edit_organisation_path
-  li.active: a = fa_icon('usd', text: 'Billing')
-  li = link_to fa_icon('bar-chart-o', text: 'User Management'), user_registration_path
+= render partial: 'header'
 
 .tab-content
   .tab-pane.active

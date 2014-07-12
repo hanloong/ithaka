@@ -16,7 +16,7 @@ Votation::Application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations', invitations: 'invitations' }
   resources :users
   resource :organisation, only: [:edit, :update] do
-    resource :subscriptions, only: [:new, :create, :edit, :update, :destroy]
+    resource :subscriptions
   end
   get :reports, to: 'reports#index'
 end

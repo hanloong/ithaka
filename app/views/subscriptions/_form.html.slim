@@ -1,7 +1,9 @@
 .authform.padded-form
   = form_tag organisation_subscriptions_path, id: "subscription-form" do
     = hidden_field_tag :token
-
+    .row
+      .col-sm-8.col-sm-offset-4
+        #subscription-errors.alert.alert-danger
     .row.form-group
       .col-sm-4
         = label_tag :plans, 'Select Plan', class: 'input-lg'
@@ -51,6 +53,5 @@
         = submit_tag "Submit Payment", class: 'btn btn-primary btn-lg pull-right'
 
 = javascript_include_tag "https://js.stripe.com/v2/"
-
-coffee:
-  Stripe.setPublishableKey("#{STRIPE_PUBLISHABLE_KEY}")
+javascript:
+  Stripe.setPublishableKey("#{STRIPE_PUBLIC_KEY}");
