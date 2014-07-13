@@ -14,6 +14,7 @@ class IdeasController < ApplicationController
     else
       @comments = @idea.comments.visible
     end
+    @influences = @idea.influences.joins(:factor).order('factors.name')
     @status_presenter = Ideas::StatusPresenter.new
   end
 

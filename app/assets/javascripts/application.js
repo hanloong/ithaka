@@ -14,8 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
-//= require bootstrap-slider
-//= require bootstrap-slider
 //= require redactor/config
 //= require redactor/redactor.min
 //= require global

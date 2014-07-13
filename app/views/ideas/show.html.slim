@@ -28,5 +28,5 @@
           = render partial: 'comments', locals: {idea: @idea, comments: @comments}
       .col-lg-3
         = render partial: 'vote', locals: {idea: @idea}
-        = render partial: 'influence', locals: {idea: @idea}
+        = render partial: 'influence', locals: {idea: @idea, influences: @influences}
         = render partial: 'admin', locals: {idea: @idea, status_presenter: @status_presenter}

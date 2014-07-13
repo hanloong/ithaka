@@ -10,7 +10,7 @@
 - comments.each do |c|
   .row
     .col-sm-2
-      = render partial: 'shared/by_line', locals: {o: c, label: @idea.user_label(c.user)}
+      = render partial: 'shared/by_line', locals: {o: c, label: idea.user_label(c.user)}
     .col-sm-10
       .idea-body
         = markdown(c.comment)
