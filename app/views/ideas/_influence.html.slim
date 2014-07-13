@@ -1,5 +1,7 @@
 .idea-contents
-  .text-center
+  #influence-container.text-center
+    
+  .hidden
     h5 #{idea.manager?(current_user) ? "Edit Influence" : "Influence"}
     - influences.each do |i|
       - if idea.manager?(current_user)
@@ -16,3 +18,4 @@
     h4
       | Influence: 
       span#clout #{idea.influence}
+= javascript_include_tag 'react-components/idea-influence'

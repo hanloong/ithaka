@@ -1,1 +1,1 @@
-Rails.application.config.assets.precompile += %w( subscriptions.js )
+Rails.application.config.assets.precompile = ['*.js', '*.css']

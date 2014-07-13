@@ -219,11 +219,11 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rainbow (2.0.0)
     rake (10.3.2)
-    react-rails (0.4.1.1)
+    react-rails (0.10.0.0)
       execjs
       rails (>= 3.1)
-      react-source (= 0.4.1)
-    react-source (0.4.1)
+      react-source (= 0.10.0)
+    react-source (0.10.0)
     redactor-rails (0.4.5)
       devise
       mime-types
@@ -359,7 +359,7 @@ DEPENDENCIES
   rack-mini-profiler
   rails
   rails_layout
-  react-rails
+  react-rails (~> 0.10.0.0)
   redactor-rails
   redcarpet
   rspec-activemodel-mocks

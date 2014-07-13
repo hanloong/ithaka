@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
+//= require react
 //= require turbolinks
 //= require bootstrap
 //= require redactor/config

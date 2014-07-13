@@ -7,4 +7,5 @@ class Comment < ActiveRecord::Base
   scope :visible, -> { where(hidden: false) }
   scope :hidden, -> { where(hidden: true) }
   scope :available, -> (organisation) { where(idea_id: Idea.available(organisation)) }
+
 end
