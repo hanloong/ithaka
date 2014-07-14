@@ -1,3 +1,2 @@
 .idea-contents
-  .text-center
-    = react_component('InfluenceBar', {score: 15, name: 'happiness'}, {prerender: true})
+  = react_component('InfluenceList', {influences: @influences, score: idea.influence}, {prerender: true})

@@ -16,4 +16,8 @@ class Factor < ActiveRecord::Base
       Influence.create(idea: i, factor: self, score: 0)
     end
   end
+
+  def as_json(options={})
+    super(only: [:id, :name, :is_negative, :weight])
+  end
 end

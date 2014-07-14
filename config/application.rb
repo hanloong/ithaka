@@ -28,5 +28,6 @@ module Votation
     ## React Server Side rendering
     config.react.max_renderers = 10
     config.react.timeout = 20 #seconds
+    config.react.addons = true
   end
 end
