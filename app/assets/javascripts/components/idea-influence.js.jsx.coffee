@@ -1,8 +1,8 @@
 ###* @jsx React.DOM ###
 
-InfluenceBar = React.createClass
+@InfluenceBar = React.createClass
   render: ->
-    barStyle =
+    barStyle = 
       width: this.props.score + 'px'
     min = 0
     max = 100
@@ -13,8 +13,3 @@ InfluenceBar = React.createClass
       </div>
       <small>{this.props.name}</small>
     </div>`
-
-React.renderComponent(
-  `<InfluenceBar score="14" name="test"/>`,
-  document.getElementById('influence-container')
-)
