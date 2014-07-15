@@ -6,9 +6,9 @@ Votation::Application.routes.draw do
     resources :projects do
       resources :ideas do
         resources :comments
+        resources :influences, only: [:update, :index, :show]
       end
     end
-    resources :influences, only: [:update, :index, :show]
   end
 
   resources :projects do

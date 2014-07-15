@@ -1,3 +1,3 @@
 .idea-contents
-  = react_component('InfluenceList', {influences: @influences, score: idea.influence, manager: idea.manager?(current_user)}, {prerender: true})
+  = react_component('InfluenceList', {influences: @influences, idea: idea, manager: idea.manager?(current_user)}, {prerender: true})
   = javascript_tag "var AUTH_TOKEN = '#{form_authenticity_token}';" if protect_against_forgery?

@@ -1,9 +1,11 @@
 class Api::InfluencesController < ApplicationController
-  before_action :set_influence, only: [:update, :show]
+  before_action :set_idea, only: [:index]
+  before_action :set_influence, only: [:update]
 
-  def show
-    render json: {score: @influence.idea.score,
-                  influence: @influence.idea.influence}
+  def index
+    render json: {score: @idea.score,
+                  influence: @idea.influence,
+                  influences: @idea.influences.joins(:factor).order('factors.name')}
   end
 
   def update
@@ -16,6 +18,10 @@ class Api::InfluencesController < ApplicationController
 
   def set_influence
     @influence = Influence.find(params[:id])
+  end
+
+  def set_idea
+    @idea = Idea.find(params[:idea_id])
   end
 
   def influence_params

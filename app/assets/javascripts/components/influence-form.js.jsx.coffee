@@ -7,20 +7,21 @@ $.ajaxSetup
     xhr.setRequestHeader( 'X-CSRF-Token' ,token )
 
 @InfluenceForm = React.createClass
-  getInitialState: ->
-    score: this.props.score
   handleChange: (e) ->
     score = e.target.value
-    this.setState(score: score)
+    idea = this.props.idea
+    id = this.props.id
     $.ajax
-      url: '/api/influences/' + this.props.id
+      url: "/api/projects/#{idea.project_id}/ideas/#{idea.id}/influences/#{id}"
       dataType: 'json'
       type: 'PUT'
+      async: true
       data:
         authenticity_token: AUTH_TOKEN
         influence:
           score: score
       success: ((data) ->
+        # this is a bad hack and should be fixed
         $('#clout').html(data.influence)
         $('#score').html(data.score)
       ).bind(this)
@@ -35,8 +36,8 @@ $.ajaxSetup
     )
     `<div>
       <div className={classes}>
-        <input onChange={this.handleChange} name="score" max={max} min={min} value={this.state.score} type="range" />
-        <output>{this.state.score}</output>
+        <input onChange={this.handleChange} name="score" max={max} min={min} value={this.props.score} type="range" />
+        <output>{this.props.score}</output>
       </div>
       <small>{this.props.name}</small>
     </div>`
