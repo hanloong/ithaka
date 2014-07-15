@@ -7,23 +7,25 @@ $.ajaxSetup
     xhr.setRequestHeader( 'X-CSRF-Token' ,token )
 
 @InfluenceForm = React.createClass
-  mixins: [React.addons.LinkedStateMixin]
   handleMouseUp: (e) ->
     score = e.target.value
     this.props.handleChange(this.props.id, score, true)
+
   handleChange: (e) ->
     score = e.target.value
     this.props.handleChange(this.props.id, score, false)
+
   render: ->
     min = 0
     max = 100
-    cx = React.addons.classSet
     id = "range#{this.props.id}"
-    classes = cx(
+
+    cx = React.addons.classSet
+    classes = cx
       'range': true
       'range-primary': !this.props.negative
       'range-danger': this.props.negative
-    )
+
     `<div>
       <div className={classes}>
         <input id={id} name="score" onKeyUp={this.handleMouseUp} onMouseUp={this.handleMouseUp} onChange={this.handleChange} max={max} min={min} value={this.props.score} type="range" />
