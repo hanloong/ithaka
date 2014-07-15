@@ -1,5 +1,5 @@
 class Api::InfluencesController < ApplicationController
-  before_action :set_idea, only: [:index]
+  before_action :set_idea, only: [:index, :update]
   before_action :set_influence, only: [:update]
 
   def index
@@ -10,8 +10,9 @@ class Api::InfluencesController < ApplicationController
 
   def update
     @influence.update(influence_params) if @influence.manager?(current_user)
-    render json: {score: @influence.idea.score,
-                  influence: @influence.idea.influence}
+    render json: {score: @idea.score,
+                  influence: @idea.influence,
+                  influences: @idea.influences.joins(:factor).order('factors.name')}
   end
 
   private
