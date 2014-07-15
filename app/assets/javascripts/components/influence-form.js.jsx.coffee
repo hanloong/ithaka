@@ -8,9 +8,12 @@ $.ajaxSetup
 
 @InfluenceForm = React.createClass
   mixins: [React.addons.LinkedStateMixin]
+  handleMouseUp: (e) ->
+    score = e.target.value
+    this.props.handleChange(this.props.id, score, true)
   handleChange: (e) ->
     score = e.target.value
-    this.props.handleChange(this.props.id, score)
+    this.props.handleChange(this.props.id, score, false)
   render: ->
     min = 0
     max = 100
@@ -23,7 +26,7 @@ $.ajaxSetup
     )
     `<div>
       <div className={classes}>
-        <input id={id} name="score" onChange={this.handleChange} max={max} min={min} value={this.props.score} type="range" />
+        <input id={id} name="score" onKeyUp={this.handleMouseUp} onMouseUp={this.handleMouseUp} onChange={this.handleChange} max={max} min={min} value={this.props.score} type="range" />
         <output>{this.props.score}</output>
       </div>
       <small>{this.props.name}</small>

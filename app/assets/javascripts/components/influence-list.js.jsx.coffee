@@ -18,7 +18,7 @@
         $('#score').html(data.score)
       ).bind(this)
 
-  updateScore: (id, score) ->
+  updateScore: (id, score, save) ->
     ## Optimistic loading
     influences = this.state.influences.map (inf) ->
       inf.score = score if inf.id == id
@@ -27,22 +27,23 @@
     this.setState
       influences: influences
 
-    idea = this.props.idea
-    $.ajax
-      url: "/api/projects/#{idea.project_id}/ideas/#{idea.id}/influences/#{id}"
-      dataType: 'json'
-      type: 'PUT'
-      async: true
-      data:
-        authenticity_token: AUTH_TOKEN
-        influence:
-          score: score
-      success: ((data) ->
-        this.setState
-          score: data.influence
-          influences: data.influences
-        $('#score').html(data.score)
-      ).bind(this)
+    if save
+      idea = this.props.idea
+      $.ajax
+        url: "/api/projects/#{idea.project_id}/ideas/#{idea.id}/influences/#{id}"
+        dataType: 'json'
+        type: 'PUT'
+        async: true
+        data:
+          authenticity_token: AUTH_TOKEN
+          influence:
+            score: score
+        success: ((data) ->
+          this.setState
+            score: data.influence
+            influences: data.influences
+          $('#score').html(data.score)
+        ).bind(this)
 
   componentWillMount: ->
     this.loadInfluences

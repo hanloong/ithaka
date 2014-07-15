@@ -3,7 +3,7 @@
 @InfluenceBar = React.createClass
   render: ->
     barStyle = 
-      width: this.props.score + 'px'
+      width: this.props.score + '%'
     min = 0
     max = 100
     cx = React.addons.classSet
