@@ -12,4 +12,8 @@ class Influence < ActiveRecord::Base
 
   scope :only_negative, -> { joins(:factor).where('factors.is_negative = true') }
   scope :only_positive, -> { joins(:factor).where('factors.is_negative = false') }
+
+  def as_json(options={})
+    super(only: [:id, :score], include: :factor)
+  end
 end

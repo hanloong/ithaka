@@ -1,6 +1,7 @@
 .text-center
-  h4.discussion-title
-    | &#8226; &#8226; &#8226; Discussion &#8226; &#8226; &#8226;
+  .col-sm-10.col-sm-offset-2
+    h4.discussion-title
+      | &#8226; &#8226; &#8226; Discussion &#8226; &#8226; &#8226;
 .text-center
   - if idea.manager?(current_user) && idea.comments.hidden.count > 0
     - if params[:hidden]

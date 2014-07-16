@@ -1,6 +1,16 @@
 Votation::Application.routes.draw do
 
   mount RedactorRails::Engine => '/redactor_rails'
+
+  namespace :api, defaults: {format: 'json'} do
+    resources :projects do
+      resources :ideas do
+        resources :comments
+        resources :influences, only: [:update, :index, :show]
+      end
+    end
+  end
+
   resources :projects do
     resources :ideas do
       resources :votes
