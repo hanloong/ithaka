@@ -28,7 +28,7 @@ $.ajaxSetup
 
     `<div>
       <div className={classes}>
-        <input id={id} name="score" onKeyUp={this.handleMouseUp} onMouseUp={this.handleMouseUp} onChange={this.handleChange} max={max} min={min} value={this.props.score} type="range" />
+        <input id={id} name="score" onTouchEnd={this.handleMouseUp} onKeyUp={this.handleMouseUp} onMouseUp={this.handleMouseUp} onChange={this.handleChange} max={max} min={min} value={this.props.score} type="range" />
         <output>{this.props.score}</output>
       </div>
       <small>{this.props.name}</small>
