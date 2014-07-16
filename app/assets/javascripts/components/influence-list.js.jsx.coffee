@@ -3,7 +3,9 @@
 @InfluenceList = React.createClass
   getInitialState: ->
     influences: this.props.influences
-    score: this.props.score
+    score: this.props.idea.score
+    influence: this.props.idea.influence
+    votes: this.props.idea.votes_count
 
   loadInfluences: ->
     idea = this.props.idea
@@ -13,14 +15,16 @@
       type: 'GET'
       success: ((data) ->
         this.setState
-          score: data.influence
+          score: data.score
+          votes: data.votes 
+          influence: data.influence
           influences: data.influences
-        $('#score').html(data.score)
       ).bind(this)
 
   updateScore: (id, score, save) ->
     ## Optimistic loading
-    influences = this.state.influences.map (inf) ->
+    current_influences = this.state.influences
+    influences = current_influences.map (inf) ->
       inf.score = score if inf.id == id
       inf
 
@@ -38,11 +42,17 @@
           authenticity_token: AUTH_TOKEN
           influence:
             score: score
+
         success: ((data) ->
           this.setState
-            score: data.influence
-            influences: data.influences
-          $('#score').html(data.score)
+            score: data.score
+            votes: data.votes 
+            influence: data.influence
+        ).bind(this)
+
+        error: ( ->
+          this.setState
+            influences: current_influences
         ).bind(this)
 
   componentWillMount: ->
@@ -50,6 +60,11 @@
     setInterval(this.loadInfluences, 3000)
 
   render: ->
+    # update some random elements
+    $('#score').html(this.state.score)
+    $('#votes-count').html(this.state.votes)
+    $('#votes').attr('data-original-title', this.state.votes)
+
     idea = this.props.idea
     if this.props.manager
       progressNodes = this.state.influences.map ((inf) ->
@@ -63,6 +78,6 @@
       {progressNodes}
       <hr/>
       <h4>
-        Influence: <span id="clout" className="clout">{this.state.score}</span>
+        Influence: <span id="clout" className="clout">{this.state.influence}</span>
       </h4>
     </div>`

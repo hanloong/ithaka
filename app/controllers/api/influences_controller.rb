@@ -5,6 +5,7 @@ class Api::InfluencesController < ApplicationController
   def index
     render json: {score: @idea.score,
                   influence: @idea.influence,
+                  votes: @idea.votes_count,
                   influences: @idea.influences.joins(:factor).order('factors.name')}
   end
 
@@ -12,7 +13,7 @@ class Api::InfluencesController < ApplicationController
     @influence.update(influence_params) if @influence.manager?(current_user)
     render json: {score: @idea.score,
                   influence: @idea.influence,
-                  influences: @idea.influences.joins(:factor).order('factors.name')}
+                  votes: @idea.votes_count}
   end
 
   private
