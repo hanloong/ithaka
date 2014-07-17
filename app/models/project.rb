@@ -22,6 +22,10 @@ class Project < ActiveRecord::Base
     u.admin? || champion?(u) || (u.organisation == organisation && u.owner?)
   end
 
+  def anonymous?
+    false
+  end
+
   def champion?(u)
     u == user
   end

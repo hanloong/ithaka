@@ -12,7 +12,7 @@ class Idea < ActiveRecord::Base
   STATUS = %w(discussing verified planned in_progress complete closed archived)
   enum status: STATUS
 
-  validates :name, :description, :status, :project, :user, presence: true
+  validates :name, :description, :status, :project, presence: true
   validates :name, uniqueness: { scope: :user_id }
 
   delegate :name, to: :project, prefix: true
@@ -42,13 +42,10 @@ class Idea < ActiveRecord::Base
   end
 
   def user_label(u)
-    if u.admin?
-      'Admin'
-    elsif project.champion?(u)
-      'Champion'
-    elsif project.manager?(u)
-      'Owner'
-    end
+    return unless u
+    return 'Admin' if u.admin?
+    return 'Champion' if project.champion?(u)
+    return 'Owner' if project.manager?(u)
   end
 
   def setup_influence

@@ -1,10 +1,10 @@
 .by-line
-  .row
-    = image_tag avatar_url(o.user), class: 'avatar'
-  - if label
-    .row
-      span.label.label-default #{label}
-  .row
-    = o.user ? o.user.name : "Anonymous"
-  .row
-    = o.created_at.strftime("#{o.created_at.day.ordinalize} %b %Y")
+  - if o.anonymous?
+    .row = image_tag anonymous_avatar_url, class: 'avatar'
+    .row Anonymous
+  - else
+    .row = image_tag avatar_url(o.user), class: 'avatar'
+    - if label
+      .row: span.label.label-default #{label}
+    .row = o.user ? o.user.name : "Anonymous"
+  .row = o.created_at.strftime("#{o.created_at.day.ordinalize} %b %Y")

@@ -15,11 +15,18 @@
                   = f.label :description, class: 'input-lg'
                 .col-sm-10
                   = f.text_area :description, placeholder: "Write your description", class: "redactor", rows: 10
+              - if idea.project.allow_anonymous?
+                .row.form-group
+                  .col-xs-3
+                    = f.label :anonymous, 'Make anonymous', class: 'input-lg'
+                  .col-xs-9
+                    = f.check_box :anonymous, class: 'input-lg'
+              - else
+                = f.hidden_field :user_id, value: current_user.id
               .row.form-group
                 .col-xs-4.col-xs-offset-2
                 .col-xs-6
                   = f.hidden_field :project_id
-                  = f.hidden_field :user_id, value: current_user.id
                   = f.submit 'Save Idea', class: 'btn btn-primary btn-lg pull-right'
       .col-sm-3
         .idea-contents

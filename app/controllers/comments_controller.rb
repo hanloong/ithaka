@@ -33,7 +33,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:comment, :user_id, :idea_id, :hidden)
+    params.require(:comment).permit(:comment, :user_id, :idea_id, :hidden, :anonymous)
   end
 
   def set_comment

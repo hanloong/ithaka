@@ -49,6 +49,7 @@ group :development, :test do
   gem 'rspec-activemodel-mocks'
   gem 'dotenv-rails'
   gem 'rspec_junit_formatter'
+  gem 'jasmine-rails'
 end
 
 group :test do
