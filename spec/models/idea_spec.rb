@@ -4,8 +4,7 @@ describe Idea do
   before :each do
     user = create(:user)
     @project = create(:project, organisation: user.organisation)
-    @attr = {
-      name: 'Best idea eva',
+    @attr = { name: 'Best idea eva',
       description: 'make all the things',
       user: user,
       project: @project,
@@ -36,7 +35,7 @@ describe Idea do
       expect(idea).not_to be_valid
     end
 
-    it 'description is blank'  do
+    it 'user is blank'  do
       @attr[:user] = nil
       idea = Idea.new(@attr)
       expect(idea).not_to be_valid
@@ -52,6 +51,15 @@ describe Idea do
       @attr[:status] = nil
       idea = Idea.new(@attr)
       expect(idea).not_to be_valid
+    end
+  end
+
+  context 'when project allows_anonymous' do
+    it "should allow anonymous users" do
+      @project.update(allow_anonymous: true)
+      @attr[:user] = nil
+      idea = Idea.new(@attr)
+      expect(idea).to be_valid
     end
   end
 
@@ -92,9 +100,9 @@ describe Idea do
       end
     end
 
-    expect do
+    expect {
       idea.unlock_votes
-    end.to change{
+    }.to change{
       idea.votes.sample.unlocked?
     }.from(false).to(true)
   end

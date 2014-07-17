@@ -22,7 +22,7 @@ class IdeasController < ApplicationController
   end
 
   def create
-    @idea = Idea.new(idea_params.merge(status: 0))
+    @idea = Idea.new(idea_params.merge(status: 0, user: current_user))
 
     if @idea.save
       redirect_to project_idea_path(@idea.project, @idea),
@@ -84,6 +84,6 @@ class IdeasController < ApplicationController
   end
 
   def idea_params
-    params.require(:idea).permit(:name, :status, :description, :project_id, :user_id, :anonymous)
+    params.require(:idea).permit(:name, :status, :description, :project_id, :anonymous)
   end
 end

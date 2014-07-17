@@ -21,8 +21,6 @@
                     = f.label :anonymous, 'Make anonymous', class: 'input-lg'
                   .col-xs-9
                     = f.check_box :anonymous, class: 'input-lg'
-              - else
-                = f.hidden_field :user_id, value: current_user.id
               .row.form-group
                 .col-xs-4.col-xs-offset-2
                 .col-xs-6

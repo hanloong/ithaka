@@ -12,13 +12,17 @@ class Idea < ActiveRecord::Base
   STATUS = %w(discussing verified planned in_progress complete closed archived)
   enum status: STATUS
 
-  validates :name, :description, :status, :project, presence: true
-  validates :name, uniqueness: { scope: :user_id }
-
   delegate :name, to: :project, prefix: true
   delegate :public, to: :project
   delegate :organisation, to: :project
   delegate :sandbox, to: :project
+  delegate :allow_anonymous, to: :project
+
+  validates :name, :description, :status, :project, presence: true
+  validates :user, presence: true, unless: -> { project && project.allow_anonymous }
+  validates :name, uniqueness: { scope: :user_id }
+
+  before_create :set_user
 
   scope :popular, -> { order('score DESC NULLS LAST') }
   scope :available, -> (organisation) { where(project_id: Project.available(organisation)) }
@@ -62,5 +66,11 @@ class Idea < ActiveRecord::Base
 
   def manager?(u)
     project.manager?(u) || sandbox && u == user
+  end
+
+  private
+
+  def set_user
+    self.user = nil if anonymous && allow_anonymous
   end
 end
