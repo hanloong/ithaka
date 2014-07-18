@@ -19,6 +19,8 @@
 //= require components
 
 //= require bootstrap
+//= require bootstrap-switch
+//= require switch
 //= require redactor/config
 //= require redactor/redactor.min
 //= require global

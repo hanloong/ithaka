@@ -21,12 +21,11 @@
                 .col-sm-8
                   = f.collection_select :user_id, User.org_owners(current_user.organisation_id), :id, :name, {}, class: 'form-control input-lg'
               .form-group
-                .col-xs-2
-                  = f.label :allow_anonymous, 'Allow anonymity', class: 'input-lg'
-                .col-xs-8
-                  = f.check_box :allow_anonymous, class: 'input-lg'
-              .form-group
-                .col-sm-12
+                .col-sm-6.col-sm-offset-2
+                  .switch-outer
+                    = f.check_box :allow_anonymous, class: 'switch'
+                    = f.label :allow_anonymous, 'Allow Anonymous', class: 'space-left'
+                .col-sm-2
                   = f.hidden_field :organisation_id, value: current_user.organisation_id
                   = f.submit 'Save project', class: 'pull-right btn btn-pink btn-lg'
       .col-sm-3
