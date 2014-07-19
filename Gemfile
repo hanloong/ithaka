@@ -44,8 +44,8 @@ group :development do
 end
 
 group :development, :test do
-  gem 'debugger', git: 'https://github.com/hanloong/debugger.git'
   gem 'factory_girl_rails'
+  gem 'pry'
   gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
   gem 'dotenv-rails'

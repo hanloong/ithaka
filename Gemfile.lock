@@ -1,13 +1,4 @@
 GIT
-  remote: https://github.com/hanloong/debugger.git
-  revision: 310de4e57f8120fa40e50a63a26aa1e042e4c128
-  specs:
-    debugger (1.6.6)
-      columnize (>= 0.3.1)
-      debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.3.4)
-
-GIT
   remote: https://github.com/reactjs/react-rails.git
   revision: bff5d43a9471040ae3b7fc109c456c0f4a7423c0
   ref: master
@@ -89,12 +80,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.1)
-    columnize (0.8.9)
     connection_pool (2.0.0)
     database_cleaner (1.3.0)
     debug_inspector (0.0.2)
-    debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.3.5)
     delayed_job (4.0.2)
       activesupport (>= 3.0, < 4.2)
     delayed_job_active_record (4.0.1)
@@ -183,6 +171,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    method_source (0.8.2)
     mime-types (1.25.1)
     mini_magick (3.7.0)
       subexec (~> 0.2.1)
@@ -210,6 +199,10 @@ GEM
     phantomjs (1.9.7.1)
     polyglot (0.3.5)
     powerpack (0.0.9)
+    pry (0.10.0)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     puma (2.9.0)
       rack (>= 1.1, < 2.0)
     pundit (0.2.3)
@@ -351,7 +344,6 @@ DEPENDENCIES
   chartkick
   coffee-rails
   database_cleaner
-  debugger!
   delayed_job_active_record
   devise
   devise_invitable
@@ -371,6 +363,7 @@ DEPENDENCIES
   newrelic_rpm
   ninefold
   pg
+  pry
   puma
   pundit
   quiet_assets
