@@ -12,18 +12,18 @@ describe Api::InfluencesController do
 
   describe 'PUT "update"' do
     it 'should update influcne score if manager' do
-      expect do
+      expect {
         put :update, format: :json, project_id: @project.id, idea_id: @idea.id, id: Influence.first.id,
                      influence: { score: 50 }
-      end.to change { Influence.first.score }.from(0).to(50)
+      }.to change { Influence.first.score }.from(0).to(50)
     end
 
     it 'should not update influcne score if not manager' do
       @user.update(role: :user)
-      expect do
+      expect {
         put :update, format: :json, project_id: @project.id, idea_id: @idea.id, id: Influence.first.id,
                      influence: { score: 50 }
-      end.not_to change { Influence.first.score }
+      }.not_to change { Influence.first.score }
     end
   end
 

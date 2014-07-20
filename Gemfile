@@ -23,6 +23,7 @@ gem 'delayed_job_active_record'
 gem 'chartkick'
 gem 'groupdate'
 gem 'redactor-rails'
+gem 'bootstrap-switch-rails'
 gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
@@ -43,12 +44,13 @@ group :development do
 end
 
 group :development, :test do
-  gem 'debugger', git: 'https://github.com/hanloong/debugger.git'
   gem 'factory_girl_rails'
+  gem 'pry'
   gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
   gem 'dotenv-rails'
   gem 'rspec_junit_formatter'
+  gem 'jasmine-rails'
 end
 
 group :test do

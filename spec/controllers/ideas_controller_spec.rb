@@ -65,10 +65,10 @@ describe IdeasController do
       end.to change { Idea.count }.by(1)
     end
 
-    it 'should create the idea' do
+    it 'should not create the idea' do
       post :create, project_id: @project.id,
                     idea: { project_id: @project.id,
-                            name: 'Name',
+                            name: nil,
                             description: 'Test',
                             status: :discussing }
       expect(response).to render_template :new

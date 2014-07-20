@@ -1,5 +1,6 @@
 Votation::Application.routes.draw do
 
+  mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   mount RedactorRails::Engine => '/redactor_rails'
 
   namespace :api, defaults: {format: 'json'} do
