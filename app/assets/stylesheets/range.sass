@@ -1,9 +1,11 @@
 @import 'global'
+$thumb-width: 29px
+$range-height: 29px
 
 .range 
   display: table
   position: relative
-  height: 25px
+  height: $range-height
   margin-top: 20px
   background-color: rgb(245, 245, 245)
   border-radius: 4px
@@ -22,7 +24,7 @@
   display: table-cell
   width: 100%
   background-color: transparent
-  height: 25px
+  height: $range-height
   cursor: pointer
 
 .range input[type="range"]::-webkit-slider-thumb
@@ -32,8 +34,8 @@
   -o-appearance: none !important
   appearance: none !important
 
-  width: 11px
-  height: 25px
+  width: $thumb-width
+  height: $range-height
   color: $light-grey
   text-align: center
   white-space: nowrap
@@ -49,8 +51,8 @@
   -o-appearance: none !important
   appearance: none !important
 
-  width: 11px
-  height: 25px
+  width: $thumb-width
+  height: $range-height
   color: rgb(255, 255, 255)
   text-align: center
   white-space: nowrap

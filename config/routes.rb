@@ -1,6 +1,17 @@
 Votation::Application.routes.draw do
 
+  mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   mount RedactorRails::Engine => '/redactor_rails'
+
+  namespace :api, defaults: {format: 'json'} do
+    resources :projects do
+      resources :ideas do
+        resources :comments
+        resources :influences, only: [:update, :index, :show]
+      end
+    end
+  end
+
   resources :projects do
     resources :ideas do
       resources :votes
@@ -17,6 +28,8 @@ Votation::Application.routes.draw do
                                     invitations: 'invitations',
                                     omniauth_callbacks: 'omniauth_callbacks' }
   resources :users
-  resource :organisation, only: [:edit, :update]
+  resource :organisation, only: [:edit, :update] do
+    resource :subscriptions
+  end
   get :reports, to: 'reports#index'
 end

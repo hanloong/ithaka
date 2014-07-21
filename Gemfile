@@ -1,15 +1,14 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
-gem 'rails', '4.1.2'
-gem 'sass-rails', '~> 4.0.1'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'rails'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'jbuilder'
 gem 'bootstrap-sass'
-gem 'bootstrap-slider-rails'
+gem 'react-rails', git: 'https://github.com/reactjs/react-rails.git', ref: 'master'
 gem 'devise'
 gem 'devise_invitable'
 gem 'pg'
@@ -24,9 +23,11 @@ gem 'delayed_job_active_record'
 gem 'chartkick'
 gem 'groupdate'
 gem 'redactor-rails'
+gem 'bootstrap-switch-rails'
 gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
+gem 'stripe', git: 'https://github.com/stripe/stripe-ruby'
 gem 'newrelic_rpm'
 gem 'omniauth-google-oauth2'
 
@@ -40,22 +41,24 @@ group :development do
   gem 'rack-mini-profiler'
   gem 'letter_opener'
   gem 'ninefold'
+  gem 'spring-commands-rspec'
 end
 
 group :development, :test do
-  gem 'debugger', git: 'https://github.com/hanloong/debugger.git'
   gem 'factory_girl_rails'
+  gem 'pry'
   gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
   gem 'dotenv-rails'
+  gem 'rspec_junit_formatter'
+  gem 'jasmine-rails'
 end
 
 group :test do
   gem 'capybara'
-  gem 'database_cleaner', '1.0.1'
+  gem 'database_cleaner'
   gem 'email_spec'
   gem 'simplecov', require: false
   gem 'timecop'
-  gem 'minitest'                  # temp fix for rails 4.1 to stup shoulda warnings
   gem 'shoulda-matchers'
 end

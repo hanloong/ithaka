@@ -8,10 +8,10 @@
         .col-xs-6
           pre
             code
-              #{markdown_cheatsheet}
+              = markdown_cheatsheet
           | Here is just a sample of what you can do with markdown, it's by no means exhausting so try the link for further reading.
         .col-xs-6
-          #{markdown(markdown_cheatsheet)}
+          = markdown(markdown_cheatsheet)
         .clearfix
       .modal-footer
         button.btn.btn-default type='button' data-dismiss="modal" Close

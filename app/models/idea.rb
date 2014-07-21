@@ -12,13 +12,17 @@ class Idea < ActiveRecord::Base
   STATUS = %w(discussing verified planned in_progress complete closed archived)
   enum status: STATUS
 
-  validates :name, :description, :status, :project, :user, presence: true
-  validates :name, uniqueness: { scope: :user_id }
-
   delegate :name, to: :project, prefix: true
   delegate :public, to: :project
   delegate :organisation, to: :project
   delegate :sandbox, to: :project
+  delegate :allow_anonymous, to: :project
+
+  validates :name, :description, :status, :project, presence: true
+  validates :user, presence: true, unless: -> { project && project.allow_anonymous }
+  validates :name, uniqueness: { scope: :user_id }
+
+  before_create :set_user
 
   scope :popular, -> { order('score DESC NULLS LAST') }
   scope :available, -> (organisation) { where(project_id: Project.available(organisation)) }
@@ -42,13 +46,10 @@ class Idea < ActiveRecord::Base
   end
 
   def user_label(u)
-    if u.admin?
-      'Admin'
-    elsif project.champion?(u)
-      'Champion'
-    elsif project.manager?(u)
-      'Owner'
-    end
+    return unless u
+    return 'Admin' if u.admin?
+    return 'Champion' if project.champion?(u)
+    return 'Owner' if project.manager?(u)
   end
 
   def setup_influence
@@ -65,5 +66,11 @@ class Idea < ActiveRecord::Base
 
   def manager?(u)
     project.manager?(u) || sandbox && u == user
+  end
+
+  private
+
+  def set_user
+    self.user = nil if anonymous && allow_anonymous
   end
 end

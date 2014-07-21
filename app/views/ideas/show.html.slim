@@ -1,6 +1,6 @@
 - content_for :head do
   = link_to fa_icon('tasks', text: 'Projects'), projects_path
-  |  /  
+  |  /
   = link_to @idea.project_name, project_path(@idea.project)
   |  / #{truncate(@idea.name, length: 20)}
 
@@ -21,13 +21,12 @@
             .col-sm-2
               = render partial: 'shared/by_line', locals: {o: @idea, label: nil}
             .col-sm-10
-              .idea-body
-                #{markdown(@idea.description)}
+              .idea-body = markdown(@idea.description)
               .idea-footer
                 - if @idea.user == current_user || @idea.manager?(current_user)
                   = link_to fa_icon('edit', text: 'Edit'), edit_project_idea_path(@idea.project, @idea), class: 'btn btn-st btn-st-grey pull-right'
           = render partial: 'comments', locals: {idea: @idea, comments: @comments}
       .col-lg-3
         = render partial: 'vote', locals: {idea: @idea}
-        = render partial: 'influence', locals: {idea: @idea}
+        = render partial: 'influence', locals: {idea: @idea, influences: @influences}
         = render partial: 'admin', locals: {idea: @idea, status_presenter: @status_presenter}

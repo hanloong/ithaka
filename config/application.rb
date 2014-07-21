@@ -22,7 +22,12 @@ module Votation
     config.assets.precompile += ['home.js', 'home.css']
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.autoload_paths += %W(
-      #{config.root}/app/presenters
+    #{config.root}/app/presenters
     )
+
+    ## React Server Side rendering
+    config.react.max_renderers = 10
+    config.react.timeout = 20 #seconds
+    config.react.addons = true
   end
 end

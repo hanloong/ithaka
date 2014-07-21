@@ -1,6 +1,7 @@
 .text-center
-  h4.discussion-title
-    | &#8226; &#8226; &#8226; Discussion &#8226; &#8226; &#8226;
+  .col-sm-10.col-sm-offset-2
+    h4.discussion-title
+      | &#8226; &#8226; &#8226; Discussion &#8226; &#8226; &#8226;
 .text-center
   - if idea.manager?(current_user) && idea.comments.hidden.count > 0
     - if params[:hidden]
@@ -10,10 +11,10 @@
 - comments.each do |c|
   .row
     .col-sm-2
-      = render partial: 'shared/by_line', locals: {o: c, label: @idea.user_label(c.user)}
+      = render partial: 'shared/by_line', locals: {o: c, label: idea.user_label(c.user)}
     .col-sm-10
       .idea-body
-        #{markdown(c.comment)}
+        = markdown(c.comment)
       .idea-footer
         - if idea.manager?(current_user)
           = link_to fa_icon('trash-o', text: 'Remove'), project_idea_comment_path(c.idea.project, c.idea, c.id), method: :delete, class: "btn btn-st btn-st-red"

@@ -40,7 +40,7 @@ $navbar-margin-bottom: 0
 .green
   color: $green
 
-.benefits
+.benefits, .pricing
   background: $light-grey
   padding: 40px 0
   color: $grey
@@ -49,6 +49,17 @@ $navbar-margin-bottom: 0
     font-size: 80px
   h3, h4, h5, p
     color: $grey
+    text-align: center
+
+.panel-pricing
+  margin-top: 20px
+  font-family: 'Roboto', sans-serif
+  .panel-heading
+    text-align: center
+    font-size: 40px
+    color: $dark-grey
+    background: white
+  table td
     text-align: center
  
 .features
@@ -62,9 +73,11 @@ $navbar-margin-bottom: 0
   h3, h4, h5, p
     color: $dark-grey
     line-height: 150%
+    b
+      color: black
 
 .signup-section
-  background: $light-grey
+  background: $lightish-grey
   padding: 30px 0
   color: $grey
   h2, h3, h4, h5, p
@@ -101,20 +114,16 @@ $navbar-margin-bottom: 0
   line-height: 1.33
   border-radius: 6px
 
-.scoreboard
-  padding-bottom: 15px
-  background: white
-
-.benefits, .features
-  .pink i
+.benefits, .features, .pricing
+  .pink
     color: $pink
-  .red i
+  .red
     color: $red
-  .orange i
+  .orange
     color: $orange
-  .yellow i
+  .yellow
     color: $yellow
-  .blue i
+  .blue
     color: $blue
 
 @media screen and (min-width: $screen-sm-min)

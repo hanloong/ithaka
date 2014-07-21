@@ -13,9 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+
+//= require react
+//= require react_ujs
+//= require components
+
 //= require bootstrap
-//= require bootstrap-slider
-//= require bootstrap-slider
+//= require bootstrap-switch
+//= require switch
 //= require redactor/config
 //= require redactor/redactor.min
 //= require global
+//= require subscriptions

@@ -14,7 +14,7 @@
           ul
             li Suggest ideas
             li Make informed decisions
-            li Foster inovation
+            li Foster innovation
         .row.signup
           a.btn.btn-xlg.btn-primary href="#sign-up" Sign up now
     .col-md-7
@@ -42,35 +42,87 @@
         h3.text-center Innovation from within
         p Untap the mountains of potential that exists within your workforce.
 
-.features
+.features#features
   .container
     .text-center
-      h2 What does it do?
+      h2 How it works
     .row
       .col-sm-6
-        .icons.blue #{fa_icon('tasks')}
-        h3.text-center Projects
-        p Each account has unlimited projects so you can help represent each part and product in your business.
+        .icons.pink #{fa_icon('lightbulb-o')}
+        h3.text-center 1. Suggest an idea
+        p
+          | Dave the project manager has the great idea of entering a company soccer team into a local lunchtime competition. They suggest the idea under the  
+          b Social Activities 
+          | project with links to the websites.
+
       .col-sm-6
-        .icons.green #{fa_icon('check-circle-o')}
-        h3.text-center Considered voting
-        p Each user has a limted number of votes they can use. When an idea gets updated or completed these votes can be released back to the user.
+        .icons.blue #{fa_icon('comments')}
+        h3.text-center 2. Talk it through
+        p The discussion starts to flow as people seem interested. Someone designs soccer jersey's with the company logo and posts it to the thread.
     .row
       .col-sm-6
-        .icons.red #{fa_icon('gavel')}
-        h3.text-center Influence
-        p Project owners can rate ideas based on influence factors setup for each project. This rating is used as a mutlipler for votes to help the best ideas stand out.
+        .icons #{fa_icon('gavel')}
+        h3.text-center 3. Add some influence
+        p
+          | The boss notices that chatter and rates this idea based as being good for 
+          b staff morale, team bonding 
+          | and 
+          b marketing.
       .col-sm-6
-        .icons #{fa_icon('group')}
-        h3.text-center Users get a say
-        p Anyone can submit ideas and votes to ithaka's own projects. This will let us know what features we should be building next.
+        .icons.green #{fa_icon('thumbs-up')}
+        h3.text-center 4. Let people vote
+        p The votes pour in showing more than enough support to sport a team.
+    .row
+      .col-sm-6.col-sm-offset-3
+        .icons.yellow #{fa_icon('search')}
+        h3.text-center 5. Discover the hidden gems
+        p The idea is a hit and shoots to the top of the list guided by positive business outcomes and employee support, Good work Dave.
 
-.pricing
+- unless Rails.env.production?
+  .pricing#pricing
+    .container
+      .text-center
+        h2 How much it costs
+      .row
+        .col-md-4
+          .panel.panel-default.panel-pricing
+            .panel-heading.pink Small
+            table.table.table-pricing
+              tr: td 1 - 50 Users
+              tr: td Unlimited Project
+              tr: td Unlimited Ideas
+              tr: td 30 day free trial
+              tr: td
+                h3.pink $50
+                | AUD / Month
 
-.signup-section
+        .col-md-4
+          .panel.panel-default.panel-pricing
+            .panel-heading.blue Medium
+            table.table.table-pricing
+              tr: td 51 - 200 Users
+              tr: td Unlimited Project
+              tr: td Unlimited Ideas
+              tr: td 30 day free trial
+              tr: td
+                h3.blue $200
+                | AUD / Month
+
+        .col-md-4
+          .panel.panel-default.panel-pricing
+            .panel-heading Enterprise
+            table.table.table-pricing
+              tr: td More than 200
+              tr: td Unlimited Project
+              tr: td Unlimited Ideas
+              tr: td 30 day free trial
+              tr: td
+                h3 Comming soon
+                | stay tuned
+
+.signup-section#sign-up
   .container
-    .text-center
-      h2#sign-up Sign up
+    .text-center: h2 Sign me up
     .row
       .col-md-9
         - user = User.new

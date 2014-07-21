@@ -10,6 +10,11 @@ describe Project do
     }
   end
 
+  it 'should never be anonymous' do
+    p = Project.new(@attr)
+    expect(p.anonymous?).to be_falsy
+  end
+
   it 'should show name for to_s' do
     p = Project.new(@attr)
     expect(p.to_s).to eq(@attr[:name])

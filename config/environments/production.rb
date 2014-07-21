@@ -91,4 +91,6 @@ Rails.application.configure do
     authentication: 'login',
     domain: 'ithaka.io',
   }
+
+  config.react.variant = :production
 end

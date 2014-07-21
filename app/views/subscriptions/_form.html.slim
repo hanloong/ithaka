@@ -1,0 +1,57 @@
+.authform.padded-form
+  = form_tag organisation_subscriptions_path, id: "subscription-form" do
+    = hidden_field_tag :token
+    .row
+      .col-sm-8.col-sm-offset-4
+        #subscription-errors.alert.alert-danger
+    .row.form-group
+      .col-sm-4
+        = label_tag :plans, 'Select Plan', class: 'input-lg'
+      .col-sm-8
+        table.table.table-striped.table-bordered
+          .thead: tr
+            th Plan
+            th Users
+            th Cost
+            th Select
+          .tbody
+            tr
+              td Small
+              td 1-50
+              td $50 AUD
+              td = radio_button_tag(:plan, "small")
+            tr
+              td Medium
+              td 51-200
+              td $200 AUD
+              td = radio_button_tag(:plan, "medium")
+
+    .row.form-group
+      .col-sm-4
+        = label_tag :card_name, 'Card Holder Name', class: 'input-lg'
+      .col-sm-8
+        = text_field_tag :card_name, nil, name: nil, size: 20, data: {stripe: 'name'}, class: 'input-lg form-control'
+    .row.form-group
+      .col-sm-4
+        = label_tag :card_number, 'Card Number', class: 'input-lg'
+      .col-sm-8
+        = text_field_tag :card_number, nil, name: nil, size: 20, data: {stripe: 'number'}, class: 'input-lg form-control', placeholder: 'XXXX-XXXX-XXXX-XXXX'
+    .row.form-group
+      .col-sm-4
+        = label_tag :card_code, 'Security Code', class: 'input-lg'
+      .col-sm-8
+        = text_field_tag :card_code, nil, name: nil, size: 4, data: {stripe: 'cvc'}, class: 'input-lg form-control'
+    .row.form-group
+      .col-sm-4
+        = label_tag :card_month, 'Expiry Date', class: 'input-lg'
+      .col-sm-4
+        = text_field_tag :card_month, nil, name: nil, size: 2, data: {stripe: 'exp-month'}, placeholder: "MM", class: 'input-lg form-control'
+      .col-sm-4
+        = text_field_tag :card_year, nil, name: nil, size: 4, data: {stripe: 'exp-year'}, placeholder: "YYYY", class: 'input-lg form-control'
+    .row.form-group
+      .col-sm-12
+        = submit_tag "Submit Payment", class: 'btn btn-primary btn-lg pull-right'
+
+= javascript_include_tag "https://js.stripe.com/v2/"
+javascript:
+  Stripe.setPublishableKey("#{STRIPE_PUBLIC_KEY}");

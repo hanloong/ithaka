@@ -19,7 +19,7 @@ describe CommentsController do
     it 'should not create the comment' do
       expect do
         post :create, project_id: @project.id, idea_id: @idea.id,
-                      comment: { user_id: nil, idea_id: @idea.id, comment: 'Hello' }
+                      comment: {  idea_id: @idea.id, comment: nil }
       end.to change { Comment.count }.by(0)
     end
   end

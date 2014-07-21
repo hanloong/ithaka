@@ -8,20 +8,24 @@
               .form-group
                 .col-sm-2
                   = f.label :name, class: 'input-lg'
-                .col-sm-10
+                .col-sm-8
                   = f.text_field :name, class: 'input-lg form-control'
               .form-group
                 .col-sm-2
                   = f.label :description, class: 'input-lg'
-                .col-sm-10
+                .col-sm-8
                   = f.text_area :description, rows: 3, class: 'form-control input-lg'
               .form-group
                 .col-sm-2
-                  = f.label :user, 'Project Champion', class: 'input-lg'
-                .col-sm-10
+                  = f.label :user, 'Project champion', class: 'input-lg'
+                .col-sm-8
                   = f.collection_select :user_id, User.org_owners(current_user.organisation_id), :id, :name, {}, class: 'form-control input-lg'
               .form-group
-                .col-sm-12
+                .col-sm-6.col-sm-offset-2
+                  .switch-outer
+                    = f.check_box :allow_anonymous, class: 'switch'
+                    = f.label :allow_anonymous, 'Allow Anonymous', class: 'space-left'
+                .col-sm-2
                   = f.hidden_field :organisation_id, value: current_user.organisation_id
                   = f.submit 'Save project', class: 'pull-right btn btn-pink btn-lg'
       .col-sm-3

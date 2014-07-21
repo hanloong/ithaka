@@ -14,6 +14,7 @@ class IdeasController < ApplicationController
     else
       @comments = @idea.comments.visible
     end
+    @influences = @idea.influences
     @status_presenter = Ideas::StatusPresenter.new
   end
 
@@ -21,12 +22,13 @@ class IdeasController < ApplicationController
   end
 
   def create
-    @idea = Idea.new(idea_params.merge(status: 0))
+    @idea = Idea.new(idea_params.merge(status: 0, user: current_user))
 
     if @idea.save
       redirect_to project_idea_path(@idea.project, @idea),
                   notice: 'Idea was successfully created.'
     else
+      flash[:error] = "Oops something went wrong"
       render action: 'new'
     end
   end
@@ -36,6 +38,7 @@ class IdeasController < ApplicationController
       redirect_to project_idea_path(@idea.project_id, @idea),
                   notice: 'Idea was successfully updated.'
     else
+      flash[:error] = "Oops something went wrong"
       render action: 'edit'
     end
   end
@@ -52,7 +55,7 @@ class IdeasController < ApplicationController
                   notice: 'All votes have been unlocked'
     else
       redirect_to project_idea_path(@idea.project_id, @idea),
-                  alert: 'Only owners and admins can unclock votes, sorry'
+                  error: 'Only owners and admins can unclock votes, sorry'
     end
   end
 
@@ -63,7 +66,7 @@ class IdeasController < ApplicationController
                   notice: 'All votes have been released.'
     else
       redirect_to project_idea_path(@idea.project_id, @idea),
-                  alert: 'Only owners and admins can release votes, sorry'
+                  error: 'Only owners and admins can release votes, sorry'
     end
   end
 
@@ -76,11 +79,11 @@ class IdeasController < ApplicationController
   def set_project
     @project = Project.find(params[:project_id])
     unless @project.has_access?(current_user)
-      redirect_to projects_url, alert: 'Sorry you do not have access to this project'
+      redirect_to projects_url, error: 'Sorry you do not have access to this project'
     end
   end
 
   def idea_params
-    params.require(:idea).permit(:name, :status, :description, :project_id, :user_id)
+    params.require(:idea).permit(:name, :status, :description, :project_id, :anonymous)
   end
 end

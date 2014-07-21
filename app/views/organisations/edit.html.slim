@@ -4,6 +4,9 @@
 ul.nav.nav-tabs
   li.active
     a #{fa_icon('cogs', text: 'Account Settings')}
+  - unless Rails.env.production?
+    li
+      = link_to fa_icon('usd', text: 'Billing'), new_organisation_subscriptions_path
   li
     = link_to fa_icon('bar-chart-o', text: 'User Management'), user_registration_path
 

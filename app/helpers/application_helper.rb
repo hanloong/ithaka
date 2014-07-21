@@ -34,6 +34,10 @@ module ApplicationHelper
     end
   end
 
+  def anonymous_avatar_url
+    "https://gravatar.com/avatar/gravatar_id.png?s=40&d=mm"
+  end
+
   def beta_label
     html = <<-HTML
     <span class="label label-primary">beta</span>

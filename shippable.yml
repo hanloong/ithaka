@@ -1,0 +1,24 @@
+language: ruby
+
+env:
+  - AWS_ACCESS_KEY_ID=AKIAJV7KYPGA5HJ6NU6Q AWS_SECRET_ACCESS_KEY=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 FOG_DIRECTORY=ithaka-assets-test FOG_PROVIDER=AWS STRIPE_API_KEY=sk_test_i4z37iElLoAVqO0dVQbJiVD3 STRIPE_PUBLIC_KEY=pk_test_PU9iFTZvbN8Sem6M79GBs5vb
+
+notifications:
+  email: false
+
+rvm:
+  - 2.1.2
+
+addons:
+   postgresql: "9.3"
+
+before_script:
+  - mkdir -p shippable/testresults
+  - RAILS_ENV=test rake db:create
+  - RAILS_ENV=test rake db:migrate
+
+script:
+  - rspec -f RspecJunitFormatter -o shippable/testresults/results.xml
+
+after_success:
+  - ./scripts/deploy

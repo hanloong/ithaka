@@ -31,5 +31,5 @@ project = Project.find_or_create_by(name: "Votation Private", description: "Dog 
 Factor.find_or_create_by(name: 'Revenue', weight: 100, area: income, project: project)
 Factor.find_or_create_by(name: 'Risk', weight: 100, area: income, project: project, is_negative: true)
 Factor.find_or_create_by(name: 'Difficulty', weight: 100, area: budget, project: project, is_negative: true)
-Factor.find_or_create_by(name: 'Workplace Moral', weight: 100, area: culture, project: project)
+Factor.find_or_create_by(name: 'Workplace Morale', weight: 100, area: culture, project: project)
 Factor.find_or_create_by(name: 'Productivity', weight: 100, area: productivity, project: project)
