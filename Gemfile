@@ -29,6 +29,7 @@ gem 'fog'
 gem 'mini_magick'
 gem 'stripe', git: 'https://github.com/stripe/stripe-ruby'
 gem 'newrelic_rpm'
+gem 'google-api-client', require: 'google/api_client'
 gem 'omniauth-google-oauth2'
 
 group :development do

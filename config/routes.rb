@@ -30,6 +30,7 @@ Votation::Application.routes.draw do
   resources :users
   resource :organisation, only: [:edit, :update] do
     resource :subscriptions
+    get :google_callback, on: :member
   end
   get :reports, to: 'reports#index'
 end
