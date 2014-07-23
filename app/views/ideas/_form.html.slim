@@ -1,8 +1,10 @@
 .tab-content.no-tabs
   .tab-pane.active
     .contents.clearfix
-      .col-sm-9
-        .row.default-contents
+      .default-contents.col-sm-7.col-sm-offset-2
+        .row: .text-center
+          h3 = fa_icon('lightbulb-o', text: 'Idea')
+        .row
           .padded-form
             = form_for [idea.project, idea], html: { role: 'form', class: 'form-horiztonal' } do |f|
               .row.form-group
@@ -11,17 +13,17 @@
               .row.form-group
                 .col-sm-12
                   = f.text_area :description, placeholder: "Write your description", class: "redactor", rows: 10
-              .row.form-group
-                - if idea.project.allow_anonymous?
-                  .col-xs-6.col
+              - if idea.project.allow_anonymous?
+                .form-group
+                  .col-xs-8
+                    = f.label :anonymous, 'Make anonymous'
+                  .col-xs-4
                     .switch-outer
-                      = f.check_box :anonymous, class: 'switch'
-                      = f.label :anonymous, 'Make anonymous', class: 'space-left'
-                - else
-                  .col-xs-6
-                .col-xs-6
+                      = f.check_box :anonymous, class: 'switch pull-right'
+              .form-group
+                .col-xs-12
                   = f.hidden_field :project_id
-                  = f.submit 'Save Idea', class: 'btn btn-primary btn-lg pull-right btn-wide'
+                  = f.submit 'Save Idea', class: 'btn btn-primary btn-lg btn-wide'
       .col-sm-3
         .idea-contents
           .text-center

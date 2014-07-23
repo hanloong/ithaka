@@ -128,7 +128,7 @@
     .row
       .text-center: h2 Sign me up
     .row
-      .col-md-7.col-md-offset-2
+      .col-md-8.col-md-offset-2
         - user = User.new
         - user.organisation = Organisation.new
         = form_for(user, url: registration_path(user), html: { class: 'form-horizontal', role: 'form' }) do |f|
@@ -151,9 +151,12 @@
           .form-group
             .col-sm-12
                 = f.submit 'Create account', class: 'btn btn-primary btn-lg btn-wide'
-      .col-md-3
-        h3 As we are in open beta everyting is currently free.
-        h4 Once pricing has been confirmed you will receive a 30 day free trial period as if you had signed up on the day we launched the paid version.
+.beta
+  .container
+    .row
+      .col-md-12.text-center
+        h3 As we are in open beta everyting is currently FREE.
+        h5 Once pricing has been confirmed you will receive a 30 day free trial period as if you had signed up on the day we launched the paid version.
 
 .footer
   .container.text-center

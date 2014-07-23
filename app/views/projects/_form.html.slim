@@ -1,8 +1,11 @@
 .tab-content.no-tabs
   .tab-pane.active
     .contents.clearfix
-      .col-sm-9
-        .row.default-contents
+      .default-contents.col-md-6.col-md-offset-3
+        .row
+          .text-center
+            h3 #{fa_icon('tasts', text: 'Project')}
+        .row
           .padded-form
             = form_for project, html: { role: :form, class: 'form-horizontal' } do |f|
               .form-group
@@ -17,14 +20,15 @@
                 .col-sm-8
                   = f.collection_select :user_id, User.org_owners(current_user.organisation_id), :id, :name, {}, class: 'form-control input-lg'
               .form-group
-                .col-sm-4
+                .col-sm-8
                   = f.label :allow_anonymous, 'Allow anonymous', class: 'input-lg'
-                .col-sm-2
+                .col-sm-4
                   .switch-outer
-                    = f.check_box :allow_anonymous, class: 'switch'
-                .col-sm-6
+                    = f.check_box :allow_anonymous, class: 'switch .pull-right'
+              .form-group
+                .col-sm-12
                   = f.hidden_field :organisation_id, value: current_user.organisation_id
-                  = f.submit 'Save project', class: 'pull-right btn btn-pink btn-lg btn-wide'
+                  = f.submit 'Save project', class: 'btn btn-primary btn-lg btn-wide'
       .col-sm-3
         .idea-contents
           .text-center

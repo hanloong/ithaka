@@ -1,7 +1,7 @@
 .tab-content.no-tabs
   .tab-pane.active
     .contents.clearfix
-      .row.default-contents.col-md-8.col-md-offset-2
+      .row.default-contents.col-md-6.col-md-offset-3
         .row
           .text-center
             h3 #{fa_icon('user', text: 'Sign Up')}
@@ -12,30 +12,20 @@
             = devise_error_messages!
             = f.fields_for :organisation do |of|
               .form-group
-                .col-sm-4
-                  = of.label :name, 'Company Name', class: 'input-lg'
-                .col-sm-8
-                  = of.text_field :name, autofocus: true, class: 'input-lg form-control'
-            .form-group
-              .col-sm-4
-                = f.label :name, class: 'input-lg'
-              .col-sm-8
-                = f.text_field :name, autofocus: true, class: 'input-lg form-control'
-            .form-group
-              .col-sm-4
-                = f.label :email, class: 'input-lg'
-              .col-sm-8
-                = f.email_field :email, class: 'input-lg form-control'
-            .form-group
-              .col-sm-4
-                = f.label :password, class: 'input-lg'
-              .col-sm-8
-                = f.password_field :password, class: 'input-lg form-control'
-            .form-group
-              .col-sm-4
-                = f.label :password_confirmation, class: 'input-lg'
-              .col-sm-8
-                = f.password_field :password_confirmation, class: 'input-lg form-control'
+                .col-sm-12
+                  = of.text_field :name, autofocus: true, class: 'input-lg form-control', placeholder: 'Company name'
             .form-group
               .col-sm-12
-                = f.submit 'Sign up', class: 'btn btn-primary btn-lg pull-right'
+                = f.text_field :name, autofocus: true, class: 'input-lg form-control', placeholder: 'Full name'
+            .form-group
+              .col-sm-12
+                = f.email_field :email, class: 'input-lg form-control', placeholder: 'Email address'
+            .form-group
+              .col-sm-12
+                = f.password_field :password, class: 'input-lg form-control', placeholder: 'Password'
+            .form-group
+              .col-sm-12
+                = f.password_field :password_confirmation, class: 'input-lg form-control', placeholder: 'Password confirmation'
+            .form-group
+              .col-sm-12
+                = f.submit 'Sign up', class: 'btn btn-primary btn-lg btn-wide'
