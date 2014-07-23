@@ -11,7 +11,7 @@ class GoogleAppsUsersService
 
   def setup
     @client = Google::APIClient.new
-    @drive = client.discovered_api('admin', 'directory_v1')
+    @directory = client.discovered_api('admin', 'directory_v1')
   end
 
   def verify
@@ -19,6 +19,15 @@ class GoogleAppsUsersService
     auth
     @client.authorization.code = code
     @client.authorization.fetch_access_token!
+  end
+
+  def get_users
+    params = {customer: 'my_customer',
+              maxResults: 500}
+    result = @client.execute(api_method: @directory.users.list, parameters: params)
+    if result.response.status == 200
+      result.data.to_hash['users']
+    end
   end
 
   def auth

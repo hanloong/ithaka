@@ -25,3 +25,29 @@ ul.nav.nav-tabs
                     = f.text_field :name, autofocus: true, class: 'form-control input-lg'
                 .form-group
                   = f.submit 'Update', class: 'btn btn-primary btn-lg pull-right'
+          - if @users && @users.any?
+            .row
+              .text-center
+                h3 Google Apps Users
+            hr
+            table.table.table-borderd.table-striped
+              thead: tr
+                th Photo
+                th Email
+                th Name
+                th Admin
+                th.text-center Invite?
+              tbody
+                - @users.each do |user|
+                  tr
+                    td = image_tag user['thumbnailPhotoUrl'], width: '40px', height: '40px'
+                    td = user['primaryEmail']
+                    td = user['name']['fullName']
+                    td = user['isAdmin'] ? fa_icon('check') : fa_icon('times')
+                    td.text-center
+                      - if User.find_by(email: user['primaryEmail'])
+                        Already Member
+                      - else
+                        .switch-outer
+                          = check_box_tag :invite, user['primaryEmail'], true, class: 'switch'
+

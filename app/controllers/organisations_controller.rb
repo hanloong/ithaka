@@ -7,12 +7,15 @@ class OrganisationsController < ApplicationController
               code: params[:code],
               redirect: google_callback_organisation_url)
     service.verify
+    @users = service.get_users()
+
     render :edit
   end
 
   def edit
     service = GoogleAppsUsersService.new(redirect: google_callback_organisation_url)
     uri = service.connect
+    @users = []
     redirect_to uri.to_str
   end
 
