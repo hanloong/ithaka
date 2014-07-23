@@ -11,14 +11,17 @@ ul.nav.nav-tabs
   .tab-pane.active
     .row.contents.tab-contents
       .col-sm-6
-        .text-center
-          h3 Ideas
-        = pie_chart @status_presenter.group_status(Idea.available(current_user.organisation).group(:status).count), library: {backgroundColor: "none"}
+        .panel.panel-default.panel-project
+          .panel-title
+            h3 Ideas
+          = pie_chart @status_presenter.group_status(Idea.available(current_user.organisation).group(:status).count), library: {backgroundColor: "none"}
       .col-sm-6
-        .text-center
-          h3 Activity
-        = line_chart [{ name: "Votes", data: Vote.available(current_user.organisation).group_by_day(:created_at).count }, { name: "Comments", data: Comment.available(current_user.organisation).group_by_day(:created_at).count }, { name: "Ideas", data: Idea.available(current_user.organisation).group_by_day(:created_at).count}, { name: 'Follows', data: Favourite.available(current_user.organisation).group_by_day(:created_at).count}], library: {backgroundColor: 'none'}
+        .panel.panel-default.panel-project
+          .panel-title
+            h3 Activity
+          = line_chart [{ name: "Votes", data: Vote.available(current_user.organisation).group_by_day(:created_at).count }, { name: "Comments", data: Comment.available(current_user.organisation).group_by_day(:created_at).count }, { name: "Ideas", data: Idea.available(current_user.organisation).group_by_day(:created_at).count}, { name: 'Follows', data: Favourite.available(current_user.organisation).group_by_day(:created_at).count}], library: {backgroundColor: 'none'}
       .col-lg-6
-        .text-center
-          h3 Projects
-        = pie_chart Idea.available(current_user.organisation).group(:project).count, library: {backgroundColor: "none"}
+        .panel.panel-default.panel-project
+          .panel-title
+            h3 Projects
+          = pie_chart Idea.available(current_user.organisation).group(:project).count, library: {backgroundColor: "none"}
