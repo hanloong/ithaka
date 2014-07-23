@@ -7,6 +7,7 @@ class OrganisationsController < ApplicationController
               code: params[:code],
               redirect: google_callback_organisation_url)
     service.verify
+    render :edit
   end
 
   def edit
