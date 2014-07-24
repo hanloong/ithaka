@@ -12,42 +12,24 @@ ul.nav.nav-tabs
 
 .tab-content
   .tab-pane.active
-    .row.contents.tab-contents
-      .col-sm-9
-        .row.default-contents
+    .contents.clearfix
+      .default-contents.col-md-6.col-md-offset-3
+        .row
+          .text-center
+            h3 Edit Company Details
           .authform.padded-form
             .col-sm-12
               = form_for @organisation, html: { class: 'form-horizontal', role: 'form'} do |f|
                 .form-group
-                  .col-sm-4
-                    = f.label :name, 'Organisation mame', class: 'input-lg'
-                  .col-sm-8
-                    = f.text_field :name, autofocus: true, class: 'form-control input-lg'
+                  .col-sm-12
+                    = f.text_field :name, autofocus: true, class: 'form-control input-lg', placeholder: 'Company name'
                 .form-group
-                  = f.submit 'Update', class: 'btn btn-primary btn-lg pull-right'
-          - if @users && @users.any?
-            .row
-              .text-center
-                h3 Google Apps Users
-            hr
-            table.table.table-borderd.table-striped
-              thead: tr
-                th Photo
-                th Email
-                th Name
-                th Admin
-                th.text-center Invite?
-              tbody
-                - @users.each do |user|
-                  tr
-                    td = image_tag user['thumbnailPhotoUrl'], width: '40px', height: '40px'
-                    td = user['primaryEmail']
-                    td = user['name']['fullName']
-                    td = user['isAdmin'] ? fa_icon('check') : fa_icon('times')
-                    td.text-center
-                      - if User.find_by(email: user['primaryEmail'])
-                        Already Member
-                      - else
-                        .switch-outer
-                          = check_box_tag :invite, user['primaryEmail'], true, class: 'switch'
-
+                  = f.submit 'Update', class: 'btn btn-primary btn-lg btn-wide'
+      .col-sm-3
+        .idea-contents
+          .text-center
+            h5 Google Apps Integration
+          hr
+          = link_to fa_icon('google', text: 'Invite your team'), invite_organisation_path, class: 'btn btn-danger btn-lg btn-wide'
+          hr
+          p If you have an Administrator account you can invite your entire team in one go.

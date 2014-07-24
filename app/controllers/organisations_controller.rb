@@ -9,14 +9,16 @@ class OrganisationsController < ApplicationController
     service.verify
     @users = service.get_users()
 
-    render :edit
+    render :invite
+  end
+
+  def invite
+    service = GoogleAppsUsersService.new(redirect: google_callback_organisation_url)
+    uri = service.connect
+    redirect_to uri.to_str
   end
 
   def edit
-    service = GoogleAppsUsersService.new(redirect: google_callback_organisation_url)
-    uri = service.connect
-    @users = []
-    redirect_to uri.to_str
   end
 
   def update
