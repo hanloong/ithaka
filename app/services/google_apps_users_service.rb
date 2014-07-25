@@ -29,8 +29,8 @@ class GoogleAppsUsersService
 
   def authenticate
     setup
-    @client.authorization.client_id = '913471864089-lhcf3oqst2ugsseup6pdr9vpmmbbafqc.apps.googleusercontent.com'
-    @client.authorization.client_secret = 'XIvnX9_p3C_v19BoGgZ3T23l'
+    @client.authorization.client_id = ENV['GOOGLE_APPS_CLIENT_ID']
+    @client.authorization.client_secret = ENV['GOOGLE_APPS_CLIENT_SECRET']
     @client.authorization.scope = OAUTH_SCOPE
     @client.authorization.redirect_uri = callback
     @client.authorization.authorization_uri
