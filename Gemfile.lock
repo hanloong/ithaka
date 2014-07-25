@@ -49,6 +49,9 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.6)
     arel (5.0.1.20140414130214)
+    asset_sync (1.0.0)
+      activemodel
+      fog (>= 1.8.0)
     ast (2.0.0)
     autoparse (0.3.3)
       addressable (>= 2.3.1)
@@ -273,7 +276,6 @@ GEM
       devise
       mime-types
       orm_adapter
-    redcarpet (3.1.2)
     rest-client (1.7.2)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
@@ -378,6 +380,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  asset_sync
   better_errors
   binding_of_caller
   bootstrap-sass
@@ -417,7 +420,6 @@ DEPENDENCIES
   rails_layout
   react-rails!
   redactor-rails
-  redcarpet
   rspec-activemodel-mocks
   rspec-rails
   rspec_junit_formatter
