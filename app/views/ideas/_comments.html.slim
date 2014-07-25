@@ -14,7 +14,7 @@
       = render partial: 'shared/by_line', locals: {o: c, label: idea.user_label(c.user)}
     .col-sm-10
       .idea-body
-        = markdown(c.comment)
+        = c.comment.html_safe
       .idea-footer
         - if idea.manager?(current_user)
           = link_to fa_icon('trash-o', text: 'Remove'), project_idea_comment_path(c.idea.project, c.idea, c.id), method: :delete, class: "btn btn-st btn-st-red"

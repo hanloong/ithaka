@@ -11,20 +11,6 @@ module ApplicationHelper
     html.html_safe
   end
 
-  def markdown(text)
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML,
-                                       tables: true,
-                                       autolink: true,
-                                       no_intra_emphasis: true,
-                                       fenced_code_blocks: true,
-                                       superscript: true,
-                                       underline: true,
-                                       highlight: true,
-                                       quote: true
-                                      )
-    markdown.render(text).html_safe
-  end
-
   def avatar_url(user, size = 48)
     if user.photo_url
       user.photo_url
@@ -45,28 +31,5 @@ module ApplicationHelper
     <span class="label label-primary">beta</span>
     HTML
     html.html_safe
-  end
-
-  def markdown_cheatsheet
-    <<-eos
-# Heading One
-## Heading Two
-### Heading Three
-
-Text can be styled with
-
-- in lists with
-- **bold**,
-- *italics*,
-- _underlines_ and
-- ==highlights==
-
-1. and those lists
-2. can be numbered
-
-> And finally a quote
-
-[Markdown further reading](http://daringfireball.net/projects/markdown/syntax)
-    eos
   end
 end

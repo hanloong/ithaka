@@ -15,7 +15,7 @@ ul.nav.nav-tabs
           .panel.panel-default.panel-project
             .panel-title
               h3 = link_to "#{p.name}", project_path(p)
-            .panel-body = markdown(truncate(p.description, length: 100))
+            .panel-body = truncate(p.description, length: 130)
             .panel-footer
               - if p.manager?(current_user)
                 = link_to fa_icon('edit', text: 'Edit'), edit_project_path(p), class: "pull-right"

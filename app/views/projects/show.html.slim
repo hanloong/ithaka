@@ -32,7 +32,7 @@
                   .col-sm-2
                     = render partial: 'shared/by_line', locals: {o: i, label: nil}
                   .col-sm-10
-                    .idea-body #{markdown(i.description)}
+                    .idea-body #{i.description.html_safe}
                     .idea-footer
                       .col-sm-12
                         = render partial: 'shared/scorecard', locals: {idea: i}
