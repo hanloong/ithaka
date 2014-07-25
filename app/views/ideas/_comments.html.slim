@@ -24,4 +24,4 @@
   hr
 .row
   .col-sm-10.col-sm-offset-2
-    = render partial: 'new_comment', locals: {idea: @idea}
+    = render partial: 'new_comment', locals: {idea: @idea, first: comments.empty?}

@@ -4,33 +4,28 @@
 .tab-content.no-tabs
   .tab-pane.active
     .contents.clearfix
-      .row.default-contents.col-sm-8.col-sm-offset-2
+      .row.default-contents.col-sm-6.col-sm-offset-3
+        .row
+          .text-center
+            h3 Who are you going to invite?
         .authform.padded-form
           = form_for resource, as: resource_name, url: invitation_path(resource_name), html: {class: 'form-horizontal', method: :post} do |f|
             = devise_error_messages!
             .form-group
-              .col-sm-4
-                = f.label :name, class: 'input-lg'
-              .col-sm-8
-                = f.text_field :name, class: 'input-lg form-control'
+              .col-sm-12
+                = f.text_field :name, class: 'input-lg form-control', placeholder: 'Full name'
             .form-group
-              .col-sm-4
-                = f.label :email, class: 'input-lg'
-              .col-sm-8
-                = f.text_field :email, class: 'input-lg form-control'
+              .col-sm-12
+                = f.text_field :email, class: 'input-lg form-control', placeholder: 'Email address'
             .form-group
-              .col-sm-4
-                = f.label :role, class: 'input-lg'
-              .col-sm-8
+              .col-sm-12
                 = f.select :role, User.roles.keys.map {|role| [role,role]}, {}, class: "form-control"
             - if current_user.admin?
               .form-group
-                .col-sm-4
-                  = f.label :organisation, "Organisation", class: 'input-lg'
-                .col-sm-8
+                .col-sm-12
                   = f.select :organisation_id, Organisation.all.map {|o| ["#{o.id} - #{o.name}", o.id]}, {}, class: "form-control"
             .form-group
-              = f.submit t("devise.invitations.new.submit_button"), class: 'btn btn-primary btn-lg pull-right'
+              = f.submit t("devise.invitations.new.submit_button"), class: 'btn btn-primary btn-lg btn-wide'
         .row
           .text-center
             | Need a bulk import? Email us

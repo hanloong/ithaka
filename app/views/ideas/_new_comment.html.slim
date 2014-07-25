@@ -1,5 +1,9 @@
 .post-comment
-  h3 #{fa_icon('comments', text: 'Share your thoughts')}
+  - if first
+    h3 #{fa_icon('comments', text: 'Be the first to comment on this idea')}
+  - else
+    h3 #{fa_icon('comments', text: 'Add your thoughts')}
+
   = form_for [idea.project, idea, Comment.new], html: { class: 'form' } do |f|
     .form-group
       = f.text_area :comment, placeholder: "Write your comment", class: "redactor", rows: 10
@@ -13,5 +17,5 @@
       - else
         .col-xs-7
       .col-xs-5
-        button.btn.btn-lg.btn-pink.pull-right.btn-wide type="submit"
+        button.btn.btn-lg.btn-primary.pull-right.btn-wide type="submit"
           = fa_icon('comment', text: 'Post comment')

@@ -159,11 +159,11 @@
         p Once pricing has been confirmed you will receive a 30 day free trial period as if you had signed up on the day we launched the paid version.
 
 .footer
-  .container.text-center
+  .container
+    h4
+      = link_to "Built by sixtythree.io &copy; #{Time.now.year.to_s}".html_safe, 'http://sixtythree.io', target: '_blank'
+    br
     h4
       = link_to fa_icon('twitter', text: '@ithakaio'), 'https://twitter.com/ithakaio', target: '_blank'
       = link_to fa_icon('envelope', text: 'hello@ithaka.io'), 'mailto:hello@ithaka.io', target: '_blank'
       = link_to fa_icon('book', text: 'blog.ithaka.io'), 'http://blog.ithaka.io', target: '_blank'
-    br
-    h4
-      = link_to "Built by sixtythree.io &copy; #{Time.now.year.to_s}".html_safe, 'http://sixtythree.io', target: '_blank'
