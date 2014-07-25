@@ -82,11 +82,19 @@ describe UsersController do
   end
 
   it 'should stop normal users from seeing admin' do
-    user = create(:user, :other_email)
+    user = create(:user, :other_email, role: 'user')
     sign_in user
     @request.env['HTTP_REFERER'] = 'test'
     get :index
     expect(request).to redirect_to 'test'
+  end
+
+  it 'should allow owners to manager users' do
+    user = create(:user, :other_email, role: 'owner')
+    sign_in user
+    @request.env['HTTP_REFERER'] = 'test'
+    get :index
+    expect(assigns(:users)).to eq([user])
   end
 
 end

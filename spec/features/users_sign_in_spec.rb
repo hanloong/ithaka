@@ -5,7 +5,7 @@ feature 'Users can sign in' do
     user = create(:user)
     sign_in user
     within '.navbar' do
-      expect(page).to have_content('Logout')
+      expect(page).to have_link('Logout')
     end
   end
 

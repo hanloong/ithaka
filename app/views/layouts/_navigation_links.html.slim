@@ -23,7 +23,7 @@ ul.nav.navbar-nav.navbar-right
         li= link_to ("Edit Profile " +  fa_icon('user')).html_safe, edit_user_registration_path, class: 'text-right'
         - if current_user.owner? || current_user.admin?
           li= link_to ("Account Settings " +  fa_icon('cogs')).html_safe, edit_organisation_path, class: 'text-right'
-    li= link_to fa_icon('sign-out'), destroy_user_session_path, method: 'delete'
+    li= link_to fa_icon('sign-out'), destroy_user_session_path, {method: 'delete', title: 'Logout'}
   - else
     li= link_to 'Login', new_user_session_path
     li= link_to 'Sign up', new_user_registration_path

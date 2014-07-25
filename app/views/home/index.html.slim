@@ -54,8 +54,8 @@
         .icons.pink #{fa_icon('lightbulb-o')}
         h3.text-center 1. Suggest an idea
         p
-          | Dave the project manager has the great idea of entering a company soccer team into a local lunchtime competition. They suggest the idea under the  
-          b Social Activities 
+          | Dave the project manager has the great idea of entering a company soccer team into a local lunchtime competition. They suggest the idea under the
+          b Social Activities
           | project with links to the websites.
 
       .col-sm-6
@@ -67,9 +67,9 @@
         .icons #{fa_icon('gavel')}
         h3.text-center 3. Add some influence
         p
-          | The boss notices that chatter and rates this idea based as being good for 
-          b staff morale, team bonding 
-          | and 
+          | The boss notices that chatter and rates this idea based as being good for
+          b staff morale, team bonding
+          | and
           b marketing.
       .col-sm-6
         .icons.green #{fa_icon('thumbs-up')}
@@ -131,28 +131,8 @@
           h2 Sign me up
     .row
       .col-md-8.col-md-offset-2
-        - user = User.new
-        - user.organisation = Organisation.new
-        = form_for(user, url: registration_path(user), html: { class: 'form-horizontal', role: 'form' }) do |f|
-          = f.fields_for :organisation do |of|
-            .form-group
-              .col-sm-12
-                = of.text_field :name, class: 'input-lg form-control', placeholder: 'Company Name'
-          .form-group
-            .col-sm-12
-              = f.text_field :name, class: 'input-lg form-control', placeholder: 'Full Name'
-          .form-group
-            .col-sm-12
-              = f.email_field :email, class: 'input-lg form-control', placeholder: 'Email address'
-          .form-group
-            .col-sm-12
-              = f.password_field :password, class: 'input-lg form-control', placeholder: 'Password'
-          .form-group
-            .col-sm-12
-              = f.password_field :password_confirmation, class: 'input-lg form-control', placeholder: 'Password confirmation'
-          .form-group
-            .col-sm-12
-                = f.submit 'Create account', class: 'btn btn-primary btn-lg btn-wide'
+        = render partial: 'shared/signup'
+
       .col-md-6.col-md-offset-3
         .text-center
           h4 As we are in open beta everyting is currently FREE.

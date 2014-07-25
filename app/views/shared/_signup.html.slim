@@ -1,0 +1,22 @@
+- user = User.new
+- user.organisation = Organisation.new
+= form_for(user, url: registration_path(user), html: { class: 'form-horizontal', role: 'form' }) do |f|
+  = f.fields_for :organisation do |of|
+    .form-group
+      .col-sm-12
+        = of.text_field :name, class: 'input-lg form-control', placeholder: 'Company Name'
+  .form-group
+    .col-sm-12
+      = f.text_field :name, class: 'input-lg form-control', placeholder: 'Full name'
+  .form-group
+    .col-sm-12
+      = f.email_field :email, class: 'input-lg form-control', placeholder: 'Email address'
+  .form-group
+    .col-sm-12
+      = f.password_field :password, class: 'input-lg form-control', placeholder: 'Password'
+  .form-group
+    .col-sm-12
+      = f.password_field :password_confirmation, class: 'input-lg form-control', placeholder: 'Password confirmation'
+  .form-group
+    .col-sm-12
+        = f.submit 'Create account', class: 'btn btn-primary btn-lg btn-wide'

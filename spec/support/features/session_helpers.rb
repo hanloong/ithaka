@@ -5,8 +5,8 @@ module Features
       click_on 'Sign up'
 
       fill_in 'Company Name', with: company
-      fill_in 'Name', with: name
-      fill_in 'Email', with: email
+      fill_in 'Full name', with: name
+      fill_in 'Email address', with: email
       fill_in 'Password', with: password
       fill_in 'Password confirmation', with: password_confirmation
 
@@ -17,7 +17,7 @@ module Features
 
     def sign_in(user)
       visit new_user_session_path
-      fill_in 'Email', with: user.email
+      fill_in 'Email address', with: user.email
       fill_in 'Password', with: user.password
 
       within '.contents' do
