@@ -6,7 +6,7 @@ feature 'Visitor signs up' do
     sign_up_with 'Fred', 'test@email.com', password, password, 'Monsters Inc'
 
     within '.navbar' do
-      expect(page).to have_content('Logout')
+      expect(page).to have_link('Logout')
     end
   end
 

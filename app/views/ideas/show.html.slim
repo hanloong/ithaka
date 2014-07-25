@@ -21,7 +21,7 @@
             .col-sm-2
               = render partial: 'shared/by_line', locals: {o: @idea, label: nil}
             .col-sm-10
-              .idea-body = markdown(@idea.description)
+              .idea-body = @idea.description.html_safe
               .idea-footer
                 - if @idea.user == current_user || @idea.manager?(current_user)
                   = link_to fa_icon('edit', text: 'Edit'), edit_project_idea_path(@idea.project, @idea), class: 'btn btn-st btn-st-grey pull-right'

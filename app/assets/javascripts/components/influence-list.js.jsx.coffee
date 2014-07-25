@@ -62,7 +62,8 @@
   render: ->
     # update some random elements
     $('#score').html(this.state.score)
-    $('#votes-count').html(this.state.votes)
+    if this.state.votes?
+      $('#votes-count').html(this.state.votes)
     $('#votes').attr('data-original-title', this.state.votes)
 
     idea = this.props.idea

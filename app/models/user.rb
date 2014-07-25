@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :organisation
 
   devise :invitable, :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+    :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   enum role: [:user, :owner, :admin]
   after_initialize :set_default_role, if: :new_record?
   attr_reader :avatar_url
@@ -27,6 +27,18 @@ class User < ActiveRecord::Base
       %w(admin owner).include?(u.role)
     end
   }
+
+  def self.from_omniauth(auth)
+    if user = find_by(email: auth.info.email)
+      if user.uid != auth.uid
+        user.provider = auth.provider
+        user.uid = auth.uid
+        user.name = auth.info.name if user.name.empty?
+        user.save
+      end
+      user
+    end
+  end
 
   def can_vote?
     votes_left > 0

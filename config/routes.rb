@@ -24,10 +24,17 @@ Votation::Application.routes.draw do
     resources :factors
   end
   root to: 'home#index'
-  devise_for :users, controllers: { registrations: 'registrations', invitations: 'invitations' }
+  devise_for :users, controllers: { registrations: 'registrations',
+                                    invitations: 'invitations',
+                                    omniauth_callbacks: 'omniauth_callbacks' }
   resources :users
   resource :organisation, only: [:edit, :update] do
     resource :subscriptions
+  end
+  resource :google_admin, only: [:show] do
+    get :callback, on: :member
+    get :authenticate, on: :member
+    put :invite_all, on: :member
   end
   get :reports, to: 'reports#index'
 end

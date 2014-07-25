@@ -1,9 +1,9 @@
 .by-line
   - if o.anonymous?
-    .row = image_tag anonymous_avatar_url, class: 'avatar'
+    .row = image_tag anonymous_avatar_url, class: 'avatar', width: '40px', height: '40px'
     .row Anonymous
   - else
-    .row = image_tag avatar_url(o.user), class: 'avatar'
+    .row = image_tag avatar_url(o.user), class: 'avatar', width: '40px', height: '40px'
     - if label
       .row: span.label.label-default #{label}
     .row = o.user ? o.user.name : "Anonymous"

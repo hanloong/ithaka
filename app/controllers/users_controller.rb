@@ -5,8 +5,10 @@ class UsersController < ApplicationController
   def index
     if current_user.admin?
       @users = User.all
+      @roles = User.roles
     else
       @users = User.where(organisation: current_user.organisation)
+      @roles = User.roles.reject{|role| role == 'admin'}
     end
     authorize @users
   end
