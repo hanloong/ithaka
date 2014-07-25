@@ -7,17 +7,14 @@ class UserPolicy
   end
 
   def index?
-    @user.owner?
-    @user.admin?
+    @user.admin? || @user.owner?
   end
 
   def update?
-    @user.owner?
-    @user.admin?
+    @user.admin? || @user.owner? && @record.organisation_id == @user.organisation_id
   end
 
   def destroy?
-    @user.owner?
-    @user.admin?
+    @user.admin? || @user.owner? && @record.organisation_id == @user.organisation_id
   end
 end

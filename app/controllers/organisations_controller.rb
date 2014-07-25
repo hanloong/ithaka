@@ -2,22 +2,6 @@ class OrganisationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_organisation
 
-  def google_callback
-    service = GoogleAppsUsersService.new(
-              code: params[:code],
-              redirect: google_callback_organisation_url)
-    service.verify
-    @users = service.get_users()
-
-    render :invite
-  end
-
-  def invite
-    service = GoogleAppsUsersService.new(redirect: google_callback_organisation_url)
-    uri = service.connect
-    redirect_to uri.to_str
-  end
-
   def edit
   end
 

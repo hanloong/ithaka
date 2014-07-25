@@ -1,0 +1,57 @@
+- content_for :head do
+  = fa_icon('cogs', text: @organisation.name)
+
+ul.nav.nav-tabs
+  li.active
+    a #{fa_icon('cogs', text: 'Account Settings')}
+  - unless Rails.env.production?
+    li
+      = link_to fa_icon('usd', text: 'Billing'), new_organisation_subscriptions_path
+  li
+    = link_to fa_icon('bar-chart-o', text: 'User Management'), user_registration_path
+
+.tab-content
+  .tab-pane.active
+    .contents.clearfix
+      .default-contents.col-md-9
+        .row.idea-contnet
+          .text-center
+            h3 Google Apps Users
+            hr
+        .row
+          .col-sm-12
+            - if @users && @users.any?
+              = form_tag invite_all_google_admin_path, method: :put do
+                table.table.table-borderd.table-striped
+                  thead: tr
+                    th Photo
+                    th Email
+                    th Name
+                    th Role
+                    th.text-center Invite?
+                  tbody
+                    - @users.each_with_index do |user, i|
+                      tr
+                        td = image_tag user['thumbnailPhotoUrl'], width: '40px', height: '40px'
+                        td = user['primaryEmail']
+                        td = user['name']['fullName']
+                        td = select_tag "role[#{i}]", options_for_select(@roles.keys), class: 'form-control'
+                        td.text-center
+                          - if User.find_by(email: user['primaryEmail'])
+                            | Already a member
+                          - else
+                            .switch-outer
+                              = hidden_field_tag "photo[#{i}]", user['thumbnailPhotoUrl']
+                              = hidden_field_tag "name[#{i}]", user['name']['fullName']
+                              = hidden_field_tag "email[#{i}]", user['primaryEmail']
+                              = check_box_tag "invite[#{i}]", true, true, class: 'switch'
+                .row.text-center
+                  = submit_tag 'Send invites to users', class: 'btn btn-lg btn-primary'
+      .col-sm-3
+        .idea-contents
+          .text-center
+            h5 Google Apps Integration
+          hr
+          p On the left is all the users we found attached to your google apps account. If anyone is already signed up they wont be invited.
+          p Go though the list and switch off any account that doesn't need an Ithaka account.
+          = link_to fa_icon('google', text: 'Invite your team'), google_admin_path, class: 'btn btn-danger btn-lg btn-wide'

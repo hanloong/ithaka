@@ -26,7 +26,9 @@ module ApplicationHelper
   end
 
   def avatar_url(user, size = 48)
-    if user.avatar_url.present?
+    if user.photo_url
+      user.photo_url
+    elsif user.avatar_url.present?
       user.avatar_url
     else
       gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
