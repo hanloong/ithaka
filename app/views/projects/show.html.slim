@@ -1,7 +1,6 @@
 - content_for :head do
   = link_to fa_icon('tasks', text: 'Projects'), projects_path
-  |  / #{@project.name}
-  |  / #{pluralize(@ideas.count, 'idea')}
+  = @project.name
 
 - if false
   ul.nav.nav-tabs
@@ -38,8 +37,8 @@
                         = render partial: 'shared/scorecard', locals: {idea: i}
       .col-lg-3
         .project-sidebar
+          = link_to fa_icon('lightbulb-o', text: "New idea"), new_project_idea_path(@project), class: "btn-wide btn btn-pink btn-lg"
+          hr
           = render partial: 'search', locals: {project: @project, search: @search, status_presenter: @status_presenter}
           .text-center
-            = link_to fa_icon('lightbulb-o', text: "New idea"), new_project_idea_path(@project), class: "btn-wide btn btn-success btn-lg"
-            hr
             = render partial: 'shared/by_line', locals: {o: @project, label: 'Project Owner'}

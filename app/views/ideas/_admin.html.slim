@@ -9,10 +9,9 @@
         - else
           = link_to fa_icon('unlock-alt', text: "Unlock Votes"), unlock_project_idea_path(idea.project, idea), class: "btn-wide btn btn-danger btn-lg"
           p allow users to retract support
-      hr
+      br
       h5 Update Status
       .update-status
         = form_for [idea.project, idea], html: { id: 'status-form', role: 'form', class: 'form-horiztonal' } do |f|
           .row.form-group
             = f.select :status, status_presenter.collection, {}, class: 'form-control input-lg', onchange: ("$('#status-form').submit();")
-      hr

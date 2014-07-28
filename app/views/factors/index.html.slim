@@ -1,8 +1,7 @@
 - content_for :head do
   = link_to fa_icon('tasks', text: "Projects"), projects_path
-  |  /  
   = link_to @project.name, edit_project_path(@project)
-  |  / Edit influence factors
+  | Edit influence factors
 
 .tab-content.no-tabs
   .tab-pane.active

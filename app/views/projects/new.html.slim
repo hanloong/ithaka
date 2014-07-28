@@ -1,5 +1,5 @@
 - content_for :head do
   = link_to fa_icon('tasks', text: "Projects"), projects_path
-  |  / New Project
+  | New project
 
 = render partial: "form", locals: {project: @project}

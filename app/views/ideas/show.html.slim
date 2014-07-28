@@ -1,8 +1,7 @@
 - content_for :head do
   = link_to fa_icon('tasks', text: 'Projects'), projects_path
-  |  /
   = link_to @idea.project_name, project_path(@idea.project)
-  |  / #{truncate(@idea.name, length: 20)}
+  = truncate(@idea.name, length: 20)
 
 .tab-content.no-tabs
   .tab-pane.active

@@ -15,6 +15,7 @@
     margin-left: 20px
     h3
       padding-top: 20px
+      font-weight: normal
       a
         color: $grey
         &:hover
@@ -38,3 +39,48 @@
   .btn
     margin-top: 10px
 
+.status-filter
+  margin-top: 10px
+  padding: 0
+  input[type='checkbox']
+    display: none
+    background: none
+    margin: 0
+  input[type='checkbox']:checked + .status-0
+    background: $blue
+    border: 1px solid $blue
+    color: white
+  input[type='checkbox']:checked + .status-1
+    background: $orange
+    border: 1px solid $orange
+    color: white
+  input[type='checkbox']:checked + .status-2
+    background: $green
+    border: 1px solid $green
+    color: white
+  input[type='checkbox']:checked + .status-3
+    background: $pink
+    border: 1px solid $pink
+    color: white
+  input[type='checkbox']:checked + .status-4
+    background: $grey
+    border: 1px solid $grey
+    color: white
+  input[type='checkbox']:checked + .status-5
+    background: $red
+    border: 1px solid $red
+    color: white
+  input[type='checkbox']:checked + .status-6
+    background: $yellow
+    border: 1px solid $yellow
+    color: white
+  label
+    cursor: pointer
+    width: 100%
+    line-height: 100%
+    color: $grey
+    font-weight: normal
+    margin: 0
+    padding: 5px 10px
+    border: 1px solid $grey
+    text-align: center
