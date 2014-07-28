@@ -10,9 +10,8 @@ $navbar-margin-bottom: 0
   font-family: 'Roboto', sans-serif
   color: $light-grey
   display: table
-  position: relative
   width: 100%
-  height: 100vh
+  min-height: 100vh
   background: image-url('intro-bg.jpg') no-repeat center center scroll
   background-size: cover
   .product-info
@@ -158,6 +157,7 @@ $navbar-margin-bottom: 0
 
 @media screen and (max-width: $screen-sm-max)
   .heading
+    height: none
     margin-top: 0
     text-align: center
     h3, h2, h1, h4
