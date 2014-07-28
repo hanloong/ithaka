@@ -155,10 +155,19 @@ $navbar-margin-bottom: 0
   .pad-menu
     margin-top: 31px
 
-@media screen and (max-width: $screen-sm-max)
+@media screen and (max-width: $screen-xs-max)
   .heading
-    height: none
+    display: block
+    height: 100%
+    background-size: auto
     margin-top: 0
     text-align: center
-    h3, h2, h1, h4
-      margin: 0
+    .product-info
+      margin-top: 30px
+    .tagline
+      display: block
+      h1
+        margin: 20px 0 10px 0
+        font-size: 25px
+      .description
+        font-size: 12px
