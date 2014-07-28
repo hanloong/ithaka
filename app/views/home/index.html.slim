@@ -1,7 +1,7 @@
 .heading#top
   == render 'layouts/home/navigation'
   .container
-    .col-md-12.product-info.text-center
+    .col-md-12.product-info
       .row
         .home-logo
           h1
@@ -11,16 +11,15 @@
               | Ithaka
       .tagline
         .row
-          .col-md-12
+          .col-md-8
             h1 The ideation platform for your business
+        .row
+          .col-md-8
+            .description
+              | Suggest ideas, Make informed decisions, Foster innovation
         .row.signup
           .col-md-12
-            a.btn.btn-xlg.btn-primary href="#sign-up" Sign up now
-        .row
-          ul.description
-            li Suggest ideas
-            li Make informed decisions
-            li Foster innovation
+            a.btn.btn-xlg.btn-pink href="#sign-up" Sign up now
 
 .short-description
   .container.text-center
