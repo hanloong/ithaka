@@ -11,7 +11,6 @@ $navbar-margin-bottom: 0
   color: $light-grey
   display: table
   width: 100%
-  min-height: 100vh
   background: image-url('intro-bg.jpg') no-repeat center center scroll
   background-size: cover
   .product-info
@@ -157,11 +156,9 @@ $navbar-margin-bottom: 0
 
 @media screen and (max-width: $screen-xs-max)
   .heading
-    display: block
-    height: 100%
-    background-size: auto
     margin-top: 0
     text-align: center
+    padding-bottom: 40px
     .product-info
       margin-top: 30px
     .tagline
@@ -171,3 +168,7 @@ $navbar-margin-bottom: 0
         font-size: 25px
       .description
         font-size: 12px
+
+@media screen and (min-width: $screen-xs-max)
+  .heading
+    min-height: 100vh
