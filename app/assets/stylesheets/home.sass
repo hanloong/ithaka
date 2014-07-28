@@ -8,27 +8,47 @@ $navbar-margin-bottom: 0
 
 .heading
   font-family: 'Roboto', sans-serif
-  margin-top: 20px
-  padding: 0
   color: $light-grey
+  display: table
+  position: relative
+  width: 100%
+  min-height: 100vh
+  background: image-url('intro-bg.jpg') no-repeat center center scroll
+  background-size: cover
   .product-info
-    margin-top: 80px
+    margin-top: 60px
   .btn
     margin: 10px 10px
   .tagline
     display: block
+    h1
+      font-size: 40px
+      border: 1px solid $light-grey
+      padding: 15px 10px
+      margin: 50px 0 30px 0
+      text-transform: uppercase
+      color: $lightish-grey
     h3, h2, h1, h4
-      margin: 20px 0
       color: $light-grey
       line-height: 150%
     .signup
       margin-top: 20px
+      .btn-signup
+        background: none
+        color: $blue
+      .btn-signup:hover
+        background: $blue
+        color: $light-grey
     .description
-      margin: 0px
+      margin: 0 auto
+      padding: 20px 0
+      display: block
       line-height: 200%
-      ul
-        list-style-type: none
-        padding-left: 0
+      font-size: 25px
+      max-width: 400px
+      list-style-type: none
+      padding-left: 0
+      color: $lightish-grey
 
 .short-description
   background: white
@@ -112,6 +132,7 @@ $navbar-margin-bottom: 0
 .home-logo
   h1
     font-family: 'Roboto', sans-serif
+    font-size: 45px
   img
     margin-top: -10px
     margin-right: 10px
@@ -136,7 +157,7 @@ $navbar-margin-bottom: 0
 
 @media screen and (min-width: $screen-sm-min)
   .pad-menu
-    padding-top: 31px
+    margin-top: 31px
 
 @media screen and (max-width: $screen-sm-max)
   .heading

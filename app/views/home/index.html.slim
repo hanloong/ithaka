@@ -1,6 +1,7 @@
 .heading#top
+  == render 'layouts/home/navigation'
   .container
-    .col-md-5.product-info
+    .col-md-12.product-info.text-center
       .row
         .home-logo
           h1
@@ -10,18 +11,16 @@
               | Ithaka
       .tagline
         .row
-          .col-md-10
-            h2 The ideation platform for your business
-        .row.description
-          ul
+          .col-md-12
+            h1 The ideation platform for your business
+        .row.signup
+          .col-md-12
+            a.btn.btn-xlg.btn-primary href="#sign-up" Sign up now
+        .row
+          ul.description
             li Suggest ideas
             li Make informed decisions
             li Foster innovation
-        .row.signup
-          .col-md-10
-            a.btn.btn-xlg.btn-primary.btn-wide href="#sign-up" Sign up now
-    .col-md-7
-      = image_tag 'ipad3.png', alt: 'Ithaka on ipad', class: 'img-responsive'
 
 .short-description
   .container.text-center
