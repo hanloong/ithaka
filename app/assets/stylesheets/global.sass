@@ -144,7 +144,7 @@ a
   &:hover
     background: $pink
     border: 1px solid $dark-pink
-  
+
 .btn-st-blue
   color: $blue
   &:hover
@@ -167,14 +167,13 @@ a
   img
     margin: -4px 3px 0 0 
 
-.nav .dropdown .user-dropdown
-  padding: 5px
-  .username
-    margin-top: 10px
-    margin-left: 25px
-  .avatar
-    border-radius: 19px
-    margin-left: 25px
+.nav .user-link
+  padding: 0 10px
+  a
+    padding: 10px
+    .avatar
+      border-radius: 15px
+      margin-right: 15px
 
 .page-footer
   margin: 30px 0 30px 10px
@@ -201,4 +200,28 @@ a
 .form-title
   h3, h2, h1
     font-weight: normal
-  
+
+.or-bar
+  text-align: center
+  margin-bottom: 10px
+  color: $grey
+  span
+    display: inline-block
+    position: relative
+    &:after, &:before
+      content: ""
+      position: absolute
+      margin-top: 10px
+      border-top: 1px solid $grey
+      top: 0
+      min-width: 100px
+
+.or-bar span:before
+  right: 100%
+  margin-right: 15px
+.or-bar span:after
+  left: 100%
+  margin-left: 15px
+
+footer.page-footer a
+  padding-right: 10px

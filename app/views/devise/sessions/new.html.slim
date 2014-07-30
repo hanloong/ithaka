@@ -12,7 +12,6 @@
               .form-group
                 .col-sm-12
                   = f.email_field :email, autofocus: true, class: 'form-control input-lg', placeholder: 'Email address'
-              .form-group
                 .col-sm-12
                   = f.password_field :password, class: 'form-control input-lg', placeholder: 'Password'
               .form-group
@@ -24,10 +23,11 @@
                   |   
                   = f.check_box :remember_me
                 .col-sm-6
-                    = link_to "Forgot password?", new_password_path(resource_name), class: 'pull-right'
+                    = link_to "Forgot password", new_password_path(resource_name), class: 'pull-right'
                     br
                     = link_to 'Sign up', new_registration_path(resource_name), class: 'pull-right'
               .form-group
                 .col-sm-12
-                  hr
+                  .or-bar
+                    span or
                   = link_to fa_icon('google', text: "Sign in with Google"), user_omniauth_authorize_path(:google_oauth2), class: 'btn btn-danger btn-lg btn-wide'

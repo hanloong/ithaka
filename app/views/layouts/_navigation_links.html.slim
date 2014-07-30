@@ -1,29 +1,12 @@
-ul.nav.navbar-nav.navbar-left
-  - if user_signed_in?
-    li.dropdown
-      a.dropdown-toggle data-toggle="dropdown"
-        = current_user.organisation_name
-      ul.dropdown-menu
-        li
-          = link_to "All Projects", projects_path
-        - Project.available(current_user.organisation).each do |p|
-          li
-            - if p.public?
-              = link_to "#{p.name} (public)".html_safe, project_path(p)
-            - else
-              = link_to p.name, project_path(p)
 ul.nav.navbar-nav.navbar-right
   - if user_signed_in?
-    li.dropdown
-      a.dropdown-toggle.user-dropdown data-toggle="dropdown"
-        span.username
-          = current_user.name
-        = image_tag avatar_url(current_user, 38), width: '40px', height: '40px', class: 'avatar'
-      ul.dropdown-menu
-        li= link_to ("Edit Profile " +  fa_icon('user')).html_safe, edit_user_registration_path, class: 'text-right'
-        - if current_user.owner? || current_user.admin?
-          li= link_to ("Account Settings " +  fa_icon('cogs')).html_safe, edit_organisation_path, class: 'text-right'
-    li= link_to fa_icon('sign-out'), destroy_user_session_path, {method: 'delete', title: 'Logout'}
+    li.user-link rel='tooltip' data-toggle='tooltip' data-placement='bottom' title='Edit profile'
+      = link_to "#{image_tag(avatar_url(current_user), width: '30px', height: '30px', class: 'avatar')} #{current_user.name}".html_safe, edit_user_registration_path, class: 'text-right'
+    - if current_user.owner? || current_user.admin?
+      li rel='tooltip' data-toggle='tooltip' data-placement='bottom' title='Settings'
+        = link_to fa_icon('wrench'), edit_organisation_path, class: 'text-right'
+    li rel='tooltip' data-toggle='tooltip' data-placement='bottom' title='Logout'
+      = link_to fa_icon('sign-out'), destroy_user_session_path, method: :delete
   - else
     li= link_to 'Login', new_user_session_path
     li= link_to 'Sign up', new_user_registration_path

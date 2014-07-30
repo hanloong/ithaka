@@ -26,7 +26,7 @@
     h3 Who knows what magic you might uncover
 
 .benefits
-  .container
+  #benefits.container
     .text-center
       h2 Why use ithaka
     .row
@@ -43,8 +43,8 @@
         h3.text-center Innovation from within
         p Untap the mountains of potential that exists within your workforce.
 
-.features#features
-  .container
+.features
+  #features.container
     .text-center
       h2 How it works
     .row
@@ -80,8 +80,8 @@
         p The idea is a hit and shoots to the top of the list guided by positive business outcomes and employee support, Good work Dave.
 
 - unless Rails.env.production?
-  .pricing#pricing
-    .container
+  .pricing
+    #pricing.container
       .text-center
         h2 How much it costs
       .row
@@ -121,8 +121,8 @@
                 h3 Comming soon
                 | stay tuned
 
-.signup-section#sign-up
-  .container
+.signup-section
+  #sign-up.container
     .row
       .col-md-6.col-md-offset-3
         .text-center
@@ -138,10 +138,21 @@
 
 .footer
   .container
-    h4
-      = link_to "Built by sixtythree.io &copy; #{Time.now.year.to_s}".html_safe, 'http://sixtythree.io', target: '_blank'
-    br
-    h4
-      = link_to fa_icon('twitter', text: '@ithakaio'), 'https://twitter.com/ithakaio', target: '_blank'
-      = link_to fa_icon('envelope', text: 'hello@ithaka.io'), 'mailto:hello@ithaka.io', target: '_blank'
-      = link_to fa_icon('book', text: 'blog.ithaka.io'), 'http://blog.ithaka.io', target: '_blank'
+    .col-md-6
+      h3
+        .dark-logo
+          span.square
+            = fa_icon('lightbulb-o')
+          | Ithaka
+    .col-md-6
+      .row
+        .pull-right
+          h4
+            = link_to "Built by sixtythree.io &copy; #{Time.now.year.to_s}".html_safe, 'http://sixtythree.io', target: '_blank'
+      br
+      .row
+        .pull-right
+          h4
+            = link_to fa_icon('twitter', text: '@ithakaio'), 'https://twitter.com/ithakaio', target: '_blank'
+            = link_to fa_icon('envelope', text: 'hello@ithaka.io'), 'mailto:hello@ithaka.io', target: '_blank'
+            = link_to fa_icon('book', text: 'blog.ithaka.io'), 'http://blog.ithaka.io', target: '_blank'
