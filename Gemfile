@@ -32,6 +32,7 @@ gem 'newrelic_rpm'
 gem 'google-api-client', require: 'google/api_client'
 gem 'omniauth-google-oauth2'
 gem 'asset_sync'
+gem 'fast_blank'
 
 group :development do
   gem 'spring'
