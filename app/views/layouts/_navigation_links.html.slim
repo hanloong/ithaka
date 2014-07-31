@@ -3,9 +3,13 @@ ul.nav.navbar-nav.navbar-right
     li.user-link rel='tooltip' data-toggle='tooltip' data-placement='bottom' title='Edit profile'
       = link_to "#{image_tag(avatar_url(current_user), width: '30px', height: '30px', class: 'avatar')} #{current_user.name}".html_safe, edit_user_registration_path, class: 'text-right'
     - if current_user.owner? || current_user.admin?
-      li rel='tooltip' data-toggle='tooltip' data-placement='bottom' title='Settings'
+      li.hidden-md.hidden-lg rel='tooltip' data-toggle='tooltip' data-placement='bottom' title='Settings'
+        = link_to "Settings #{fa_icon('wrench')}".html_safe, edit_organisation_path, class: 'text-right'
+      li.hidden-xs.hidden-sm rel='tooltip' data-toggle='tooltip' data-placement='bottom' title='Settings'
         = link_to fa_icon('wrench'), edit_organisation_path, class: 'text-right'
-    li rel='tooltip' data-toggle='tooltip' data-placement='bottom' title='Logout'
+    li.hidden-md.hidden-lg rel='tooltip' data-toggle='tooltip' data-placement='bottom' title='Logout'
+      = link_to "Sign out #{fa_icon('sign-out')}".html_safe, destroy_user_session_path, method: :delete, title: 'Logout'
+    li.hidden-xs.hidden-sm rel='tooltip' data-toggle='tooltip' data-placement='bottom' title='Logout'
       = link_to fa_icon('sign-out'), destroy_user_session_path, method: :delete, title: 'Logout'
   - else
     li= link_to 'Login', new_user_session_path

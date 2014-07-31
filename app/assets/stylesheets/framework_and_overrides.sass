@@ -45,21 +45,19 @@ $text-color: $dark-grey
   margin-bottom: 0
   border-bottom: 1px solid $dark-grey
   .navbar-toggle
-    border-color: white
+    border-color: $dark-grey
+    background: $dark-grey
+    &:hover
+      background: $dark-grey
+      span.icon-bar
+        background: $pink
+    span.icon-bar
+      background: white
   .active
     background: $dark-grey
   .navbar-nav li a:hover
     background: $darkest-grey
     color: white
-  li.dropdown a:focus
-    background-color: $darkest-grey
-  .dropdown-menu
-    background: $darkest-grey
-    li a
-      color: $grey
-      &:hover
-        background: $dark-grey
-        color: $light-grey
 
 .tab-pane
   background: $light-grey
@@ -110,3 +108,7 @@ $text-color: $dark-grey
   &:hover
     color: $pink
     border: 1px solid $pink
+
+@media screen and (max-width: $screen-xs-max)
+  .navbar-nav li a
+    text-align: center

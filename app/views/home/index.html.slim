@@ -138,21 +138,18 @@
 
 .footer
   .container
-    .col-md-6
-      h3
-        .dark-logo
-          span.square
-            = fa_icon('lightbulb-o')
-          | Ithaka
-    .col-md-6
-      .row
-        .pull-right
-          h4
-            = link_to "Built by sixtythree.io &copy; #{Time.now.year.to_s}".html_safe, 'http://sixtythree.io', target: '_blank'
-      br
-      .row
-        .pull-right
-          h4
-            = link_to fa_icon('twitter', text: '@ithakaio'), 'https://twitter.com/ithakaio', target: '_blank'
-            = link_to fa_icon('envelope', text: 'hello@ithaka.io'), 'mailto:hello@ithaka.io', target: '_blank'
-            = link_to fa_icon('book', text: 'blog.ithaka.io'), 'http://blog.ithaka.io', target: '_blank'
+    .col-md-4.logo
+      h4.dark-logo
+        span.square
+          = fa_icon('lightbulb-o')
+        | Ithaka
+      h4
+        = link_to "Built by sixtythree.io &copy; #{Time.now.year.to_s}".html_safe, 'http://sixtythree.io', target: '_blank'
+    .col-md-8.links
+      ul.pull-right
+        li: h4
+          = link_to fa_icon('twitter', text: '@ithakaio'), 'https://twitter.com/ithakaio', target: '_blank'
+        li: h4
+          = link_to fa_icon('envelope', text: 'hello@ithaka.io'), 'mailto:hello@ithaka.io', target: '_blank'
+        li: h4
+          = link_to fa_icon('book', text: 'blog.ithaka.io'), 'http://blog.ithaka.io', target: '_blank'

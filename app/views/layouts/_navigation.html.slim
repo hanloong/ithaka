@@ -12,4 +12,7 @@ nav.navbar.navbar-inverse.navbar-static-top
           = fa_icon('lightbulb-o')
         = link_to 'Ithaka', current_user ? projects_path : root_path, class: 'logo-text'
     .collapse.navbar-collapse
+      - if current_user
+        ul.nav.navbar-nav
+          li = link_to current_user.organisation_name, projects_path
         == render 'layouts/navigation_links'
