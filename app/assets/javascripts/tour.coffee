@@ -1,23 +1,25 @@
 @tour = ->
   $("#modal-tour").modal()
 
-  ithaka_content = 'This project allows you to submit idea for improving Ithaka'
+  ithaka_content = '<p>This project allows you to submit idea for improving Ithaka</p>'
+  ithaka_content += "<p>You can also so what other users are suggesting and track new features</p>"
   ithaka_button = '<button type="button" class="btn btn-default" id="step1">Next</button>'
   ithaka_po = $("#ithaka").popover
     trigger: 'manual'
-    title: 'Ithaka project'
+    title: 'Ithaka project - automatically added'
     container: 'body'
     html: true
-    content: "<p>#{ithaka_content}</p>#{ithaka_button}"
+    placement: 'top'
+    content: "#{ithaka_content}#{ithaka_button}"
 
   sandbox_content = 'This project is a playground for you to try out all the features Ithaka has to offer'
   sandbox_button = '<button type="button" class="btn btn-default" id="step2">Next</button>'
   $("#sandbox").popover
     trigger: 'manual'
-    title: 'Sandbox project'
+    title: 'Sandbox project - automatically added'
     container: 'body'
     html: true
-    placement: 'top'
+    placement: 'bottom'
     content: "<p>#{sandbox_content}</p>#{sandbox_button}"
 
   new_content = "Once you've tried out the sandbox it's time to create your first project"
