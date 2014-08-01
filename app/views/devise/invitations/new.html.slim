@@ -4,29 +4,41 @@
 .tab-content.no-tabs
   .tab-pane.active
     .contents.clearfix
-      .row.default-contents.col-sm-6.col-sm-offset-3
-        .row
-          .text-center
-            h3 Who are you going to invite?
-        .authform.padded-form
-          = form_for resource, as: resource_name, url: invitation_path(resource_name), html: {class: 'form-horizontal', method: :post} do |f|
-            = devise_error_messages!
-            .form-group
-              .col-sm-12
-                = f.text_field :name, class: 'input-lg form-control', placeholder: 'Full name'
-            .form-group
-              .col-sm-12
-                = f.text_field :email, class: 'input-lg form-control', placeholder: 'Email address'
-            .form-group
-              .col-sm-12
-                = f.select :role, User.roles.keys.map {|role| [role,role]}, {}, class: "form-control"
-            - if current_user.admin?
+      .col-sm-6.col-sm-offset-3
+        .row.default-contents
+          .row
+            .text-center
+              h3 Who are you going to invite?
+          .authform.padded-form
+            = form_for resource, as: resource_name, url: invitation_path(resource_name), html: {class: 'form-horizontal', method: :post} do |f|
+              = devise_error_messages!
               .form-group
                 .col-sm-12
-                  = f.select :organisation_id, Organisation.all.map {|o| ["#{o.id} - #{o.name}", o.id]}, {}, class: "form-control"
-            .form-group
-              = f.submit t("devise.invitations.new.submit_button"), class: 'btn btn-primary btn-lg btn-wide'
-        .row
+                  = f.text_field :name, class: 'input-lg form-control', placeholder: 'Full name'
+              .form-group
+                .col-sm-12
+                  = f.text_field :email, class: 'input-lg form-control', placeholder: 'Email address'
+              .form-group
+                .col-sm-12
+                  = f.select :role, User.roles.keys.map {|role| [role,role]}, {}, class: "form-control"
+              - if current_user.admin?
+                .form-group
+                  .col-sm-12
+                    = f.select :organisation_id, Organisation.all.map {|o| ["#{o.id} - #{o.name}", o.id]}, {}, class: "form-control"
+              .form-group
+                = f.submit t("devise.invitations.new.submit_button"), class: 'btn btn-primary btn-lg btn-wide'
+
+      .col-sm-3
+        .idea-contents
           .text-center
-            | Need a bulk import? Email us
+            h5
+              | Need a bulk import? Email us
             a href="mailto:hello@ithaka.io" hello@ithaka.io
+        - unless current_user.user?
+          .idea-contents
+            .text-center
+              h5 Google Apps Integration
+              hr
+              = link_to fa_icon('google', text: 'Invite your team'), google_admin_path, class: 'btn btn-danger btn-lg btn-wide'
+              hr
+              p If you have an Administrator account you can invite your entire team in one go.

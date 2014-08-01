@@ -24,7 +24,7 @@ describe VoterService do
 
   it 'should reject vote when user reached limit' do
     vs = VoterService.new(@attr)
-    @attr[:user].update(vote_limit: 0)
+    @attr[:user].organisation.update(vote_limit: 0)
     expect(vs.place).to be_falsy
   end
 end

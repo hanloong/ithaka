@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   after_create :welcome_email
 
   delegate :name, to: :organisation, prefix: true
+  delegate :vote_limit, to: :organisation, prefix: false
 
   scope :org_owners, -> (org_id) {
     where(organisation_id: org_id).select do |u|
