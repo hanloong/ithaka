@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.available(current_user.organisation).order(:name)
+    @first_time = params[:first_time]
   end
 
   def show

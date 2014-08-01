@@ -25,3 +25,4 @@
 //= require redactor/redactor.min
 //= require global
 //= require subscriptions
+//= require tour

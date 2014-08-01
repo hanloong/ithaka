@@ -61,7 +61,7 @@ $navbar-margin-bottom: 0
 .green
   color: $green
 
-.benefits, .pricing
+.benefits
   background: $light-grey
   padding: 40px 0
   color: $grey
@@ -72,8 +72,19 @@ $navbar-margin-bottom: 0
     color: $grey
     text-align: center
 
+.pricing
+  background: $dark-grey
+  padding: 40px 0
+  color: $grey
+  .icons
+    text-align: center
+    font-size: 80px
+  h2, h4, h5, p
+    color: $light-grey
+    text-align: center
+
 .panel-pricing
-  margin-top: 20px
+  margin-top: 60px
   font-family: 'Roboto', sans-serif
   .panel-heading
     text-align: center
@@ -82,7 +93,13 @@ $navbar-margin-bottom: 0
     background: white
   table td
     text-align: center
- 
+
+.taller .panel-pricing
+  margin-top: 20px
+  .panel-heading
+    margin: 20px 0
+    font-size: 50px
+
 .features
   background: white
   padding: 40px 0
@@ -98,7 +115,7 @@ $navbar-margin-bottom: 0
       color: black
 
 .signup-section
-  background: $lightish-grey
+  background: $light-grey
   padding: 30px 0
   color: $grey
   h2, h3, h4, h5, p
@@ -122,15 +139,15 @@ $navbar-margin-bottom: 0
 
 .footer
   padding: 40px 0
-  background: none
-  color: $light-grey
-  .dark-logo
+  background: $lightish-grey
+  color: $grey
+  .logo
     margin-bottom: 20px
   h4
     margin: 0 auto
     a
       margin: 0 10px
-      color: $lightish-grey
+      color: $grey
   ul li
     list-style: none
     margin-bottom: 10px
@@ -154,25 +171,25 @@ $navbar-margin-bottom: 0
   .pink
     color: $pink
   .panel-pink
-    border-top: 3px $pink solid
+    border-top: 5px $pink solid
   .red
     color: $red
   .panel-red
-    border-top: 3px $red solid
+    border-top: 5px $red solid
   .orange
     color: $orange
   .panel-orange
-    border-top: 3px $orange solid
+    border-top: 5px $orange solid
   .yellow
     color: $yellow
   .panel-yellow
-    border-top: 3px $yellow solid
+    border-top: 5px $yellow solid
   .blue
     color: $blue
   .panel-blue
-    border-top: 3px $blue solid
+    border-top: 5px $blue solid
   .panel-grey
-    border-top: 3px $grey solid
+    border-top: 5px $grey solid
 
 @media screen and (min-width: $screen-sm-min)
   .pad-menu

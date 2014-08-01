@@ -1,0 +1,42 @@
+#modal-tour.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close type='button' data-dismiss="modal"
+          span aria-hidden="true" &times
+          span.sr-only Close
+        h4.modal-title Welcome to Ithaka
+      .modal-body
+        p We are really glad that you decided to give Ithaka a try
+        p To help you get familiar with how Ithaka works we have created a quick tour explaining the different elements of the page.
+        p If your short on time feel free to skip the tour.
+      .modal-footer
+        button.btn.btn-default data-dismiss="modal" Exit tour
+        button#start-tour.btn.btn-primary Start tour
+
+#modal-tour-finish.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close type='button' data-dismiss="modal"
+          span aria-hidden="true" &times
+          span.sr-only Close
+        h4.modal-title Your ready to begin
+      .modal-body
+        p Thank you again for trying out Ithaka. If you have any question please don't hesitate to get in touch via
+        ul
+          li
+            | Twitter  
+            = link_to fa_icon('twitter', text: 'ithakaio'), 'http://twitter.com/ithakaio/', target: '_blank'
+          li
+            | Email  
+            = link_to fa_icon('envelope', text: 'hello@thaka.io'), 'mailto://hello@ithaka.io'
+          li
+            | Sumit an Idea  
+            = link_to fa_icon('lightbulb-o', text: 'Ithaka Project'), project_path(1)
+      .modal-footer
+        button.btn.btn-default data-dismiss="modal" Finish
+
+- if @first_time
+  coffee:
+    @tour()

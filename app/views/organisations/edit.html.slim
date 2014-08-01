@@ -24,6 +24,14 @@ ul.nav.nav-tabs
                   .col-sm-12
                     = f.text_field :name, autofocus: true, class: 'form-control input-lg', placeholder: 'Company name'
                 .form-group
+                  .col-sm-12.text-center
+                    = f.label 'Number of votes each user has', class: 'input-lg'
+                  .col-sm-12
+                    .range.range-primary
+                      = f.range_field :vote_limit, min: 0, max: 200, onchange: "range.value=value"
+                      output id="range" #{@organisation.vote_limit}
+                hr
+                .form-group
                   = f.submit 'Update', class: 'btn btn-primary btn-lg btn-wide'
       .col-sm-3
         .idea-contents
