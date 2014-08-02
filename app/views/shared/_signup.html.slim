@@ -1,6 +1,5 @@
-- user = User.new
-- user.organisation = Organisation.new
-= form_for(user, url: registration_path(user), html: { class: 'form-horizontal', role: 'form' }) do |f|
+= form_for(resource, url: registration_path(resource), html: { class: 'form-horizontal', role: 'form' }) do |f|
+  = devise_error_messages!
   = f.fields_for :organisation do |of|
     .form-group
       .col-sm-12
