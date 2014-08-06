@@ -1,6 +1,6 @@
 .scorecard
   h5
     span#votes.votes rel='tooltip' data-toggle="tooltip" data-placement="top" title="#{pluralize(idea.votes_count.to_i, 'vote')}"
-      = fa_icon('check')
+      = fa_icon('thumbs-up')
       span#votes-count #{idea.votes_count.to_i}
     span.comments rel='tooltip' data-toggle="tooltip" data-placement="top" title="#{pluralize(idea.comments.count, 'comment')}" #{fa_icon('comment', text: idea.comments.count)}
