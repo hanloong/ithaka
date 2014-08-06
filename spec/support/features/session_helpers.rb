@@ -11,7 +11,7 @@ module Features
       fill_in 'Password confirmation', with: password_confirmation
 
       within '.signup-section' do
-        click_on 'Create account'
+        click_on "Let's get started"
       end
     end
 
@@ -21,7 +21,7 @@ module Features
       fill_in 'Password', with: user.password
 
       within '.contents' do
-        click_button 'Login'
+        click_button "Let's go"
       end
     end
 

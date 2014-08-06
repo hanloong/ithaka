@@ -2,7 +2,7 @@
 
 .panel-project
   border: none
-  box-shadow: 1px 1px 2px $lightish-grey
+  @include default-box-shadow
   border-radius: 0px
   .panel-body
     height: 150px
@@ -24,9 +24,17 @@
       span
         margin-right: 10px
 
+.item-link
+  text-decoration: none
+  &:hover
+    @include colour-box-shadow($grey)
+    color: $grey
+    h3, .panel-title h3
+      color: $pink
+
 .project-sidebar
+  @include default-box-shadow
   background: white
-  box-shadow: 1px 1px 2px $lightish-grey
   border-radius: 0px
   margin-top: 0px
   padding: 10px 15px 25px 15px
@@ -34,7 +42,7 @@
     text-align: center
     color: $grey
     .avatar
-      border-radius: 25px
+      @include border-radius(25px)
       margin: 10px 0 5px 0
   .btn
     margin-top: 10px

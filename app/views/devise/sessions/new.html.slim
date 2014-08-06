@@ -4,7 +4,7 @@
       .row.default-contents.col-md-4.col-md-offset-4
         .row
           .form-title.text-center
-            h3 Login to Ithaka
+            h3 Sign in
         .row
         .authform.padded-form
             = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-horizontal', role: 'form' }) do |f|
@@ -16,11 +16,11 @@
                   = f.password_field :password, class: 'form-control input-lg', placeholder: 'Password'
               .form-group
                 .col-sm-12
-                  = f.submit 'Login', class: 'btn btn-primary btn-lg btn-wide'
+                  = f.submit "Let's go", class: 'btn btn-primary btn-lg btn-wide'
               .form-group
                 .col-sm-6
                   = f.label :remember_me
-                  |   
+                  |  
                   = f.check_box :remember_me
                 .col-sm-6
                     = link_to "Forgot password", new_password_path(resource_name), class: 'pull-right'

@@ -12,17 +12,18 @@ ul.nav.nav-tabs
     .row.contents.tab-contents
       - @projects.each do |p|
         .col-lg-3
-          .panel.panel-default.panel-project id="#{p.name.downcase}"
-            .panel-title
-              h3 = link_to "#{p.name}", project_path(p)
-            .panel-body = truncate(p.description, length: 130)
-            .panel-footer
-              - if p.manager?(current_user)
-                = link_to fa_icon('edit', text: 'Edit'), edit_project_path(p), class: "pull-right"
-              - if p.public
-                span.label.label-primary Public
-              - else
-                span.label.label-default Private
+          a href="#{project_url(p)}"
+            .panel.panel-default.panel-project.item-link id="#{p.name.downcase}"
+              .panel-title
+                h3 #{p.name}
+              .panel-body = truncate(p.description, length: 130)
+              .panel-footer
+                - if p.manager?(current_user)
+                  = link_to fa_icon('edit', text: 'Edit'), edit_project_path(p), class: "pull-right"
+                - if p.public
+                  span.label.label-primary Public
+                - else
+                  span.label.label-default Private
 
       - if current_user.admin? || current_user.owner?
         .col-lg-3

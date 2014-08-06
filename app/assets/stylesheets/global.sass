@@ -15,6 +15,7 @@ $dark-blue: #10829f
 $light-blue: #24b5dd
 $yellow: #ffcb00
 $orange: #ff7900
+$shadow: #d3d4d8
 $max-width: 1144px
 
 // Mixins
@@ -23,6 +24,12 @@ $max-width: 1144px
   -moz-border-radius:    $radius
   -ms-border-radius:     $radius
   border-radius:         $radius
+
+=default-box-shadow
+  box-shadow: 4px 4px 8px $shadow
+
+=colour-box-shadow($colour)
+  box-shadow: 2px 2px 9px 1px $colour
 
 // Global styles
 main
@@ -85,31 +92,34 @@ a
   font-family: 'Roboto', sans-serif
 
 .votes-panel
-  background-color: $light-grey
-  box-shadow: 1px 1px 2px #d3d4d8
   margin-right: 20px
   float: right
-  width: 290px
-  h5
-    color: $grey
-    margin-top: 5px
-    margin-bottom: 5px
-    text-align: center
-  .used
-    color: $pink
-  .unlocked
-    color: $green
-  .header
-    border-bottom: 1px solid $lightish-grey
-  small
-    font-size: 10px
+  width: 50%
+  .row
+    .unlocked
+      text-align: center
+      @include border-radius(20px)
+      background: $blue
+      border: $blue 1px solid
+      color: white
+      padding: 3px 10px
+    .other
+      @include border-radius(20px)
+      border: $grey 1px solid
+      color: $grey
+      padding: 3px 10px
+      text-align: center
+      .remaining
+      .left
+        margin-right: 30px
 
 .page-head
   max-width: $max-width
-  margin: 35px auto 10px auto
+  margin: 25px auto 10px auto
   color: $grey
   .breadcrumbs
     float: left
+    margin-top: 5px
     h3
       margin: 0 0 0 25px
       padding-bottom: 15px
@@ -121,8 +131,8 @@ a
   margin-top: 41px
 
 .default-contents
+  @include default-box-shadow
   background: white
-  box-shadow: 1px 1px 2px $lightish-grey
   padding: 10px 15px 25px 15px
   margin-bottom: 10px
   .padded-form

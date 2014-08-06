@@ -1,20 +1,11 @@
 - if user_signed_in?
   .votes-panel.hidden-xs
     .row
-      .col-sm-5
-        h5 Available
-      .col-sm-2
-        h5 Used
-      .col-sm-5
-        h5 Unlocked
-    .row
-      .col-sm-5
-        h5.limit #{current_user.votes_left}
-      .col-sm-2
-        h5.used #{current_user.votes.count}
-      .col-sm-5
-        h5.unlocked #{current_user.unlocked_votes.count}
-    - if @project && @project.is_public?(current_user)
-      .row
-        .col-sm-12.text-center
-          small limits don't currently apply to public projects
+      .col-sm-2.col-sm-offset-2
+        .unlocked
+          h5 #{fa_icon('unlock')} #{current_user.unlocked_votes.count}
+      .col-sm-8
+        .other
+          h5
+            span.left #{fa_icon('thumbs-up')} #{current_user.votes.count} used
+            span.remaining #{current_user.votes_left} remaining

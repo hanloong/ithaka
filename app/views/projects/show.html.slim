@@ -26,7 +26,7 @@
                       = @status_presenter.titalise(i.status)
                   .col-sm-10
                     .idea-title
-                      h3 = link_to "#{i.name}", project_idea_path(@project, i)
+                      h3= link_to "#{i.name}", project_idea_path(@project, i)
                 .row
                   .col-sm-2
                     = render partial: 'shared/by_line', locals: {o: i, label: nil}
