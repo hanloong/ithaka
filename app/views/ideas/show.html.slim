@@ -10,9 +10,7 @@
         .idea-contents
           .row
             .col-sm-2
-              div class="idea-score idea-score-#{@idea.status}"
-                h3#score #{@idea.score}
-                = @status_presenter.titalise(@idea.status)
+              = render partial: 'ideas/score', locals: {idea: @idea, status_presenter: @status_presenter}
             .col-sm-10
               .idea-title
                 h3 #{@idea.name}
