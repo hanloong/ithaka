@@ -35,7 +35,7 @@
                         = render partial: 'shared/scorecard', locals: {idea: i}
       .col-lg-3
         .project-sidebar
-          = link_to fa_icon('lightbulb-o', text: "New idea"), new_project_idea_path(@project), class: "btn-wide btn btn-pink btn-lg"
+          = link_to fa_icon('plus', text: "New idea"), new_project_idea_path(@project), class: "btn-wide btn btn-pink btn-lg"
           hr
           = render partial: 'search', locals: {project: @project, search: @search, status_presenter: @status_presenter}
           .text-center
