@@ -6,15 +6,15 @@ $dark-grey: #323a45
 $darkest-grey: #232b37
 $pink: #f36
 $dark-pink: #f42156
-$green: #0dadb7
-$dark-green: #78a300
-$red: #ee6666
+$green: #5fcf80
+$dark-green: #2e9a4e
+$red: #ea7868
 $dark-red: #d45656
 $blue: #58c3e5
-$dark-blue: #10829f
+$dark-blue: #326e99
 $light-blue: #24b5dd
-$yellow: #ffcb00
-$orange: #ff7900
+$yellow: #f6cc68
+$orange: #f9845b
 $shadow: #d3d4d8
 $max-width: 1144px
 
@@ -26,10 +26,10 @@ $max-width: 1144px
   border-radius:         $radius
 
 =default-box-shadow
-  box-shadow: 4px 4px 8px $shadow
+  box-shadow: 1px 1px 4px $lightish-grey
 
 =colour-box-shadow($colour)
-  box-shadow: 2px 2px 9px 1px $colour
+  box-shadow: 1px 1px 4px $colour
 
 // Global styles
 main
@@ -100,7 +100,7 @@ a
       text-align: center
       @include border-radius(20px)
       background: $blue
-      border: $blue 1px solid
+      border: darken($blue, 10%) 1px solid
       color: white
       padding: 3px 10px
     .other

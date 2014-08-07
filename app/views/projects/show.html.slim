@@ -21,9 +21,7 @@
               .idea-contents
                 .row
                   .col-sm-2
-                    div class="idea-score idea-score-#{i.status}"
-                      h3 #{i.score}
-                      = @status_presenter.titalise(i.status)
+                    = render partial: 'ideas/score', locals: {idea: i, status_presenter: @status_presenter}
                   .col-sm-10
                     .idea-title
                       h3= link_to "#{i.name}", project_idea_path(@project, i)
@@ -37,7 +35,7 @@
                         = render partial: 'shared/scorecard', locals: {idea: i}
       .col-lg-3
         .project-sidebar
-          = link_to fa_icon('lightbulb-o', text: "New idea"), new_project_idea_path(@project), class: "btn-wide btn btn-pink btn-lg"
+          = link_to fa_icon('plus', text: "New idea"), new_project_idea_path(@project), class: "btn-wide btn btn-pink btn-lg"
           hr
           = render partial: 'search', locals: {project: @project, search: @search, status_presenter: @status_presenter}
           .text-center

@@ -8,9 +8,9 @@ $font-family-sans-serif: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-seri
 $navbar-inverse-bg: $dark-grey
 $navbar-default-bg: white
 $navbar-inverse-link-color: $lightish-grey
-$btn-default-bg: $blue
-$btn-default-color: $light-grey
-$btn-default-border: darken($blue, 5%)
+$btn-default-bg: white
+$btn-default-color: $grey
+$btn-default-border: darken($grey, 5%)
 $btn-success-bg: $green
 $btn-primary-bg: $blue
 $btn-danger-bg: $red
@@ -24,9 +24,17 @@ $label-warning-bg: $yellow
 $border-radius-base: 0px
 $border-radius-large: 0px
 $border-radius-small: 0px
-$input-border-focus: $lightish-grey
+$input-border: $grey
+$input-border-focus: $blue
+$input-color-placeholder: $shadow
 $text-color: $dark-grey
 @import "bootstrap"
+
+
+// Remove input box shadow
+input
+  outline: none
+  box-shadow: none !important
 
 .navbar-transparent
   .navbar-toggle
