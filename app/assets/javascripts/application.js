@@ -26,3 +26,5 @@
 //= require global
 //= require subscriptions
 //= require tour
+//= require bootstrap-tokenfield
+//= require tokenize

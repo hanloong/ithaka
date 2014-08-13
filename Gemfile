@@ -33,6 +33,8 @@ gem 'google-api-client', require: 'google/api_client'
 gem 'omniauth-google-oauth2'
 gem 'asset_sync'
 gem 'fast_blank'
+gem 'acts-as-taggable-on'
+gem 'bootstrap_tokenfield_rails'
 
 group :development do
   gem 'spring'

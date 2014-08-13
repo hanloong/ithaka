@@ -20,8 +20,12 @@
             .col-sm-10
               .idea-body = @idea.description.html_safe
               .idea-footer
-                - if @idea.user == current_user || @idea.manager?(current_user)
-                  = link_to fa_icon('edit', text: 'Edit'), edit_project_idea_path(@idea.project, @idea), class: 'btn btn-st btn-st-grey pull-right'
+                .col-sm-8
+                  - @idea.tags.each do |tag|
+                    span.label.label-default = tag.name
+                .col-sm-4
+                  - if @idea.user == current_user || @idea.manager?(current_user)
+                    = link_to fa_icon('edit', text: 'Edit'), edit_project_idea_path(@idea.project, @idea), class: 'btn btn-st btn-st-grey pull-right'
           = render partial: 'comments', locals: {idea: @idea, comments: @comments}
       .col-lg-3
         = render partial: 'vote', locals: {idea: @idea}

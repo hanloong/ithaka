@@ -23,11 +23,12 @@ class Idea < ActiveRecord::Base
   validates :name, uniqueness: { scope: :user_id }
 
   before_create :set_user
+  after_create :setup_influence
 
   scope :popular, -> { order('score DESC NULLS LAST') }
   scope :available, -> (organisation) { where(project_id: Project.available(organisation)) }
 
-  after_create :setup_influence
+  acts_as_taggable
 
   def vote_unlocked?(user_id)
     existing_vote(user_id).unlocked?

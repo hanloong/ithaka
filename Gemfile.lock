@@ -47,6 +47,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (3.3.0)
+      activerecord (>= 3, < 5)
     addressable (2.3.6)
     arel (5.0.1.20140414130214)
     asset_sync (1.0.0)
@@ -68,6 +70,7 @@ GEM
     bootstrap-sass (3.2.0.0)
       sass (~> 3.2)
     bootstrap-switch-rails (3.0.0)
+    bootstrap_tokenfield_rails (0.0.6)
     builder (3.2.2)
     capybara (2.4.1)
       mime-types (>= 1.16)
@@ -383,12 +386,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on
   asset_sync
   autoprefixer-rails
   better_errors
   binding_of_caller
   bootstrap-sass
   bootstrap-switch-rails
+  bootstrap_tokenfield_rails
   capybara
   carrierwave
   chartkick

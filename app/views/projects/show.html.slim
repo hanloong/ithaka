@@ -31,7 +31,10 @@
                   .col-sm-10
                     .idea-body #{i.description.html_safe}
                     .idea-footer
-                      .col-sm-12
+                      .col-sm-8.tags
+                        - i.tags.each do |tag|
+                          span.label.label-default = tag.name
+                      .col-sm-4.score
                         = render partial: 'shared/scorecard', locals: {idea: i}
       .col-lg-3
         .project-sidebar

@@ -12,6 +12,9 @@
                   = f.text_field :name, class: 'form-control input-lg', placeholder: 'Whats your idea?'
               .row.form-group
                 .col-sm-12
+                  = f.text_field :tag_list, class: 'form-control input-lg tokenize', placeholder: 'Enter tags to help organise ideas'
+              .row.form-group
+                .col-sm-12
                   = f.text_area :description, placeholder: "Write your description", class: "redactor", rows: 10
               - if idea.project.allow_anonymous?
                 .form-group
