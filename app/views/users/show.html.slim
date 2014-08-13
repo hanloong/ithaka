@@ -1,4 +1,41 @@
 - content_for :head do
-  | User
-p
-  | Email: #{@user.email if @user.email}
+  | User profile
+
+.tab-content.no-tabs
+  .tab-pane.active
+    .contents.clearfix
+      .default-contents.col-md-6.col-md-offset-3
+        .row
+          .col-sm-4.profile-pic
+            = image_tag avatar_url(@user, 80), class: 'avatar', width: '80px', height: '80px'
+          .col-sm-8
+            h3 = @user.name
+            h4 = @user.email
+            h4 Member since #{@user.created_at.strftime('%d %B %Y')}
+            - if @user == current_user
+              = link_to fa_icon('edit', text: 'Edit'), edit_user_registration_path(@user), class: 'btn btn-st btn-st-grey'
+        .row
+          hr
+        .row.text-center
+          .col-sm-4
+            h4 #{fa_icon('unlock')} #{current_user.unlocked_votes.count} unlocked
+          .col-sm-4
+            h4 #{fa_icon('thumbs-up')} #{current_user.votes.count} used
+          .col-sm-4
+            h4 #{current_user.votes_left} remaining
+        .row
+          hr
+        .row
+          .col-sm-6
+            .text-center
+              h4
+                = fa_icon('lightbulb-o', text: "#{@user.ideas.count} ideas submitted")
+            ul
+              - @user.ideas.each do |idea|
+                li #{link_to idea.name, project_idea_path(idea.project, idea)}
+          .col-sm-6
+            .text-center
+              h4= fa_icon('thumbs-up', text: 'Voted for')
+            ul
+              - @user.votes.each do |vote|
+                li #{link_to vote.idea.name, project_idea_path(vote.idea.project, vote.idea)}

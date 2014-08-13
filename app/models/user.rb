@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :votes
-  has_many :idea
+  has_many :ideas
   has_many :comments
   has_many :projects
   has_many :favourites

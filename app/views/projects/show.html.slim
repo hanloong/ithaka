@@ -14,7 +14,12 @@
     .row.contents.tab-contents
       .col-lg-9
         - if @ideas && @ideas.empty?
-          h3 there aren't any ideas for this project yet. You should create one.
+          h2 Oh no
+          h3 There aren't any ideas for this project yet.
+          h3 You should submit one now.
+          br
+          p
+            = link_to fa_icon('plus', text: "New idea"), new_project_idea_path(@project), class: "btn btn-pink btn-lg"
         - @ideas.popular.each do |i|
           .row
             .col-lg-12

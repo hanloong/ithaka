@@ -6,5 +6,9 @@
     .row = image_tag avatar_url(o.user), class: 'avatar', width: '40px', height: '40px'
     - if label
       .row: span.label.label-default #{label}
-    .row = o.user ? o.user.name : "Anonymous"
+    .row
+      - if o.user
+        = link_to o.user.name, user_path(o.user)
+      - else
+        Anonymous
   .row = o.created_at.strftime("#{o.created_at.day.ordinalize} %b %Y")

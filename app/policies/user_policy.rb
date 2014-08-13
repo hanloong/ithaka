@@ -6,6 +6,10 @@ class UserPolicy
     @record = record
   end
 
+  def show
+    @user.admin? || @user == current_user || @user.organisation == current_user.organisation
+  end
+
   def index?
     @user.admin? || @user.owner?
   end
