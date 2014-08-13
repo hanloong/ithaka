@@ -1,3 +1,4 @@
 div class="idea-score idea-score-#{idea.status}"
-  h3#score #{idea.score}
-  = status_presenter.titalise(idea.status)
+  h2#score #{idea.score.round(1)}
+  .status
+    = status_presenter.titalise(idea.status)

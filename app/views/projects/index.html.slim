@@ -20,6 +20,8 @@ ul.nav.nav-tabs
               .panel-footer
                 - if p.manager?(current_user)
                   = link_to fa_icon('edit', text: 'Edit'), edit_project_path(p), class: "pull-right"
+                span#idea-count.label.label-success rel='tooltip' data-toggle="tooltip" data-placement="top" title="#{pluralize(p.ideas.count, 'idea')}"
+                  = fa_icon('lightbulb-o', text: p.ideas.count)
                 - if p.public
                   span.label.label-primary Public
                 - else

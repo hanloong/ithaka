@@ -32,9 +32,11 @@ $text-color: $dark-grey
 
 
 // Remove input box shadow
-input
+input, select
   outline: none
   box-shadow: none !important
+  &:focus
+    background: $light-grey
 
 .navbar-transparent
   .navbar-toggle

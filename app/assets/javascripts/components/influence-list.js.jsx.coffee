@@ -61,7 +61,7 @@
 
   render: ->
     # update some random elements
-    $('#score').html(this.state.score)
+    $('#score').html(this.state.score.toFixed(1))
     if this.state.votes?
       $('#votes-count').html(this.state.votes)
     $('#votes').attr('data-original-title', this.state.votes)
@@ -79,6 +79,6 @@
       {progressNodes}
       <hr/>
       <h4>
-        Influence: <span id="clout" className="clout">{this.state.influence}</span>
+        Influence: <span id="clout" className="clout">{this.state.influence * 100} %</span>
       </h4>
     </div>`

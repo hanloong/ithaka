@@ -4,12 +4,13 @@
 - elsif vote = idea.existing_vote(current_user.id)
   - if vote.unlocked?
     .idea-contents: .text-center
-      | You've Voted
+      | You've voted
       hr
       = link_to fa_icon('undo', text: 'Retract support'), project_idea_vote_path(idea.project, idea, vote.id), method: :delete, class: "btn-wide btn btn-danger btn-lg"
   - else
     .idea-contents.voted-locked
-      h3 You've Voted
+      h1 = fa_icon('thumbs-up')
+      h3 You've voted
       | thanks for your support
 - else
   .idea-contents: .text-center
