@@ -10,6 +10,7 @@
             = image_tag avatar_url(@user, 80), class: 'avatar', width: '80px', height: '80px'
           .col-sm-8
             h3 = @user.name
+            h4 = @user.organisation.name
             h4 = @user.email
             h4 Member since #{@user.created_at.strftime('%d %B %Y')}
             - if @user == current_user
@@ -18,11 +19,11 @@
           hr
         .row.text-center
           .col-sm-4
-            h4 #{fa_icon('unlock')} #{current_user.unlocked_votes.count} unlocked
+            h4 #{fa_icon('unlock')} #{@user.unlocked_votes.count} unlocked
           .col-sm-4
-            h4 #{fa_icon('thumbs-up')} #{current_user.votes.count} used
+            h4 #{fa_icon('thumbs-up')} #{@user.votes.count} used
           .col-sm-4
-            h4 #{current_user.votes_left} remaining
+            h4 #{@user.votes_left} remaining
         .row
           hr
         .row
