@@ -8,11 +8,11 @@ ul.nav.navbar-nav.navbar-right
     - if current_user.owner? || current_user.admin?
       li.hidden-md.hidden-lg rel='tooltip' data-toggle='tooltip' data-placement='bottom' title='Settings'
         = link_to "Settings #{fa_icon('wrench')}".html_safe, edit_organisation_path, class: 'text-right'
-      li.hidden-xs.hidden-sm rel='tooltip' data-toggle='tooltip' data-placement='bottom' title='Settings'
+      li.large-icon.hidden-xs.hidden-sm rel='tooltip' data-toggle='tooltip' data-placement='bottom' title='Settings'
         = link_to fa_icon('wrench'), edit_organisation_path, class: 'text-right'
     li.hidden-md.hidden-lg rel='tooltip' data-toggle='tooltip' data-placement='bottom' title='Logout'
       = link_to "Sign out #{fa_icon('sign-out')}".html_safe, destroy_user_session_path, method: :delete, title: 'Logout'
-    li.hidden-xs.hidden-sm rel='tooltip' data-toggle='tooltip' data-placement='bottom' title='Logout'
+    li.large-icon.hidden-xs.hidden-sm rel='tooltip' data-toggle='tooltip' data-placement='bottom' title='Logout'
       = link_to fa_icon('sign-out'), destroy_user_session_path, method: :delete, title: 'Logout'
   - else
     li= link_to 'Sign up', new_user_registration_path

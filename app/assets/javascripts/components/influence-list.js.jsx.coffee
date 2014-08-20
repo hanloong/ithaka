@@ -57,7 +57,10 @@
 
   componentWillMount: ->
     this.loadInfluences
-    setInterval(this.loadInfluences, 3000)
+    this.props.interval = setInterval(this.loadInfluences, 3000)
+
+  componentWillUnmount: ->
+    clearInterval(this.props.interval)
 
   render: ->
     # update some random elements
