@@ -7,34 +7,41 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
-gem 'bootstrap-sass'
-gem 'autoprefixer-rails'
-gem 'react-rails', git: 'https://github.com/reactjs/react-rails.git', ref: 'master'
-gem 'devise'
-gem 'devise_invitable'
 gem 'pg'
 gem 'puma'
-gem 'pundit'
+gem 'delayed_job_active_record'
+
 gem 'slim-rails'
+gem 'bootstrap-sass'
+gem 'font-awesome-rails'
+gem 'autoprefixer-rails'
+gem 'react-rails', git: 'https://github.com/reactjs/react-rails.git', ref: 'master'
+
+gem 'pundit'
+gem 'devise'
+gem 'devise_invitable'
+
 gem 'rubocop', require: false
 gem 'english', require: false
-gem 'font-awesome-rails'
-gem 'delayed_job_active_record'
+
 gem 'chartkick'
 gem 'groupdate'
 gem 'redactor-rails'
 gem 'bootstrap-switch-rails'
+gem 'acts-as-taggable-on'
+gem 'bootstrap_tokenfield_rails'
+
 gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
 gem 'stripe', git: 'https://github.com/stripe/stripe-ruby'
+
 gem 'newrelic_rpm'
+
 gem 'google-api-client', require: 'google/api_client'
 gem 'omniauth-google-oauth2'
 gem 'asset_sync'
 gem 'fast_blank'
-gem 'acts-as-taggable-on'
-gem 'bootstrap_tokenfield_rails'
 
 group :development do
   gem 'spring'
