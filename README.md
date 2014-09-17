@@ -1,7 +1,7 @@
 Ithaka
 =========
 
-![Build Status](https://api.shippable.com/projects/53bb2e7a3957535502e29590/badge/master)
+[![Build Status](https://api.shippable.com/projects/540e7b453479c5ea8f9ebe45/badge?branchName=master)](https://app.shippable.com/projects/540e7b453479c5ea8f9ebe45/builds/latest)
 
 ## Description
 
