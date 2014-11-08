@@ -6,12 +6,12 @@ html
       = content_for?(:title) ? yield(:title) : 'Ithaka - ideation'
     meta name="description" content="#{content_for?(:description) ? yield(:description) : 'The ideation platform for your business'}"
     == stylesheet_link_tag "//fonts.googleapis.com/css?family=Roboto", media: "all"
-    == stylesheet_link_tag "home", media: "all", "data-turbolinks-track" => true
+    == stylesheet_link_tag "landing", media: "all"
     meta name="google-site-verification" content="-KYJFK3ctiGnSxT1uyFP-kQURfOjfGRN8Sz75Jn6I48"
     == favicon_link_tag 'favicon.ico'
     == csrf_meta_tags
   body.home-body
     main[role="main"]
       == yield
-    == javascript_include_tag "home", "data-turbolinks-track" => true
+    == javascript_include_tag "landing"
 == render 'layouts/analytics'

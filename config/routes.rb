@@ -23,7 +23,7 @@ Votation::Application.routes.draw do
     end
     resources :factors
   end
-  root to: 'home#index'
+  root to: 'high_voltage/pages#show', id: 'home'
   devise_for :users, controllers: { registrations: 'registrations',
                                     invitations: 'invitations',
                                     omniauth_callbacks: 'omniauth_callbacks' }

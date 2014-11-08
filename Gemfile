@@ -1,25 +1,26 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
+
 gem 'rails'
-gem 'sass-rails'
-gem 'uglifier'
-gem 'coffee-rails'
-gem 'jquery-rails'
-gem 'turbolinks'
-gem 'jbuilder'
-gem 'pg'
-gem 'puma'
-gem 'delayed_job_active_record'
+gem 'sass-rails'                                                                          # Sass Stylesheet compilation
+gem 'uglifier'                                                                            # Javascript Parser
+gem 'coffee-rails'                                                                        # Coffescript compilation
+gem 'jquery-rails'                                                                        # jQuery wrapper with ujs rails functions
+gem 'jbuilder'                                                                            # JSON Parsing
+gem 'pg'                                                                                  # PostgreSQL db adapter
+gem 'puma'                                                                                # Multithreaded web server
+gem 'delayed_job_active_record'                                                           # ActiveRecord backed Queue
 
-gem 'slim-rails'
-gem 'bootstrap-sass'
-gem 'font-awesome-rails'
-gem 'autoprefixer-rails'
-gem 'react-rails', git: 'https://github.com/reactjs/react-rails.git', ref: 'master'
+gem 'slim-rails'                                                                          # Templating language
+gem 'bootstrap-sass'                                                                      # Bootstrap Wrapper
+gem 'font-awesome-rails'                                                                  # Font Awersome Wrapper
+gem 'autoprefixer-rails'                                                                  # Auto adds broswer prefixes to CSS
+gem 'react-rails', git: 'https://github.com/reactjs/react-rails.git', ref: 'master'       # ReactJs - Facebook JS view framework
+gem 'high_voltage', '~> 2.2.1'                                                            # High speed static pages
 
-gem 'pundit'
-gem 'devise'
-gem 'devise_invitable'
+gem 'pundit'                                                                              # User Role management
+gem 'devise'                                                                              # User Management
+gem 'devise_invitable'                                                                    # Invitation module for devise
 
 gem 'rubocop', require: false
 gem 'english', require: false
