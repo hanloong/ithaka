@@ -7,13 +7,30 @@
 .home-body
   background: $darkest-grey
 
+.home-bg
+  background: image-url('intro-bg.jpg') no-repeat center center scroll
+
+.about-bg
+  background: image-url('about-bg.jpg') no-repeat center center scroll
+
+.how-it-works-bg
+  background: image-url('howitworks-bg.jpg') no-repeat center center scroll
+
 .heading
   font-family: 'Roboto', sans-serif
   color: $light-grey
   display: table
   width: 100%
-  background: image-url('intro-bg.jpg') no-repeat center center scroll
   background-size: cover
+  .page-heading
+    margin-top: 50px
+    h1
+      border-bottom: 1px solid $light-grey
+      padding-bottom: 30px
+      font-size: 80px
+    h2
+      font-size: 40px
+      line-height: 60px
   .product-info
     margin-top: 60px
   .btn

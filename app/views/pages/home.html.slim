@@ -1,4 +1,4 @@
-.heading#top
+.home-bg.heading#top
   == render 'layouts/landing/navigation'
   .container
     .col-md-12.product-info
@@ -41,9 +41,9 @@
         h3.text-center Empowering employees
         p Give people ownership of the company's direction by allowing them to build it.
       .col-sm-4
-        .icons.blue #{fa_icon('folder-open')}
-        h3.text-center Transparency
-        p Be open and share how decisions are made with ease.
+        .icons.blue #{fa_icon('mobile-phone')}
+        h3.text-center Use anywhere
+        p Ithaka is built to be mobile and tablet friendly from the ground up.
       .col-sm-4
         .icons.orange #{fa_icon('bar-chart-o')}
         h3.text-center Innovation from within
@@ -127,35 +127,5 @@
                 h3 Comming soon
                 | stay tuned
 
-.signup-section
-  #sign-up.container
-    .row
-      .col-md-6.col-md-offset-3
-        .text-center
-          h2 Sign me up
-    .row
-      .col-md-8.col-md-offset-2
-        = render partial: 'shared/signup'
-
-      .col-md-6.col-md-offset-3
-        .text-center
-          h4 As we are in open beta everyting is currently FREE.
-        p Once pricing has been confirmed you will receive a 30 day free trial period as if you had signed up on the day we launched the paid version.
-
-.footer
-  .container
-    .col-md-4.logo
-      h4.logo
-        span.square
-          = fa_icon('lightbulb-o')
-        | Ithaka
-      h4
-        = link_to "Built by sixtythree.io &copy; #{Time.now.year.to_s}".html_safe, 'http://sixtythree.io', target: '_blank'
-    .col-md-8.links
-      ul.pull-right
-        li: h4
-          = link_to fa_icon('twitter', text: '@ithakaio'), 'https://twitter.com/ithakaio', target: '_blank'
-        li: h4
-          = link_to fa_icon('envelope', text: 'hello@ithaka.io'), 'mailto:hello@ithaka.io', target: '_blank'
-        li: h4
-          = link_to fa_icon('book', text: 'blog.ithaka.io'), 'http://blog.ithaka.io', target: '_blank'
+== render 'layouts/landing/signup'
+== render 'layouts/landing/footer'
