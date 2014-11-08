@@ -4,7 +4,7 @@
       .row.default-contents.col-md-4.col-md-offset-4
         .row
           .form-title.text-center
-            h3 Sign in
+            h3 Login
         .row
         .authform.padded-form
             = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-horizontal', role: 'form' }) do |f|
@@ -31,4 +31,4 @@
                 .col-sm-12
                   .or-bar
                     span or
-                  = link_to fa_icon('google', text: "Sign in with Google"), user_omniauth_authorize_path(:google_oauth2), class: 'btn btn-danger btn-lg btn-wide'
+                  = link_to fa_icon('google', text: "Login with Google"), user_omniauth_authorize_path(:google_oauth2), class: 'btn btn-danger btn-lg btn-wide'
