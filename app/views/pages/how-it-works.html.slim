@@ -1,3 +1,6 @@
+- content_for :title do
+  | How it works
+
 .how-it-works-bg.heading#top
   == render 'layouts/landing/navigation'
   .container
@@ -5,18 +8,46 @@
       .row.text-center
         h1 How it works
       .row.text-center
-        h2 People passionate about helping companies empower their employee's
+        h2 Ithaka makes it easy to collect, organise and qualify all the ideas within an organisation.
 
-.short-description
-  .container
+.features
+  #features.container
     .text-center
-      h3
-        | The 
-        strong: i.pink origin 
-        | story
+      h2
+        | Step 
+        strong: i.pink by 
+        | step
+    .row
+      .col-sm-6.text-center
+        .icons.pink #{fa_icon('lightbulb-o')}
+        h3 1. Suggest an idea
+        p
+          | Dave the project manager has the great idea of entering a company soccer team into a local lunchtime competition. They suggest the idea under the
+          b Social Activities
+          | project with links to the websites.
 
-    p
-      | Ithaka was started as a side project in min 2014
+      .col-sm-6.text-center
+        .icons.blue #{fa_icon('comments')}
+        h3 2. Talk it through
+        p The discussion starts to flow as people seem interested. Someone designs soccer jersey's with the company logo and posts it to the thread.
+    .row
+      .col-sm-6.text-center
+        .icons #{fa_icon('tachometer')}
+        h3 3. Add some influence
+        p
+          | The boss notices that chatter and rates this idea based as being good for
+          b staff morale, team bonding
+          | and
+          b marketing.
+      .col-sm-6.text-center
+        .icons.green #{fa_icon('thumbs-up')}
+        h3 4. Let people vote
+        p The votes pour in showing more than enough support to sport a team.
+    .row
+      .col-sm-6.col-sm-offset-3.text-center
+        .icons.yellow #{fa_icon('search')}
+        h3 5. Discover the hidden gems
+        p The idea is a hit and shoots to the top of the list guided by positive business outcomes and employee support, Good work Dave.
 
 == render 'layouts/landing/signup'
 == render 'layouts/landing/footer'

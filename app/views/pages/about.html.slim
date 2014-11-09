@@ -1,3 +1,6 @@
+- content_for :title do
+  | About us
+
 .about-bg.heading#top
   == render 'layouts/landing/navigation'
   .container
@@ -5,9 +8,9 @@
       .row.text-center
         h1 About us
       .row.text-center
-        h2 People passionate about helping companies empower their employee's
+        h2 Building great software for businesses of all shapes and sizes.
 
-.short-description
+.content
   .container
     .text-center
       h3
@@ -15,8 +18,11 @@
         strong: i.pink origin 
         | story
 
-    p
-      | Ithaka was started as a side project in min 2014
+    .row
+      .col-sm-8.col-sm-offset-2
+        p Ithaka was started as a side project in mid 2014 with the hope of helping small and medium businesses around the world embrace online ideation.
+        p Online ideation platforms have started to become more popular in the enterprise but to date the solutions are complex, expensive and are usually attached to costly consultancy projects. Ithaka hopes to focus on being easy to learn, quick to setup and affordable.
+        p It's early days yet but we are hoping to build something truly worthwhile and would really appreciate your help.
 
 == render 'layouts/landing/signup'
 == render 'layouts/landing/footer'

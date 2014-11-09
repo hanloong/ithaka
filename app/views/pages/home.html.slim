@@ -12,11 +12,11 @@
       .tagline
         .row
           .col-md-8
-            h1 The ideation platform for your business
+            h1 The ideation platform with a difference
         .row
           .col-md-8
             .description
-              | Suggest ideas, Make informed decisions, Foster innovation
+              | Suggest ideas, make informed decisions and foster innovation
         .row.signup
           .col-md-12
             a.btn.btn-xlg.btn-pink href="#sign-up" Sign up now
@@ -37,53 +37,35 @@
       h2 Why use ithaka
     .row
       .col-sm-4
-        .icons.yellow #{fa_icon('bolt')}
+        .icons.yellow #{fa_icon('microphone')}
         h3.text-center Empowering employees
-        p Give people ownership of the company's direction by allowing them to build it.
+        p Give people ownership of the company's direction by allowing them to have a say in its direction.
       .col-sm-4
         .icons.blue #{fa_icon('mobile-phone')}
         h3.text-center Use anywhere
         p Ithaka is built to be mobile and tablet friendly from the ground up.
       .col-sm-4
+        .icons.pink #{fa_icon('question')}
+        h3.text-center Reduce the guesswork
+        p Using a wider knowledge base and qualitative analysis to minimise any guesswork when choosing the next idea.
+    .row
+      .col-sm-4
         .icons.orange #{fa_icon('bar-chart-o')}
         h3.text-center Innovation from within
         p Untap the mountains of potential that exists within your workforce.
+      .col-sm-4
+        .icons.green #{fa_icon('cloud')}
+        h3.text-center Brainstorm at scale
+        p Makes it easy for everyone to participate in the formation of ideas.
+      .col-sm-4
+        .icons.black #{fa_icon('flag-checkered')}
+        h3.text-center Run competitions
+        p Create challenges with rewards to solve problems fast while keeping it fun.
 
 .features
   #features.container
     .text-center
-      h2 How it works
-    .row
-      .col-sm-6.text-center
-        .icons.pink #{fa_icon('lightbulb-o')}
-        h3 1. Suggest an idea
-        p
-          | Dave the project manager has the great idea of entering a company soccer team into a local lunchtime competition. They suggest the idea under the
-          b Social Activities
-          | project with links to the websites.
-
-      .col-sm-6.text-center
-        .icons.blue #{fa_icon('comments')}
-        h3 2. Talk it through
-        p The discussion starts to flow as people seem interested. Someone designs soccer jersey's with the company logo and posts it to the thread.
-    .row
-      .col-sm-6.text-center
-        .icons #{fa_icon('gavel')}
-        h3 3. Add some influence
-        p
-          | The boss notices that chatter and rates this idea based as being good for
-          b staff morale, team bonding
-          | and
-          b marketing.
-      .col-sm-6.text-center
-        .icons.green #{fa_icon('thumbs-up')}
-        h3 4. Let people vote
-        p The votes pour in showing more than enough support to sport a team.
-    .row
-      .col-sm-6.col-sm-offset-3.text-center
-        .icons.yellow #{fa_icon('search')}
-        h3 5. Discover the hidden gems
-        p The idea is a hit and shoots to the top of the list guided by positive business outcomes and employee support, Good work Dave.
+      = link_to 'How it works', page_path('how-it-works'), class: 'btn btn-xlg btn-primary'
 
 - unless Rails.env.production?
   .pricing

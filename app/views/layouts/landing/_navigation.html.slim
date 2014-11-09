@@ -12,10 +12,10 @@ nav.navbar.navbar-transparent.pad-menu
         = link_to ('Ithaka').html_safe, root_path, class: 'logo-text'
     .collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
-        li = link_to 'Blog', 'http://blog.ithaka.io'
-        li: a href="#benefits" Benefits
-        li: a href="#features" How it works
+        li= link_to 'Home', root_path
+        li= link_to 'How it works', page_path('how-it-works')
+        li= link_to 'Blog', 'http://blog.ithaka.io'
         - unless Rails.env.production?
           li: a href="#pricing" Pricing
-        li: a href="#sign-up" Sign up
+        li= link_to 'About', page_path('about')
         li.login = link_to "Login", new_user_session_path

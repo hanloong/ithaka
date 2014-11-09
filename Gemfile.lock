@@ -119,6 +119,7 @@ GEM
     dotenv (1.0.2)
     dotenv-rails (1.0.2)
       dotenv (= 1.0.2)
+    dynamic_sitemaps (2.0.0)
     email_spec (1.6.0)
       launchy (~> 2.1)
       mail (~> 2.2)
@@ -421,6 +422,7 @@ DEPENDENCIES
   devise
   devise_invitable
   dotenv-rails
+  dynamic_sitemaps
   email_spec
   english
   factory_girl_rails

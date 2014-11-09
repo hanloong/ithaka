@@ -1,3 +1,6 @@
+- content_for :title do
+  = @idea.name
+
 - content_for :head do
   = link_to fa_icon('tasks', text: 'Projects'), projects_path
   = link_to @idea.project_name, project_path(@idea.project)
