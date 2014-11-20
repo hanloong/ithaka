@@ -19,3 +19,6 @@ before_script:
 
 script:
   - rspec -f RspecJunitFormatter -o shippable/testresults/results.xml
+
+after_success :
+  - if [[ "$BRANCH" == "master" ]]; then git push -f git@heroku.com:ithaka.git master; fi
