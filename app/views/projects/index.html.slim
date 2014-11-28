@@ -13,32 +13,6 @@ ul.nav.nav-tabs
 .tab-content
   .tab-pane.active
     .row.contents.tab-contents
-      - @projects.each do |p|
-        .col-lg-3
-          a href="#{project_url(p)}"
-            .panel.panel-default.panel-project.item-link id="#{p.name.downcase}"
-              .panel-title
-                h3 #{p.name}
-              .panel-body = truncate(p.description, length: 130)
-              .panel-footer
-                - if p.manager?(current_user)
-                  = link_to fa_icon('edit', text: 'Edit'), edit_project_path(p), class: "pull-right"
-                span#idea-count.label.label-success rel='tooltip' data-toggle="tooltip" data-placement="top" title="#{pluralize(p.ideas.count, 'idea')}"
-                  = fa_icon('lightbulb-o', text: p.ideas.count)
-                - if p.public
-                  span.label.label-primary Public
-                - else
-                  span.label.label-default Private
-
-      - if current_user.admin? || current_user.owner?
-        .col-lg-3
-          .panel.panel-default.panel-project
-            .panel-title
-              h3
-            .panel-body
-              .text-center
-                = link_to "Start new project", new_project_path, class: "btn btn-lg btn-primary", id: 'new-project'
-                hr
-                = link_to "Invite your team", new_user_invitation_path, class: "btn btn-lg btn-pink", id: 'invite'
-            .panel-footer
+      = render @projects
+      = render partial: 'actions'
 = render partial: 'shared/tour'

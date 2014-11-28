@@ -29,7 +29,18 @@
                 .col-sm-4
                   - if @idea.user == current_user || @idea.manager?(current_user)
                     = link_to fa_icon('edit', text: 'Edit'), edit_project_idea_path(@idea.project, @idea), class: 'btn btn-st btn-st-grey pull-right'
-          = render partial: 'comments', locals: {idea: @idea, comments: @comments}
+          .text-center
+            .col-sm-10.col-sm-offset-2
+              h4.discussion-title
+                | &#8226; &#8226; &#8226; Discussion &#8226; &#8226; &#8226;
+          .text-center
+            - if @idea.manager?(current_user) && @idea.comments.hidden.count > 0
+              - if params[:hidden]
+                = link_to "hide #{pluralize(@idea.comments.hidden.count, 'hidden comment')}", project_idea_path(idea.project, idea)
+              - else
+                = link_to "show #{pluralize(@idea.comments.hidden.count, 'hidden comment')}", project_idea_path(idea.project, idea, hidden: true)
+          = render @idea.comments
+          = render partial: 'new_comment', locals: {idea: @idea, first: @idea.comments.empty?}
       .col-lg-3
         = render partial: 'vote', locals: {idea: @idea}
         = render partial: 'influence', locals: {idea: @idea, influences: @influences}

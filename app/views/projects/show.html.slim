@@ -20,30 +20,11 @@
           h2 Oh no
           h3 There aren't any ideas for this project yet.
           h3 You should submit one now.
-          br
-          p
+          br: p
             = link_to fa_icon('plus', text: "New idea"), new_project_idea_path(@project), class: "btn btn-pink btn-lg"
-        - @ideas.popular.each do |i|
-          .row
-            .col-lg-12
-              .idea-contents
-                .row
-                  .col-sm-2
-                    = render partial: 'ideas/score', locals: {idea: i, status_presenter: @status_presenter}
-                  .col-sm-10
-                    .idea-title
-                      h3= link_to "#{i.name}", project_idea_path(@project, i)
-                .row
-                  .col-sm-2
-                    = render partial: 'shared/by_line', locals: {o: i, label: nil}
-                  .col-sm-10
-                    .idea-body #{i.description.html_safe}
-                    .idea-footer
-                      .col-sm-8.tags
-                        - i.tags.each do |tag|
-                          span.label.label-default = tag.name
-                      .col-sm-4.score
-                        = render partial: 'shared/scorecard', locals: {idea: i}
+
+        = render @ideas.popular
+
       .col-lg-3
         .project-sidebar
           = link_to fa_icon('plus', text: "New idea"), new_project_idea_path(@project), class: "btn-wide btn btn-pink btn-lg"
