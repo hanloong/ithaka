@@ -8,17 +8,19 @@
   .tab-pane.active
     .row.contents.tab-contents
       .col-lg-12
-        .idea-contents
+        .idea-contents.search
           - if @results.empty?
-            h4 Sorry, no results found
+            .title
+              h4 Sorry, no results found
           - else
-            .text-center
+            .title
               h5 Found #{pluralize(@results.count, 'result')}
             ol.results
               - @results.each do |result|
                 li
-                  h4 = link_to result.search_title, result.try(:link_to)
+                  h4 = link_to strip_tags(result.search_title), result.try(:link_to)
                   small
+                    span{class='label label-#{result.class.name.downcase}'}= result.class.name
                     | Created: 
                     = result.created_at.strftime("#{result.created_at.day.ordinalize} %b %Y")
                     = " by #{result.user.name}"

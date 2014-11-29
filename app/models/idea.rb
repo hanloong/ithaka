@@ -72,7 +72,7 @@ class Idea < ActiveRecord::Base
   end
 
   def search_title
-    "Idea: #{name}"
+    name
   end
 
   def search_body

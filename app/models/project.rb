@@ -41,7 +41,7 @@ class Project < ActiveRecord::Base
   end
 
   def search_title
-    "Project: #{name}"
+    name
   end
 
   def search_body

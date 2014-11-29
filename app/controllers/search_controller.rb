@@ -1,6 +1,10 @@
 class SearchController < ApplicationController
   def index
-    @results = Search.for(search_params)
+    if hit = direct_hit(search_params)
+      redirect_to hit.link_to
+    else
+      @results = Search.for(current_user, search_params)
+    end
   end
 
   private
@@ -9,8 +13,10 @@ class SearchController < ApplicationController
     params[:keyword]
   end
 
-  def direct_hit
-
+  def direct_hit(name)
+    if target = Project.available(current_user.organisation).find_by(name: name)
+      target
+    end
   end
 
 end

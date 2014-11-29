@@ -13,9 +13,11 @@ class Comment < ActiveRecord::Base
   scope :available, -> (organisation) { where(idea_id: Idea.available(organisation)) }
 
   delegate :project, to: :idea
+  delegate :organisation, to: :idea
+  delegate :public, to: :idea
 
   def search_title
-    "Comment on #{idea.name}"
+    comment.truncate(40)
   end
 
   def search_body
