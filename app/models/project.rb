@@ -1,4 +1,6 @@
 class Project < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
+
   has_many :ideas
   has_many :factors
   belongs_to :organisation
@@ -36,5 +38,17 @@ class Project < ActiveRecord::Base
 
   def to_s
     name
+  end
+
+  def search_title
+    "Project: #{name}"
+  end
+
+  def search_body
+    description
+  end
+
+  def link_to
+    project_path(self)
   end
 end

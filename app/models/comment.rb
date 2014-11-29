@@ -1,4 +1,6 @@
 class Comment < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
+
   belongs_to :user
   belongs_to :idea
   before_create :set_user
@@ -9,6 +11,20 @@ class Comment < ActiveRecord::Base
   scope :visible, -> { where(hidden: false) }
   scope :hidden, -> { where(hidden: true) }
   scope :available, -> (organisation) { where(idea_id: Idea.available(organisation)) }
+
+  delegate :project, to: :idea
+
+  def search_title
+    "Comment on #{idea.name}"
+  end
+
+  def search_body
+    comment
+  end
+
+  def link_to
+    project_idea_path(project, idea)
+  end
 
   private
 

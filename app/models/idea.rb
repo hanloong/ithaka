@@ -1,4 +1,6 @@
 class Idea < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
+
   belongs_to :user
   belongs_to :project
   has_one :organisation, through: :user
@@ -67,6 +69,18 @@ class Idea < ActiveRecord::Base
 
   def manager?(u)
     project.manager?(u) || sandbox && u == user
+  end
+
+  def search_title
+    "Idea: #{name}"
+  end
+
+  def search_body
+    description
+  end
+
+  def link_to
+    project_idea_path(project, self)
   end
 
   private

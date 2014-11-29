@@ -37,4 +37,5 @@ Votation::Application.routes.draw do
     put :invite_all, on: :member
   end
   get :reports, to: 'reports#index'
+  get :search, to: 'search#index', as: :search
 end

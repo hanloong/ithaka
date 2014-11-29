@@ -17,3 +17,7 @@ ul.nav.navbar-nav.navbar-right
   - else
     li= link_to 'Sign up', new_user_registration_path
     li= link_to 'Login', new_user_session_path
+- if user_signed_in?
+  = form_tag search_path, method: :get, class: 'navbar-form navbar-right', role: 'search'
+    .form-group
+      = text_field_tag :keyword, params[:keyword], placeholder: 'Search', class: 'form-control'

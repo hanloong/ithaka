@@ -1,0 +1,26 @@
+- content_for :title do
+  = 'Search Results'
+
+- content_for :head do
+  = fa_icon(:search, text: 'Search Results')
+
+.tab-content.no-tabs
+  .tab-pane.active
+    .row.contents.tab-contents
+      .col-lg-12
+        .idea-contents
+          - if @results.empty?
+            h4 Sorry, no results found
+          - else
+            .text-center
+              h5 Found #{pluralize(@results.count, 'result')}
+            ol.results
+              - @results.each do |result|
+                li
+                  h4 = link_to result.search_title, result.try(:link_to)
+                  small
+                    | Created: 
+                    = result.created_at.strftime("#{result.created_at.day.ordinalize} %b %Y")
+                    = " by #{result.user.name}"
+                  p = result.search_body.html_safe
+
