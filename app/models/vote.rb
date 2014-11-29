@@ -1,4 +1,6 @@
 class Vote < ActiveRecord::Base
+  include Trackable
+
   belongs_to :idea, counter_cache: true
   belongs_to :user
 

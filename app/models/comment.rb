@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
   include Rails.application.routes.url_helpers
+  include Trackable
 
   belongs_to :user
   belongs_to :idea

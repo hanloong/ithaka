@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
   include Rails.application.routes.url_helpers
+  include Trackable
 
   has_many :ideas
   has_many :factors
@@ -50,5 +51,11 @@ class Project < ActiveRecord::Base
 
   def link_to
     project_path(self)
+  end
+
+  private
+
+  def project
+    self
   end
 end

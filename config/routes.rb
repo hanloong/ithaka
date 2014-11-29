@@ -1,4 +1,4 @@
-Votation::Application.routes.draw do
+Ithaka::Application.routes.draw do
 
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   mount RedactorRails::Engine => '/redactor_rails'

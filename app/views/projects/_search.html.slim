@@ -10,6 +10,6 @@
       .status-group
         - status_presenter.collection.each_with_index do |status, index|
           .status-filter
-            = check_box_tag 'search[status][]', status.last, (search[:status].include?(status.last)), id: "stats-#{index}"
+            = check_box_tag 'search[status][]', status.last, ( search[:status] ? search[:status].include?(status.last) : []), id: "stats-#{index}"
             = label_tag "stats-#{index}", status.first, class: "status-#{index}"
   hr

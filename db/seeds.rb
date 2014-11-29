@@ -1,9 +1,4 @@
-culture = Area.find_or_create_by(name: 'Culture')
-income = Area.find_or_create_by(name: 'Income')
-budget = Area.find_or_create_by(name: 'Budget')
-productivity = Area.find_or_create_by(name: 'Productivity')
-
-org = Organisation.find_or_create_by(name: 'Votation.io')
+org = Organisation.find_or_create_by(name: 'Sixty Three')
 u = User.find_or_create_by(email: 'hanloongliauw@gmail.com')
 if u.id.nil?
   u.name = 'Han'
@@ -14,7 +9,7 @@ if u.id.nil?
   u.save
 end
 
-admin = User.find_or_create_by(email: 'admin@votation.io')
+admin = User.find_or_create_by(email: 'admin@ithaka.io')
 if admin.id.nil?
   admin.name = 'Admin'
   admin.password = 'password'
@@ -24,12 +19,14 @@ if admin.id.nil?
   admin.save
 end
 
-project = Project.find_or_create_by(name: "Votation.io", description: "Dog fooding", public: true, organisation: org, user: admin)
-project = Project.find_or_create_by(name: "Sandbox", description: "Dog fooding", public: true, organisation: org, user: admin)
-project = Project.find_or_create_by(name: "Votation Private", description: "Dog fooding", public: false, organisation: org, user: admin)
+Project.find_or_create_by(name: "Ithaka", description: "Dog fooding", public: true, organisation: org, user: admin)
+Project.find_or_create_by(name: "Sandbox", description: "Dog fooding", public: true, organisation: org, user: admin)
+Project.find_or_create_by(name: "Ithaka Private", description: "Dog fooding", public: false, organisation: org, user: admin)
 
-Factor.find_or_create_by(name: 'Revenue', weight: 100, area: income, project: project)
-Factor.find_or_create_by(name: 'Risk', weight: 100, area: income, project: project, is_negative: true)
-Factor.find_or_create_by(name: 'Difficulty', weight: 100, area: budget, project: project, is_negative: true)
-Factor.find_or_create_by(name: 'Workplace Morale', weight: 100, area: culture, project: project)
-Factor.find_or_create_by(name: 'Productivity', weight: 100, area: productivity, project: project)
+Project.all.each do |project|
+  Factor.find_or_create_by(name: 'Revenue', weight: 100, project: project)
+  Factor.find_or_create_by(name: 'Risk', weight: 100, project: project, is_negative: true)
+  Factor.find_or_create_by(name: 'Difficulty', weight: 100, project: project, is_negative: true)
+  Factor.find_or_create_by(name: 'Workplace Morale', weight: 100, project: project)
+  Factor.find_or_create_by(name: 'Productivity', weight: 100, project: project)
+end

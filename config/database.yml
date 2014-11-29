@@ -2,7 +2,7 @@ development:
   adapter:  postgresql
   host:     localhost
   encoding: unicode
-  database: votation_development
+  database: ithaka_development
   pool:     5
   username: postgres
   password: 
@@ -12,7 +12,7 @@ test:
   adapter:  postgresql
   host:     localhost
   encoding: unicode
-  database: votation_test
+  database: ithaka_test
   pool:     5
   username: postgres
   password: 
@@ -22,7 +22,7 @@ production:
   adapter:  postgresql
   host:     localhost
   encoding: unicode
-  database: votation_production
+  database: ithaka_production
   pool:     5
   username: postgres
   password: 
