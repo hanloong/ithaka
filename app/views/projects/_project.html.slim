@@ -1,0 +1,15 @@
+.col-lg-3
+  a href="#{project_url(project)}"
+    .panel.panel-default.panel-project.item-link id="#{project.name.downcase}"
+      .panel-title
+        h3 #{project.name}
+      .panel-body = truncate(project.description, length: 130)
+      .panel-footer
+        - if project.manager?(current_user)
+          = link_to fa_icon('edit', text: 'Edit'), edit_project_path(project), class: "pull-right"
+        span#idea-count.label.label-success rel='tooltip' data-toggle="tooltip" data-placement="top" title="#{pluralize(project.ideas.count, 'idea')}"
+          = fa_icon('lightbulb-o', text: project.ideas.count)
+        - if project.public
+          span.label.label-primary Public
+        - else
+          span.label.label-default Private

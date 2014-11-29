@@ -1,0 +1,13 @@
+.row
+  - idea = comment.idea
+  .col-sm-2
+    = render partial: 'shared/by_line', locals: {o: comment, label: idea.user_label(comment.user)}
+  .col-sm-10
+    .idea-body
+      = comment.comment.html_safe
+    .idea-footer
+      - if idea.manager?(current_user)
+        = link_to fa_icon('trash-o', text: 'Remove'), project_idea_comment_path(comment.idea.project, comment.idea, comment.id), method: :delete, class: "btn btn-st btn-st-red"
+        = form_for [comment.idea.project, comment.idea, comment] do |f|
+          = f.hidden_field :hidden, value: true
+          button.btn.btn-st.btn-st-pink type='submit' #{fa_icon('eye-slash', text: 'Hide')}

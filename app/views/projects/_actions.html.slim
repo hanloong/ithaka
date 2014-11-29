@@ -1,0 +1,11 @@
+- if current_user.admin? || current_user.owner?
+  .col-lg-3
+    .panel.panel-default.panel-project
+      .panel-title
+        h3
+      .panel-body
+        .text-center
+          = link_to "Start new project", new_project_path, class: "btn btn-lg btn-primary", id: 'new-project'
+          hr
+          = link_to "Invite your team", new_user_invitation_path, class: "btn btn-lg btn-pink", id: 'invite'
+      .panel-footer
