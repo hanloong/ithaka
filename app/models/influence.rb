@@ -8,7 +8,8 @@ class Influence < ActiveRecord::Base
   delegate :calculate_influence, to: :idea
   delegate :project, to: :idea
   delegate :manager?, to: :project
-  after_save :calculate_influence
+
+  after_update :calculate_influence
 
   scope :only_negative, -> { joins(:factor).where('factors.is_negative = true') }
   scope :only_positive, -> { joins(:factor).where('factors.is_negative = false') }

@@ -10,7 +10,7 @@ class Api::InfluencesController < ApplicationController
   end
 
   def update
-    @influence.update(influence_params) if @influence.manager?(current_user)
+    @influence.update(influence_params)
     render json: {score: @idea.score,
                   influence: @idea.influence,
                   votes: @idea.votes_count}

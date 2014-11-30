@@ -16,6 +16,7 @@ class Comment < ActiveRecord::Base
   delegate :project, to: :idea
   delegate :organisation, to: :idea
   delegate :public, to: :idea
+  delegate :name, to: :idea
 
   def search_title
     comment.truncate(40)

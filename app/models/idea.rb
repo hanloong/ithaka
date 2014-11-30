@@ -60,12 +60,13 @@ class Idea < ActiveRecord::Base
     factors.each do |f|
       Influence.create(idea_id: id, factor: f, score: 0)
     end
+    calculate_influence
   end
 
   def calculate_influence
-    self.influence = (((influences.only_positive.sum(:score) - influences.only_negative.sum(:score)) / 100.0) + 1.0).round(2)
-    self.score = (votes.count * influence).round(2) if votes.count
-    save
+    temp_influence = (((influences.only_positive.sum(:score) - influences.only_negative.sum(:score)) / 100.0) + 1.0).round(2)
+    temp_score = (votes.count * influence).round(2) if votes.count
+    update_columns(influence: temp_influence, score: temp_score)
   end
 
   def manager?(u)
@@ -88,5 +89,13 @@ class Idea < ActiveRecord::Base
 
   def set_user
     self.user = nil if anonymous && allow_anonymous
+  end
+
+  def track_update_message
+    if status_changed?
+      "#{self.class.name}: #{name} status was changed to #{status}."
+    elsif name_changed? || description_changed?
+      "#{self.class.name}: #{name} was updated."
+    end
   end
 end
