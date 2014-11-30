@@ -10,6 +10,7 @@ Ithaka::Application.routes.draw do
         resources :influences, only: [:update, :index, :show]
       end
     end
+    get :events, to: 'events#index', as: :events
   end
 
   resources :projects do

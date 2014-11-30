@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
 
   scope :recent_for, ->(user) do
     joins(:project).
-    where('project.organisation_id = ? || project.public = TRUE', user.organisation_id).order(id: :desc)
+    where('projects.organisation_id = ? OR projects.public = TRUE', user.organisation_id).order(id: :desc)
   end
 
   PER_PAGE = 10
