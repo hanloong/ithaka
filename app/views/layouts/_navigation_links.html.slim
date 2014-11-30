@@ -21,4 +21,4 @@ ul.nav.navbar-nav.navbar-right
   = react_component('NotificationsList', {}, {class: 'nav navbar-nav navbar-right', tag: :ul})
   = form_tag search_path, method: :get, class: 'navbar-form navbar-right', role: 'search'
     .form-group
-      = text_field_tag :keyword, params[:keyword], placeholder: 'Search', class: 'form-control'
+      = text_field_tag :global_keyword, params[:keyword], placeholder: 'Search', class: 'form-control'

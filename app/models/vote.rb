@@ -9,6 +9,7 @@ class Vote < ActiveRecord::Base
                                  message: 'You can only vote for an idea once' }
 
   delegate :calculate_influence, to: :idea
+  delegate :project, to: :idea
   default_scope proc { where(public: false) }
 
   after_create :calculate_influence
@@ -23,5 +24,9 @@ class Vote < ActiveRecord::Base
 
   def unlock
     update(unlocked: true)
+  end
+
+  def name
+    nil
   end
 end

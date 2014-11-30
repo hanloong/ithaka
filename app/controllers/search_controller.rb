@@ -10,7 +10,7 @@ class SearchController < ApplicationController
   private
 
   def search_params
-    params[:keyword]
+    params[:global_keyword]
   end
 
   def direct_hit(name)
