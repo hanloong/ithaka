@@ -22,7 +22,7 @@
 
   render: ->
     notifications = this.state.notifications.map (event) =>
-      `<NotificationItem key={event.id} text={event.message}/>`
+      `<NotificationItem key={event.id} event={event}/>`
 
     cx = React.addons.classSet
     classes = cx
@@ -41,8 +41,11 @@
 
 @NotificationItem = React.createClass
   render: ->
+    created = new Date(this.props.event.created_at)
     `<li>
-      <a href='#'>
-        {this.props.text}
+      <a href={this.props.event.url}>
+        {this.props.event.message}
+        <br/>
+        <small>{created.toLocaleString()}</small>
       </a>
     </li>`

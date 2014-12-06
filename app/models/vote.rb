@@ -10,6 +10,7 @@ class Vote < ActiveRecord::Base
 
   delegate :calculate_influence, to: :idea
   delegate :project, to: :idea
+  delegate :link_to, to: :idea
   default_scope proc { where(public: false) }
 
   after_create :calculate_influence

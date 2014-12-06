@@ -3,6 +3,7 @@ class CreateEvents < ActiveRecord::Migration
     create_table :events do |t|
       t.references :project, index: true
       t.string :message
+      t.string :url
       t.references :user, index: true
       t.references :trackable, index: true, polymorphic: true
 

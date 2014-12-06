@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20141129073605) do
   create_table "events", force: true do |t|
     t.integer  "project_id"
     t.string   "message"
+    t.string   "url"
     t.integer  "user_id"
     t.integer  "trackable_id"
     t.string   "trackable_type"

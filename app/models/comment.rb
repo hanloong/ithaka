@@ -17,6 +17,7 @@ class Comment < ActiveRecord::Base
   delegate :organisation, to: :idea
   delegate :public, to: :idea
   delegate :name, to: :idea
+  delegate :link_to, to: :idea
 
   def search_title
     comment.truncate(40)
@@ -24,10 +25,6 @@ class Comment < ActiveRecord::Base
 
   def search_body
     comment
-  end
-
-  def link_to
-    project_idea_path(project, idea)
   end
 
   private

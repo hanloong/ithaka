@@ -14,6 +14,7 @@ module Trackable
       project: project,
       user: user,
       message: message,
+      url: link_to,
       trackable: self
     )
   end
