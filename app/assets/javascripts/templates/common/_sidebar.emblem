@@ -1,0 +1,34 @@
+.profile.hidden-xs
+  h5 Han Loong Liauw
+
+.row.scorecard
+  .col-sm-4.locked
+    i.icon-lock
+    div 12
+  .col-sm-4.unlocked
+    i.icon-unlocked
+    div 12
+  .col-sm-4.available
+    i.icon-unlocked
+    div 12
+
+ul.list-group
+  li.list-group-primary.list-group-item.active: a href='#'
+    i.icon-pie
+    span.sidebar-lg.hidden-xs
+      | Dashboard
+  li.list-group-brand.list-group-item: a href='#'
+    i.icon-stats
+    span.sidebar-lg.hidden-xs
+      | Projects
+      span.badge 14
+  li.list-group-success.list-group-item: a href='#'
+    i.icon-lightbulb-o
+    span.sidebar-lg.hidden-xs
+      | Ideas
+      span.badge 14
+  li.list-group-danger.list-group-item: a href='#'
+    i.icon-cog
+    span.sidebar-lg.hidden-xs
+      | Settings
+      span.badge 14

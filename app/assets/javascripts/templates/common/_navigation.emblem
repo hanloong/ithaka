@@ -1,0 +1,6 @@
+.navbar.navbar-default
+  ul.pull-right.ithaka-nav
+    li.active: a href='#'
+      |Notifications
+    li: a href='#' title='Log out'
+      i.icon-power-off

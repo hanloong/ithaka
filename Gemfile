@@ -11,6 +11,10 @@ gem 'pg'                                                                        
 gem 'puma'                                                                                # Multithreaded web server
 gem 'delayed_job_active_record'                                                           # ActiveRecord backed Queue
 
+gem 'ember-rails'
+gem 'emblem-rails'
+gem 'bower-rails'
+
 gem 'slim-rails'                                                                          # Templating language
 gem 'bootstrap-sass'                                                                      # Bootstrap Wrapper
 gem 'font-awesome-rails'                                                                  # Font Awersome Wrapper
@@ -52,7 +56,6 @@ group :development do
   gem 'foreman'
   gem 'quiet_assets'
   gem 'rails_layout'
-  gem 'rack-mini-profiler'
   gem 'letter_opener'
   gem 'ninefold'
   gem 'spring-commands-rspec'
