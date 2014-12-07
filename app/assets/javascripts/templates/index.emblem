@@ -1,7 +1,6 @@
 .container-fluid
   .row
-    .col-sm-3.col-sx-1.sidebar
-      = partial "common/sidebar"
+    = partial "common/sidebar"
     .main
       = partial "common/navigation"
       h1 Hello

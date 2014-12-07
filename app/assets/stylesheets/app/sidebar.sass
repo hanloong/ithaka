@@ -4,9 +4,11 @@ body
     height: 100vh
     padding: 0
     color: $ithaka-sidebar-colour
-    max-width: 200px
-    min-width: 45px
+    width: 45px
     float: left
+
+    .hidden-sidebar
+      display: none
 
     .profile
       margin: 30px 0
@@ -15,6 +17,7 @@ body
     .scorecard 
       margin: 0
       div
+        width: 100%
         text-align: center
         &.locked
           background: $ithaka-danger
@@ -67,10 +70,13 @@ body
         height: $navbar-height
         &:hover
           background: darken($navbar-default-bg, 2)
-          font-weight: bold
-          a
-            text-decoration: none
         a
           height: $navbar-height
           line-height: $navbar-height
+          color: $ithaka-bg-dark
+          text-decoration: none
           padding: 0 30px
+          &:hover
+            color: darken($ithaka-bg-dark, 10)
+        .active a
+          color: darken($ithaka-primary, 10)
