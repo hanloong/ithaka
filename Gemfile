@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.1.2'
 
 gem 'rails'
-gem 'sass-rails'                                                                          # Sass Stylesheet compilation
+gem "sass-rails", "~> 4.0.2"
 gem 'uglifier'                                                                            # Javascript Parser
 gem 'coffee-rails'                                                                        # Coffescript compilation
 gem 'jquery-rails'                                                                        # jQuery wrapper with ujs rails functions
@@ -13,7 +13,11 @@ gem 'delayed_job_active_record'                                                 
 
 gem 'ember-rails'
 gem 'emblem-rails'
-gem 'bower-rails'
+
+gem 'bourbon'
+gem 'neat'
+gem 'bitters'
+gem 'refills'
 
 gem 'slim-rails'                                                                          # Templating language
 gem 'bootstrap-sass'                                                                      # Bootstrap Wrapper

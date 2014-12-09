@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/reactjs/react-rails.git
-  revision: 78c01875e16d31f26b05de666366bc5c62caf4ba
+  revision: 5ad3c771107a3f820f769f4f8723685d19a1d92c
   ref: master
   specs:
     react-rails (1.0.0.pre)
@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/stripe/stripe-ruby
-  revision: 7aee297980aba1863c7e3294feb3eb4f2ee44911
+  revision: 9c7ebd21c97358d1329abdbd91628dbf970d314f
   specs:
     stripe (1.16.0)
       json (~> 1.8.1)
@@ -21,29 +21,30 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    actionmailer (4.1.7)
-      actionpack (= 4.1.7)
-      actionview (= 4.1.7)
+    CFPropertyList (2.2.8)
+    actionmailer (4.1.8)
+      actionpack (= 4.1.8)
+      actionview (= 4.1.8)
       mail (~> 2.5, >= 2.5.4)
-    actionpack (4.1.7)
-      actionview (= 4.1.7)
-      activesupport (= 4.1.7)
+    actionpack (4.1.8)
+      actionview (= 4.1.8)
+      activesupport (= 4.1.8)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
-    actionview (4.1.7)
-      activesupport (= 4.1.7)
+    actionview (4.1.8)
+      activesupport (= 4.1.8)
       builder (~> 3.1)
       erubis (~> 2.7.0)
     active_model_serializers (0.9.1)
       activemodel (>= 3.2)
-    activemodel (4.1.7)
-      activesupport (= 4.1.7)
+    activemodel (4.1.8)
+      activesupport (= 4.1.8)
       builder (~> 3.1)
-    activerecord (4.1.7)
-      activemodel (= 4.1.7)
-      activesupport (= 4.1.7)
+    activerecord (4.1.8)
+      activemodel (= 4.1.8)
+      activesupport (= 4.1.8)
       arel (~> 5.0.0)
-    activesupport (4.1.7)
+    activesupport (4.1.8)
       i18n (~> 0.6, >= 0.6.9)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
@@ -64,7 +65,7 @@ GEM
       addressable (>= 2.3.1)
       extlib (>= 0.9.15)
       multi_json (>= 1.0.0)
-    autoprefixer-rails (3.1.2.20141016)
+    autoprefixer-rails (4.0.2.1)
       execjs
     barber (0.5.0)
       ember-source
@@ -80,11 +81,17 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (3.3.0.1)
+    bitters (0.10.1)
+      bourbon (>= 3.2)
+      sass (>= 3.2)
+      thor
+    bootstrap-sass (3.3.1.0)
       sass (~> 3.2)
-    bootstrap-switch-rails (3.1.0)
+    bootstrap-switch-rails (3.2.2)
     bootstrap_tokenfield_rails (0.0.7)
-    bower-rails (0.8.3)
+    bourbon (3.2.3)
+      sass (~> 3.2)
+      thor
     builder (3.2.2)
     capybara (2.4.4)
       mime-types (>= 1.16)
@@ -106,7 +113,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
-    connection_pool (2.0.0)
+    connection_pool (2.1.0)
     database_cleaner (1.3.0)
     debug_inspector (0.0.2)
     delayed_job (4.0.4)
@@ -153,7 +160,7 @@ GEM
     english (0.6.3)
       language
     erubis (2.7.0)
-    excon (0.41.0)
+    excon (0.42.1)
     execjs (2.2.2)
     extlib (0.9.16)
     factory_girl (4.5.0)
@@ -164,20 +171,28 @@ GEM
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     fast_blank (0.0.2)
-    fog (1.24.0)
-      fog-brightbox
-      fog-core (~> 1.23)
+    fission (0.5.0)
+      CFPropertyList (~> 2.2)
+    fog (1.25.0)
+      fog-brightbox (~> 0.4)
+      fog-core (~> 1.25)
       fog-json
+      fog-profitbricks
       fog-radosgw (>= 0.0.2)
       fog-sakuracloud (>= 0.0.4)
       fog-softlayer
+      fog-terremark
+      fog-vmfusion
+      fog-voxel
+      fog-xml (~> 0.1.1)
       ipaddress (~> 0.5)
       nokogiri (~> 1.5, >= 1.5.11)
-    fog-brightbox (0.6.1)
+      opennebula
+    fog-brightbox (0.7.1)
       fog-core (~> 1.22)
       fog-json
-      inflecto
-    fog-core (1.24.0)
+      inflecto (~> 0.0.2)
+    fog-core (1.25.0)
       builder
       excon (~> 0.38)
       formatador (~> 0.2)
@@ -186,6 +201,10 @@ GEM
       net-ssh (>= 2.1.3)
     fog-json (1.0.0)
       multi_json (~> 1.0)
+    fog-profitbricks (0.0.1)
+      fog-core
+      fog-xml
+      nokogiri
     fog-radosgw (0.0.3)
       fog-core (>= 1.21.0)
       fog-json
@@ -193,17 +212,26 @@ GEM
     fog-sakuracloud (0.1.1)
       fog-core
       fog-json
-    fog-softlayer (0.3.24)
+    fog-softlayer (0.3.25)
       fog-core
       fog-json
+    fog-terremark (0.0.3)
+      fog-core
+      fog-xml
+    fog-vmfusion (0.0.1)
+      fission
+      fog-core
+    fog-voxel (0.0.2)
+      fog-core
+      fog-xml
     fog-xml (0.1.1)
       fog-core
       nokogiri (~> 1.5, >= 1.5.11)
     font-awesome-rails (4.2.0.0)
       railties (>= 3.2, < 5.0)
-    foreman (0.63.0)
-      dotenv (>= 0.7)
-      thor (>= 0.13.6)
+    foreman (0.76.0)
+      dotenv (~> 1.0.2)
+      thor (~> 0.19.1)
     formatador (0.2.5)
     google-api-client (0.7.1)
       addressable (>= 2.3.2)
@@ -219,52 +247,54 @@ GEM
     groupdate (2.3.0)
       activesupport (>= 3)
     handlebars-source (1.3.0)
-    hashie (3.3.1)
+    hashie (3.3.2)
     high_voltage (2.2.1)
     hike (1.2.3)
     i18n (0.6.11)
     inflecto (0.0.2)
     ipaddress (0.8.0)
-    jasmine-core (2.0.2)
+    jasmine-core (2.1.3)
     jasmine-rails (0.10.2)
       jasmine-core (>= 1.3, < 3.0)
       phantomjs
       railties (>= 3.1.0)
       sprockets-rails
-    jbuilder (2.2.4)
+    jbuilder (2.2.5)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
-    jwt (1.0.0)
+    jwt (1.2.0)
     language (0.6.0)
     launchy (2.4.3)
       addressable (~> 2.3)
-    letter_opener (1.2.0)
+    letter_opener (1.3.0)
       launchy (~> 2.2)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.4.3)
-    mini_magick (3.8.1)
-      subexec (~> 0.2.1)
+    mini_magick (4.0.1)
     mini_portile (0.6.1)
     minitest (5.4.3)
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    neat (1.5.1)
+      bourbon (>= 3.1)
+      sass (~> 3.2.19)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
     netrc (0.8.0)
-    ninefold (1.7.4)
-      faraday (~> 0.8)
-      json (~> 1.7)
-      netrc (~> 0.7)
-      thor (~> 0.19)
-    nokogiri (1.6.4.1)
+    ninefold (1.7.5)
+      faraday (= 0.9.0)
+      json (= 1.8.1)
+      netrc (= 0.8.0)
+      thor (= 0.19.1)
+    nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
     oauth2 (1.0.0)
       faraday (>= 0.8, < 0.10)
@@ -283,8 +313,12 @@ GEM
       multi_json (~> 1.3)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
+    opennebula (4.10.1)
+      json
+      nokogiri
+      rbvmomi
     orm_adapter (0.5.0)
-    parser (2.2.0.pre.7)
+    parser (2.2.0.pre.8)
       ast (>= 1.1, < 3.0)
       slop (~> 3.4, >= 3.4.5)
     pg (0.17.1)
@@ -294,7 +328,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    puma (2.9.2)
+    puma (2.10.2)
       rack (>= 1.1, < 2.0)
     pundit (0.3.0)
       activesupport (>= 3.0.0)
@@ -303,29 +337,34 @@ GEM
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
-    rails (4.1.7)
-      actionmailer (= 4.1.7)
-      actionpack (= 4.1.7)
-      actionview (= 4.1.7)
-      activemodel (= 4.1.7)
-      activerecord (= 4.1.7)
-      activesupport (= 4.1.7)
+    rails (4.1.8)
+      actionmailer (= 4.1.8)
+      actionpack (= 4.1.8)
+      actionview (= 4.1.8)
+      activemodel (= 4.1.8)
+      activerecord (= 4.1.8)
+      activesupport (= 4.1.8)
       bundler (>= 1.3.0, < 2.0)
-      railties (= 4.1.7)
+      railties (= 4.1.8)
       sprockets-rails (~> 2.0)
-    rails_layout (1.0.23)
-    railties (4.1.7)
-      actionpack (= 4.1.7)
-      activesupport (= 4.1.7)
+    rails_layout (1.0.24)
+    railties (4.1.8)
+      actionpack (= 4.1.8)
+      activesupport (= 4.1.8)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rainbow (2.0.0)
     rake (10.4.2)
+    rbvmomi (1.8.2)
+      builder
+      nokogiri (>= 1.4.1)
+      trollop
     react-source (0.12.0)
     redactor-rails (0.4.5)
       devise
       mime-types
       orm_adapter
+    refills (0.0.2)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     rest-client (1.7.2)
@@ -360,32 +399,33 @@ GEM
       builder (< 4)
       rspec (>= 2, < 4)
       rspec-core (!= 2.12.0)
-    rubocop (0.27.0)
+    rubocop (0.27.1)
       astrolabe (~> 1.3)
-      parser (>= 2.2.0.pre.6, < 3.0)
+      parser (>= 2.2.0.pre.7, < 3.0)
       powerpack (~> 0.0.6)
       rainbow (>= 1.99.1, < 3.0)
       ruby-progressbar (~> 1.4)
     ruby-progressbar (1.7.0)
     sass (3.2.19)
-    sass-rails (4.0.4)
+    sass-rails (4.0.5)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.2.2)
-      sprockets (~> 2.8, < 2.12)
+      sprockets (~> 2.8, < 3.0)
       sprockets-rails (~> 2.0)
     shoulda-matchers (2.7.0)
       activesupport (>= 3.0.0)
-    signet (0.5.1)
-      addressable (>= 2.2.3)
-      faraday (>= 0.9.0.rc5)
-      jwt (>= 0.1.5)
-      multi_json (>= 1.0.0)
+    signet (0.6.0)
+      addressable (~> 2.3)
+      extlib (~> 0.9)
+      faraday (~> 0.9)
+      jwt (~> 1.0)
+      multi_json (~> 1.10)
     simplecov (0.9.1)
       docile (~> 1.1.0)
       multi_json (~> 1.0)
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
-    skylight (0.4.3)
+    skylight (0.5.1)
       activesupport (>= 3.0.0)
     slim (2.1.0)
       temple (~> 0.6.9)
@@ -396,27 +436,27 @@ GEM
       railties (>= 3.0, < 4.2)
       slim (~> 2.0)
     slop (3.6.0)
-    spring (1.1.3)
+    spring (1.2.0)
     spring-commands-rspec (1.0.2)
       spring (>= 0.9.1)
-    sprockets (2.11.3)
+    sprockets (2.12.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.2.0)
+    sprockets-rails (2.2.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    subexec (0.2.3)
     temple (0.6.10)
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
     timecop (0.7.1)
+    trollop (2.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uglifier (2.5.3)
+    uglifier (2.6.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     unf (0.1.4)
@@ -437,10 +477,11 @@ DEPENDENCIES
   autoprefixer-rails
   better_errors
   binding_of_caller
+  bitters
   bootstrap-sass
   bootstrap-switch-rails
   bootstrap_tokenfield_rails
-  bower-rails
+  bourbon
   capybara
   carrierwave
   chartkick
@@ -468,6 +509,7 @@ DEPENDENCIES
   jquery-rails
   letter_opener
   mini_magick
+  neat
   ninefold
   omniauth-google-oauth2
   pg
@@ -479,11 +521,12 @@ DEPENDENCIES
   rails_layout
   react-rails!
   redactor-rails
+  refills
   rspec-activemodel-mocks
   rspec-rails
   rspec_junit_formatter
   rubocop
-  sass-rails
+  sass-rails (~> 4.0.2)
   shoulda-matchers
   simplecov
   skylight
