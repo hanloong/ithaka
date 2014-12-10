@@ -1,2 +1,4 @@
-= partial "common/navigation"
-= partial "common/sidebar"
+body
+  = partial "common/navigation"
+  = partial "common/sidebar"
+  main

@@ -1,1 +1,17 @@
 Ithaka.SidebarView
+  nav.sidebar-nav
+    ul
+      li.link-to
+        a href="#" Dashboard
+        span.icon.icon-bar-chart
+
+      li.link-to
+        a href="#" Projects
+        span.icon.icon-bar-chart
+  .user-profile
+    .avatar
+      img src='https://avatars1.githubusercontent.com/u/195477?v=3&s=460'
+    .details
+      .name Han Loong Liauw
+      .role Software Engineer
+      .company yourtutor

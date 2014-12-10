@@ -1,0 +1,22 @@
+Ithaka.NavView
+  .menu-wrapper
+    p.navigation-menu-button
+      Ithaka.SidebarToggleView
+    .brand
+      span.icon-lightbulb-o.icon-logo
+      | Ithaka
+
+    .navigation-tools
+      .nav
+        ul#navigation-menu
+          li.nav-link
+            a href="javascript:void(0)" title="Search"
+              span.icon-search
+          li.nav-link.more
+            a href="javascript:void(0)" title="Notifications"
+              span.icon-bell
+            ul.submenu
+              li: a href="javascript:void(0)" Notification Item 1
+              li: a href="javascript:void(0)" Notification Item 1
+          li.nav-link: a href="javascript:void(0)" title="Log out"
+            span.icon-sign-out
