@@ -7,3 +7,4 @@ Ithaka.SidebarToggleView = Ember.View.extend
   classNames: ['icon-bars']
   click: ->
     $('.sidebar').toggleClass('active')
+    $('main').toggleClass('sidebar-open')

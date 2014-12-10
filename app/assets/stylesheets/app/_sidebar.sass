@@ -1,17 +1,26 @@
-div.sidebar
-  $background-color: $ithaka-sidebar
-  $open-width: 220px
-  $compact-width: 45px
-  $desktop-mode: $large-screen
-  $sidebar-color: white
-  $sidebar-fade-color: transparentize($sidebar-color, 0.3)
-  $sidebar-avabat-size: $compact-width
-  $sidebar-nav-line-height: 50px
-  $animation-time: 1s
-  $animation-type: ease
+$background-color: $ithaka-sidebar
+$open-width: 220px
+$compact-width: 45px
+$desktop-mode: $large-screen
+$sidebar-color: white
+$sidebar-fade-color: transparentize($sidebar-color, 0.3)
+$sidebar-avabat-size: $compact-width
+$sidebar-nav-line-height: 50px
+$animation-time: 1s
+$animation-type: ease-in-out
+$compact-offset: $open-width - $compact-width
 
-  @mixin sidebar-animate($property)
-    @include transition($property, $animation-time, $animation-type)
+@mixin sidebar-animate($property)
+  @include transition($property, $animation-time, $animation-type)
+
+@include media($desktop-mode)
+  main
+    margin-left: $compact-width
+    @include sidebar-animate(all)
+    &.sidebar-open
+      margin-left: $open-width
+
+div.sidebar
 
   background-color: $background-color
   top: 50px
@@ -24,7 +33,7 @@ div.sidebar
   width: $open-width
   @include sidebar-animate(width)
   @include media($desktop-mode)
-    left: ($compact-width - $open-width)
+    @include transform(translateX($compact-width))
 
   .hide-when-compact
     @include sidebar-animate(all)
@@ -82,7 +91,7 @@ div.sidebar
 
   // When the draw opens
   &.active, &:hover
-    left: 0
+    @include transform(translateX($open-width))
 
     .hide-when-compact
       visibility: visible

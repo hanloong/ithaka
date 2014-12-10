@@ -2,3 +2,4 @@ body
   = partial "common/navigation"
   = partial "common/sidebar"
   main
+    h1 Welcome to ithaka
