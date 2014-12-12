@@ -9,11 +9,9 @@ Ithaka.NavView
           li.nav-link
             a href="javascript:void(0)" title="Search"
               span.icon-search
-          li.nav-link.more
+          li.nav-link
             a href="javascript:void(0)" title="Notifications"
               span.icon-bell
-            ul.submenu
-              li: a href="javascript:void(0)" Notification Item 1
-              li: a href="javascript:void(0)" Notification Item 1
+              span.badge.error 5
           li.nav-link: a href="javascript:void(0)" title="Log out"
             span.icon-sign-out

@@ -1,0 +1,28 @@
+$badge-background: $ithaka-primary
+$badge-dark-color: $dark-gray
+$badge-error-color: $ithaka-danger
+$badge-notice-color: $ithaka-info
+$badge-success-color: $ithaka-success
+$badge-font-color: white
+$badge-font-size: $base-font-size * 0.75
+.badge
+  display: inline-block
+  background: $badge-background
+  border-radius: 2em
+  color: $badge-font-color
+  font-size: $badge-font-size
+  font-weight: 600
+  line-height: 1
+  padding: .25em .5em
+  text-align: center
+  &.dark
+    background: $badge-dark-color
+  &.error
+    background: $badge-error-color
+    color: white
+  &.notice
+    background: $badge-notice-color
+    color: darken($badge-notice-color, 60)
+  &.success
+    background: $badge-success-color
+    color: darken($badge-success-color, 60)

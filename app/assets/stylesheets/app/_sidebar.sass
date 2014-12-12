@@ -9,6 +9,7 @@ $sidebar-nav-line-height: 50px
 $animation-time: 1s
 $animation-type: ease-in-out
 $compact-offset: $open-width - $compact-width
+$border-colors: $ithaka-primary, $ithaka-brand, $ithaka-success, $ithaka-danger, $ithaka-info
 
 @mixin sidebar-animate($property)
   @include transition($property, $animation-time, $animation-type)
@@ -25,12 +26,9 @@ main.sidebar-open
 
 .sidebar
   background-color: $background-color
-  top: 0
-  right: 0
-  left: -$open-width
-  bottom: 0
-  height: 100%
-  position: absolute
+  @include position(absolute, 0px null null (-$open-width))
+  min-height: 100%
+  overflow-y: scroll
   color: $sidebar-color
   width: $open-width
   @include sidebar-animate(left)
@@ -49,11 +47,14 @@ main.sidebar-open
       background: $ithaka-brand
       color: white
       line-height: $sidebar-nav-line-height
+      height: $sidebar-nav-line-height
       width: $compact-width
       float: right
       text-align: center
       font-size: 24px
       display: block
+      @include box-sizing(border-box)
+      border-bottom: 4px solid darken($ithaka-brand, 5%)
 
   .hide-when-compact
     @include sidebar-animate(all)
@@ -61,15 +62,18 @@ main.sidebar-open
     opacity: 0
 
   .sidebar-nav
+    overflow: hidden
     ul li
       display: block
       width: 100%
-      height: $sidebar-nav-line-height
-      +clearfix
+      overflow: hidden
       @include box-sizing(border-box)
       &:hover
         background: darken($background-color, 10)
         cursor: pointer
+        ul.dropdown
+          display: block
+          @include sidebar-animate(all)
       a
         display: block
         height: $sidebar-nav-line-height
@@ -79,25 +83,47 @@ main.sidebar-open
         float: left
       .icon
         line-height: $sidebar-nav-line-height
-        color: $sidebar-color
-        font-size: 14px
+        color: lighten($background-color, 70%)
+        font-size: 19px
         padding: 0 10px
         float: right
+      .badge
+        margin: 13px 5px 0 5px
 
-      &:first-child
-        border-right: 4px solid $ithaka-primary
-      &:nth-child(2)
-        border-right: 4px solid $ithaka-brand
+      ul.dropdown
+        float: left
+        width: 100%
+        display: none
+        @include sidebar-animate(all)
+        li
+          border: none
+          width: 100%
+          background: darken($background-color, 5%)
+          &:hover
+            background: lighten($background-color, 5%)
+          a
+            width: 100%
+            span.icon
+              float: right
+
+      @for $i from 1 through length($border-colors)
+        &:nth-child(#{length($border-colors)}n+#{$i})
+          border-right: 5px solid nth($border-colors, $i)
 
   .user-profile
+    +clearfix
     padding: 20px 10px
     text-align: center
+    border-top: 4px solid darken($background-color, 5%)
+
     .avatar
-      width: 45px
-      height: 45px
+      width: 60px
+      height: 60px
       margin: 0 auto
       img
-        border-radius: 22px
+        border: 2px white solid
+        border-radius: 30px
+
     .details
       padding: 10px
       .name
@@ -109,6 +135,31 @@ main.sidebar-open
         color: $sidebar-fade-color
         font-size: 80%
 
+  .scorecard
+    +clearfix
+    margin: 0 5px
+    div
+      padding: 10px 0
+      text-align: center
+      @include box-sizing(border-box)
+      border: 1px solid $ithaka-sidebar
+      font-weight: bold
+      font-size: 16px
+      small
+        display: block
+        font-size: 40%
+    .available
+      font-size: 36px
+      width: 100%
+      background: $ithaka-success
+    .locked, .unlocked
+      width: 50%
+      float: left
+    .locked
+      background: $ithaka-danger
+    .unlocked
+      background: $ithaka-primary
+
   // When the draw opens
   &.active, &:hover
     left: 0
@@ -117,12 +168,16 @@ main.sidebar-open
       opacity: 1
       @include sidebar-animate(all)
     .brand
+      background: darken($background-color, 3%)
       text-align: center
       font-size: 20px
+      @include box-sizing(border-box)
+      border-bottom: 4px solid darken($background-color, 5%)
+      height: 50px
       .icon-logo
-        background: lighten($background-color, 10%)
-        border-color: lighten($background-color, 20%)
-        color: lighten($background-color, 20%)
+        background: $background-color
+        border: 1px solid lighten($background-color, 5%)
+        color: lighten($background-color, 5%)
         display: inline
         float: none
         margin: 0 5px
@@ -132,4 +187,4 @@ main.sidebar-open
         font-size: inherit
       .title
         display: inline
-        color: lighten($background-color, 20%)
+        color: lighten($background-color, 5%)

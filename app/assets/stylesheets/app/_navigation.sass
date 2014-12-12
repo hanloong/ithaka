@@ -65,48 +65,22 @@ header.navigation
     text-decoration: none
     width: auto
     z-index: 9999
-
     a
       font-weight: 400
       color: $navigation-color
       &:hover
         color: $navigation-color-hover
+      span
+        margin: 0 5px
+        font-size: 1.25em
+        &.badge
+          top: 0
+          margin: 5px 0 0 -15px
+          font-size: .5em
+
   .active-nav-item a
     padding-bottom: 3px
     border-bottom: 1px solid $navigation-active-link-color
-  li.more
-    position: relative
-    padding-right: .8em
-    &:hover .submenu
-      display: block
-
-  li.more a
-    padding-right: .8em
-  .submenu
-    display: none
-    position: absolute
-    top: 1em
-    right: -$navigation-submenu-padding
-
-    li
-      display: block
-      padding-right: 0
-      line-height: $navigation-height / 1.3
-      &:first-child a
-        padding-top: 1em
-      &:last-child a
-        border-bottom-left-radius: $base-border-radius
-        border-bottom-right-radius: $base-border-radius
-        padding-bottom: .7em
-
-      a
-        text-align: right
-        background-color: darken($navigation-background, 3)
-        display: inline-block
-        width: 12em
-        background-color: $navigation-background
-        text-align: left
-        padding-left: $navigation-submenu-padding
 
   .navigation-tools
     +clearfix

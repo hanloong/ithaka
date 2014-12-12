@@ -7,11 +7,30 @@ Ithaka.SidebarView
     ul
       li.link-to
         a href="#" Dashboard
-        span.icon.icon-bar-chart
+        span.badge.notice 2
+        span.icon.icon-pie-chart
 
       li.link-to
         a href="#" Projects
         span.icon.icon-bar-chart
+
+      li.link-to
+        a href="#" Challenges
+        span.icon.icon-trophy
+
+      li.link-to.dropdown-link
+        a href="#" Settings
+        span.icon.icon-angle-down
+        ul.dropdown
+          li: a href='#'
+            | My Account
+            span.icon.icon-cog
+          li: a href='#'
+            | Organisation
+            span.icon.icon-group
+          li: a href='#'
+            | Billing
+            span.icon.icon-credit-card
 
   .user-profile.hide-when-compact
     .avatar
@@ -20,3 +39,14 @@ Ithaka.SidebarView
       .name Han Loong Liauw
       .role Software Engineer
       .company yourtutor
+
+  .scorecard.hide-when-compact
+    .available
+      | 12
+      small available
+    .locked
+      | 2
+      small locked
+    .unlocked
+      | 4
+      small unlocked
