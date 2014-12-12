@@ -32,7 +32,7 @@ $light-yellow: #FFF6BF;
 $light-green: #E6EFC2;
 
 // Background Color
-$base-background-color: $ithaka-bg;
+$base-background-color: lighten($ithaka-bg, 5%);
 
 // Font Colors
 $base-font-color: $dark-gray;

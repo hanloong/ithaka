@@ -1,4 +1,8 @@
 Ithaka.SidebarView
+  .brand
+    span.icon-lightbulb-o.icon-logo
+    span.title Ithaka
+
   nav.sidebar-nav
     ul
       li.link-to

@@ -1,15 +1,16 @@
+$desktop-mode: $large-screen
+
 header.navigation
   $navigation-padding: 1em
-  $navigation-background: white
+  $navigation-background: $ithaka-bg
   $navigation-color: transparentize($dark-gray, 0.3)
   $navigation-color-hover: $ithaka-primary
   $navigation-height: 50px
   $navigation-active-link-color: $ithaka-primary
   $navigation-submenu-padding: 1em
-  $horizontal-bar-mode: $large-screen
 
   background-color: $navigation-background
-  border-bottom: 1px solid darken($navigation-background, 10)
+  border-bottom: 4px solid darken($navigation-background, 4%)
   font-family: $sans-serif
   height: $navigation-height
   width: 100%
@@ -22,7 +23,15 @@ header.navigation
     z-index: 9999
 
   .navigation-menu-button
-    color: $navigation-color
+    span
+      background: $navigation-color-hover
+      color: white
+      padding: 5px 5px 5px 7px
+      margin: 0
+      border-radius: 3px
+      &:hover
+        background: darken($navigation-color-hover, 10%)
+
     cursor: pointer
     display: block
     float: left
@@ -32,24 +41,6 @@ header.navigation
     margin: 0
     padding-right: 1em
     text-transform: uppercase
-    &:hover
-      color: $navigation-color-hover
-
-  .brand
-    cursor: pointer
-    display: none
-    float: left
-    font-family: $sans-serif
-    line-height: $navigation-height
-    @include media ($horizontal-bar-mode)
-      display: block
-    .icon-logo
-      margin: 0 5px
-      background: $ithaka-brand
-      color: white
-      padding: 2px 5px
-      border-radius: 3px
-      border: 1px solid darken($ithaka-brand, 10)
 
   .nav
     z-index: 9999999
@@ -124,3 +115,8 @@ header.navigation
     background: transparent
     float: right
     clear: none
+
+main.sidebar-open .navigation-tools
+  display: none
+  @include media($desktop-mode)
+    display: block

@@ -1,10 +1,7 @@
 Ithaka.NavView
   .menu-wrapper
-    p.navigation-menu-button
-      Ithaka.SidebarToggleView
-    .brand
-      span.icon-lightbulb-o.icon-logo
-      | Ithaka
+    Ithaka.SidebarToggleView
+      span.icon-bars
 
     .navigation-tools
       .nav

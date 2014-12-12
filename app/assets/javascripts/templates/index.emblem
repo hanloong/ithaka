@@ -1,5 +1,6 @@
 body
-  = partial "common/navigation"
   = partial "common/sidebar"
   main
-    h1 Welcome to ithaka
+    = partial "common/navigation"
+    .container
+      h1 Welcome to ithaka

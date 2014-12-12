@@ -13,27 +13,47 @@ $compact-offset: $open-width - $compact-width
 @mixin sidebar-animate($property)
   @include transition($property, $animation-time, $animation-type)
 
-@include media($desktop-mode)
-  main
+main
+  margin-left: 0
+  overflow: hidden
+  @include sidebar-animate(all)
+  @include media($desktop-mode)
     margin-left: $compact-width
-    @include sidebar-animate(all)
-    &.sidebar-open
-      margin-left: $open-width
 
-div.sidebar
+main.sidebar-open
+  margin-left: $open-width
 
+.sidebar
   background-color: $background-color
-  top: 50px
+  top: 0
   right: 0
   left: -$open-width
   bottom: 0
   height: 100%
-  position: fixed
+  position: absolute
   color: $sidebar-color
   width: $open-width
-  @include sidebar-animate(width)
+  @include sidebar-animate(left)
   @include media($desktop-mode)
-    @include transform(translateX($compact-width))
+    left: ($compact-width - $open-width)
+
+  .brand
+    display: block
+    font-family: $sans-serif
+    line-height: $sidebar-nav-line-height
+    text-align: right
+    +clearfix
+    .title
+      display: none
+    .icon-logo
+      background: $ithaka-brand
+      color: white
+      line-height: $sidebar-nav-line-height
+      width: $compact-width
+      float: right
+      text-align: center
+      font-size: 24px
+      display: block
 
   .hide-when-compact
     @include sidebar-animate(all)
@@ -65,9 +85,9 @@ div.sidebar
         float: right
 
       &:first-child
-        border-right: 3px solid $ithaka-brand
+        border-right: 4px solid $ithaka-primary
       &:nth-child(2)
-        border-right: 3px solid $ithaka-primary
+        border-right: 4px solid $ithaka-brand
 
   .user-profile
     padding: 20px 10px
@@ -91,9 +111,25 @@ div.sidebar
 
   // When the draw opens
   &.active, &:hover
-    @include transform(translateX($open-width))
-
+    left: 0
     .hide-when-compact
       visibility: visible
       opacity: 1
       @include sidebar-animate(all)
+    .brand
+      text-align: center
+      font-size: 20px
+      .icon-logo
+        background: lighten($background-color, 10%)
+        border-color: lighten($background-color, 20%)
+        color: lighten($background-color, 20%)
+        display: inline
+        float: none
+        margin: 0 5px
+        padding: 4px 9px
+        border-radius: 4px
+        line-height: 100%
+        font-size: inherit
+      .title
+        display: inline
+        color: lighten($background-color, 20%)

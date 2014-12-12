@@ -6,6 +6,7 @@ gem "sass-rails", "~> 4.0.2"
 gem 'uglifier'                                                                            # Javascript Parser
 gem 'coffee-rails'                                                                        # Coffescript compilation
 gem 'jquery-rails'                                                                        # jQuery wrapper with ujs rails functions
+gem 'modernizr-rails'
 gem 'jbuilder'                                                                            # JSON Parsing
 gem 'pg'                                                                                  # PostgreSQL db adapter
 gem 'puma'                                                                                # Multithreaded web server
