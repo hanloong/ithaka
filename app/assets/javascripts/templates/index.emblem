@@ -2,5 +2,5 @@ body
   = partial "common/sidebar"
   main
     = partial "common/navigation"
-    .container
+    .fluid-container
       = partial "dashboard"

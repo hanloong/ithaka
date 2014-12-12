@@ -1,1 +1,20 @@
-h1 Content
+.heading
+  h1 Welcome to ithaka
+  p Some text explaining how to get started and stuff
+
+.projects
+  h2 Projects
+
+.activity
+  h2 Activity Feed
+
+.calendar
+  h2 Calendar
+
+.ideas
+
+.news
+
+.trending
+
+.notifications
