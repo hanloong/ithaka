@@ -1,8 +1,10 @@
 $desktop-mode: $large-screen
 
 .fluid-container
-  @include outer-container
-  max-width: 100%
+  @include outer-container(100%)
+
+.dashboard
+  @include row()
 
 @mixin widget($border-color, $cols)
 
@@ -15,6 +17,7 @@ $desktop-mode: $large-screen
     border-bottom: 1px solid $ithaka-bg
   border-bottom: 4px solid darken($ithaka-bg, 5%)
   border-top: 4px solid $border-color
+  margin-bottom: 5px
   &:hover
     border-top: 4px solid darken($border-color, 5%)
   @include span-columns(12)
@@ -22,7 +25,7 @@ $desktop-mode: $large-screen
     @include span-columns($cols)
 
 .heading
-  @include widget($ithaka-sidebar, 12)
+  @include widget(white, 12)
 
 .projects
   @include widget($ithaka-success, 4)
@@ -32,3 +35,5 @@ $desktop-mode: $large-screen
 
 .calendar
   @include widget($ithaka-danger, 4)
+  @include media($desktop-mode)
+    @include omega()

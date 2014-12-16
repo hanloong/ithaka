@@ -1,20 +1,21 @@
-.heading
-  h1 Welcome to ithaka
-  p Some text explaining how to get started and stuff
+.dashboard
+  .heading
+    h1 Welcome to ithaka
+    p Some text explaining how to get started and stuff
 
-.projects
-  h2 Projects
+  .projects
+    h2 Projects
 
-.activity
-  h2 Activity Feed
+  .activity
+    h2 Activity Feed
 
-.calendar
-  h2 Calendar
+  .calendar
+    h2 Calendar
 
-.ideas
+  .ideas
 
-.news
+  .news
 
-.trending
+  .trending
 
-.notifications
+  .notifications

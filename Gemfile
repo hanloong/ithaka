@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.1.2'
 
 gem 'rails'
-gem "sass-rails", "~> 4.0.2"
+gem 'sass-rails', '~> 5.0.0'
 gem 'uglifier'                                                                            # Javascript Parser
 gem 'coffee-rails'                                                                        # Coffescript compilation
 gem 'jquery-rails'                                                                        # jQuery wrapper with ujs rails functions
@@ -13,9 +13,10 @@ gem 'puma'                                                                      
 gem 'delayed_job_active_record'                                                           # ActiveRecord backed Queue
 
 gem 'ember-rails'
+gem 'handlebars-source', '1.3.0'
 gem 'emblem-rails'
 
-gem 'bourbon'
+gem 'bourbon', '~> 4.0.0'
 gem 'neat'
 gem 'bitters'
 gem 'refills'
