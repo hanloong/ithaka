@@ -5,11 +5,21 @@
 
   nav.sidebar-nav
     ul
-      li.link-to
+      li.link-to.dropdown-link#dashboard-dropdown click='toggleDropdown "dashboard-dropdown"'
         a href="#"
           span.icon.icon-pie-chart
           | Dashboard
           span.badge.notice 2
+        ul.dropdown
+          li: a href='#'
+            span.icon.icon-cog
+            | My Account
+          li: a href='#'
+            span.icon.icon-group
+            | Organisation
+          li: a href='#'
+            span.icon.icon-credit-card
+            | Billing
 
       li.link-to
         a href="#"

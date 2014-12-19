@@ -8,3 +8,8 @@ Ithaka.SidebarToggleView = Ember.View.extend
   click: ->
     $('.sidebar').toggleClass('active')
     $('main').toggleClass('sidebar-open')
+
+Ithaka.NotificationToggleView = Ember.View.extend
+  tagName: 'a'
+  click: ->
+    $('#notifications').toggleClass('active')

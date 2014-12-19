@@ -97,16 +97,6 @@ main.sidebar-open
         display: none
         +sidebar-animate(all)
 
-      &.active > ul.dropdown
-        display: block
-        +sidebar-animate(all)
-        li
-          border: none
-          width: 100%
-          background: darken($background-color, 5%)
-          &:hover
-            background: lighten($background-color, 5%)
-
       @for $i from 1 through length($border-colors)
         &:nth-child(#{length($border-colors)}n+#{$i})
           border-right: 5px solid nth($border-colors, $i)
@@ -202,3 +192,14 @@ main.sidebar-open
 
     .dropdown-link.active > a::after
       content: "\f107"
+
+    .sidebar-nav ul li.active > ul.dropdown
+      display: block
+      +sidebar-animate(all)
+      li
+        border: none
+        width: 100%
+        background: darken($background-color, 5%)
+        &:hover
+          background: lighten($background-color, 5%)
+

@@ -56,16 +56,18 @@ header.navigation
     width: 100%
     z-index: 9999
 
-  ul li
+  ul#navigation-menu > li
     display: inline
     line-height: $navigation-height
     overflow: hidden
     padding-right: 2em
     text-align: right
     text-decoration: none
+    position: relative
     width: auto
     z-index: 9999
-    a
+    cursor: pointer
+    > a
       font-weight: 400
       color: $navigation-color
       &:hover
@@ -77,6 +79,29 @@ header.navigation
           top: 0
           margin: 5px 0 0 -15px
           font-size: .5em
+
+    .nav-dropdown
+      display: none
+
+    &.active .nav-dropdown
+      min-width: 200px
+      background: white
+      right: 0
+      position: absolute
+      z-index: 1001
+      display: block
+      box-shadow: 1px 1px 5px 0px rgba(140, 140, 140, 0.75)
+      border-radius: 5px
+      li, li a
+        display: block
+      a
+        text-align: left
+        width: 100%
+        padding: 0 20px
+        color: $navigation-color
+        &:hover
+          background: $navigation-background
+
 
   .active-nav-item a
     padding-bottom: 3px
