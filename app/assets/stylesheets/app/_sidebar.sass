@@ -26,8 +26,8 @@ main.sidebar-open
 
 .sidebar
   background-color: $background-color
-  @include position(absolute, 0px null null (-$open-width))
-  min-height: 100%
+  @include position(absolute, 0px null 0px (-$open-width))
+  height: 100%
   overflow-y: scroll
   color: $sidebar-color
   width: $open-width
@@ -71,15 +71,12 @@ main.sidebar-open
       &:hover
         background: darken($background-color, 10)
         cursor: pointer
-        ul.dropdown
-          display: block
-          @include sidebar-animate(all)
       a
         display: block
         height: $sidebar-nav-line-height
         line-height: $sidebar-nav-line-height
         color: $sidebar-color
-        padding: 0 10px
+        padding: 0 0 0 10px
         float: left
       .icon
         line-height: $sidebar-nav-line-height
@@ -95,6 +92,9 @@ main.sidebar-open
         width: 100%
         display: none
         @include sidebar-animate(all)
+        &.active
+          display: block
+          @include sidebar-animate(all)
         li
           border: none
           width: 100%

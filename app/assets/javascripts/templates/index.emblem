@@ -1,5 +1,5 @@
 body
-  = partial "common/sidebar"
+  = side-bar
   main
     = partial "common/navigation"
     .fluid-container

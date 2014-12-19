@@ -1,4 +1,4 @@
-Ithaka.SidebarView
+.sidebar
   .brand
     span.icon-lightbulb-o.icon-logo
     span.title Ithaka
@@ -18,7 +18,7 @@ Ithaka.SidebarView
         a href="#" Challenges
         span.icon.icon-trophy
 
-      li.link-to.dropdown-link
+      li.link-to.dropdown-link#settings-dropdown click='toggleDropdown "settings-dropdown"'
         a href="#" Settings
         span.icon.icon-angle-down
         ul.dropdown

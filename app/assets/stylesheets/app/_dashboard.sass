@@ -1,39 +1,87 @@
+// Default params
+
 $desktop-mode: $large-screen
+$spacing: 5px
+$row-height: 200px
 
-.fluid-container
-  @include outer-container(100%)
+// Widget mixins
 
-.dashboard
-  @include row()
+@mixin widget($border-color, $cols, $rows: 1, $border-size: 4px)
+  $widget-height: ($row-height * $rows) + (($rows - 1) * $spacing)
+  $head-height: 40px
+  $v-padding: 10px
+  $h-padding: 20px
 
-@mixin widget($border-color, $cols)
-
-  padding: 10px 20px
+  padding: 0
   background: white
+  +media($desktop-mode)
+    height: $widget-height
   h2
     font-size: 1.2em
-    margin: 5px 5px
+    height: $head-height
     padding: 0 0 5px 0
+    padding: $v-padding $h-padding
     border-bottom: 1px solid $ithaka-bg
-  border-bottom: 4px solid darken($ithaka-bg, 5%)
-  border-top: 4px solid $border-color
-  margin-bottom: 5px
+    display: block
+    width: 100%
+    span
+      margin-right: 5px
+  .body
+    padding: $v-padding $h-padding
+    +media($desktop-mode)
+      overflow-y: auto
+      height: $widget-height - $head-height - ($border-size * 2)
+
+  border-bottom: $border-size solid darken($ithaka-bg, 5%)
+  border-top: $border-size solid $border-color
+  margin-bottom: $spacing
   &:hover
-    border-top: 4px solid darken($border-color, 5%)
-  @include span-columns(12)
-  @include media($desktop-mode)
-    @include span-columns($cols)
+    border-top: $border-size solid darken($border-color, 10%)
+    background: darken(white, 1%)
+  +span-columns(12)
+  +media($desktop-mode)
+    +span-columns($cols)
+  &::after
+    +clearfix
+
+@mixin last-widget
+  +media($desktop-mode)
+    +omega()
+
+// Rules
+
+.fluid-container
+  +outer-container(100%)
+
+.dashboard, .header-wrapper
+  +row()
+
+.widgets
+  margin: $spacing
 
 .heading
-  @include widget(white, 12)
+  +widget(white, 12, 1, 0px)
 
 .projects
-  @include widget($ithaka-success, 4)
+  +widget($ithaka-success, 4, 2)
 
 .activity
-  @include widget($ithaka-primary, 4)
+  +widget($ithaka-primary, 4)
 
 .calendar
-  @include widget($ithaka-danger, 4)
-  @include media($desktop-mode)
-    @include omega()
+  +widget($ithaka-danger, 4)
+  +last-widget
+
+.ideas
+  +widget($ithaka-primary, 4)
+
+.news
+  +widget($ithaka-primary, 4)
+  +last-widget
+
+.trending
+  +widget($ithaka-primary, 4)
+
+.notifications
+  +widget($ithaka-primary, 8)
+  +last-widget

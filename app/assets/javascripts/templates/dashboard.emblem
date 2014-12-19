@@ -1,21 +1,54 @@
-.dashboard
+.header-wrapper
   .heading
-    h1 Welcome to ithaka
-    p Some text explaining how to get started and stuff
+    h2 Welcome to ithaka
+    .body
+      p Some text explaining how to get started and stuff
 
-  .projects
-    h2 Projects
+.dashboard
+  .widgets
+    .projects
+      h2
+        span.icon.icon-bar-chart
+        | Projects
+      .body
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
 
-  .activity
-    h2 Activity Feed
+    .activity
+      h2 Activity Feed
+      .body
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
 
-  .calendar
-    h2 Calendar
+    .calendar
+      h2 Calendar
+      .body
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
 
-  .ideas
+    .ideas
+      h2 Ideas
 
-  .news
+    .news
+      h2 News
 
-  .trending
+    .trending
+      h2 Trending
 
-  .notifications
+    .notifications
+      h2 Notifications
