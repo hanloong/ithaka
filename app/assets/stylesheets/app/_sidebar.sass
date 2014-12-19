@@ -12,13 +12,13 @@ $compact-offset: $open-width - $compact-width
 $border-colors: $ithaka-primary, $ithaka-brand, $ithaka-success, $ithaka-danger, $ithaka-info
 
 @mixin sidebar-animate($property)
-  @include transition($property, $animation-time, $animation-type)
+  +transition($property, $animation-time, $animation-type)
 
 main
   margin-left: 0
   overflow: hidden
-  @include sidebar-animate(all)
-  @include media($desktop-mode)
+  +sidebar-animate(all)
+  +media($desktop-mode)
     margin-left: $compact-width
 
 main.sidebar-open
@@ -26,13 +26,13 @@ main.sidebar-open
 
 .sidebar
   background-color: $background-color
-  @include position(absolute, 0px null 0px (-$open-width))
+  +position(absolute, 0px null 0px (-$open-width))
   height: 100%
   overflow-y: scroll
   color: $sidebar-color
   width: $open-width
-  @include sidebar-animate(left)
-  @include media($desktop-mode)
+  +sidebar-animate(left)
+  +media($desktop-mode)
     left: ($compact-width - $open-width)
 
   .brand
@@ -53,11 +53,11 @@ main.sidebar-open
       text-align: center
       font-size: 24px
       display: block
-      @include box-sizing(border-box)
+      +box-sizing(border-box)
       border-bottom: 4px solid darken($ithaka-brand, 5%)
 
   .hide-when-compact
-    @include sidebar-animate(all)
+    +sidebar-animate(all)
     visibility: hidden
     opacity: 0
 
@@ -67,17 +67,18 @@ main.sidebar-open
       display: block
       width: 100%
       overflow: hidden
-      @include box-sizing(border-box)
+      +box-sizing(border-box)
       &:hover
         background: darken($background-color, 10)
         cursor: pointer
       a
+        width: 100%
         display: block
         height: $sidebar-nav-line-height
         line-height: $sidebar-nav-line-height
         color: $sidebar-color
-        padding: 0 0 0 10px
         float: left
+
       .icon
         line-height: $sidebar-nav-line-height
         color: lighten($background-color, 70%)
@@ -85,26 +86,26 @@ main.sidebar-open
         padding: 0 10px
         float: right
       .badge
-        margin: 13px 5px 0 5px
+        margin: 0 10px
+        font-size: 15px
+        line-height: 12px
+
 
       ul.dropdown
         float: left
         width: 100%
         display: none
-        @include sidebar-animate(all)
-        &.active
-          display: block
-          @include sidebar-animate(all)
+        +sidebar-animate(all)
+
+      &.active > ul.dropdown
+        display: block
+        +sidebar-animate(all)
         li
           border: none
           width: 100%
           background: darken($background-color, 5%)
           &:hover
             background: lighten($background-color, 5%)
-          a
-            width: 100%
-            span.icon
-              float: right
 
       @for $i from 1 through length($border-colors)
         &:nth-child(#{length($border-colors)}n+#{$i})
@@ -141,7 +142,7 @@ main.sidebar-open
     div
       padding: 10px 0
       text-align: center
-      @include box-sizing(border-box)
+      +box-sizing(border-box)
       border: 1px solid $ithaka-sidebar
       font-weight: bold
       font-size: 16px
@@ -166,12 +167,12 @@ main.sidebar-open
     .hide-when-compact
       visibility: visible
       opacity: 1
-      @include sidebar-animate(all)
+      +sidebar-animate(all)
     .brand
       background: darken($background-color, 3%)
       text-align: center
       font-size: 20px
-      @include box-sizing(border-box)
+      +box-sizing(border-box)
       border-bottom: 4px solid darken($background-color, 5%)
       height: 50px
       .icon-logo
@@ -188,3 +189,16 @@ main.sidebar-open
       .title
         display: inline
         color: lighten($background-color, 5%)
+
+    .sidebar-nav ul li .icon
+      float: left
+
+    .dropdown-link > a::after
+      float: right
+      margin-right: 10px
+      font-weight: bold
+      font-family: 'icomoon', $font-family-sans-serif
+      content: "\f104"
+
+    .dropdown-link.active > a::after
+      content: "\f107"

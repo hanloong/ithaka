@@ -6,31 +6,35 @@
   nav.sidebar-nav
     ul
       li.link-to
-        a href="#" Dashboard
-        span.badge.notice 2
-        span.icon.icon-pie-chart
+        a href="#"
+          span.icon.icon-pie-chart
+          | Dashboard
+          span.badge.notice 2
 
       li.link-to
-        a href="#" Projects
-        span.icon.icon-bar-chart
+        a href="#"
+          span.icon.icon-bar-chart
+          | Projects
 
       li.link-to
-        a href="#" Challenges
-        span.icon.icon-trophy
+        a href="#"
+          span.icon.icon-trophy
+          | Challenges
 
       li.link-to.dropdown-link#settings-dropdown click='toggleDropdown "settings-dropdown"'
-        a href="#" Settings
-        span.icon.icon-angle-down
+        a href="#"
+          span.icon.icon-cog
+          | Settings
         ul.dropdown
           li: a href='#'
-            | My Account
             span.icon.icon-cog
+            | My Account
           li: a href='#'
-            | Organisation
             span.icon.icon-group
+            | Organisation
           li: a href='#'
-            | Billing
             span.icon.icon-credit-card
+            | Billing
 
   .user-profile.hide-when-compact
     .avatar

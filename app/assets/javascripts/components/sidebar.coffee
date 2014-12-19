@@ -7,4 +7,4 @@ Ithaka.SideBarComponent = Ember.Component.extend
       $('main').removeClass('sidebar-open')
   actions:
     toggleDropdown: (target) ->
-      $("##{target} > ul").toggleClass('active')
+      $("##{target}").toggleClass('active')
