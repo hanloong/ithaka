@@ -1,6 +1,6 @@
 body
   = side-bar
   main
-    = partial "common/navigation"
+    = nav-bar
     .fluid-container
       = partial "dashboard"

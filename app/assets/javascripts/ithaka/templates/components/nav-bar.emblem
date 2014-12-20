@@ -1,0 +1,24 @@
+.menu-wrapper
+  p.navigation-menu-button click='toggleSidebar'
+    span.icon-bars
+
+  .navigation-tools
+    .nav
+      ul#navigation-menu
+        li.nav-link#site-search
+          a click='toggleSearch'
+            span.icon-search
+          ul.nav-dropdown
+            li: input type='text' name='search' placeholder='Search...'
+
+        li.nav-link#notifications
+          a click='toggleNotifications'
+            span.icon-bell
+            span.badge.error 5
+          ul.nav-dropdown
+            li
+              a href='#' Test 1
+            li
+              a href='#' Test 2
+        li.nav-link: a href="javascript:void(0)" title="Log out"
+          span.icon-sign-out
