@@ -12,7 +12,9 @@ $compact-offset: $open-width - $compact-width
 $border-colors: $ithaka-primary, $ithaka-brand, $ithaka-success, $ithaka-danger, $ithaka-info
 
 @mixin sidebar-animate($property)
-  +transition($property, $animation-time, $animation-type)
+  +transition-property($property)
+  +transition-duration($animation-time)
+  +transition-timing-function($animation-type)
 
 main
   margin-left: 0
