@@ -13,3 +13,8 @@ Ithaka.NotificationToggleView = Ember.View.extend
   tagName: 'a'
   click: ->
     $('#notifications').toggleClass('active')
+
+Ithaka.SearchToggleView = Ember.View.extend
+  tagName: 'a'
+  click: ->
+    $('#site-search').toggleClass('active')

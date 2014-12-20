@@ -6,9 +6,12 @@ Ithaka.NavView
     .navigation-tools
       .nav
         ul#navigation-menu
-          li.nav-link
-            a href="javascript:void(0)" title="Search"
+          li.nav-link#site-search
+            Ithaka.SearchToggleView
               span.icon-search
+            ul.nav-dropdown
+              li: input type='text' name='search' placeholder='Search...'
+
           li.nav-link#notifications
             Ithaka.NotificationToggleView
               span.icon-bell
