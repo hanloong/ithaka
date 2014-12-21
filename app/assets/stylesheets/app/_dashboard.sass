@@ -26,7 +26,7 @@ $row-height: 200px
     width: 100%
     span
       margin-right: 5px
-  .body
+  .body, .content
     padding: $v-padding $h-padding
     +media($desktop-mode)
       overflow-y: auto
@@ -53,35 +53,34 @@ $row-height: 200px
 .fluid-container
   +outer-container(100%)
 
-.dashboard, .header-wrapper
-  +row()
-
 .widgets
-  margin: $spacing
+  margin: 0 $spacing
+  +clearfix
 
 .heading
   +widget(white, 12, 1, 0px)
 
-.projects
-  +widget($ithaka-success, 4, 2)
+.dashboard
+  .projects
+    +widget($ithaka-success, 4, 2)
 
-.activity
-  +widget($ithaka-primary, 4)
+  .activity
+    +widget($ithaka-primary, 4)
 
-.calendar
-  +widget($ithaka-danger, 4)
-  +last-widget
+  .calendar
+    +widget($ithaka-danger, 4)
+    +last-widget
 
-.ideas
-  +widget($ithaka-primary, 4)
+  .ideas
+    +widget($ithaka-primary, 4)
 
-.news
-  +widget($ithaka-primary, 4)
-  +last-widget
+  .news
+    +widget($ithaka-primary, 4)
+    +last-widget
 
-.trending
-  +widget($ithaka-primary, 4)
+  .trending
+    +widget($ithaka-primary, 4)
 
-.notifications
-  +widget($ithaka-primary, 8)
-  +last-widget
+  .notifications
+    +widget($ithaka-primary, 8)
+    +last-widget

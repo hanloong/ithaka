@@ -1,0 +1,6 @@
+body
+  = side-bar
+  main
+    = nav-bar
+    .fluid-container
+      == outlet

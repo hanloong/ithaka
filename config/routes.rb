@@ -11,6 +11,10 @@ Ithaka::Application.routes.draw do
       end
     end
     get :events, to: 'events#index', as: :events
+
+    namespace :v1, default: {format: :josn} do
+      resources :projects, except: [:new, :edit]
+    end
   end
 
   resources :projects do
@@ -32,12 +36,15 @@ Ithaka::Application.routes.draw do
   resource :organisation, only: [:edit, :update] do
     resource :subscriptions
   end
+
   resource :google_admin, only: [:show] do
     get :callback, on: :member
     get :authenticate, on: :member
     put :invite_all, on: :member
   end
+
   get :reports, to: 'reports#index'
   get :search, to: 'search#index', as: :search
   get :app, to: 'app#index', as: :app
+  get 'app/*other', to: 'app#index'
 end

@@ -1,6 +1,53 @@
-body
-  = side-bar
-  main
-    = nav-bar
-    .fluid-container
-      = partial "dashboard"
+.dashboard
+  .heading
+    h2 Welcome to ithaka
+    .body
+      p Some text explaining how to get started and stuff
+
+  .widgets
+    .projects
+      h2
+        span.icon.icon-bar-chart
+        | Projects
+      .body
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
+
+    .activity
+      h2 Activity Feed
+      .body
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
+
+    .calendar
+      h2 Calendar
+      .body
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
+        p Here is some datapp
+
+    .ideas
+      h2 Ideas
+
+    .news
+      h2 News
+
+    .trending
+      h2 Trending
+
+    .notifications
+      h2 Notifications

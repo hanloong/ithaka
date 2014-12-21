@@ -476,6 +476,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers
   acts-as-taggable-on
   asset_sync
   autoprefixer-rails

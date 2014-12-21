@@ -15,6 +15,7 @@ gem 'delayed_job_active_record'                                                 
 gem 'ember-rails'
 gem 'handlebars-source', '1.3.0'
 gem 'emblem-rails'
+gem 'active_model_serializers'
 
 gem 'bourbon', '~> 4.0.0'
 gem 'neat'
