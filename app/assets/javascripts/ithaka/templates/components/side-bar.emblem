@@ -16,12 +16,10 @@
         ul.dropdown
           li
             link-to "projects"
-              span.icon.icon-bar-chart
               | All Projects
           each project in projects
             li
               a href='#'
-                span.icon.icon-bar-chart
                 = project.name
 
       li.link-to
@@ -48,9 +46,9 @@
     .avatar
       img src='https://avatars1.githubusercontent.com/u/195477?v=3&s=460'
     .details
-      .name Han Loong Liauw
+      .name = current_user.name
       .role Software Engineer
-      .company yourtutor
+      .company = current_user.organisation_name
 
   .scorecard.hide-when-compact
     .available
