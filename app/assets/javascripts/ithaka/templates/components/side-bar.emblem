@@ -9,10 +9,20 @@
         link-to "index"
           span.icon.icon-pie-chart
           | Dashboard
-      li.link-to
-        link-to "projects"
+      li.link-to.dropdown-link#projects-dropdown click='toggleDropdown "projects-dropdown"'
+        a href='#'
           span.icon.icon-bar-chart
           | Projects
+        ul.dropdown
+          li
+            link-to "projects"
+              span.icon.icon-bar-chart
+              | All Projects
+          each project in projects
+            li
+              a href='#'
+                span.icon.icon-bar-chart
+                = project.name
 
       li.link-to
         a href="#"

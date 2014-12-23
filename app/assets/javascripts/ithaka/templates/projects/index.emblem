@@ -8,3 +8,5 @@
     each controller
       .project
         h2 = name
+        .content
+          p = description

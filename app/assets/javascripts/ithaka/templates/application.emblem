@@ -1,5 +1,5 @@
 body
-  = side-bar
+  = side-bar projects=projects
   main
     = nav-bar
     .fluid-container
