@@ -5,7 +5,7 @@ class UserSerializer < ActiveModel::Serializer
     object.organisation.name
   end
 
-  def profile_url
+  def avatar_url
     if object.photo_url then object.photo_url
     elsif object.avatar_url.present? then object.avatar_url
     else

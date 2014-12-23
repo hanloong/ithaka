@@ -1,0 +1,87 @@
+<div class='sidebar'>
+  <div class='brand'>
+    <span class='icon-lightbulb-o icon-logo'></span>
+    <span class='title'>Ithaka</span>
+  </div>
+
+  <nav class='sidebar-nav'>
+    <ul>
+      <li class='link-to'>
+        {{#link-to "index"}}
+          <span class='icon icon-pie-chart'></span>
+          Dashboard
+        {{/link-to}}
+      </li>
+      <li class='link-to dropdown-link' id='projects-dropdown' {{action toggleDropdown "projects-dropdown" on="click"}}>
+        <a href='#'>
+          <span class='icon icon-bar-chart'></span>
+          Projects
+        </a>
+        <ul class='dropdown'>
+          <li>{{#link-to "projects"}} All Projects {{/link-to}}</li>
+          {{#each project in projects}}
+            <li><a href='#'>{{project.name}}</a></li>
+          {{/each}}
+        </ul>
+      </li>
+      <li class='link-to'>
+        <a href="#">
+          <span class='icon icon-trophy'></span>
+          Challenges
+        </a>
+      </li>
+      <li class='link-to dropdown-link' id='settings-dropdown' {{action toggleDropdown "settings-dropdown" on="click"}}>
+        <a href="#">
+          <span class='icon icon-cog'></span>
+          Settings
+        </a>
+        <ul class='dropdown'>
+          <li>
+            <a href='#'>
+              <span class='icon icon-cog'></span>
+              My Account
+            </a>
+          </li>
+          <li>
+            <a href='#'>
+              <span class='icon icon-group'></span>
+              Organisation
+            </a>
+          </li>
+          <li>
+            <a href='#'>
+              <span class='icon icon-credit-card'></span>
+              Billing
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <div class='user-profile hide-when-compact'>
+    <div class='avatar'>
+      <img {{bind-attr src=current_user.avatar_url}} alt="Avatar"/>
+    </div>
+    <div class='details'>
+      <div class='name'>{{current_user.name}}</div>
+      <div class='role'>{{current_user.job_title}}</div>
+      <div class='company'>{{current_user.organisation_name}}</div>
+    </div>
+  </div>
+
+  <div class='scorecard hide-when-compact'>
+    <div class='available'>
+      12
+      <small>available</small>
+    </div>
+    <div class='locked'>
+      2
+      <small>locked</small>
+    </div>
+    <div class='unlocked'>
+      4
+      <small>unlocked</small>
+    </div>
+  </div>
+</div>

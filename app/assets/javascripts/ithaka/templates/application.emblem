@@ -1,6 +1,0 @@
-body
-  = side-bar projects=projects current_user=current_user.user
-  main
-    = nav-bar
-    .fluid-container
-      == outlet

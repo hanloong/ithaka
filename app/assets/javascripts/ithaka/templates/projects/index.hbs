@@ -1,0 +1,19 @@
+<div class='projects'>
+  <div class='heading'>
+    <h2>Projects home</h2>
+    <div class='content'>
+      <p>Listed here are all the projects available</p>
+    </div>
+  </div>
+
+  <div class='widgets'>
+    {{#each controller}}
+      <div class='project'>
+        <h2>{{name}}</h2>
+        <div class='content'>
+          <p>{{description}}</p>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
