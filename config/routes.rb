@@ -30,10 +30,13 @@ Ithaka::Application.routes.draw do
     end
     resources :factors
   end
+
   root to: 'high_voltage/pages#show', id: 'home'
   devise_for :users, controllers: { registrations: 'registrations',
                                     invitations: 'invitations',
+                                    sessions: 'sessions',
                                     omniauth_callbacks: 'omniauth_callbacks' }
+
   resources :users
   resource :organisation, only: [:edit, :update] do
     resource :subscriptions
