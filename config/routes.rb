@@ -16,6 +16,7 @@ Ithaka::Application.routes.draw do
       resources :projects, except: [:new, :edit]
       resources :users, only: [:index]
       get :current_user, to: 'users#current', as: 'current_user'
+      get :csrf, to: 'csrf#index'
     end
   end
 
