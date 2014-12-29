@@ -11,6 +11,8 @@ gem 'pg'                                                                        
 gem 'puma'                                                                                # Multithreaded web server
 gem 'delayed_job_active_record'                                                           # ActiveRecord backed Queue
 
+gem 'active_model_serializers', '~> 0.8.0'
+
 gem 'slim-rails'                                                                          # Templating language
 gem 'bootstrap-sass'                                                                      # Bootstrap Wrapper
 gem 'font-awesome-rails'                                                                  # Font Awersome Wrapper
