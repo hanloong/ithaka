@@ -3,7 +3,6 @@
 FactoryGirl.define do
   factory :factor do
     name 'test'
-    area nil
     weight 1
   end
 end

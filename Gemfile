@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.1.2'
 
 gem 'rails'
-gem 'sass-rails'                                                                          # Sass Stylesheet compilation
+gem 'sass-rails'
 gem 'uglifier'                                                                            # Javascript Parser
 gem 'coffee-rails'                                                                        # Coffescript compilation
 gem 'jquery-rails'                                                                        # jQuery wrapper with ujs rails functions
@@ -52,7 +52,6 @@ group :development do
   gem 'foreman'
   gem 'quiet_assets'
   gem 'rails_layout'
-  gem 'rack-mini-profiler'
   gem 'letter_opener'
   gem 'ninefold'
   gem 'spring-commands-rspec'

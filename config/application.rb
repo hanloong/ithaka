@@ -18,7 +18,7 @@ module Ithaka
       g.helper_specs false
     end
 
-    config.serve_static_assets = true
+    config.serve_static_files = true
     config.assets.precompile += ['landing.js', 'landing.css']
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.autoload_paths += %W(
