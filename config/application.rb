@@ -29,7 +29,5 @@ module Ithaka
     config.react.max_renderers = 10
     config.react.timeout = 20 #seconds
     config.react.addons = true
-
-    config.handlebars.templates_root = 'ithaka/templates'
   end
 end

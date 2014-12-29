@@ -94,5 +94,4 @@ Rails.application.configure do
   }
 
   config.react.variant = :production
-  config.ember.variant = :production
 end

@@ -38,5 +38,4 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :letter_opener
 
   config.react.variant = :development
-  config.ember.variant = :development
 end

@@ -51,6 +51,4 @@ Ithaka::Application.routes.draw do
 
   get :reports, to: 'reports#index'
   get :search, to: 'search#index', as: :search
-  get :app, to: 'app#index', as: :app
-  get 'app/*other', to: 'app#index'
 end

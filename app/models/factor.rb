@@ -1,5 +1,4 @@
 class Factor < ActiveRecord::Base
-  belongs_to :area
   belongs_to :project
 
   has_many :influence, dependent: :destroy

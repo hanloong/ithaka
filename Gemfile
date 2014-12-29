@@ -2,24 +2,14 @@ source 'https://rubygems.org'
 ruby '2.1.2'
 
 gem 'rails'
-gem 'sass-rails', '~> 5.0.0'
+gem 'sass-rails'
 gem 'uglifier'                                                                            # Javascript Parser
 gem 'coffee-rails'                                                                        # Coffescript compilation
 gem 'jquery-rails'                                                                        # jQuery wrapper with ujs rails functions
-gem 'modernizr-rails'
 gem 'jbuilder'                                                                            # JSON Parsing
 gem 'pg'                                                                                  # PostgreSQL db adapter
 gem 'puma'                                                                                # Multithreaded web server
 gem 'delayed_job_active_record'                                                           # ActiveRecord backed Queue
-
-gem 'ember-rails'
-gem 'handlebars-source', '1.3.0'
-gem 'active_model_serializers', '~> 0.8.0'
-
-gem 'bourbon', '~> 4.0.0'
-gem 'neat'
-gem 'bitters'
-gem 'refills'
 
 gem 'slim-rails'                                                                          # Templating language
 gem 'bootstrap-sass'                                                                      # Bootstrap Wrapper
