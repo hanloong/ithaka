@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141224124110) do
+ActiveRecord::Schema.define(version: 20141229095450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "comments", force: true do |t|
+  create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
     t.text     "comment"
     t.datetime "created_at"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20141224124110) do
   add_index "comments", ["idea_id"], name: "index_comments_on_idea_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
-  create_table "delayed_jobs", force: true do |t|
+  create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
     t.integer  "attempts",   default: 0, null: false
     t.text     "handler",                null: false
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20141224124110) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
-  create_table "events", force: true do |t|
+  create_table "events", force: :cascade do |t|
     t.integer  "project_id"
     t.string   "message"
     t.string   "url"
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20141224124110) do
   add_index "events", ["trackable_id", "trackable_type"], name: "index_events_on_trackable_id_and_trackable_type", using: :btree
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
 
-  create_table "factors", force: true do |t|
+  create_table "factors", force: :cascade do |t|
     t.string   "name"
     t.integer  "weight"
     t.datetime "created_at"
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20141224124110) do
 
   add_index "factors", ["project_id"], name: "index_factors_on_project_id", using: :btree
 
-  create_table "favourites", force: true do |t|
+  create_table "favourites", force: :cascade do |t|
     t.integer  "idea_id"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 20141224124110) do
   add_index "favourites", ["idea_id"], name: "index_favourites_on_idea_id", using: :btree
   add_index "favourites", ["user_id"], name: "index_favourites_on_user_id", using: :btree
 
-  create_table "ideas", force: true do |t|
+  create_table "ideas", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.integer  "user_id"
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 20141224124110) do
   add_index "ideas", ["project_id"], name: "index_ideas_on_project_id", using: :btree
   add_index "ideas", ["user_id"], name: "index_ideas_on_user_id", using: :btree
 
-  create_table "influences", force: true do |t|
+  create_table "influences", force: :cascade do |t|
     t.integer  "idea_id"
     t.integer  "factor_id"
     t.integer  "score"
@@ -110,14 +110,14 @@ ActiveRecord::Schema.define(version: 20141224124110) do
   add_index "influences", ["factor_id"], name: "index_influences_on_factor_id", using: :btree
   add_index "influences", ["idea_id"], name: "index_influences_on_idea_id", using: :btree
 
-  create_table "organisations", force: true do |t|
+  create_table "organisations", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "vote_limit", default: 15
   end
 
-  create_table "projects", force: true do |t|
+  create_table "projects", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at"
@@ -132,7 +132,7 @@ ActiveRecord::Schema.define(version: 20141224124110) do
 
   add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
 
-  create_table "redactor_assets", force: true do |t|
+  create_table "redactor_assets", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "data_file_name",               null: false
     t.string   "data_content_type"
@@ -149,7 +149,7 @@ ActiveRecord::Schema.define(version: 20141224124110) do
   add_index "redactor_assets", ["assetable_type", "assetable_id"], name: "idx_redactor_assetable", using: :btree
   add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_redactor_assetable_type", using: :btree
 
-  create_table "subscriptions", force: true do |t|
+  create_table "subscriptions", force: :cascade do |t|
     t.string   "transaction_id"
     t.string   "customer_id"
     t.string   "plan"
@@ -159,7 +159,7 @@ ActiveRecord::Schema.define(version: 20141224124110) do
     t.datetime "updated_at"
   end
 
-  create_table "taggings", force: true do |t|
+  create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
     t.string   "taggable_type"
@@ -172,14 +172,14 @@ ActiveRecord::Schema.define(version: 20141224124110) do
   add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
   add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
-  create_table "tags", force: true do |t|
+  create_table "tags", force: :cascade do |t|
     t.string  "name"
     t.integer "taggings_count", default: 0
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: ""
     t.string   "reset_password_token"
@@ -215,7 +215,7 @@ ActiveRecord::Schema.define(version: 20141224124110) do
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "votes", force: true do |t|
+  create_table "votes", force: :cascade do |t|
     t.integer  "idea_id"
     t.integer  "user_id"
     t.datetime "created_at"
