@@ -10,6 +10,7 @@ gem 'jbuilder'                                                                  
 gem 'pg'                                                                                  # PostgreSQL db adapter
 gem 'puma'                                                                                # Multithreaded web server
 gem 'delayed_job_active_record'                                                           # ActiveRecord backed Queue
+gem 'rack-cors', require: 'rack/cors'
 
 gem 'active_model_serializers', '~> 0.8.0'
 

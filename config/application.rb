@@ -29,5 +29,12 @@ module Ithaka
     config.react.max_renderers = 10
     config.react.timeout = 20 #seconds
     config.react.addons = true
+
+    config.middleware.insert_before 0, "Rack::Cors" do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
   end
 end
