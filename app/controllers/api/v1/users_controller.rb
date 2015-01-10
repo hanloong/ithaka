@@ -1,5 +1,4 @@
 class Api::V1::UsersController < Api::AbstractController
-
   def current
     render json: current_user
   end
@@ -7,8 +6,4 @@ class Api::V1::UsersController < Api::AbstractController
   def index
     render json: User.all
   end
-
-  private
-
-
 end
