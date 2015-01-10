@@ -1,4 +1,4 @@
-class Api::V1::UsersController < ApiController
+class Api::V1::UsersController < Api::AbstractController
 
   def current
     render json: current_user
