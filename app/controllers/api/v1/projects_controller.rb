@@ -2,11 +2,11 @@ class Api::V1::ProjectsController < Api::AbstractController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
-    render json: @projects = Project.available(current_user.organisation).order(:name)
+    respond_with @projects = Project.available(current_user.organisation).order(:name)
   end
 
   def show
-    render json: @project
+    respond_with @project
   end
 
   def create
@@ -25,7 +25,7 @@ class Api::V1::ProjectsController < Api::AbstractController
   def set_project
     @project = Project.find(params[:id])
     unless @project.has_access?(current_user)
-      redirect_to projects_url, alert: 'Sorry you do not have access to this project'
+      render :json, {error: 'Sorry you do not have access to this project' }, status: :forbidden
     end
   end
 

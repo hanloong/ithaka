@@ -14,6 +14,7 @@ Ithaka::Application.routes.draw do
 
     namespace :v1, default: {format: :josn} do
       resources :projects, except: [:new, :edit]
+      resources :ideas, except: [:new, :edit]
       resources :users, only: [:index]
       get :current_user, to: 'users#current', as: 'current_user'
       get :csrf, to: 'csrf#index'
