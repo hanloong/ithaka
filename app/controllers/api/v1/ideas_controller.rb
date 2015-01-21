@@ -1,5 +1,6 @@
 class Api::V1::IdeasController < Api::AbstractController
-  before_action :set_project
+  before_action :set_project, only: [:index]
+  before_action :set_idea, except: [:index]
 
   def index
     respond_with @project.ideas
@@ -21,7 +22,10 @@ class Api::V1::IdeasController < Api::AbstractController
   private
 
   def set_idea
-    @idea = @project.ideas.find_by(id: params[:id])
+    @idea = Idea.find_by(id: params[:id])
+    unless @idea.project.has_access?(current_user)
+      render :json, {error: 'Sorry you do not have access to this project' }, status: :forbidden
+    end
   end
 
   def set_project

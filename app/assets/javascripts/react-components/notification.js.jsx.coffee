@@ -21,23 +21,15 @@
           notifications: data
 
   render: ->
-    notifications = this.state.notifications.map (event) =>
-      `<NotificationItem key={event.id} event={event}/>`
+    notifications = Array()
 
     cx = React.addons.classSet
     classes = cx
       'dropdown-menu': true
       'hide': this.state.notifications == 0
 
-    `<li className='dropdown large-icon hidden-xs hidden-sm' rel='tooltip' data-toggle='tooltip' data-placement='bottom' title='Notifications'>
-      <a href='#'className="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-        <i className="fa fa-bell"></i>
-        <span className="caret"></span>
-      </a>
-      <ul className={classes} role='menu'>
-        {notifications}
-      </ul>
-    </li>`
+    `<span>
+    </span>`
 
 @NotificationItem = React.createClass
   render: ->
