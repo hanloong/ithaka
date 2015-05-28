@@ -56,7 +56,6 @@ group :development do
   gem 'quiet_assets'
   gem 'rails_layout'
   gem 'letter_opener'
-  gem 'ninefold'
   gem 'spring-commands-rspec'
 end
 
